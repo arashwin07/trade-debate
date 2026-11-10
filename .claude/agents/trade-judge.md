@@ -39,7 +39,7 @@ The desk (tested code) writes `events.json` (event guard) and `desk_r<N>.json` a
 Do not decide TAKE or SKIP in this mode. Keep it quick; this is a round summary.
 
 ## Mode B: Final Conclusion (after Round 3)
-1. Read `meta.json`, `snapshot.json`, `events.json`, `regime.json`, `levels.json`, `optimizer.json`, all six statements, the three round results, `desk_r3.json` (the code check and Time Machine odds of Bull's final plan), `claims_r1..3.json`, and **`docs/calibration.json`: your own track record**. If it lists misses similar to this case (e.g. you skipped a trade that then won), weigh that honestly, but never break the TAKE rules below because of it.
+1. Read `meta.json` (and the user's own `user_note`, which your `explain_plain` should mention if present), `snapshot.json`, `events.json`, `regime.json`, `levels.json`, `context.json`, `fundamentals.json`, `optimizer.json`, all six statements, the three round results, `desk_r3.json` (the code check and Time Machine odds of Bull's final plan), `claims_r1..3.json`, and **`docs/calibration.json`: your own track record**. If it lists misses similar to this case (e.g. you skipped a trade that then won), weigh that honestly, but never break the TAKE rules below because of it.
 2. **Freshness check:** run `python tools/market_data.py <SYMBOL> --market <market> --style <style> --no-news` (or `python3`) and compare to the snapshot. Is Bull's entry still reachable?
 3. **Fact check** the important evidence from both sides (at least 5 per side, plus every number that decides the case). Open cited URLs where it matters. Check yourself for scheduled events (earnings, inflation/CPI, central bank decisions, token unlocks) inside the trade window.
 4. **Score each side 0-10** on evidence quality, data accuracy, rebuttal strength and plan reasoning (40 total).
@@ -67,6 +67,7 @@ Do not decide TAKE or SKIP in this mode. Keep it quick; this is a round summary.
   "trade_plan": {"direction": "LONG | SHORT", "entry": "", "stop_loss": "", "targets": [], "risk_reward": "", "timeframe": "", "risk_rule": "Risk no more than 1% of trading capital on this idea."},
   "trade_plan_numbers": {"direction": "LONG", "entry": 0, "stop": 0, "targets": [0]},
   "retake_conditions": "Technical version of retake_plain (SKIP only).",
+  "retake_numbers": {"price_above": 172.0, "price_below": null, "hold_minutes": 60, "expires_hours": 24},
   "invalidation": "Technical version (TAKE only).",
   "key_risks": ["..."],
   "key_risks_plain": ["..."],
@@ -74,6 +75,7 @@ Do not decide TAKE or SKIP in this mode. Keep it quick; this is a round summary.
 }
 ```
 
+For SKIP, also fill `retake_numbers` so code can watch for the moment the trade becomes worth a fresh look: a price level it must hold above (LONG) or below (SHORT) for `hold_minutes`, and how long the idea stays valid (`expires_hours`: about 24 for intraday, 120 for swing). Use `null` for the unused side; set the whole field to `null` if no price condition makes sense (e.g. "wait for the CEO probe to end"). For TAKE set it to `null`.
 For SKIP, `trade_plan` and `trade_plan_numbers` describe the trade that was proposed (so the reader sees what was rejected and the journal can track what would have happened). `trade_plan_numbers` is required in both cases: plain numbers only, because the desk's risk gate and the trade journal read it with code.
 
 In both modes, after writing the file check it parses (`python -c "import json;json.load(open('<path>',encoding='utf-8'))"`), then reply with only a one-line summary.

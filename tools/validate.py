@@ -134,6 +134,19 @@ def validate_verdict(d, price, style):
         elif not _num(s.get("total")) or abs(sum(parts) - s["total"]) > 0.01:
             errs.append(f"scorecard.{side}.total ({s.get('total')}) is not the sum of its parts ({sum(parts)})")
     errs += check_plan_numbers(d.get("trade_plan_numbers"), price, style, "trade_plan_numbers")
+    rn = d.get("retake_numbers")
+    if rn is not None:
+        if not isinstance(rn, dict):
+            errs.append("retake_numbers must be an object or null")
+        else:
+            a, b = rn.get("price_above"), rn.get("price_below")
+            if a is None and b is None:
+                errs.append("retake_numbers needs price_above or price_below (or set the whole field to null)")
+            for k, v in (("price_above", a), ("price_below", b)):
+                if v is not None and (not _num(v) or v <= 0 or (price and abs(v - price) / price > 0.3)):
+                    errs.append(f"retake_numbers.{k} must be a positive price near the current price")
+            if rn.get("hold_minutes") is not None and (not _num(rn["hold_minutes"]) or not 5 <= rn["hold_minutes"] <= 1440):
+                errs.append("retake_numbers.hold_minutes must be between 5 and 1440")
     return errs
 
 

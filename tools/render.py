@@ -80,6 +80,9 @@ def collect(folder):
         "regime": load(os.path.join(folder, "regime.json")),
         "optimizer": load(os.path.join(folder, "optimizer.json")),
         "news": load(os.path.join(folder, "news.json")),
+        "context": load(os.path.join(folder, "context.json")),
+        "fundamentals": load(os.path.join(folder, "fundamentals.json")),
+        "user_note": meta.get("user_note"),
         "desk_final": load(os.path.join(folder, "desk_final.json")),
         "outcome": load(os.path.join(folder, "outcome.json")),
         "generated_utc": now(),
@@ -165,7 +168,8 @@ def render_index():
         track = outcomes.summary()
     except Exception:
         pass
-    data = {"debates": items, "generated_utc": now(), "schedule": cfg.get("schedule_plain"), "live_reload": True, "track": track}
+    data = {"debates": items, "generated_utc": now(), "schedule": cfg.get("schedule_plain"), "live_reload": True, "track": track,
+            "paper": load(os.path.join(DOCS, "paper.json")), "has_brief": os.path.exists(os.path.join(DOCS, "brief.html"))}
     write(os.path.join(DOCS, "index.html"), full_doc(inject("index.html", data, "Trade Debate Desk")))
     print("wrote", os.path.join(DOCS, "index.html"))
 

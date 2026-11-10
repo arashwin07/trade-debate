@@ -1,0 +1,11 @@
+{
+  "_read_me": "YOUR watchlist. Scheduled scans check these first (when their market is open). 'note' is your own view; it goes into the debate as the user's opinion, which both sides must address (it is weighed as evidence, not treated as fact). Example entries are switched off with \"active\": false: edit them or add your own.",
+  "items": [
+    {"symbol": "RELIANCE", "market": "nse", "direction": "LONG", "style": "swing", "active": false,
+     "note": "Example: Jio and retail growth; I want to buy dips near the 1,300 floor."},
+    {"symbol": "BTC", "market": "crypto", "direction": "LONG", "style": "intraday", "active": false,
+     "note": "Example: only interested in longs after ETF inflows turn positive."},
+    {"symbol": "NVDA", "market": "us", "direction": "LONG", "style": "swing", "active": false,
+     "note": "Example: long-term AI demand; wary until the CEO probe is resolved."}
+  ]
+}

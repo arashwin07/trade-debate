@@ -23,7 +23,8 @@ Models (from `config/desk.json` → `budget.models`): debaters `sonnet`, round r
 3. `python tools/regime.py <SYMBOL> --market <m> --style <s> --out debates/<ID>/regime.json` (volatility level, size multiplier, holiday / half-day)
 4. `python tools/levels.py <SYMBOL> --market <m> --style <s> --out debates/<ID>/levels.json`
 5. `python tools/news.py <SYMBOL> --market <m> --style <s> [--name "<company name from the snapshot>"] --out debates/<ID>/news.json`
-6. Write `meta.json`: `{"id", "symbol", "market", "style", "direction", "trade", "user_plan" or null, "mode": "named" | "scan", "scan_reason"?, "created_utc"}`
+6. `python tools/context.py <SYMBOL> --market <m> --direction <d> --out debates/<ID>/context.json` (is the wider market a tailwind or headwind?) and `python tools/fundamentals.py <SYMBOL> --market <m> --out debates/<ID>/fundamentals.json` (the business or coin behind the price).
+6b. Write `meta.json`: `{"id", "symbol", "market", "style", "direction", "trade", "user_plan" or null, "user_note": "<the user's own view, from the command or config/watchlist.json>" or null, "mode": "named" | "scan" | "watchlist" | "retake", "scan_reason"?, "created_utc"}`
 7. `python tools/optimizer.py debates/<ID>` → `optimizer.json`: the best plans built from real levels that pass your rules and the Time Machine, or NO_PLAN / NO_EDGE.
 8. Render (`python tools/render.py debates/<ID>`); publish `debates/<ID>/debate.html` with the Artifact tool if available (first time `icon: "chat"`, later republish the same path).
 Facts every agent prompt carries: market status, holiday/half-day, event guard, volatility level, optimizer status.
@@ -31,7 +32,7 @@ Facts every agent prompt carries: market status, holiday/half-day, event guard, 
 ## 2. Three rounds (1 = First look, 2 = Challenge, 3 = Final word)
 Common prompt lines for every debater call:
 > Proposed trade: **<TRADE>** (market `<m>`, style `<s>`). Market: `<status>`. Event guard: `<status>: <plain>`. Volatility: `<level>`. Optimizer: `<status>`.
-> Debate folder `debates/<ID>/`. Read `meta.json`, `snapshot.json`, `events.json`, `regime.json`, `levels.json`, `news.json`, `optimizer.json`[ and from Round 2: your previous round, your opponent's latest round, the Judge's `r<N-1>_result.json`, the desk's `desk_r<N-1>.json` and the claim check `claims_r<N-1>.json`].
+> Debate folder `debates/<ID>/`. Read `meta.json` (including the user's own note, if any), `snapshot.json`, `events.json`, `regime.json`, `levels.json`, `news.json`, `context.json`, `fundamentals.json`, `optimizer.json`[ and from Round 2: your previous round, your opponent's latest round, the Judge's `r<N-1>_result.json`, the desk's `desk_r<N-1>.json` and the claim check `claims_r<N-1>.json`].
 > For fresh numbers run `python tools/market_data.py <SYMBOL> --market <m> --style <s> --no-news --out debates/<ID>/fresh_<HHMM>.json` (HHMM = UTC now) and cite that file as the source; unsaved pulls are reported as unconfirmed.
 > Write `debates/<ID>/r<N>_<bull|bear>.json` in your output format (Bull: `plan_numbers` required). Plain language for beginners.
 
@@ -56,6 +57,7 @@ Validate with `python tools/validate.py debates/<ID>/verdict.json` (re-run once 
 
 ## 5. Show the result
 1. `python tools/render.py debates/<ID>`; republish the artifact. In the cloud: commit and push.
+1b. **Alert (only for a final TAKE):** `python tools/notify.py "TAKE <TRADE>: <first ticket line> Page: <pages-url>/d/<ID>.html"`. If it printed `ALERT:` (no Telegram set up) and the PushNotification tool is available, send the same text with it.
 2. Reply: proposed trade; market status, event guard, volatility; optimizer result; each round's result (plus any wrong numbers the claim checker caught); the final plan's Time Machine odds; the Judge's ruling and confidence; the risk gate with any block reasons; the **final call**; the ticket (TAKE) or what would change the Judge's mind (SKIP); page link; one line if capital is not set. End with: AI analysis, not financial advice; no order was placed.
 
 Never place, simulate or route a real order. The user executes trades themselves.

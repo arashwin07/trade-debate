@@ -392,6 +392,32 @@ def fmt(x, nd=None):
     return f"{x:,.{nd}f}"
 
 
+FLAT_BY = {"us": "3:55 PM New York time (before the close)", "nse": "3:10 PM India time (before the 3:20 PM intraday auto square-off)"}
+
+
+def management(plan, market, style, atr):
+    """Code rules for handling the trade after entry (T)."""
+    long = plan["direction"] == "LONG"
+    e, s, ts = plan["entry"], plan["stop"], plan["targets"]
+    trail = round(atr, 6) if atr else None
+    steps = []
+    if len(ts) >= 2:
+        steps.append({"when": f"price reaches the first target {fmt(ts[0])}",
+                      "do": "close half the position and move the stop-loss to your entry price (breakeven), so the rest cannot lose"})
+        steps.append({"when": f"price reaches the second target {fmt(ts[1])}", "do": "close the rest"})
+    else:
+        steps.append({"when": f"price reaches the target {fmt(ts[0])}", "do": "close the position"})
+    if trail:
+        steps.append({"when": "after the first target is hit",
+                      "do": f"trail the stop: keep it about {fmt(trail)} (1x ATR) {'below the highest' if long else 'above the lowest'} price since entry"})
+    if style == "intraday":
+        steps.append({"when": f"by {FLAT_BY.get(market, '8 hours after entry')}", "do": "close anything still open: this is a same-day trade"})
+    else:
+        steps.append({"when": "after 10 trading days without reaching a target", "do": "close the trade: the idea did not work in time"})
+    steps.append({"when": f"price reaches the stop-loss {fmt(s)}", "do": "the stop order closes it; never move a stop further away"})
+    return steps
+
+
 def ticket_plain(plan, sz, market, display, broker):
     long = plan["direction"] == "LONG"
     side = "BUY" if long else "SELL (short)"
@@ -526,6 +552,7 @@ def cmd_gate(folder):
         "plan_check": facts, "sizing": sz, "events": {k: ev[k] for k in ("status", "plain", "events", "notes")},
         "timemachine": tm, "gate": gate, "checks": checks, "final_call": final, "summary_plain": summary,
         "ticket_plain": ticket_plain(plan, sz, market, display, cfg["accounts"][market].get("broker")) if final == "TAKE" else None,
+        "management": management(plan, market, style, atr) if final == "TAKE" else None,
     })
     save(os.path.join(folder, "desk_final.json"), out)
     audit(folder, "gate", f"judge={judge} gate={gate} final={final} | blocks: {len(blocks)}")

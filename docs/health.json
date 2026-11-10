@@ -1,6 +1,6 @@
 {
-  "checked_utc": "2026-11-10T16:53:54Z",
-  "status": "DEGRADED",
+  "checked_utc": "2026-11-10T17:02:23Z",
+  "status": "OK",
   "critical_down": [],
   "markets_down": [],
   "sources": [
@@ -9,15 +9,15 @@
       "critical": true,
       "market": "crypto",
       "ok": true,
-      "ms": 874,
+      "ms": 773,
       "note": "45 bytes"
     },
     {
       "name": "Binance main API",
       "critical": false,
       "market": "crypto",
-      "ok": false,
-      "ms": 602,
+      "ok": true,
+      "ms": 292,
       "note": "2 bytes"
     },
     {
@@ -25,15 +25,15 @@
       "critical": true,
       "market": "us",
       "ok": true,
-      "ms": 454,
-      "note": "1716 bytes"
+      "ms": 260,
+      "note": "1718 bytes"
     },
     {
       "name": "Yahoo NSE stocks",
       "critical": true,
       "market": "nse",
       "ok": true,
-      "ms": 562,
+      "ms": 279,
       "note": "1625 bytes"
     },
     {
@@ -41,7 +41,7 @@
       "critical": true,
       "market": "forex",
       "ok": true,
-      "ms": 536,
+      "ms": 209,
       "note": "1695 bytes"
     },
     {
@@ -49,7 +49,7 @@
       "critical": true,
       "market": "all",
       "ok": true,
-      "ms": 5070,
+      "ms": 1183,
       "note": "25477 bytes"
     },
     {
@@ -57,7 +57,7 @@
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 361,
+      "ms": 256,
       "note": "14055 bytes"
     },
     {
@@ -65,7 +65,7 @@
       "critical": false,
       "market": "us",
       "ok": true,
-      "ms": 3639,
+      "ms": 3318,
       "note": "37676 bytes"
     },
     {
@@ -73,7 +73,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 938,
+      "ms": 892,
       "note": "208 bytes"
     },
     {
@@ -81,7 +81,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 379,
+      "ms": 300,
       "note": "231 bytes"
     },
     {
@@ -89,15 +89,15 @@
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 764,
-      "note": "129094 bytes"
+      "ms": 900,
+      "note": "129376 bytes"
     },
     {
       "name": "CNBC news",
       "critical": false,
       "market": "us",
       "ok": true,
-      "ms": 521,
+      "ms": 527,
       "note": "20415 bytes"
     },
     {
@@ -105,7 +105,7 @@
       "critical": false,
       "market": "nse",
       "ok": true,
-      "ms": 438,
+      "ms": 326,
       "note": "48296 bytes"
     },
     {
@@ -113,7 +113,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 269,
+      "ms": 226,
       "note": "52566 bytes"
     },
     {
@@ -121,7 +121,7 @@
       "critical": false,
       "market": "forex",
       "ok": true,
-      "ms": 148,
+      "ms": 209,
       "note": "24985 bytes"
     }
   ]

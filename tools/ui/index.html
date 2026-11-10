@@ -91,7 +91,9 @@ button{font:inherit;color:inherit}
       '<div class="stats"><div><small>TAKE calls that won / lost</small><b class="num"><span style="color:var(--bull)">' + (tk.wins || 0) + '</span> / <span style="color:var(--bear)">' + (tk.losses || 0) + "</span></b></div>" +
       '<div><small>SKIPs that would have lost (good skips)</small><b class="num" style="color:var(--bull)">' + (sk.losses || 0) + "</b></div>" +
       '<div><small>SKIPs that would have won (missed)</small><b class="num" style="color:var(--warn)">' + (sk.wins || 0) + "</b></div></div>" +
-      ((tk.pending || 0) + (sk.pending || 0) ? '<p class="sched">' + ((tk.pending || 0) + (sk.pending || 0)) + " still running.</p>" : "") + "</section>";
+      ((tk.pending || 0) + (sk.pending || 0) ? '<p class="sched">' + ((tk.pending || 0) + (sk.pending || 0)) + " still running.</p>" : "") +
+      (D.paper && D.paper.plain ? '<p class="sched" style="color:var(--ink-2)"><b>Practice account:</b> ' + esc(D.paper.plain) + "</p>" : "") +
+      (D.has_brief ? '<p class="sched"><a href="brief.html" style="color:var(--clay-ink)">Open today\'s market brief →</a></p>' : "") + "</section>";
   }
   function render() {
     var list = items.filter(function (x) {

@@ -1,0 +1,59 @@
+{
+  "computed_utc": "2026-11-10T17:02:23Z",
+  "currency": "USD",
+  "start_capital": 100000,
+  "risk_per_trade_pct": 1.0,
+  "desk": {
+    "trades": 0,
+    "wins": 0,
+    "losses": 0,
+    "balance": 100000,
+    "return_pct": 0.0,
+    "max_drawdown_pct": 0.0,
+    "curve": [
+      {
+        "t": null,
+        "balance": 100000
+      }
+    ]
+  },
+  "take_everything": {
+    "trades": 4,
+    "wins": 1,
+    "losses": 3,
+    "balance": 98323.31,
+    "return_pct": -1.68,
+    "max_drawdown_pct": 2.97,
+    "curve": [
+      {
+        "t": null,
+        "balance": 100000
+      },
+      {
+        "t": "2026-11-10T13:30:00Z",
+        "balance": 99000.0,
+        "id": "20261110-1106-BTC",
+        "r": -1.0
+      },
+      {
+        "t": "2026-11-10T13:55:00Z",
+        "balance": 98010.0,
+        "id": "20261110-1222-NZDUSD-LONG",
+        "r": -1.0
+      },
+      {
+        "t": "2026-11-10T14:30:00Z",
+        "balance": 97029.9,
+        "id": "20261110-1226-ZEC-SHORT",
+        "r": -1.0
+      },
+      {
+        "t": "2026-11-10T15:00:00Z",
+        "balance": 98323.31,
+        "id": "20261110-1355-ETH-LONG",
+        "r": 1.333
+      }
+    ]
+  },
+  "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -1.68%."
+}

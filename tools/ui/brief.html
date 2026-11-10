@@ -1,0 +1,49 @@
+<title>Market Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one readable column of cards, same light Claude palette as the debate pages. Mood first, then today's events, then your list. */
+:root{color-scheme:light;--page:#faf9f5;--paper:#fff;--wall:#f1efe7;--ink:#141413;--ink-2:#3d3c37;--muted:#77756c;--line:#e5e2d6;
+  --clay:#d97757;--clay-ink:#b4532f;--clay-soft:#fbeee8;--bull:#55702f;--bull-soft:#eef3e4;--bear:#b0473c;--bear-soft:#fbeceb;
+  --judge:#3b6894;--judge-soft:#eaf1f8;--warn:#9a6a00;--warn-soft:#fbf3dc;
+  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--f-read:"Lora",Georgia,serif;--f-num:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}html{background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--f-ui)}
+.wrap{max-width:780px;margin:0 auto;padding-block:18px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+h1{margin:0;font-size:1.4rem;font-weight:600}h2{margin:0 0 8px;font-size:1rem;font-weight:600}
+.sub{margin:2px 0 0;color:var(--muted);font-size:.84rem}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.up{color:var(--bull)}.down{color:var(--bear)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.tile{background:var(--page);border-radius:10px;padding:8px 10px;display:grid;gap:1px}
+.tile small{font-size:.7rem;color:var(--muted)}.tile b{font-size:.95rem}
+.gp{font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.gp.OK,.gp.UP{background:var(--bull-soft);color:var(--bull)}.gp.DEGRADED,.gp.MIXED{background:var(--warn-soft);color:var(--warn)}.gp.DOWN{background:var(--bear-soft);color:var(--bear)}
+ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.9rem}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.row:last-child{border-bottom:0}.row p{margin:0;color:var(--ink-2);font-family:var(--f-read)}
+.muted{color:var(--muted)}
+</style>
+<main class="wrap" id="app"></main>
+<script id="d" type="application/json">__DATA__</script>
+<script>
+(function(){
+  var D=JSON.parse(document.getElementById("d").textContent),app=document.getElementById("app");
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function n(x){return typeof x==="number"?x.toLocaleString(undefined,{maximumFractionDigits:Math.abs(x)>=100?2:4}):"–"}
+  function pct(x){return typeof x==="number"?'<span class="num '+(x>=0?"up":"down")+'">'+(x>=0?"+":"")+x.toFixed(2)+"%</span>":"–"}
+  function when(iso){var d=new Date(iso);return isNaN(d)?"":d.toLocaleString([],{weekday:"short",hour:"2-digit",minute:"2-digit"})}
+  var h='<header><h1>'+esc(D.title)+'</h1><p class="sub">'+esc(new Date(D.computed_utc).toLocaleString())+' · <span class="gp '+esc(D.health.status)+'">Data '+esc(D.health.status)+"</span>"+(D.health.critical_down&&D.health.critical_down.length?" Missing: "+esc(D.health.critical_down.join(", ")):"")+"</p></header>";
+  h+='<section class="card"><h2>Market mood</h2>';
+  (D.mood||[]).forEach(function(m){h+='<div class="grid" style="margin-bottom:8px">'+(m.indexes||[]).map(function(i){return '<div class="tile"><small>'+esc(i.name)+'</small><b class="num">'+n(i.price)+"</b><span>"+pct(i.change_today_pct)+' <span class="gp '+esc(i.trend)+'">'+esc(i.trend==="UP"?"uptrend":i.trend==="DOWN"?"downtrend":"no clear trend")+"</span></span></div>"}).join("")+(m.crypto_market?'<div class="tile"><small>Bitcoin dominance</small><b class="num">'+n(m.crypto_market.btc_dominance_pct)+'%</b><span class="muted">crypto market '+pct(m.crypto_market.total_mcap_change_24h_pct)+" 24h</span></div>":"")+"</div>"});
+  h+="</section>";
+  h+='<section class="card"><h2>Big scheduled events (next 24 hours)</h2>'+((D.events||[]).length?"<ul>"+D.events.map(function(e){return "<li><b>"+esc(when(e.time_utc))+"</b> · "+esc(e.title)+' <span class="muted">('+esc(e.currency)+(e.tier===1?", major":"")+(e.forecast?", forecast "+esc(e.forecast):"")+")</span></li>"}).join("")+"</ul>":'<p class="muted" style="margin:0">No major events. Calmer day expected.</p>')+"</section>";
+  h+='<section class="card"><h2>Overnight moves</h2><div class="grid">'+(D.overnight||[]).map(function(o){return '<div class="tile"><small>'+esc(o.symbol)+'</small><b class="num">'+n(o.price)+"</b>"+pct(o.change_pct)+"</div>"}).join("")+"</div></section>";
+  h+='<section class="card"><h2>Your watchlist</h2>'+((D.watchlist||[]).length?D.watchlist.map(function(w){return w.error?'<div class="row"><span>'+esc(w.symbol)+'</span><span class="muted">unavailable</span></div>':'<div class="row"><span><b>'+esc(w.symbol)+"</b> "+esc(w.direction||"")+' · <span class="num">'+n(w.price)+"</span><br><small class=\"muted\">Floor "+n(w.floor)+" ("+esc(w.floor_label)+") · Ceiling "+n(w.ceiling)+" ("+esc(w.ceiling_label)+")</small>"+(w.note?"<p>"+esc(w.note)+"</p>":"")+'</span><span class="gp '+(w.volatility==="NORMAL"||w.volatility==="LOW"?"OK":w.volatility==="HIGH"?"MIXED":"DOWN")+'">'+esc(w.volatility||"")+"</span></div>"}).join(""):'<p class="muted" style="margin:0">No active entries. Add yours in config/watchlist.json.</p>')+"</section>";
+  if((D.retakes||[]).length)h+='<section class="card"><h2>Skipped ideas being watched</h2><ul>'+D.retakes.map(function(r){return "<li>"+esc(r.debate)+": "+esc(r.condition)+"</li>"}).join("")+"</ul></section>";
+  h+='<section class="card"><h2>How the desk is doing</h2><ul><li>'+esc(D.calibration.plain)+"</li><li>"+esc(D.paper.plain)+"</li>"+(D.calibration.advice||[]).map(function(a){return "<li class=\"muted\">"+esc(a)+"</li>"}).join("")+"</ul></section>";
+  h+='<p class="sub" style="text-align:center">AI analysis of free public data. Not financial advice. The desk never places orders.</p>';
+  app.innerHTML=h;
+})();
+</script>

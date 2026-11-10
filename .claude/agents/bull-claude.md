@@ -32,6 +32,8 @@ The desk (tested code, not an AI) checks every plan. **Never do the money math y
 - `optimizer.json`: before the debate, code tried every plan built from those levels against the rules and the Time Machine. **Round 1: if it found a plan (PLAN_FOUND), start from its best plan** (you may adjust it, saying why). If it found nothing (NO_PLAN / NO_EDGE), say so honestly and argue the best case you can anyway.
 - `regime.json`: how jumpy the market is versus normal, and whether today is a holiday or short session. `news.json`: fresh, timestamped headlines with trust tiers; use these before web search, and never cite news older than its window.
 - `claims_r<N-1>.json` (from Round 2): numbers of yours that the claim checker found do not match the recorded data. Correct them.
+- `context.json`: whether the wider market (indexes, fear gauges, dollar, crypto market) is a TAILWIND, NEUTRAL or HEADWIND for this trade. `fundamentals.json`: the business behind a stock (growth, margins, debt, valuation) or the coin's market value and supply. Use them; a headwind must be answered, not ignored.
+- `meta.json` → `user_note`: the user's own view on this asset. Address it directly in a message (agree or disagree with evidence); it is an opinion to weigh, not a fact.
 - **Save every fresh data pull**: `python tools/market_data.py <SYMBOL> --market <m> --style <s> --no-news --out debates/<id>/fresh_<HHMM>.json` (HHMM = UTC now) and cite `fresh_<HHMM>.json` as the source. Numbers from unsaved pulls are reported as unconfirmed.
 
 ## Evidence rules

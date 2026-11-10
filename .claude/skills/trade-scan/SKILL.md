@@ -11,9 +11,11 @@ Work from the project root. Use `python`, falling back to `python3`.
 
 1. **Health:** `python tools/health.py`. If it exits 1, drop the markets listed under "do not trade markets" (all markets if the calendar is down); if none remain, report and stop.
 2. **Budget:** `python tools/budget.py check`. Exit 1 → report "daily debate budget used up" and stop. Otherwise picks = min(picks, debates left today).
-3. **Journal:** `python tools/outcomes.py` then `python tools/calibration.py`.
-4. **Scan:** `python tools/scan.py --markets <markets> --pick 8 --out debates/_last_scan.json` (only markets open now). Each candidate has a `direction` (LONG if up today, SHORT if down).
-5. **Filter before spending a debate** (go down `candidates`, then `all_ranked`, until you have `picks` or run out), recording every skip with its reason:
+3. **Journal:** `python tools/outcomes.py`, `python tools/calibration.py`, `python tools/paper.py`.
+3b. **Retake watcher:** `python tools/watch.py retake`. Entries in `debates/_retake_queue.json` come FIRST (mode `retake`, scan_reason = the queue's reason); remove each from the queue once its debate starts. If any fired and the PushNotification tool is available, notify: "Retake condition met for <symbol>: debating it again now."
+4. **Candidates, in priority order:** (a) the retake queue; (b) your watchlist: `python tools/watch.py watchlist` (mode `watchlist`, `user_note` = the entry's note, its own direction and style); (c) the scanner: `python tools/scan.py --markets <markets> --pick 8 --out debates/_last_scan.json` (only markets open now; `direction` LONG if up today, SHORT if down).
+   If `health.py` reported a critical source down, also notify (PushNotification) once: "Data source down: <names>; skipping <markets>."
+5. **Filter before spending a debate** (go down the candidates in that priority order, then the scanner's `all_ranked`, until you have `picks` or run out), recording every skip with its reason:
    - SHORT not allowed by `risk.allow_short` for that market (`crypto`, `us`, `nse_intraday`/`nse_swing`, `forex`);
    - forex pair not in `india_forex_allowed_pairs` when `owner.residence` is `IN`;
    - `python tools/events.py --market <m> --symbol <s> --style <style>` status BLOCK;

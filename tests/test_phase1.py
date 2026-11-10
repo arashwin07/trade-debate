@@ -118,5 +118,31 @@ class Levels(unittest.TestCase):
         self.assertEqual(cl[0]["touches"], 2)
 
 
+class Phase2(unittest.TestCase):
+    def test_paper_compounds_and_tracks_drawdown(self):
+        import paper
+        a = paper.account([{"r": 2.0, "closed": "1", "id": "a"}, {"r": -1.0, "closed": "2", "id": "b"}], 100000, 1.0)
+        self.assertAlmostEqual(a["balance"], 100000 * 1.02 * 0.99, places=2)
+        self.assertAlmostEqual(a["max_drawdown_pct"], 1.0, places=6)
+        self.assertEqual((a["wins"], a["losses"]), (1, 1))
+
+    def test_management_rules(self):
+        steps = desk.management({"direction": "SHORT", "entry": 100, "stop": 102, "targets": [97, 95]}, "us", "intraday", 1.5)
+        txt = " ".join(s["when"] + " " + s["do"] for s in steps)
+        self.assertIn("breakeven", txt)
+        self.assertIn("above the lowest", txt)     # a short trails above the lowest price
+        self.assertIn("3:55 PM New York", txt)
+        swing = desk.management({"direction": "LONG", "entry": 100, "stop": 95, "targets": [110]}, "nse", "swing", 3)
+        self.assertTrue(any("10 trading days" in s["when"] for s in swing))
+
+    def test_retake_numbers_validation(self):
+        base = {"decision": "SKIP", "confidence": 70, "winner": "bear", "headline_plain": "x" * 20, "explain_plain": "x" * 20,
+                "plan_plain": "x" * 20, "retake_plain": "x" * 20, "reasoning": "x" * 20,
+                "scorecard": {s: {"evidence_quality": 5, "data_accuracy": 5, "rebuttal_strength": 5, "plan_reasoning": 5, "total": 20} for s in ("bull", "bear")},
+                "trade_plan_numbers": {"direction": "LONG", "entry": 100.0, "stop": 98.0, "targets": [103.0]}}
+        self.assertEqual(validate.validate_verdict(dict(base, retake_numbers={"price_above": 102, "price_below": None, "hold_minutes": 60}), 100, "intraday"), [])
+        self.assertTrue(validate.validate_verdict(dict(base, retake_numbers={"price_above": 900}), 100, "intraday"))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

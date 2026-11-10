@@ -57,6 +57,13 @@
     "india_vix_high": 20
   },
 
+  "paper": {
+    "_why": "A practice account with fake money that takes every final TAKE call, to measure the desk before real money.",
+    "start_capital": 100000,
+    "currency": "USD",
+    "risk_per_trade_pct": 1.0
+  },
+
   "sizing": {
     "forex_unit_step": 1000,
     "stocks_whole_units": true

@@ -1,0 +1,50 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Market Brief</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one readable column of cards, same light Claude palette as the debate pages. Mood first, then today's events, then your list. */
+:root{color-scheme:light;--page:#faf9f5;--paper:#fff;--wall:#f1efe7;--ink:#141413;--ink-2:#3d3c37;--muted:#77756c;--line:#e5e2d6;
+  --clay:#d97757;--clay-ink:#b4532f;--clay-soft:#fbeee8;--bull:#55702f;--bull-soft:#eef3e4;--bear:#b0473c;--bear-soft:#fbeceb;
+  --judge:#3b6894;--judge-soft:#eaf1f8;--warn:#9a6a00;--warn-soft:#fbf3dc;
+  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;--f-read:"Lora",Georgia,serif;--f-num:"JetBrains Mono",ui-monospace,Consolas,monospace}
+*{box-sizing:border-box}html{background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--f-ui)}
+.wrap{max-width:780px;margin:0 auto;padding-block:18px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+h1{margin:0;font-size:1.4rem;font-weight:600}h2{margin:0 0 8px;font-size:1rem;font-weight:600}
+.sub{margin:2px 0 0;color:var(--muted);font-size:.84rem}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.up{color:var(--bull)}.down{color:var(--bear)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.tile{background:var(--page);border-radius:10px;padding:8px 10px;display:grid;gap:1px}
+.tile small{font-size:.7rem;color:var(--muted)}.tile b{font-size:.95rem}
+.gp{font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.gp.OK,.gp.UP{background:var(--bull-soft);color:var(--bull)}.gp.DEGRADED,.gp.MIXED{background:var(--warn-soft);color:var(--warn)}.gp.DOWN{background:var(--bear-soft);color:var(--bear)}
+ul{margin:0;padding-left:18px;display:grid;gap:6px;font-size:.9rem}
+.row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:8px 0;border-bottom:1px solid var(--line);font-size:.88rem}
+.row:last-child{border-bottom:0}.row p{margin:0;color:var(--ink-2);font-family:var(--f-read)}
+.muted{color:var(--muted)}
+</style></head><body>
+<main class="wrap" id="app"></main>
+<script id="d" type="application/json">{"computed_utc": "2026-11-10T17:02:23Z", "title": "Market brief", "which": "all", "health": {"status": "OK", "critical_down": [], "markets_down": []}, "mood": [{"market": "nse", "indexes": [{"symbol": "^NSEI", "name": "NIFTY 50", "price": 25044.65, "change_today_pct": 0.06, "vs_sma20_pct": 7.75, "vs_sma50_pct": 7.65, "trend": "MIXED"}, {"symbol": "^NSEBANK", "name": "Bank NIFTY", "price": 59741.25, "change_today_pct": 1.11, "vs_sma20_pct": 7.42, "vs_sma50_pct": 6.87, "trend": "MIXED"}, {"symbol": "^INDIAVIX", "name": "India VIX fear gauge", "price": 17.42, "change_today_pct": -0.29, "vs_sma20_pct": 11.57, "vs_sma50_pct": 27.45, "trend": "UP"}, {"symbol": "USDINR=X", "name": "USD/INR", "price": 93.918, "change_today_pct": 0.02, "vs_sma20_pct": -0.9, "vs_sma50_pct": -1.5, "trend": "DOWN"}], "crypto_market": null, "error": null}, {"market": "us", "indexes": [{"symbol": "^GSPC", "name": "S&P 500", "price": 7489.4, "change_today_pct": -0.8, "vs_sma20_pct": -1.83, "vs_sma50_pct": -2.38, "trend": "DOWN"}, {"symbol": "^IXIC", "name": "Nasdaq", "price": 24951.746, "change_today_pct": -1.19, "vs_sma20_pct": -3.52, "vs_sma50_pct": -5.51, "trend": "DOWN"}, {"symbol": "^VIX", "name": "VIX fear gauge", "price": 20.77, "change_today_pct": 4.27, "vs_sma20_pct": 7.4, "vs_sma50_pct": 21.39, "trend": "UP"}, {"symbol": "^TNX", "name": "US 10-year yield", "price": 5.013, "change_today_pct": 3.06, "vs_sma20_pct": 0.29, "vs_sma50_pct": -0.56, "trend": "MIXED"}, {"symbol": "DX-Y.NYB", "name": "Dollar index", "price": 102.363, "change_today_pct": 0.7, "vs_sma20_pct": 0.42, "vs_sma50_pct": 1.16, "trend": "UP"}], "crypto_market": null, "error": null}, {"market": "crypto", "indexes": [{"symbol": "BTC-USD", "name": "Bitcoin", "price": 72972.25, "change_today_pct": -2.99, "vs_sma20_pct": -6.48, "vs_sma50_pct": -10.3, "trend": "DOWN"}, {"symbol": "^VIX", "name": "VIX fear gauge", "price": 20.77, "change_today_pct": 4.27, "vs_sma20_pct": 7.4, "vs_sma50_pct": 21.39, "trend": "UP"}], "crypto_market": {"btc_dominance_pct": 59.71, "total_mcap_change_24h_pct": -6.25}, "error": null}], "events": [], "event_notes": [], "overnight": [{"symbol": "BTC/USDT", "price": 73040.11, "change_pct": -2.65}, {"symbol": "ETH/USDT", "price": 2023.81, "change_pct": -5.06}, {"symbol": "EUR/USD", "price": 1.1154, "change_pct": 0.06}, {"symbol": "USD/INR", "price": 93.918, "change_pct": 0.02}, {"symbol": "USD/JPY", "price": 158.75, "change_pct": 0.29}], "watchlist": [], "retakes": [], "track": {"take": {"resolved": 0, "wins": 0, "losses": 0, "avg_r": null, "not_filled": 0, "pending": 0}, "skip": {"resolved": 4, "wins": 1, "losses": 3, "avg_r": -0.417, "not_filled": 0, "pending": 1}, "debates": 5}, "calibration": {"plain": "The Judge has been right in 3 of 4 resolved debates.", "advice": ["Only 4 resolved debates: too few to change any rule. Keep collecting."]}, "paper": {"plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -1.68%."}}</script>
+<script>
+(function(){
+  var D=JSON.parse(document.getElementById("d").textContent),app=document.getElementById("app");
+  function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+  function n(x){return typeof x==="number"?x.toLocaleString(undefined,{maximumFractionDigits:Math.abs(x)>=100?2:4}):"–"}
+  function pct(x){return typeof x==="number"?'<span class="num '+(x>=0?"up":"down")+'">'+(x>=0?"+":"")+x.toFixed(2)+"%</span>":"–"}
+  function when(iso){var d=new Date(iso);return isNaN(d)?"":d.toLocaleString([],{weekday:"short",hour:"2-digit",minute:"2-digit"})}
+  var h='<header><h1>'+esc(D.title)+'</h1><p class="sub">'+esc(new Date(D.computed_utc).toLocaleString())+' · <span class="gp '+esc(D.health.status)+'">Data '+esc(D.health.status)+"</span>"+(D.health.critical_down&&D.health.critical_down.length?" Missing: "+esc(D.health.critical_down.join(", ")):"")+"</p></header>";
+  h+='<section class="card"><h2>Market mood</h2>';
+  (D.mood||[]).forEach(function(m){h+='<div class="grid" style="margin-bottom:8px">'+(m.indexes||[]).map(function(i){return '<div class="tile"><small>'+esc(i.name)+'</small><b class="num">'+n(i.price)+"</b><span>"+pct(i.change_today_pct)+' <span class="gp '+esc(i.trend)+'">'+esc(i.trend==="UP"?"uptrend":i.trend==="DOWN"?"downtrend":"no clear trend")+"</span></span></div>"}).join("")+(m.crypto_market?'<div class="tile"><small>Bitcoin dominance</small><b class="num">'+n(m.crypto_market.btc_dominance_pct)+'%</b><span class="muted">crypto market '+pct(m.crypto_market.total_mcap_change_24h_pct)+" 24h</span></div>":"")+"</div>"});
+  h+="</section>";
+  h+='<section class="card"><h2>Big scheduled events (next 24 hours)</h2>'+((D.events||[]).length?"<ul>"+D.events.map(function(e){return "<li><b>"+esc(when(e.time_utc))+"</b> · "+esc(e.title)+' <span class="muted">('+esc(e.currency)+(e.tier===1?", major":"")+(e.forecast?", forecast "+esc(e.forecast):"")+")</span></li>"}).join("")+"</ul>":'<p class="muted" style="margin:0">No major events. Calmer day expected.</p>')+"</section>";
+  h+='<section class="card"><h2>Overnight moves</h2><div class="grid">'+(D.overnight||[]).map(function(o){return '<div class="tile"><small>'+esc(o.symbol)+'</small><b class="num">'+n(o.price)+"</b>"+pct(o.change_pct)+"</div>"}).join("")+"</div></section>";
+  h+='<section class="card"><h2>Your watchlist</h2>'+((D.watchlist||[]).length?D.watchlist.map(function(w){return w.error?'<div class="row"><span>'+esc(w.symbol)+'</span><span class="muted">unavailable</span></div>':'<div class="row"><span><b>'+esc(w.symbol)+"</b> "+esc(w.direction||"")+' · <span class="num">'+n(w.price)+"</span><br><small class=\"muted\">Floor "+n(w.floor)+" ("+esc(w.floor_label)+") · Ceiling "+n(w.ceiling)+" ("+esc(w.ceiling_label)+")</small>"+(w.note?"<p>"+esc(w.note)+"</p>":"")+'</span><span class="gp '+(w.volatility==="NORMAL"||w.volatility==="LOW"?"OK":w.volatility==="HIGH"?"MIXED":"DOWN")+'">'+esc(w.volatility||"")+"</span></div>"}).join(""):'<p class="muted" style="margin:0">No active entries. Add yours in config/watchlist.json.</p>')+"</section>";
+  if((D.retakes||[]).length)h+='<section class="card"><h2>Skipped ideas being watched</h2><ul>'+D.retakes.map(function(r){return "<li>"+esc(r.debate)+": "+esc(r.condition)+"</li>"}).join("")+"</ul></section>";
+  h+='<section class="card"><h2>How the desk is doing</h2><ul><li>'+esc(D.calibration.plain)+"</li><li>"+esc(D.paper.plain)+"</li>"+(D.calibration.advice||[]).map(function(a){return "<li class=\"muted\">"+esc(a)+"</li>"}).join("")+"</ul></section>";
+  h+='<p class="sub" style="text-align:center">AI analysis of free public data. Not financial advice. The desk never places orders.</p>';
+  app.innerHTML=h;
+})();
+</script>
+</body></html>

@@ -412,7 +412,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       (D.scan_reason ? " The scanner picked it because: " + esc(D.scan_reason) + "." : "") + "</p></div>" +
       '<div class="qstats"><div><small>' + esc(base) + " price now</small><b class=\"num\">" + cur + money(S.price) + "</b></div>" +
       "<div><small>Change " + lbl + '</small><b class="num ' + ((chg || 0) >= 0 ? "up" : "down") + '">' + (typeof chg === "number" ? (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%" : "–") + "</b></div>" +
-      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + "</section>" +
+      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + contextStrip() + fundStrip() + noteStrip() + "</section>" +
       optimizerCard() +
       '<div class="sys">Prices from ' + esc(S.data_source || "public data") + " at " + esc(hhmm(S.snapshot_utc)) + ". Tap “Live data” at the top for every number both sides can use.</div>";
   }
@@ -541,6 +541,19 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     var cal = R0.calendar && R0.calendar.status !== "OPEN" && R0.calendar.status !== "CLOSED" ? " " + R0.calendar.plain : "";
     return '<button class="evstrip" data-term="atr"><span class="gp ' + lv[0] + '">' + lv[1] + "</span><span><b>Volatility check:</b> " + rich(R0.plain + cal) + "</span></button>";
   }
+  function contextStrip() {
+    var C = D.context; if (!C || !C.plain) return "";
+    var lv = {TAILWIND: ["CLEAR", "Market helps"], NEUTRAL: ["CAUTION", "Market mixed"], HEADWIND: ["BLOCK", "Market against"]}[C.verdict] || ["CAUTION", C.verdict];
+    return '<div class="evstrip" style="cursor:default"><span class="gp ' + lv[0] + '">' + lv[1] + "</span><span><b>Market mood:</b> " + rich(C.plain) + "</span></div>";
+  }
+  function fundStrip() {
+    var F = D.fundamentals; if (!F || !F.plain || F.error) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CLEAR" style="background:var(--judge-soft);color:var(--judge)">Fundamentals</span><span>' + rich(F.plain) + "</span></div>";
+  }
+  function noteStrip() {
+    if (!D.user_note) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CAUTION" style="background:var(--clay-soft);color:var(--clay-ink)">Your note</span><span>' + esc(D.user_note) + "</span></div>";
+  }
   function optimizerCard() {
     var O = D.optimizer; if (!O) return "";
     var b = (O.best || [])[0];
@@ -600,6 +613,8 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     var sizeTxt = sz.status === "NO_CAPITAL" ? "Your capital is not set yet, so no position size was calculated. Per unit: lose about " + esc(sz.account_currency) + " " + money(sz.per_unit_loss_at_stop) + " at the stop, make about " + money(sz.per_unit_gain_at_target1) + " at the first target (after costs)."
       : sz.qty ? "Size: " + esc(sz.qty) + " units (limited by " + esc(sz.limited_by) + "). Worst case at the stop: " + esc(sz.account_currency) + " " + money(sz.loss_at_stop_incl_costs) + " including " + money(sz.costs_round_trip_at_stop) + " of costs. At the first target: +" + money(sz.gain_at_target1_after_costs) + "." : "";
     var tk = DF.ticket_plain ? '<div class="ticket"><b>Your ticket · place it yourself</b>' + DF.ticket_plain.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "";
+    if (DF.management && DF.management.length) tk += '<div><p class="sec-t">After you enter: the plan for managing it</p><ul class="plain">' +
+      DF.management.map(function (m) { return "<li><b>When " + esc(m.when) + ":</b> " + rich(m.do) + "</li>"; }).join("") + "</ul></div>";
     return '<div class="divider" id="risk"><span>Risk manager</span><small>Costs, position size and your limits, checked by code.</small></div>' +
       '<section class="dcard" style="width:min(100%,680px)"><div class="dh"><span class="ic">' + I.lock + '</span><div><b>Final call</b><small>Judge: ' + esc(DF.judge_decision) + " · Risk gate: " + esc(DF.gate) + "</small></div></div>" +
       '<div class="db"><div class="bigcall"><span class="stamp ' + esc(DF.final_call) + '">' + esc(DF.final_call) + '</span><p class="lead" style="margin:0;flex:1;min-width:200px">' + rich(DF.summary_plain) + "</p></div>" +
