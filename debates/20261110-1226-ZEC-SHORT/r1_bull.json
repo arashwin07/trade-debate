@@ -1,0 +1,18 @@
+{
+  "agent": "bull",
+  "round": 1,
+  "stance": "TAKE",
+  "headline": "SHORT ZEC on a bounce into 1,160-1,170 (1h EMA21 1,165.07): 1h and 15m trend is down, price sits below SMA50/SMA200 on 15m and 1h, targeting 1,131 then 1,110 for about 1:2 or better.",
+  "argument": "The higher timeframes are bearish. On the 1h, price (1,152.35) is below SMA20 (1,159.65), SMA50 (1,203.73) and SMA200 (1,247.53), EMA9 (1,151.95) is below EMA21 (1,165.07), MACD is -16.31, and the 50-bar change is -8.29%. The 15m is also below SMA50 (1,153.19) and SMA200 (1,205.42). ZEC is down 5.33% in 24h, trading near the low (1,131.83) after rejecting from a 24h high of 1,235.99. The 1h 50-bar high is 1,290.00, so sellers have repeatedly defended lower highs.\n\nThe bounce is weak. 5m volume is 0.35x its 20-bar average, 15m 0.53x and 1h 0.24x, so the move off the low is unconvincing. Price is only at the 5m upper Bollinger band (1,153.94) and 15m upper band (1,155.91), and the 1h EMA21 sits just above at 1,165.07. That is a natural zone to sell into.\n\nThe news flow is negative. FXStreet (Nov 9) headlined that ZEC loses steam as ETF selling weighs on recovery, and the TMGM forecast the same day said the recovery falters under ETF selling pressure (headlines only, pages not opened). Fear and Greed is 32 (Fear), so the market is risk-off.\n\nPlan: sell the retest at 1,160-1,170, stop 1,182 (above the 15m 50-bar high of 1,179.05 and 1h upper band 1,180.47), targets 1,131.83 (24h low) and 1,110. Risk is about 17 points from 1,165 for 33 to 55 points of reward.",
+  "evidence": [
+    {"claim": "1h trend stack is bearish: price below SMA20/50/200, EMA9 below EMA21, MACD negative", "value": "close 1,152.35; SMA50 1,203.73; SMA200 1,247.53; EMA21 1,165.07; MACD -16.31", "source": "snapshot: Binance 1h", "time": "2026-11-10T12:00Z", "url": ""},
+    {"claim": "24h move is down and price is near the day's low", "value": "-5.33%; high 1,235.99; low 1,131.83", "source": "snapshot: Binance 24h ticker", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "Bounce is on thin volume across all timeframes", "value": "volume vs 20avg: 5m 0.35, 15m 0.53, 1h 0.24", "source": "snapshot: Binance 5m/15m/1h", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "15m price is below SMA50 and SMA200 and 50-bar change is deeply negative", "value": "SMA50 1,153.19; SMA200 1,205.42; change -12.92%", "source": "snapshot: Binance 15m", "time": "2026-11-10T12:15Z", "url": ""},
+    {"claim": "Stop level sits above recent swing high and 1h upper Bollinger", "value": "15m 50-bar high 1,179.05; 1h BB upper 1,180.47", "source": "snapshot: Binance 15m and 1h", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "News headline: ZEC loses steam as ETF selling weighs on recovery (headline only, page returned 403)", "value": "FXStreet, published 2026-11-09 03:58 GMT", "source": "snapshot news feed: FXStreet", "time": "2026-11-09T03:58Z", "url": "https://www.fxstreet.com/cryptocurrencies/news/zcash-price-forecast-zec-loses-steam-as-etf-selling-weighs-on-recovery"},
+    {"claim": "Market sentiment is Fear", "value": "Fear and Greed 32 (previous 29)", "source": "snapshot: alternative.me", "time": "2026-11-10T12:26Z", "url": ""}
+  ],
+  "rebuttals": [],
+  "plan": {"direction": "SHORT", "entry": "1,160-1,170 (sell the bounce); acceptable at market 1,152 with smaller size", "stop_loss": "1,182", "targets": ["1,131.83", "1,110"], "risk_reward": "1:1.9 to first target, 1:3.2 to second (from 1,165 entry)", "timeframe": "intraday, 4-8 hours"}
+}

@@ -1,0 +1,26 @@
+{
+  "agent": "bear",
+  "round": 1,
+  "stance": "SKIP",
+  "headline": "Short ZEC at 1,152.35 sits only 20.5 (1.1x the 1h ATR of 18.4) above the 24h low 1,131.83, after a -5.33% drop, with momentum turning up on all three timeframes and bids 1.56x asks.",
+  "argument": "The downtrend is real (1h EMA9 1151.95 < EMA21 1165.07, price under SMA50 1203.73 and SMA200 1247.53), but the move has already been paid for. Price is down 5.33% in 24h and sits 20.5 above the 24h low of 1131.83, which is just 1.1x the 1h ATR (18.4). A short entered here has almost no room before the first support.\n\nMomentum is turning against a short, not with it. The MACD histogram is positive and rising on 5m (0.378 vs 0.301), 15m (1.3515 vs 1.1581) and 1h (1.6006 vs 0.9369). 5m RSI is 59.8, EMA9 is above EMA21 on 5m and 15m, and price is above the UTC-day VWAP (1151.38). The top-100 book is bid-heavy: bids 590,536 vs asks 378,102 USDT (ratio 1.56). A bounce toward 1165 (1h EMA21) or 1179 (15m 50-bar high) is the more likely next leg, and a stop above those levels costs 13 to 27 points.\n\nVolume is thin: 5m 0.35x, 15m 0.53x, 1h 0.24x of the 20-bar average. Thin tape after a flush favors squeezes. Fear and Greed is 32 (Fear), up from 29, so sentiment is already washed out. The bearish ETF-outflow narrative is not new: FXStreet and TMGM have run it since early October, so it is priced in. The reward-to-risk is poor and the entry is in the middle of the range.",
+  "evidence": [
+    {"claim": "Price 1152.35, 24h change -5.33%, 24h low 1131.83, 24h high 1235.99", "value": "1152.35 / 1131.83", "source": "snapshot: Binance public API", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "1h ATR14 is 18.4; distance to 24h low is 20.52, about 1.1x ATR", "value": "18.4", "source": "snapshot: 1h indicators", "time": "2026-11-10T12:00Z", "url": ""},
+    {"claim": "MACD histogram is positive and rising on 5m (0.378), 15m (1.3515) and 1h (1.6006)", "value": "1.6006", "source": "snapshot: 5m/15m/1h MACD", "time": "2026-11-10T12:25Z", "url": ""},
+    {"claim": "Volume vs 20-bar average is 0.35 (5m), 0.53 (15m), 0.24 (1h)", "value": "0.24", "source": "snapshot: volume_vs_20avg", "time": "2026-11-10T12:25Z", "url": ""},
+    {"claim": "Top-100 order book is bid-heavy, bids/asks 590,536 / 378,102 USDT", "value": "1.56", "source": "snapshot: Binance order book", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "Price above UTC-day VWAP 1151.38; 5m RSI 59.8; 5m EMA9 1149.93 > EMA21 1148.25", "value": "59.8", "source": "snapshot: 5m", "time": "2026-11-10T12:25Z", "url": ""},
+    {"claim": "Fear and Greed 32 (Fear), previous 29, so sentiment is already depressed", "value": "32", "source": "snapshot: alternative.me", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "ETF-outflow narrative has run since early October (Grayscale ZCSH about 93.6M weekly outflow, week to Oct 2); old news, not a fresh catalyst. Search results only, snippet level, FXStreet page returned 403.", "value": "93.56M", "source": "WebSearch: FXStreet/TMGM/crypto.news snippets", "time": "2026-10 (about 5 weeks old)", "url": "https://www.fxstreet.com/cryptocurrencies/news/zcash-price-forecast-zec-poses-20-downside-risk-amid-steady-etf-outflows-202610080516"}
+  ],
+  "rebuttals": [],
+  "plan_flaws": [
+    "No plan levels were supplied, so any realistic target is the 24h low 1131.83, only 20.5 (1.78%) away, about 1.1x the 1h ATR",
+    "A stop above the 15m SMA50 (1153.19) is inside noise, and a stop that clears the 1h EMA21 (1165.07) or 15m high (1179.05) costs 13 to 27 points, so the reward-to-risk is at or below 1:1 to the first support",
+    "Entry sits at VWAP (1151.38) and mid-Bollinger, not at a rejection level",
+    "Volume at 0.24x to 0.53x means breakdown continuation is unconfirmed while squeeze risk is high",
+    "Perp funding and liquidation data is unavailable (Binance futures blocked), so crowding in shorts cannot be ruled out"
+  ],
+  "conditions_to_reconsider": "Take a short only after a bounce into 1165 (1h EMA21) to 1180 (1h Bollinger upper) is rejected with the 1h MACD histogram turning down, or after a 15m/1h close below 1131.83 on volume above 1.0x the 20-bar average, with room to a defined target at least 2x the stop distance."
+}

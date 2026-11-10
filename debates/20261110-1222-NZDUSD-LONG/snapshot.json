@@ -1,0 +1,212 @@
+{
+  "symbol": "NZD/USD",
+  "data_symbol": "NZDUSD=X",
+  "market": "forex",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T12:22:17Z",
+  "name": "NZD/USD",
+  "currency": "USD",
+  "price": 0.5631,
+  "previous_close": 0.55584,
+  "change_today_pct": 1.31,
+  "day_high": 0.5651,
+  "day_low": 0.5628,
+  "day_volume": 0,
+  "week52_high": 0.6093,
+  "week52_low": 0.5529,
+  "last_trade_utc": "2026-11-10T12:21:33Z",
+  "market_status": "OPEN (forex 24/5)",
+  "data_source": "Yahoo Finance chart API",
+  "note": "Yahoo data for some exchanges can be delayed up to 15 min; check last_trade_utc.",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 1283,
+      "last_candle_utc": "2026-11-10T12:21:33Z",
+      "close": 0.563063,
+      "ema9": 0.56323,
+      "ema21": 0.563304,
+      "sma20": 0.563315,
+      "sma50": 0.563595,
+      "sma200": 0.563582,
+      "rsi14": 38.2,
+      "macd": {
+        "macd": -8.6e-05,
+        "signal": -8e-05,
+        "histogram": -6e-06,
+        "prev_histogram": 5e-06
+      },
+      "atr14": 0.000112,
+      "bollinger": {
+        "upper": 0.56352,
+        "lower": 0.56311
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 0.565068,
+      "recent_low_50": 0.563,
+      "change_over_window_pct": 0.69,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ],
+      "session_vwap_utc_day": null
+    },
+    {
+      "timeframe": "15m",
+      "candles": 2042,
+      "last_candle_utc": "2026-11-10T12:21:33Z",
+      "close": 0.563063,
+      "ema9": 0.56328,
+      "ema21": 0.563467,
+      "sma20": 0.563608,
+      "sma50": 0.563661,
+      "sma200": 0.559883,
+      "rsi14": 39.8,
+      "macd": {
+        "macd": -0.000164,
+        "signal": -0.000114,
+        "histogram": -5e-05,
+        "prev_histogram": -4.8e-05
+      },
+      "atr14": 0.000265,
+      "bollinger": {
+        "upper": 0.564701,
+        "lower": 0.562515
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 0.565068,
+      "recent_low_50": 0.56281,
+      "change_over_window_pct": 0.28,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price above SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 1574,
+      "last_candle_utc": "2026-11-10T12:21:33Z",
+      "close": 0.563063,
+      "ema9": 0.563405,
+      "ema21": 0.562952,
+      "sma20": 0.563435,
+      "sma50": 0.560149,
+      "sma200": 0.561575,
+      "rsi14": 54.8,
+      "macd": {
+        "macd": 0.000726,
+        "signal": 0.000995,
+        "histogram": -0.000269,
+        "prev_histogram": -0.000247
+      },
+      "atr14": 0.000685,
+      "bollinger": {
+        "upper": 0.564467,
+        "lower": 0.562402
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 0.565068,
+      "recent_low_50": 0.552975,
+      "change_over_window_pct": -4.43,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "title": "NZD/USD Flat as Dollar Strength Counters Geopolitics - TradingPedia",
+      "source": "TradingPedia",
+      "published": "Tue, 10 Nov 2026 07:09:04 GMT",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQamx2b0FWcEdfdC1SLTdfMXJkZGpDOTJlQ1pDMUE5ZEdmak1lY0YxQlR2QkVIc2J0TkxsZWd4ZmEtM0wtR1hWSEpmbTA5RjFIVnJ3TzRBN3EwR1ByVUdBQ0tqTnJKMDh1SEUtWUluSnRGX1ozdmZLRDhqZ0hFTmxEOFlRVG9NUmJFelRzaklhYXdfdS13VjdoZw?oc=5"
+    },
+    {
+      "title": "New Zealand Dollar steadies as Iran talks fails to lift NZD/USD - FXStreet",
+      "source": "FXStreet",
+      "published": "Tue, 10 Nov 2026 02:25:30 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNZ2JUMWQ5bGpxY0NrdTdrakZ2c0ZpWlhXVjN5bGNwV3c1S1lzWWd4MGdybk13VExwbjExUnJ3VHU3TTVqYWd6Rzc4WGpwcXkxVzFMd3Z3UUpQWldUZHVXVXpCaVNlWUcyVk0tS0YwZ3lHclpjUkNmRG9jaEtpNzhHNHRnbzNpeG1MRjZtOElpN0tSc1lXU3FRZ3R4UExDYlZ1Z3hwQWo2NmdWdw?oc=5"
+    },
+    {
+      "title": "NZD/USD Price Forecast: Eyes break above 0.5640-0.5645 confluence ahead of US CPI - FXStreet",
+      "source": "FXStreet",
+      "published": "Tue, 10 Nov 2026 07:35:33 GMT",
+      "url": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOTl9PellacXg0WDdJNkdxQjYtSlpnV05udm5NVnJId0pNSE5mU2NFX3RtMURUNWxiYjd0TW96NFBfYVlUdENmTWk0ZDFGQTNDc1Q2VXgyUm9ibkItd2I4LUZJOFdNVGNkaHdHRl9kUlBpUWU3aERRVjZkV0oyTjZPQW13U1lCb093ajNWdGdoam1LWDNlS3hXSzJkZUdPMDBTU1Z0eUJDRVVvQ2RKWUdOb0xBT1dQMGZTbHhZVV93?oc=5"
+    },
+    {
+      "title": "NZD Gets Mild Election Support, but AUD/NZD and NZD/USD Still Signal Caution - Action Forex",
+      "source": "Action Forex",
+      "published": "Mon, 09 Nov 2026 07:49:54 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNSF96WGNqa2tGbzV5elpSNGh4V1Y2XzdFRjJSbTBnaEY5aWxabmVoSXRsYWJOMF85d0h2bkFJTW1CWFRGemd0dlRPQy1admtYMHc1MzJMZWNpR3ppR1BDZ1ZkdnhPWjlCaHgtQjUxM0dPNTN5MEJzTHVSZmt6UDUtQWtwbnMzZmotSGpfSzZsSG5yM2d6LXg2bkRVOXMyWlpLLVNhcVkwOFpNbWRfUVktYW11dFdUSTc2bVNrVjdEMlFJVi1XQkp5Q1N5bHdzRENZcFJOLVZ0SENaUQ?oc=5"
+    },
+    {
+      "title": "NZDUSD Rises After Reaching Our Price Target – Analysis –10-11-2026 - Economies.com",
+      "source": "Economies.com",
+      "published": "Tue, 10 Nov 2026 03:18:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxOYjIyaTA0WEtRSFFBZnpQS3pOblBBWlpxa0ZGR2Y3cGpFZ0ZFSDJvYy1mZkdyVTBGZXVOdy0yZHlNS1dHZ0lmUDZWLWRqbXBLRDhsc0VEcnVJby1HaHpTNmw0MVFvRlNZaExsQkxKWmw3UW5fb3NPOUhobE9sellFaE54ZXlZNGg3SG51dVgtN1Y3UmxRX0p1X3JmTmU0ZlVORHF4dmF2SXpaeVVrblVOQ2xxdkREZ1pFTEVuYVlkNjVsSklLTU12TTExSUhLeEpMOWw1RUxR?oc=5"
+    },
+    {
+      "title": "NZDUSD|NZD/USD|Price:0.564|Chg%:+0.001 - TradingKey",
+      "source": "TradingKey",
+      "published": "Mon, 09 Nov 2026 12:42:18 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE9femJlb3FMczd2dHRHMnVuRUtEUmlwN2dsZVRYcnh3dGs3RG9zbEZ1SWtReTExVWU1NzVxUEx0UzBkYUJ3QmxiUnhXbW5ETkY5UVhVZHhSdGZtQUE?oc=5"
+    },
+    {
+      "title": "US dollar holds onto payrolls gains, NZ dollar rises after election - Forex Factory",
+      "source": "Forex Factory",
+      "published": "Mon, 09 Nov 2026 07:40:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxNYV9DeDFwMDZrRjk0SmRjTHFacHZTMjFnbFN5Z0x2NC01VDhJSUQ3VHhEXzA4Um9QZ0VMdkJmT2tqU3NSSWFVTloxTDhiZmNxUGpRc21qSVI4bkZDdXZ0TUdJUU5DSHFUYWhSMm02ZjFHMGVVZXg4XzdqQldRdXhFZGVpSTEwREhfUlhUbi1icU3SAZYBQVVfeXFMUE9pVlIxeFRsWXplN1R2WkVRMVV3OXNkTE15dWJKRzJYUTJBWkpvVER6YzNMQ2R2NkcyMUJ3eXVZUlNNZUQ1c01ucDZOMXE5R0FUd3hBSTB3M3ZmWXQ1NUR6eF9XS0pSdVJvZEtfbGJKNFQtME5SN2VXalNWNWIxbVdpeFl6VndGTm9mNlh2NnNkUEFVNk5B?oc=5"
+    },
+    {
+      "title": "NZD firms in early Asia as New Zealand faces weeks of political limbo - investingLive",
+      "source": "investingLive",
+      "published": "Sun, 08 Nov 2026 21:59:03 GMT",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNMElPdmw0VlZlaklsS0lGS2FrbnlvQzdiTUdhS21JQUNyaW0xbmw3YVNVbDI5SzlyVlV3Mlg2LXBqUWNocGdDTlpaS0VGejlGUWQ4elNPY3IzZzZwVXhCWEE4VVBnWkYxMG80bmRnZndVZjZJUGl2RVJwT3dQWHIweXBERGVDNWp4V3p3RUpTUmRNUWxVZS1qeVRRMVp5NUhsYjlPUw?oc=5"
+    },
+    {
+      "title": "'Kiwi dollar falls to 24-year lows – RBNZ verbal intervention should not be out of the question' - Interest.co.nz",
+      "source": "Interest.co.nz",
+      "published": "Sun, 08 Nov 2026 19:00:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxQRWRBbnd0Sl9ZOWlzUDU1MDVsMlZwQzk3U0JFZGk3bzVNWURWQXk2U195QjdlUmltVExMQXJiUnVpNklBVWtveHJJeThoRXdEcWpINEZMMFJZanRQOUx6NThmdm1IWnl3X2IxaDZrQVlVNmJXZGpHT3dSOVVjRFlzWVpvd1JPYk52OHFHOGNXZnpwWUFfcVc2M0hLVjZjZnM5SVBxMHpCRmFXWURxX0ZacU9UbmhvcW1GRVh6eVdvczhGXzA?oc=5"
+    },
+    {
+      "title": "AUD/USD, NZD/USD, and USD/JPY Short -Term Forecast for 09/07/2026",
+      "source": "Yahoo Finance",
+      "published": "Mon, 07 Sep 2026 14:31:04 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/aud-usd-nzd-usd-usd-143104299.html?.tsrc=rss"
+    },
+    {
+      "title": "USD/JPY Eyes Breakout as Rising Yields Support US Dollar",
+      "source": "Yahoo Finance",
+      "published": "Tue, 01 Sep 2026 13:12:42 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/usd-jpy-eyes-breakout-rising-131242961.html?.tsrc=rss"
+    },
+    {
+      "title": "Forex Price Analysis – AUD/USD and NZD/USD Test Resistance as USD/CAD Hits Golden Zone",
+      "source": "Yahoo Finance",
+      "published": "Fri, 14 Aug 2026 13:57:50 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/forex-price-analysis-aud-usd-135750311.html?.tsrc=rss"
+    },
+    {
+      "title": "US Dollar In Uptrend Despite Pullback",
+      "source": "Yahoo Finance",
+      "published": "Tue, 14 Jul 2026 13:20:06 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/us-dollar-uptrend-despite-pullback-132006537.html?.tsrc=rss"
+    },
+    {
+      "title": "Currencies Forecast: Interest Rate Differentials Drive US Dollar Resilience",
+      "source": "Yahoo Finance",
+      "published": "Fri, 10 Jul 2026 13:17:04 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/currencies-forecast-interest-rate-differentials-131704337.html?.tsrc=rss"
+    },
+    {
+      "title": "Currencies Forecast – RBNZ Rate Hike Sparks Kiwi Rally Amid Global Consolidation",
+      "source": "Yahoo Finance",
+      "published": "Thu, 09 Jul 2026 12:30:57 +0000",
+      "url": "https://finance.yahoo.com/markets/currencies/articles/currencies-forecast-rbnz-rate-hike-123057279.html?.tsrc=rss"
+    }
+  ]
+}

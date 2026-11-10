@@ -1,0 +1,49 @@
+{
+  "decision": "SKIP",
+  "confidence": 80,
+  "winner": "bear",
+  "summary": "Skip the ZEC short. The only plan on the table is an unfilled limit sell at 1,160-1,170, and at market (1,149.59) the reward-to-risk is about 0.55:1. US CPI comes out today at 13:30 UTC, about an hour from now and inside the 4-8 hour window. Re-assess after CPI if price is rejected at 1,160-1,165, or if a 1h candle closes below 1,131.83 on above-average volume.",
+  "reasoning": "Both sides agree the 1h structure is bearish, and I verified it at 12:29Z: EMA9 1,151.40 is below EMA21 1,164.82, price is under SMA50 1,203.67 and SMA200 1,247.51, the MACD line is -16.53 and RSI is 35.9. The problem is the entry, not the direction. Price is 1,149.59, only 17.8 points above the 24h low of 1,131.83. A market short with Bull's 1,182 stop risks 32.4 to make 17.8 (0.55:1), so Bear's arithmetic holds. Bull's 1:1.95 only applies to a fill at exactly 1,165, and even then the 17-point stop is 0.92x the 1h ATR (18.4), just inside normal hourly noise. Across the zone the plan never passes both tests at once. A fill at 1,160 with a 22-point stop pays 1.28:1, and a fill at 1,170 has a 12-point stop of 0.65x ATR.\n\nThe deciding factor neither side raised: the BLS schedule puts the US CPI release (October data) at 08:30 ET today, which is 13:30 UTC, inside the trade window. That alone rules out TAKE.\n\nOn the fact checks, Bull's 'fresh' outflow was correct. CryptoTicker (Nov 8) confirms $11M left Grayscale ZCSH on Nov 5 and that NU7 went live on Nov 6. Bull wrongly withdrew it in round 3, and Bear wrongly said nothing from November existed. The $93.56M weekly outflow is confirmed but dated Oct 3. Bear's bid-heavy order book point has gone stale: bids/asks are now 0.97. Bull's round 3 claim that 1h momentum is fading is weak, because the forming 1h histogram (1.43) is still above the last closed bar (0.94). Bear wins on plan critique. Neither side's numbers were badly wrong.",
+  "scorecard": {
+    "bull": {"evidence_quality": 6, "data_accuracy": 8, "rebuttal_strength": 6, "plan_reasoning": 5, "total": 25},
+    "bear": {"evidence_quality": 7, "data_accuracy": 7, "rebuttal_strength": 7, "plan_reasoning": 8, "total": 29}
+  },
+  "claim_checks": [
+    {"by": "bull", "round": 1, "claim": "1h price below SMA20/50/200, EMA9 1,151.95 < EMA21 1,165.07, MACD -16.31", "status": "verified", "note": "Matches snapshot. The 12:29Z re-run still shows the same stack (EMA21 1,164.82, MACD -16.53)."},
+    {"by": "bull", "round": 1, "claim": "Volume vs 20-bar avg 0.35 (5m), 0.53 (15m), 0.24 (1h)", "status": "verified", "note": "Matches snapshot. Re-run: 0.55 / 0.57 / 0.25."},
+    {"by": "bull", "round": 1, "claim": "Stop 1,182 sits above 15m 50-bar high 1,179.05 and 1h BB upper 1,180.47", "status": "verified", "note": "Levels match. However, the 17-point stop from 1,165 is 0.92x the 1h ATR of 18.4."},
+    {"by": "bull", "round": 1, "claim": "R:R 1:1.9 to 1,131.83 and 1:3.2 to 1,110 from 1,165", "status": "verified", "note": "33.17/17 = 1.95 and 55/17 = 3.24. Valid only for a 1,165 fill. From 1,160 it is 1.28, and at market (1,149.59) it is 0.55."},
+    {"by": "bull", "round": 1, "claim": "FXStreet headline 'ZEC loses steam as ETF selling weighs on recovery' (Nov 9)", "status": "verified", "note": "Headline appears in the snapshot news feed. Bull admitted it had not opened the article."},
+    {"by": "bull", "round": 2, "claim": "$11M Grayscale ZCSH outflow on Nov 5; NU7 live Nov 6; ZEC -7.4% to ~1,249.75", "status": "verified", "note": "The CryptoTicker article dated Nov 8, 2026 states all three. Bull wrongly withdrew this in R3."},
+    {"by": "bull", "round": 3, "claim": "1h MACD histogram 1.4002 'down from earlier rise', momentum fading", "status": "wrong", "note": "This is the forming bar. The re-run shows 1.4257, still well above the last closed bar (0.9369), so 1h momentum is not turning down."},
+    {"by": "bull", "round": 3, "claim": "1h RSI 35.8, EMA21 1,164.79, BB upper 1,180.58", "status": "verified", "note": "Re-run at 12:29Z: RSI 35.9, EMA21 1,164.82, BB upper 1,180.56."},
+    {"by": "bear", "round": 1, "claim": "Price 20.5 above 24h low, about 1.1x 1h ATR 18.4", "status": "verified", "note": "1,152.35 - 1,131.83 = 20.52. Now 17.76 at 1,149.59."},
+    {"by": "bear", "round": 1, "claim": "MACD histogram positive and rising on 5m, 15m and 1h", "status": "verified", "note": "True at snapshot. The 5m histogram has since fallen (0.20 vs 0.30), while 15m and 1h are still rising."},
+    {"by": "bear", "round": 1, "claim": "Top-100 book bid-heavy 590,536 vs 378,102 (1.56)", "status": "stale", "note": "Matched the snapshot, but the re-run shows 371,042 vs 381,776 (0.97). The imbalance is gone."},
+    {"by": "bear", "round": 1, "claim": "Price above UTC VWAP 1,151.38, 5m RSI 59.8, 5m EMA9 > EMA21", "status": "stale", "note": "Matched the snapshot. Price (1,149.59) is now below VWAP and 5m RSI is 54.1."},
+    {"by": "bear", "round": 2, "claim": "From 1,151.42, risk to 1,182 is 30.58 vs reward 19.59 (0.64:1)", "status": "verified", "note": "Arithmetic is correct. At 1,149.59 it is 0.55:1."},
+    {"by": "bear", "round": 2, "claim": "Grayscale ZCSH -93.56M net weekly outflow, week to Oct 2", "status": "verified", "note": "The KuCoin flash dated Oct 3, 2026 reports $93.56M weekly net outflow."},
+    {"by": "bear", "round": 3, "claim": "No ETF flow item dated Nov 5 or later exists; Bull's catalyst unverified", "status": "wrong", "note": "The CryptoTicker article (Nov 8) confirms an $11M ZCSH outflow on Nov 5."},
+    {"by": "bear", "round": 3, "claim": "15m EMA9 1,147.47 below EMA21 1,147.85, RSI 49.3", "status": "verified", "note": "Re-run: EMA9 1,147.78 < EMA21 1,147.99, RSI 50.6. Small drift, same picture."},
+    {"by": "judge", "round": 0, "claim": "Scheduled event inside trade window", "status": "verified", "note": "BLS schedule: CPI for the October 2026 reference month comes out Nov 10, 2026 at 08:30 ET (13:30 UTC), about 1 hour after the re-check."}
+  ],
+  "trade_plan": {
+    "direction": "SHORT",
+    "entry": "1,160-1,170 limit sell (Bull's proposal; not filled, price 1,149.59)",
+    "stop_loss": "1,182",
+    "targets": ["1,131.83", "1,110"],
+    "risk_reward": "1.95:1 only from a 1,165 fill; 1.28:1 from 1,160; about 0.55:1 at market 1,149.59",
+    "timeframe": "intraday, 4-8 hours",
+    "risk_rule": "Risk no more than 1% of trading capital on this idea."
+  },
+  "retake_conditions": "Wait until after the 13:30 UTC CPI release and the first post-release 1h candle has closed. Then either (a) price rallies into 1,160-1,165 (1h EMA21) and a 15m/1h candle rejects there with the 1h MACD histogram turning down, so a short from about 1,162 with a stop at about 1,184 (above 1,180.56 BB upper and at least 1.2x the 1h ATR) pays at least 1.5:1 to a target at or below 1,129; or (b) a 1h candle closes below 1,131.83 on volume above 1.0x its 20-bar average, so a short on a retest of 1,132-1,135 with a stop above about 1,152 targets 1,100 or lower. The funding rate should also be checkable to rule out a crowded short.",
+  "invalidation": "",
+  "key_risks": [
+    "US CPI release at 13:30 UTC today, inside the trade window; a soft print could squeeze shorts through 1,180",
+    "Perp funding and liquidation data unavailable, so short crowding cannot be ruled out",
+    "Volume is 0.25-0.57x average on all timeframes, which confirms neither a breakdown nor a bounce",
+    "Price is 17.8 points (about 1x 1h ATR) above the 24h low, a support that has not been retested",
+    "The limit entry may never fill; a stop just under 1x 1h ATR is vulnerable to normal noise"
+  ],
+  "data_freshness": "Snapshot at 12:26:35Z (price 1,152.35). Re-checked at 12:29:07Z (price 1,149.59), down 0.24%. The market is open and the data is fresh. Bull's 1,160-1,170 zone is 10-20 points (0.6-1.1x 1h ATR) above price and has not been reached."
+}

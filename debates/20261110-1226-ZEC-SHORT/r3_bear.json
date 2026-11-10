@@ -1,0 +1,30 @@
+{
+  "agent": "bear",
+  "round": 3,
+  "stance": "SKIP",
+  "headline": "Bull's only live trade is a resting sell 12-22 points above price (1,148.37) on 0.24x 1h volume; at market the short risks 33.6 to make 16.5 (0.49:1), so there is nothing to TAKE now.",
+  "argument": "Bull's strongest remaining point is that the 1h structure is bearish (MACD line -16.3, RSI 37, price under SMA50/200, EMA9 under EMA21) and a bounce into the 1h EMA21 near 1,165 is a good place to sell. I accept the structure. It still does not make a TAKE now.\n\nBull has withdrawn the market entry. What remains is a limit order at 1,160-1,170 that has not filled. Fresh data at 12:28Z has price at 1,148.37, so the order needs a 12 to 22 point rally first. The Judge is asked for a trade decision, and the only executable trade today is at market. From 1,148.37 to Bull's 1,182 stop is 33.6 points, while the first target 1,131.83 is 16.5 points away. That is about 0.49:1, and the 1,110 target is 38.4 points away (2.1x the 1h ATR of 18.4).\n\nBull's fresh catalyst is snippet-only. My own search this round returned only late-September and early-October ETF items (Grayscale ZCSH -93.56M for the week to Oct 2), and nothing dated Nov 5 or later. A rally has also failed to materialise on any timeframe: the 5m volume is 0.44x, the 15m 0.55x. If price does not bounce, Bull's order never fills. If it bounces on a squeeze with funding unknown, the 1,182 stop is only about 1.8x the 1h ATR above the entry. A conditional idea is a reason to wait for the setup, not to take it.",
+  "evidence": [
+    {"claim": "Fresh pull: price 1148.37, 24h low 1131.83, 24h change -5.76%", "value": "1148.37", "source": "tools/market_data.py ZEC (Binance)", "time": "2026-11-10T12:28Z", "url": ""},
+    {"claim": "5m and 15m momentum fading; 15m EMA9 1147.47 now below EMA21 1147.85, 15m RSI 49.3", "value": "RSI 49.3", "source": "tools/market_data.py 15m", "time": "2026-11-10T12:15Z", "url": ""},
+    {"claim": "Volume vs 20-bar average is low on all frames: 5m 0.44, 15m 0.55 (1h 0.24 in snapshot)", "value": "0.44 / 0.55 / 0.24", "source": "tools/market_data.py; snapshot 1h", "time": "2026-11-10T12:28Z", "url": ""},
+    {"claim": "1h ATR14 is 18.4; the 1,182 stop is 33.6 from 1,148.37 and the first target is 16.5 away", "value": "ATR 18.4", "source": "snapshot: Binance 1h", "time": "2026-11-10T12:00Z", "url": ""},
+    {"claim": "Order book top 100 is bid-heavy (bids 590,536 vs asks 378,102 USDT, 1.56x); no sell-side pressure visible", "value": "1.56", "source": "snapshot: Binance order book", "time": "2026-11-10T12:26Z", "url": ""},
+    {"claim": "Latest ETF flow data I could confirm: Grayscale ZCSH -93.56M net for week to Oct 2; no item dated Nov 5 or later in my search (snippet only)", "value": "93.56M", "source": "WebSearch snippets: KuCoin, crypto.news", "time": "2026-10-02 to 2026-10-08", "url": "https://www.kucoin.com/news/flash/zec-spot-etf-records-93-56m-in-net-outflows-in-one-week"},
+    {"claim": "Fear and Greed 32 (Fear), up from 29; perp funding unavailable so short crowding cannot be checked", "value": "32", "source": "snapshot: alternative.me", "time": "2026-11-10T12:26Z", "url": ""}
+  ],
+  "rebuttals": [
+    {"opponent_point": "Bull: 1h structure is bearish, so sell the bounce into 1,160-1,170 for 1:1.9 to 1:3.2", "response": "The ratios need a fill at 1,165 that has not happened; price is 1,148.37. At the only executable price the ratio is 0.49:1. A bearish trend is not a trade until the entry exists."},
+    {"opponent_point": "Bull: ETF outflow is fresh ($11M on Nov 5) and NU7 sell-off since Nov 6", "response": "Bull labels it snippet-only and the page unopened. My search found no Nov item; the confirmed figures are from early October. An unverified $11M against a roughly $751M fund is also small."},
+    {"opponent_point": "Bull: the rising MACD histogram is just a narrowing gap, not a bullish turn", "response": "Agreed it is not a trend change, but it means selling momentum is easing, which is not a basis to short at 20 points above the low."},
+    {"opponent_point": "Bull: stop 1,182 clears 1,179.05 and 1,180.48, so risk is a defined 17 points", "response": "Only from 1,165. From the current price the risk is 33.6 points, and a squeeze through 1,180 would be on unknown funding."}
+  ],
+  "plan_flaws": [
+    "Limit entry 1,160-1,170 is 12-22 points above price 1,148.37 and may never fill",
+    "At market: risk 33.6 to 1,182 vs reward 16.5 to 1,131.83, about 0.49:1",
+    "Second target 1,110 is 38.4 points away (2.1x the 1h ATR) past an untested 24h low",
+    "Fresh-catalyst claim is snippet-only; funding and liquidations are unavailable",
+    "Volume at 0.24x-0.55x of average on all frames confirms neither a bounce nor a breakdown"
+  ],
+  "conditions_to_reconsider": "Take it only after price rallies into 1,160-1,180 and a 15m or 1h candle rejects there with the 1h MACD histogram turning down, or after a 1h close below 1,131.83 on volume above 1.0x average, with target distance at least 2x the stop distance."
+}

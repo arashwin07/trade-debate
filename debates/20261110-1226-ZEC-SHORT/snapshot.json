@@ -1,0 +1,188 @@
+{
+  "symbol": "ZEC/USDT",
+  "data_symbol": "ZECUSDT",
+  "market": "crypto",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T12:26:35Z",
+  "price": 1152.35,
+  "change_24h_pct": -5.33,
+  "high_24h": 1235.99,
+  "low_24h": 1131.83,
+  "quote_volume_24h_usdt": 156144284,
+  "market_status": "OPEN (crypto trades 24/7)",
+  "data_source": "Binance public API",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T12:25:00Z",
+      "close": 1152.35,
+      "ema9": 1149.93,
+      "ema21": 1148.25,
+      "sma20": 1148.52,
+      "sma50": 1145.0,
+      "sma200": 1157.67,
+      "rsi14": 59.8,
+      "macd": {
+        "macd": 1.5956,
+        "signal": 1.2173,
+        "histogram": 0.378218,
+        "prev_histogram": 0.301423
+      },
+      "atr14": 4.1674,
+      "bollinger": {
+        "upper": 1153.94,
+        "lower": 1143.11
+      },
+      "volume_vs_20avg": 0.35,
+      "recent_high_50": 1155.57,
+      "recent_low_50": 1131.83,
+      "change_over_window_pct": -5.25,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price below SMA200"
+      ],
+      "session_vwap_utc_day": 1151.38
+    },
+    {
+      "timeframe": "15m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T12:15:00Z",
+      "close": 1152.35,
+      "ema9": 1148.33,
+      "ema21": 1148.24,
+      "sma20": 1146.6,
+      "sma50": 1153.19,
+      "sma200": 1205.42,
+      "rsi14": 52.8,
+      "macd": {
+        "macd": -1.0188,
+        "signal": -2.3702,
+        "histogram": 1.3515,
+        "prev_histogram": 1.1581
+      },
+      "atr14": 8.7001,
+      "bollinger": {
+        "upper": 1155.91,
+        "lower": 1137.29
+      },
+      "volume_vs_20avg": 0.53,
+      "recent_high_50": 1179.05,
+      "recent_low_50": 1131.83,
+      "change_over_window_pct": -12.92,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T12:00:00Z",
+      "close": 1152.35,
+      "ema9": 1151.95,
+      "ema21": 1165.07,
+      "sma20": 1159.65,
+      "sma50": 1203.73,
+      "sma200": 1247.53,
+      "rsi14": 37.5,
+      "macd": {
+        "macd": -16.3122,
+        "signal": -17.9127,
+        "histogram": 1.6006,
+        "prev_histogram": 0.936913
+      },
+      "atr14": 18.4,
+      "bollinger": {
+        "upper": 1180.47,
+        "lower": 1138.84
+      },
+      "volume_vs_20avg": 0.24,
+      "recent_high_50": 1290.0,
+      "recent_low_50": 1131.83,
+      "change_over_window_pct": -8.29,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    }
+  ],
+  "order_book_top100": {
+    "bid_value_usdt": 590536,
+    "ask_value_usdt": 378102,
+    "bid_ask_ratio": 1.56,
+    "spread": 0.01
+  },
+  "fear_greed_index": {
+    "value": 32,
+    "label": "Fear",
+    "previous": 29,
+    "source": "alternative.me"
+  },
+  "perp_funding_rate_pct": "unavailable (Binance futures API blocked from this location)",
+  "news": [
+    {
+      "title": "Zcash (ZEC) price prediction for December 31, 2026 - Coinpedia",
+      "source": "Coinpedia",
+      "published": "Mon, 09 Nov 2026 18:46:28 GMT",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxQQmZjMk4wMV9xd0pNZmtlaDBUMnpiWXQzdzYxWmh2aHo0WHJEb3dDcDNfbDNiMGc5WGUyQV9oNDFRbmpzekVOaHhYU29vSWpfeVN2MG1pbjhLUUNBUDd3UUpHQkJacnJydWZNamZMNjRXRVZHVW9SeUxKVGh5LWIzVVhqbUVDQTBvVm9TYl9B0gGTAUFVX3lxTE9ONm9RV3Q3aUVQZ3Jub3FiSWh2TmxoRjhJT1JkVDViY0c4UWFlQmdUWFBSUEMyU2VZSTdFLXpRc1hKWWhaV1V6dXZ5WjhFSHl0T0QzNlFSRElhamRrTm52b0hKckZiQS1qcFQwWm43YnJrTGM2QkdnT1F0Z3FyVUNpNEF5OEJiTzNuSThVU1FVLWtmcw?oc=5"
+    },
+    {
+      "title": "What is Zcash (ZEC)? How shielded transactions work - The Block",
+      "source": "The Block",
+      "published": "Mon, 09 Nov 2026 02:37:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMic0FVX3lxTE0wUkdxcWRRZTNZdDBRckN2MlczQV9EZDlkTmdZOG1PNXRqT0ZNM0tKcmRzdGpwM3E0eHFQcWpzXzE5bS1rU1NjVGhOUU5yREJrYmVmMzI4WGdYR2lTbFBwU0o3dGhTdy1DNkdKTXlweDRRdVk?oc=5"
+    },
+    {
+      "title": "A Hacker Swapped $3.7 Million of Ethereum Into Zcash on Hyperliquid. Is Privacy Demand Holding ZEC Above $1,200? - 24/7 Wall St.",
+      "source": "24/7 Wall St.",
+      "published": "Sun, 08 Nov 2026 21:09:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxOYndfaWZkbDRaWXhLVmZrVzhHMFE0ZkJjcFprOTVtT2t4RmZyMks0cjVyR3JNQ2tseXJrVjdacHRRS1ZYbzFHNFM5QjlENnVRT3dzcTc2NkpfcXBsOEEtc0ptRGhVN09PRHNTdjlBbWtiV2NZVUoyYjNESEFxNmVoMFpPQXMxYWdxV3QwTXB2c3FkYXFrZ1owcjhianVFUFNJNTZjdGROY3lmS3VNRFFtYzJ6eVNLQkw2N0d1Y0E3T1NlSUZ5Wl9JWUpTTlV2eUF3eUp6Y21ZWjZyY2ZhRC10S3JrRWpjTE96Q3hybWRrZWVlNXRySG1DZVFn?oc=5"
+    },
+    {
+      "title": "Zcash Price Forecast: ZEC recovery falters under ETF selling pressure - www.tmgm.com",
+      "source": "www.tmgm.com",
+      "published": "Mon, 09 Nov 2026 12:38:12 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxPODZFMlVEcGVzeS1Sc3JObnU5SUptQjNJWGtrdUNNamZlMkU1U2NwUmFEU3psWkZsX005ektpd0ZKQ0I2cmJLMjRlRVh4S0xVb1hqdmFITGNDUlV1cFhhallURThmTlNxRnJ3SEpWSzk5Nnc5NlBDa2FfQzFCTkY5UmdlSHZzOEFpdzVUM3pCUHNkQUZubXZCX0NPcDgwNXRKUENRaEpEVkVTWDl0bUcwS3A0RmgyeUJfQVp4Wk5oSl9MU3hSbS1FeGZ0eXhsNDZaSlAwb3hB?oc=5"
+    },
+    {
+      "title": "Zcash (ZEC) Price Prediction 2026, 2027–2030: Privacy Coin Growth Ahead - Coinpedia",
+      "source": "Coinpedia",
+      "published": "Mon, 09 Nov 2026 05:37:49 GMT",
+      "url": "https://news.google.com/rss/articles/CBMidEFVX3lxTFBoU3dVWkJENVR3LUlKcVlnZnVCbFBSNXJ4NmpVdUhRbk8xYmJVbjRvZzBfdGNNRVdPSXN3LXJlaEotYnhhakI0X25Dd0kzanRUYmkwSlB1cURULTIyT3RaLWdsSzNWRE9vZHR0NWdpVU5LdmNt0gF6QVVfeXFMT1RvVFdPZ25LSC04T25ZSEJyZ3hHUEpHdzhDbkRUQWZ4YWhXX0hGLThKczlNUVZiSHoxUXlfcHN1S2x1YWZVOUcxOTM3YVMtY3pvUlBxNGUzRjZjUnEyRUplX1FuTl9mdU5lT1dQanRybVRCV0RmMk5OdUE?oc=5"
+    },
+    {
+      "title": "Zcash Price Forecast: ZEC loses steam as ETF selling weighs on recovery - FXStreet",
+      "source": "FXStreet",
+      "published": "Mon, 09 Nov 2026 03:58:01 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQYmZnMnctcGVIYXJUY0UwTC1SZU90QnNCRzhKcEdlcXhZczJ1bHRXYlczNXBpUGlTRTBNREd6N0NQVWEyOEdxaFp0OEJ2MWFKN0EzV09rZEJaWndPbVlNM2hFN3JIdmxHRGtGV2RMVmJxakMtbjhYSlNBN2p3cl9GbXZ4ZEN3M3pTSFVaOXRVZXZRRXZ5V2FsY3BpVk4tc2FwWm5HU2syRC1EYXUzdkdacF8wVmExdEJra19uMTF1cWt2Nl9DT2ZJdndn?oc=5"
+    },
+    {
+      "title": "Zcash price drops 2.05% in one hour with $740K long positions liquidated - Pluang",
+      "source": "Pluang",
+      "published": "Mon, 09 Nov 2026 07:56:38 GMT",
+      "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxPeVM1azhaMzByOVFYb2VDUDBEZERrRUlOakhRZUNtekhkUkZmRXRjNXB6a0NYSjVSU09qYkVKX2hnLVF1ZzVkYmtlbGdZR0FVbjRjQ1QyRzN1b2I2cGVLWEN1S0p4TDlpZ2JackxxVnlMWU1BcjBpVURZRjA5aF9oQ3JmclhyUXp6ek05ZnpXR1RjUkk?oc=5"
+    },
+    {
+      "title": "Zcash (ZEC) price drops 3.57% in four hours wit... - Pluang",
+      "source": "Pluang",
+      "published": "Sun, 08 Nov 2026 17:43:49 GMT",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOR010RG1uXzNsU1NkcW92cUdNTDlKS0d1Z0lWV3Rvdk9sZVpVWk1RV0lFWldocE51ejJGNm1SU3hlNTVpYnBRS2xnUElvQWpPRW1FOVNHWlh0ckgtSTBnWVNMeHFVWmJTMnAzX2ZSakxxMUpsWmp6UnltdDVDaGJmWWlwQjRwWUk4M29TUkVBLS0?oc=5"
+    },
+    {
+      "title": "Zcash falls almost 8 percent: why developers want 20-second blocks - CryptoTicker.io",
+      "source": "CryptoTicker.io",
+      "published": "Mon, 09 Nov 2026 21:20:05 GMT",
+      "url": "https://news.google.com/rss/articles/CBMijgFBVV95cUxPTUZrWFNtZ0VsaEhOTmVyQnBDZGJzdGpieDlWRTBaaWNEZ1NyNWxVS3hKZDJ2QUk2SXRTU0t2d1pKXzJRVjBncXIxNXFYOGNEWXZ6emNZNDVXdGRNaVZMTmNwSURzZEx3aTFIcXl1X3hLd0tIZDRQYnUxM1dwbmJuNGluNnZOQld4VnlIbXh3?oc=5"
+    },
+    {
+      "title": "Zcash Just Turned 10. Here's What Could Be Coming for ZEC Investors Over the Next 10 Years. - The Motley Fool",
+      "source": "The Motley Fool",
+      "published": "Mon, 09 Nov 2026 14:26:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxOdUkzLTJJZ2plTjRVRnRLVExiVUtxLXFwcTJxSUowaTFDWTB5Z2ttLWdrSEx6VTlpdVBMWGgxZWZDM0ZVZG1TQUJRbnFpMXBwY2ZXd1VEcjJXbWxMQTFObTlJUTRnWGkyTlFXYzF1dmtTSVVCcFJrZkJ0SkRDS2ZDc09SOENSMW4zNS01ZGVEMWdlamU2THJLeQ?oc=5"
+    }
+  ]
+}
