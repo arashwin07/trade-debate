@@ -136,6 +136,26 @@ def render_debate(folder):
     print("wrote", os.path.join(folder, "debate.html"))
 
 
+def budget_today(cfg):
+    try:
+        desk_cfg = load(os.path.join(ROOT, "config", "desk.json")) or {}
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import budget
+        return {"used": len(budget.today_debates(desk_cfg)), "max": desk_cfg["budget"]["max_debates_per_day"]}
+    except Exception:
+        return None
+
+
+def costs_plain():
+    c = (load(os.path.join(ROOT, "config", "desk.json")) or {})
+    out = []
+    for m, label in (("crypto", "Crypto"), ("us", "US stocks"), ("nse_intraday", "NSE intraday"), ("nse_swing", "NSE delivery"), ("forex", "Forex")):
+        src = (c.get("costs", {}).get(m) or {}).get("_source")
+        if src:
+            out.append({"market": label, "source": src})
+    return out
+
+
 def render_index():
     cfg = config()
     items = []
@@ -150,7 +170,13 @@ def render_index():
             fin = d.get("desk_final") or {}
             out = d.get("outcome") or {}
             last_bear = next((r["bear"] for r in reversed(d["rounds"]) if r["bear"]), None)
+            blocks = [c["plain"] for c in fin.get("checks") or [] if c.get("level") == "block"]
+            tmf = (fin.get("timemachine") or {}).get("mc") or {}
             items.append({
+                "ticket": fin.get("ticket_plain"), "block_reason": blocks[0] if blocks else None,
+                "retake_plain": (v or {}).get("retake_plain"), "plan": fin.get("plan"),
+                "p_target": tmf.get("p_target"), "p_stop": tmf.get("p_stop"),
+                "retake_status": (load(os.path.join(folder, "retake.json")) or {}).get("status"),
                 "id": d["id"], "href": f"d/{d['id']}.html",
                 "symbol": d["trade"]["symbol"], "direction": d["trade"]["direction"],
                 "market": d["trade"]["market"], "style": d["trade"]["style"], "mode": d["mode"],
@@ -172,7 +198,11 @@ def render_index():
     data = {"debates": items, "generated_utc": now(), "schedule": cfg.get("schedule_plain"), "live_reload": True, "track": track,
             "paper": load(os.path.join(DOCS, "paper.json")), "has_brief": os.path.exists(os.path.join(DOCS, "brief.html")),
             "settings": load(os.path.join(DOCS, "settings.json")), "lessons": load(os.path.join(DOCS, "lessons.json")),
-            "health": load(os.path.join(DOCS, "health.json"))}
+            "health": load(os.path.join(DOCS, "health.json")),
+            "scan": load(os.path.join(DEBATES, "_last_scan.json")), "scan_result": load(os.path.join(DEBATES, "_last_scan_result.json")),
+            "brief": load(os.path.join(DOCS, "brief.json")), "calibration": load(os.path.join(DOCS, "calibration.json")),
+            "quality": load(os.path.join(DOCS, "quality.json")), "schedule_utc": cfg.get("schedule_utc"),
+            "budget": budget_today(cfg), "costs": costs_plain()}
     write(os.path.join(DOCS, "index.html"), full_doc(inject("index.html", data, "Trade Debate Desk")))
     print("wrote", os.path.join(DOCS, "index.html"))
 

@@ -1,152 +1,358 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Trade Debate Desk</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Lora:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
 <style>
-/* Layout: a WhatsApp-style chat list. Intro card explains the idea in 4 steps, then filters, then one row per debate
-   (avatar by market, trade title, Judge's plain-language line, decision badge). Same light Claude palette as the debate pages. */
+/* Layout: calm cards app. Phone: top bar + bottom tab bar. Desktop (>=900px): left side menu + one reading column.
+   Five views by hash: #now #debates #markets #journal #settings. Light Claude palette (ivory, clay), single theme by choice. */
 :root{
   color-scheme: light;
-  --page:#faf9f5; --paper:#ffffff; --wall:#f1efe7; --ink:#141413; --ink-2:#3d3c37; --muted:#77756c; --line:#e5e2d6;
+  --page:#faf9f5; --card:#ffffff; --soft:#f3f1ea; --ink:#141413; --ink-2:#3d3c37; --muted:#77756c; --line:#e7e4d9;
   --clay:#d97757; --clay-ink:#b4532f; --clay-soft:#fbeee8;
-  --bull:#55702f; --bull-soft:#eef3e4; --bear:#b0473c; --bear-soft:#fbeceb;
-  --judge:#3b6894; --judge-soft:#eaf1f8; --warn:#9a6a00; --warn-soft:#fbf3dc;
-  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
-  --f-read:"Lora",Georgia,serif; --f-num:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --good:#4f6b2c; --good-soft:#eef3e4; --bad:#a8463b; --bad-soft:#fbeceb; --warn:#8f6400; --warn-soft:#fbf3dc; --info:#3b6894; --info-soft:#eaf1f8;
+  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif; --f-read:"Lora",Georgia,serif; --f-num:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r:16px;
 }
 *{box-sizing:border-box}
 html{background:var(--page)}
-body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--f-ui);-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.55 var(--f-ui);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--page)}
+a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--clay);outline-offset:2px;border-radius:6px}
+:focus-visible{outline:2px solid var(--clay);outline-offset:2px;border-radius:8px}
 .num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
-.shell{max-width:780px;margin:0 auto;min-height:100vh;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line)}
-.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line);
-  padding-block:14px 12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.brand{display:flex;align-items:center;gap:10px}
-.mark{width:36px;height:36px;border-radius:11px;background:var(--clay);display:grid;place-items:center;color:#fff}
-.mark svg{width:20px;height:20px}
-.brand h1{margin:0;font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
-.brand p{margin:0;font-size:.78rem;color:var(--muted)}
-.filters{display:flex;gap:6px;margin-top:12px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
-.filters::-webkit-scrollbar{display:none}
-.f{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:.8rem;cursor:pointer;white-space:nowrap}
-.f[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--page)}
-.wrap{padding-block:14px 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
-.intro{background:var(--wall);border-radius:16px;padding:16px}
-.intro h2{margin:0 0 4px;font-size:1.05rem;font-weight:600;text-wrap:balance}
-.intro>p{margin:0 0 12px;font-family:var(--f-read);color:var(--ink-2)}
-.how{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
-.how div{background:var(--paper);border-radius:12px;padding:10px;font-size:.8rem;color:var(--ink-2);display:grid;gap:3px;align-content:start}
-.how b{font-size:.84rem;color:var(--ink);font-weight:600}
-.how i{font-style:normal;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.8rem}
-@media (max-width:620px){.how{grid-template-columns:1fr 1fr}}
-.intro .sched{margin:12px 0 0;font-size:.78rem;color:var(--muted)}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.stats div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid}
-.stats small{font-size:.72rem;color:var(--muted)}
-.stats b{font-size:1.3rem;font-weight:600}
+.app{display:grid;grid-template-columns:1fr;min-height:100vh}
+@media (min-width:900px){.app{grid-template-columns:232px minmax(0,1fr)}}
+
+/* side menu (desktop) */
+.side{display:none}
+@media (min-width:900px){
+  .side{display:flex;flex-direction:column;gap:4px;position:sticky;top:0;height:100vh;padding:24px 14px;border-right:1px solid var(--line);background:var(--page)}
+}
+.brand{display:flex;align-items:center;gap:10px;padding:0 8px 18px}
+.mark{width:34px;height:34px;border-radius:11px;background:var(--clay);color:#fff;display:grid;place-items:center;flex:none}
+.mark svg{width:19px;height:19px}
+.brand b{font-weight:600;font-size:15px;display:block;line-height:1.2}
+.brand small{color:var(--muted);font-size:12px}
+.nav{display:flex;align-items:center;gap:12px;padding:10px 12px;border-radius:12px;color:var(--ink-2);font-size:14px;font-weight:500}
+.nav svg{width:19px;height:19px;flex:none}
+.nav:hover{background:var(--soft)}
+.nav[aria-current="page"]{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+.side .foot{margin-top:auto;font-size:12px;color:var(--muted);padding:8px 12px;line-height:1.5}
+
+/* top bar + bottom tabs (phone) */
+.topbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--page);display:flex;align-items:center;gap:10px;
+  padding-block:12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));border-bottom:1px solid var(--line)}
+.topbar .mark{width:30px;height:30px;border-radius:10px}
+.topbar b{font-weight:600;font-size:15px}
+.topbar .dot{margin-left:auto}
+@media (min-width:900px){.topbar{display:none}}
+.tabs{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(250,249,245,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);
+  padding-block:6px calc(6px + env(safe-area-inset-bottom,0px));padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inset-right,0px)}
+.tabs a{display:grid;justify-items:center;gap:2px;font-size:11px;color:var(--muted);padding:4px 0;font-weight:500}
+.tabs svg{width:21px;height:21px}
+.tabs a[aria-current="page"]{color:var(--clay-ink)}
+@media (min-width:900px){.tabs{display:none}}
+
+/* content */
+main{min-width:0;padding-block:20px 110px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+@media (min-width:900px){main{padding:32px 40px 48px}}
+.col{max-width:760px;margin:0 auto;display:grid;gap:16px}
+.view{display:grid;gap:16px}
+h1{margin:0;font-size:24px;font-weight:600;letter-spacing:-.01em}
+h2{margin:0;font-size:16px;font-weight:600}
+.lead{margin:2px 0 0;color:var(--muted);font-size:14px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:0 0 0 1px var(--line);padding:18px}
+.soft{background:var(--soft);border-radius:var(--r);padding:16px}
+.label{font-size:12px;font-weight:500;color:var(--muted);letter-spacing:.02em}
+.row{display:flex;align-items:center;gap:12px}
+.between{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.pill{display:inline-flex;align-items:center;gap:5px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.p-take{background:var(--good-soft);color:var(--good)} .p-skip{background:var(--bad-soft);color:var(--bad)} .p-live{background:var(--clay-soft);color:var(--clay-ink)}
+.p-ok{background:var(--good-soft);color:var(--good)} .p-warn{background:var(--warn-soft);color:var(--warn)} .p-down{background:var(--bad-soft);color:var(--bad)} .p-info{background:var(--info-soft);color:var(--info)}
+.dotc{width:8px;height:8px;border-radius:50%;display:inline-block}
+
+/* status strip */
+.status{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+@media (max-width:560px){.status{grid-template-columns:1fr 1fr}}
+.stat{background:var(--card);box-shadow:0 0 0 1px var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:2px;min-width:0}
+.stat b{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.stat small{font-size:12px;color:var(--muted)}
+
+/* hero */
+.hero{display:grid;gap:12px}
+.hero .big{font-size:22px;font-weight:600;line-height:1.25;text-wrap:balance}
+.hero p{margin:0;color:var(--ink-2);font-family:var(--f-read);font-size:15.5px}
+.ticket{background:var(--ink);color:var(--page);border-radius:12px;padding:12px 14px;font:400 13px/1.6 var(--f-num);display:grid;gap:2px}
+.why{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.why li{display:flex;gap:10px;font-size:14px;color:var(--ink-2)}
+.why li > span:first-child{flex:none;width:6px;height:6px;border-radius:50%;background:var(--muted);margin-top:8px}
+details summary{cursor:pointer;list-style:none;font-size:14px;font-weight:500;color:var(--clay-ink)}
+details summary::-webkit-details-marker{display:none}
+
+/* lists */
 .list{display:grid}
-.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;border-radius:10px}
-.row:hover{background:var(--page)}
-.av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:.72rem;letter-spacing:.02em;position:relative}
-.av.crypto{background:#fdf0e4;color:#a85a1e} .av.us{background:var(--judge-soft);color:var(--judge)} .av.nse{background:#f3ecf8;color:#6d4a8c} .av.forex{background:var(--bull-soft);color:var(--bull)}
-.av em{position:absolute;right:-2px;bottom:-2px;width:18px;height:18px;border-radius:50%;border:2px solid var(--paper);font-style:normal;font-size:.6rem;display:grid;place-items:center;color:#fff}
-.av em.LONG{background:var(--bull)} .av em.SHORT{background:var(--bear)}
-.mid{min-width:0}
-.mid h3{margin:0;font-size:.98rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mid p{margin:2px 0 0;font-size:.85rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.mid p b{color:var(--judge);font-weight:500}
-.end{display:grid;justify-items:end;gap:5px}
-.end time{font-size:.72rem;color:var(--muted);white-space:nowrap}
-.badge{font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:999px}
-.badge.TAKE{background:var(--bull-soft);color:var(--bull)} .badge.SKIP{background:var(--bear-soft);color:var(--bear)} .badge.LIVE{background:var(--clay-soft);color:var(--clay-ink)}
-.empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:.9rem}
-.disc{font-size:.74rem;color:var(--muted);text-align:center;margin:6px auto 0;max-width:520px}
+.item{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item:hover{background:var(--soft);border-radius:12px}
+.av{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-size:11px;font-weight:600;letter-spacing:.02em}
+.m-crypto{background:#fdf0e4;color:#9a541c} .m-us{background:var(--info-soft);color:var(--info)} .m-nse{background:#f3ecf8;color:#6b4a8a} .m-forex{background:var(--good-soft);color:var(--good)}
+.item h3{margin:0;font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item p{margin:2px 0 0;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.end{display:grid;justify-items:end;gap:4px}
+.end time{font-size:12px;color:var(--muted)}
+.chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.chips::-webkit-scrollbar{display:none}
+.chip{border:0;background:var(--card);box-shadow:0 0 0 1px var(--line);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--page);box-shadow:none}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+@media (max-width:560px){.grid3{grid-template-columns:1fr 1fr}}
+.tile{background:var(--soft);border-radius:12px;padding:12px;display:grid;gap:2px;min-width:0}
+.tile small{font-size:12px;color:var(--muted)}
+.tile b{font-size:18px;font-weight:600}
+.up{color:var(--good)} .down{color:var(--bad)}
+.kv{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+.kv li{display:flex;justify-content:space-between;gap:12px;font-size:14px;padding:8px 0;border-bottom:1px solid var(--line)}
+.kv li:last-child{border-bottom:0}
+.kv li span:first-child{color:var(--muted)}
+.empty{color:var(--muted);font-size:14px;margin:0}
+.chart{width:100%;height:140px;display:block}
+.note{font-size:12px;color:var(--muted);margin:0}
+.btn{display:inline-flex;align-items:center;gap:6px;border:0;background:var(--soft);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer}
+.btn:hover{background:var(--line)}
+@media (prefers-reduced-motion:no-preference){.view{animation:fade .25s ease both}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
 </style></head><body>
 
-<div class="shell" id="app"></div>
-<script id="index-data" type="application/json">{"debates": [{"id": "20261110-1749-USDJPY-LONG", "href": "d/20261110-1749-USDJPY-LONG.html", "symbol": "USD/JPY", "direction": "LONG", "market": "forex", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T17:49:42Z", "decision": "SKIP", "confidence": 84, "headline": "Skip it for now: the computer replays say this plan wins slightly too rarely to pay for itself, and its safety exit is so close that a normal wiggle could hit it.", "progress": null, "preview": "Bull agrees his plan has no proven edge: the desk gives it 36 wins in 100 when it needs 38, and every other version he tried also falls short, so skip.", "final_call": "SKIP", "gate": "BLOCK", "outcome": "pending", "outcome_r": null}, {"id": "20261110-1453-NVDA-LONG", "href": "d/20261110-1453-NVDA-LONG.html", "symbol": "NVDA", "direction": "LONG", "market": "us", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T14:53:16Z", "decision": "SKIP", "confidence": 85, "headline": "Skip it: the payoff looks fine on paper, but in 10,000 replays the price almost never reached the profit goal before the safety exit.", "progress": null, "preview": "Bull fixed the exit, but the desk's replays still reach the first goal only about 5 times in 100 (never in 59 real days), so skip it.", "final_call": "SKIP", "gate": "BLOCK", "outcome": "target", "outcome_r": 1.207}, {"id": "20261110-1355-ETH-LONG", "href": "d/20261110-1355-ETH-LONG.html", "symbol": "ETH/USDT", "direction": "LONG", "market": "crypto", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T13:55:27Z", "decision": "SKIP", "confidence": 72, "headline": "Skip it for now: the first goal pays only about $1.30 for every $1 you could lose, Ether is still sliding, and very few people are trading right now.", "progress": null, "preview": "The new $14 safety exit is smaller than a normal one-hour wiggle of about $20, and Ether is still under every important line, so skip it.", "final_call": null, "gate": null, "outcome": "target", "outcome_r": 0.616}, {"id": "20261110-1226-ZEC-SHORT", "href": "d/20261110-1226-ZEC-SHORT.html", "symbol": "ZEC/USDT", "direction": "SHORT", "market": "crypto", "style": "intraday", "mode": "scan", "created_utc": "2026-11-10T12:26:35Z", "decision": "SKIP", "confidence": 80, "headline": "Skip the ZEC short. The only plan on the table is an unfilled limit sell at 1,160-1,170, and at market (1,149.59) the reward-to-risk is about 0.55:1. US CPI comes out today at 13:30 UTC, about an hour from now and inside the 4-8 hour window. Re-assess after CPI if price is rejected at 1,160-1,165, or if a 1h candle closes below 1,131.83 on above-average volume.", "progress": null, "preview": "Bull's only live trade is a resting sell 12-22 points above price (1,148.37) on 0.24x 1h volume; at market the short risks 33.6 to make 16.5 (0.49:1), so there is nothing to TAKE now.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -1.305}, {"id": "20261110-1222-NZDUSD-LONG", "href": "d/20261110-1222-NZDUSD-LONG.html", "symbol": "NZD/USD", "direction": "LONG", "market": "forex", "style": "intraday", "mode": "scan", "created_utc": "2026-11-10T12:22:18Z", "decision": "SKIP", "confidence": 85, "headline": "Skip the long. The first target (0.5651 day high) pays only about 1.05R on Bull's 0.5612 stop, which is below the 1.5R minimum. US October CPI comes out at 13:30 UTC today, about an hour after the snapshot and inside the 4-8 hour hold. Look again after CPI, either on a 15m/1h close above 0.5651 or on a post-CPI hold of 0.5628 that gives at least 1.5R to a target above the day high.", "progress": null, "preview": "Bull's tightened 0.5612 stop only fixes the stop; entry is still a fade with 5m/15m momentum down, 0.87:1 to 0.5651, and unresolved US CPI in the window.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -1.27}, {"id": "20261110-1106-BTC", "href": "d/20261110-1106-BTC.html", "symbol": "BTC/USDT", "direction": "LONG", "market": "crypto", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T11:06:32Z", "decision": "SKIP", "confidence": 78, "headline": "Stand aside on BTC/USDT until after the US October CPI release at 13:30 UTC today, about 2h20m away and inside both sides' 4-8 hour window. The debate is a near-draw (28 vs 29): the bull's revised long pays a real 1.8R to VWAP, and the bear's short has a valid plan but has not triggered. Re-assess after the print: a reclaim of VWAP near 74,736 favours longs, and a 1h close below 74,091 favours shorts.", "progress": null, "preview": "I drop the order book and concede the 5m MACD flip (+0.06), but the 1h histogram is still -61.06, price sits at 74,244 under 1h EMA9 74,570 / EMA21 74,738 / VWAP 74,738, and a long here pays 0.84R to its first target into a CPI print: sell 74,450-74,650, stop 75,050, or stay flat.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -2.188}], "generated_utc": "2026-11-10T20:04:08Z", "schedule": "weekdays at 10:30, 13:30, 20:30 and 23:30 IST, and every 6 hours on weekends (crypto)", "live_reload": true, "track": {"take": {"resolved": 0, "wins": 0, "losses": 0, "avg_r": null, "not_filled": 0, "pending": 0}, "skip": {"resolved": 5, "wins": 2, "losses": 3, "avg_r": -0.588, "not_filled": 0, "pending": 1}, "debates": 6}, "paper": {"computed_utc": "2026-11-10T20:04:07Z", "currency": "USD", "start_capital": 100000, "risk_per_trade_pct": 1.0, "desk": {"trades": 0, "wins": 0, "losses": 0, "balance": 100000, "return_pct": 0.0, "max_drawdown_pct": 0.0, "curve": [{"t": null, "balance": 100000}]}, "take_everything": {"trades": 5, "wins": 2, "losses": 3, "balance": 97054.13, "return_pct": -2.95, "max_drawdown_pct": 4.69, "curve": [{"t": null, "balance": 100000}, {"t": "2026-11-10T13:30:00Z", "balance": 97812.0, "id": "20261110-1106-BTC", "r": -2.188}, {"t": "2026-11-10T13:55:00Z", "balance": 96569.79, "id": "20261110-1222-NZDUSD-LONG", "r": -1.27}, {"t": "2026-11-10T14:30:00Z", "balance": 95309.55, "id": "20261110-1226-ZEC-SHORT", "r": -1.305}, {"t": "2026-11-10T15:00:00Z", "balance": 95896.66, "id": "20261110-1355-ETH-LONG", "r": 0.616}, {"t": "2026-11-10T18:00:00Z", "balance": 97054.13, "id": "20261110-1453-NVDA-LONG", "r": 1.207}]}, "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -2.95%.", "_written": "2026-11-10T20:04:07Z"}, "has_brief": true, "settings": {"summary": ["Capital per market: crypto not set, us not set, nse not set, forex not set", "Risk per trade: 1.0% of capital", "Daily loss limit: 3.0%; max 3 TAKE calls per day", "A trade must pay at least 1.5x its risk after costs; stop at least 1.0x ATR", "Biggest position: 25.0% of capital", "Shorting allowed: nse_intraday, forex; not allowed: crypto, us, nse_swing", "AI usage: at most 8 debates a day, 2 per scan", "Residence: IN (forex limited to: USDINR, EURINR, GBPINR, JPYINR, EURUSD, GBPUSD, USDJPY)"], "capital_set": {"crypto": false, "us": false, "nse": false, "forex": false}, "_written": "2026-11-10T20:04:07Z"}, "lessons": null, "health": {"checked_utc": "2026-11-10T18:11:10Z", "status": "DEGRADED", "critical_down": [], "markets_down": [], "sources": [{"name": "Binance prices", "critical": true, "market": "crypto", "ok": true, "ms": 1112, "note": "45 bytes"}, {"name": "Binance main API", "critical": false, "market": "crypto", "ok": false, "ms": 621, "note": "HTTPError: HTTP Error 451: "}, {"name": "Yahoo US stocks", "critical": true, "market": "us", "ok": true, "ms": 578, "note": "1718 bytes"}, {"name": "Yahoo NSE stocks", "critical": true, "market": "nse", "ok": true, "ms": 657, "note": "1625 bytes"}, {"name": "Yahoo forex", "critical": true, "market": "forex", "ok": true, "ms": 635, "note": "1693 bytes"}, {"name": "TradingView calendar", "critical": true, "market": "all", "ok": true, "ms": 660, "note": "25602 bytes"}, {"name": "ForexFactory calendar (backup)", "critical": false, "market": "all", "ok": true, "ms": 610, "note": "14055 bytes"}, {"name": "Nasdaq earnings", "critical": false, "market": "us", "ok": false, "ms": 448, "note": "HTTPError: HTTP Error 403: Forbidden"}, {"name": "Fear & Greed index", "critical": false, "market": "crypto", "ok": true, "ms": 186, "note": "208 bytes"}, {"name": "Binance futures funding", "critical": false, "market": "crypto", "ok": false, "ms": 213, "note": "HTTPError: HTTP Error 451: "}, {"name": "Google News", "critical": false, "market": "all", "ok": true, "ms": 853, "note": "131702 bytes"}, {"name": "CNBC news", "critical": false, "market": "us", "ok": false, "ms": 326, "note": "HTTPError: HTTP Error 403: Forbidden"}, {"name": "Economic Times news", "critical": false, "market": "nse", "ok": true, "ms": 669, "note": "48327 bytes"}, {"name": "Cointelegraph news", "critical": false, "market": "crypto", "ok": true, "ms": 328, "note": "52383 bytes"}, {"name": "FXStreet news", "critical": false, "market": "forex", "ok": false, "ms": 437, "note": "HTTPError: HTTP Error 403: Forbidden"}], "_written": "2026-11-10T19:05:18Z"}}</script>
+<div class="app">
+  <aside class="side" aria-label="Main menu">
+    <div class="brand"><span class="mark" id="m1"></span><div><b>Trade Desk</b><small>Bull vs Bear, Judge decides</small></div></div>
+    <nav id="sidenav"></nav>
+    <div class="foot" id="sidefoot"></div>
+  </aside>
+  <div style="min-width:0">
+    <header class="topbar"><span class="mark" id="m2"></span><b>Trade Desk</b><span class="dot" id="topdot"></span></header>
+    <main><div class="col" id="view"></div></main>
+  </div>
+</div>
+<nav class="tabs" id="tabs" aria-label="Sections"></nav>
+<script id="index-data" type="application/json">{"debates": [{"ticket": null, "block_reason": "The first target pays 1.29x the risk after costs (per unit; fixed per-order fees not included until capital is set); your minimum is 1.5x.", "retake_plain": "Take another look if the price climbs above today's high of 158.85 and stays there for a whole hour, with the stretch cooling off, and the desk finds a plan whose replays win more often than it needs to break even.", "plan": {"direction": "LONG", "entry": 158.76, "stop": 158.61, "targets": [159.0]}, "p_target": 0.3587, "p_stop": 0.6249, "retake_status": "watching", "id": "20261110-1749-USDJPY-LONG", "href": "d/20261110-1749-USDJPY-LONG.html", "symbol": "USD/JPY", "direction": "LONG", "market": "forex", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T17:49:42Z", "decision": "SKIP", "confidence": 84, "headline": "Skip it for now: the computer replays say this plan wins slightly too rarely to pay for itself, and its safety exit is so close that a normal wiggle could hit it.", "progress": null, "preview": "Bull agrees his plan has no proven edge: the desk gives it 36 wins in 100 when it needs 38, and every other version he tried also falls short, so skip.", "final_call": "SKIP", "gate": "BLOCK", "outcome": "pending", "outcome_r": null}, {"ticket": null, "block_reason": "Strongly toward the stop: at 1.50R the target must come first in 40% of the replays that hit a side; it did in 2% (target first 0.3% vs stop first 21.4%).", "retake_plain": "Look again if the price climbs back above today's average price (about $172) and stays there for an hour with more and more shares trading, or if the company's board says the boss is cleared. Then the desk's replays would also need to show the profit goal coming first about as often as the safety exit.", "plan": {"direction": "LONG", "entry": 170.7, "stop": 166.9, "targets": [176.4, 180.2]}, "p_target": 0.0033, "p_stop": 0.2138, "retake_status": null, "id": "20261110-1453-NVDA-LONG", "href": "d/20261110-1453-NVDA-LONG.html", "symbol": "NVDA", "direction": "LONG", "market": "us", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T14:53:16Z", "decision": "SKIP", "confidence": 85, "headline": "Skip it: the payoff looks fine on paper, but in 10,000 replays the price almost never reached the profit goal before the safety exit.", "progress": null, "preview": "Bull fixed the exit, but the desk's replays still reach the first goal only about 5 times in 100 (never in 59 real days), so skip it.", "final_call": "SKIP", "gate": "BLOCK", "outcome": "target", "outcome_r": 1.207}, {"ticket": null, "block_reason": null, "retake_plain": "This would be worth a fresh look if Ether climbs back above about $2,096 (today's average price) and stays there for an hour with lots of trading, or if it dips to about $2,030-2,050 and bounces strongly, so a safety exit just under $2,028 still lets you win at least $1.50 for each $1 you risk.", "plan": null, "p_target": null, "p_stop": null, "retake_status": null, "id": "20261110-1355-ETH-LONG", "href": "d/20261110-1355-ETH-LONG.html", "symbol": "ETH/USDT", "direction": "LONG", "market": "crypto", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T13:55:27Z", "decision": "SKIP", "confidence": 72, "headline": "Skip it for now: the first goal pays only about $1.30 for every $1 you could lose, Ether is still sliding, and very few people are trading right now.", "progress": null, "preview": "The new $14 safety exit is smaller than a normal one-hour wiggle of about $20, and Ether is still under every important line, so skip it.", "final_call": null, "gate": null, "outcome": "target", "outcome_r": 0.616}, {"ticket": null, "block_reason": null, "retake_plain": null, "plan": null, "p_target": null, "p_stop": null, "retake_status": null, "id": "20261110-1226-ZEC-SHORT", "href": "d/20261110-1226-ZEC-SHORT.html", "symbol": "ZEC/USDT", "direction": "SHORT", "market": "crypto", "style": "intraday", "mode": "scan", "created_utc": "2026-11-10T12:26:35Z", "decision": "SKIP", "confidence": 80, "headline": "Skip the ZEC short. The only plan on the table is an unfilled limit sell at 1,160-1,170, and at market (1,149.59) the reward-to-risk is about 0.55:1. US CPI comes out today at 13:30 UTC, about an hour from now and inside the 4-8 hour window. Re-assess after CPI if price is rejected at 1,160-1,165, or if a 1h candle closes below 1,131.83 on above-average volume.", "progress": null, "preview": "Bull's only live trade is a resting sell 12-22 points above price (1,148.37) on 0.24x 1h volume; at market the short risks 33.6 to make 16.5 (0.49:1), so there is nothing to TAKE now.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -1.305}, {"ticket": null, "block_reason": null, "retake_plain": null, "plan": null, "p_target": null, "p_stop": null, "retake_status": null, "id": "20261110-1222-NZDUSD-LONG", "href": "d/20261110-1222-NZDUSD-LONG.html", "symbol": "NZD/USD", "direction": "LONG", "market": "forex", "style": "intraday", "mode": "scan", "created_utc": "2026-11-10T12:22:18Z", "decision": "SKIP", "confidence": 85, "headline": "Skip the long. The first target (0.5651 day high) pays only about 1.05R on Bull's 0.5612 stop, which is below the 1.5R minimum. US October CPI comes out at 13:30 UTC today, about an hour after the snapshot and inside the 4-8 hour hold. Look again after CPI, either on a 15m/1h close above 0.5651 or on a post-CPI hold of 0.5628 that gives at least 1.5R to a target above the day high.", "progress": null, "preview": "Bull's tightened 0.5612 stop only fixes the stop; entry is still a fade with 5m/15m momentum down, 0.87:1 to 0.5651, and unresolved US CPI in the window.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -1.27}, {"ticket": null, "block_reason": null, "retake_plain": null, "plan": null, "p_target": null, "p_stop": null, "retake_status": null, "id": "20261110-1106-BTC", "href": "d/20261110-1106-BTC.html", "symbol": "BTC/USDT", "direction": "LONG", "market": "crypto", "style": "intraday", "mode": "named", "created_utc": "2026-11-10T11:06:32Z", "decision": "SKIP", "confidence": 78, "headline": "Stand aside on BTC/USDT until after the US October CPI release at 13:30 UTC today, about 2h20m away and inside both sides' 4-8 hour window. The debate is a near-draw (28 vs 29): the bull's revised long pays a real 1.8R to VWAP, and the bear's short has a valid plan but has not triggered. Re-assess after the print: a reclaim of VWAP near 74,736 favours longs, and a 1h close below 74,091 favours shorts.", "progress": null, "preview": "I drop the order book and concede the 5m MACD flip (+0.06), but the 1h histogram is still -61.06, price sits at 74,244 under 1h EMA9 74,570 / EMA21 74,738 / VWAP 74,738, and a long here pays 0.84R to its first target into a CPI print: sell 74,450-74,650, stop 75,050, or stay flat.", "final_call": null, "gate": null, "outcome": "stop", "outcome_r": -2.188}], "generated_utc": "2026-11-10T20:28:11Z", "schedule": "weekdays at 10:30, 13:30, 20:30 and 23:30 IST, and every 6 hours on weekends (crypto)", "live_reload": true, "track": {"take": {"resolved": 0, "wins": 0, "losses": 0, "avg_r": null, "not_filled": 0, "pending": 0}, "skip": {"resolved": 5, "wins": 2, "losses": 3, "avg_r": -0.588, "not_filled": 0, "pending": 1}, "debates": 6}, "paper": {"computed_utc": "2026-11-10T20:26:15Z", "currency": "USD", "start_capital": 100000, "risk_per_trade_pct": 1.0, "desk": {"trades": 0, "wins": 0, "losses": 0, "balance": 100000, "return_pct": 0.0, "max_drawdown_pct": 0.0, "curve": [{"t": null, "balance": 100000}]}, "take_everything": {"trades": 5, "wins": 2, "losses": 3, "balance": 97054.13, "return_pct": -2.95, "max_drawdown_pct": 4.69, "curve": [{"t": null, "balance": 100000}, {"t": "2026-11-10T13:30:00Z", "balance": 97812.0, "id": "20261110-1106-BTC", "r": -2.188}, {"t": "2026-11-10T13:55:00Z", "balance": 96569.79, "id": "20261110-1222-NZDUSD-LONG", "r": -1.27}, {"t": "2026-11-10T14:30:00Z", "balance": 95309.55, "id": "20261110-1226-ZEC-SHORT", "r": -1.305}, {"t": "2026-11-10T15:00:00Z", "balance": 95896.66, "id": "20261110-1355-ETH-LONG", "r": 0.616}, {"t": "2026-11-10T18:00:00Z", "balance": 97054.13, "id": "20261110-1453-NVDA-LONG", "r": 1.207}]}, "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -2.95%.", "_written": "2026-11-10T20:26:15Z"}, "has_brief": true, "settings": {"summary": ["Capital per market: crypto not set, us not set, nse not set, forex not set", "Risk per trade: 1.0% of capital", "Daily loss limit: 3.0%; max 3 TAKE calls per day", "A trade must pay at least 1.5x its risk after costs; stop at least 1.0x ATR", "Biggest position: 25.0% of capital", "Shorting allowed: nse_intraday, forex; not allowed: crypto, us, nse_swing", "AI usage: at most 8 debates a day, 2 per scan", "Residence: IN (forex limited to: USDINR, EURINR, GBPINR, JPYINR, EURUSD, GBPUSD, USDJPY)"], "capital_set": {"crypto": false, "us": false, "nse": false, "forex": false}, "_written": "2026-11-10T20:26:23Z"}, "lessons": null, "health": {"checked_utc": "2026-11-10T20:26:22Z", "status": "OK", "critical_down": [], "markets_down": [], "sources": [{"name": "Binance prices", "critical": true, "market": "crypto", "ok": true, "ms": 735, "note": "45 bytes"}, {"name": "Binance main API", "critical": false, "market": "crypto", "ok": true, "ms": 560, "note": "2 bytes"}, {"name": "Yahoo US stocks", "critical": true, "market": "us", "ok": true, "ms": 246, "note": "1718 bytes"}, {"name": "Yahoo NSE stocks", "critical": true, "market": "nse", "ok": true, "ms": 284, "note": "1625 bytes"}, {"name": "Yahoo forex", "critical": true, "market": "forex", "ok": true, "ms": 218, "note": "1695 bytes"}, {"name": "TradingView calendar", "critical": true, "market": "all", "ok": true, "ms": 1242, "note": "25622 bytes"}, {"name": "ForexFactory calendar (backup)", "critical": false, "market": "all", "ok": true, "ms": 137, "note": "14055 bytes"}, {"name": "Nasdaq earnings", "critical": false, "market": "us", "ok": true, "ms": 3396, "note": "35554 bytes"}, {"name": "Fear & Greed index", "critical": false, "market": "crypto", "ok": true, "ms": 898, "note": "208 bytes"}, {"name": "Binance futures funding", "critical": false, "market": "crypto", "ok": true, "ms": 213, "note": "231 bytes"}, {"name": "Google News", "critical": false, "market": "all", "ok": true, "ms": 200, "note": "131660 bytes"}, {"name": "CNBC news", "critical": false, "market": "us", "ok": true, "ms": 382, "note": "20478 bytes"}, {"name": "Economic Times news", "critical": false, "market": "nse", "ok": true, "ms": 216, "note": "48906 bytes"}, {"name": "Cointelegraph news", "critical": false, "market": "crypto", "ok": true, "ms": 172, "note": "52621 bytes"}, {"name": "FXStreet news", "critical": false, "market": "forex", "ok": true, "ms": 172, "note": "24973 bytes"}], "_written": "2026-11-10T20:26:22Z"}, "scan": {"scanned_utc": "2026-11-10T18:11:24Z", "open_markets": ["crypto", "us", "forex"], "notes": ["nse: market closed, skipped"], "candidates": [{"symbol": "AAON", "market": "us", "change_pct": 21.05, "score": 32.482, "why": "+21.05% today, volume 2.5x 3-month average (day gainers)", "direction": "LONG"}, {"symbol": "ZEC", "market": "crypto", "change_pct": -11.48, "score": 15.52, "why": "-11.48% in 24h on $249M Binance volume", "direction": "SHORT"}, {"symbol": "USDCHF", "market": "forex", "change_pct": 0.78, "score": 8.128, "why": "+0.78% today", "direction": "LONG"}, {"symbol": "HIMS", "market": "us", "change_pct": -18.88, "score": 31.582, "why": "-18.88% today, volume 3.7x 3-month average (day losers)", "direction": "SHORT"}, {"symbol": "EQPT", "market": "us", "change_pct": -20.6, "score": 29.064, "why": "-20.60% today, volume 1.6x 3-month average (day losers)", "direction": "SHORT"}, {"symbol": "ETH", "market": "crypto", "change_pct": -4.71, "score": 7.697, "why": "-4.71% in 24h on $665M Binance volume", "direction": "SHORT"}, {"symbol": "NZDUSD", "market": "forex", "change_pct": 0.67, "score": 6.976, "why": "+0.67% today", "direction": "LONG"}, {"symbol": "SOL", "market": "crypto", "change_pct": -5.02, "score": 6.589, "why": "-5.02% in 24h on $210M Binance volume", "direction": "SHORT"}], "all_ranked": [{"symbol": "AAON", "market": "us", "change_pct": 21.05, "score": 32.482, "why": "+21.05% today, volume 2.5x 3-month average (day gainers)", "direction": "LONG"}, {"symbol": "HIMS", "market": "us", "change_pct": -18.88, "score": 31.582, "why": "-18.88% today, volume 3.7x 3-month average (day losers)", "direction": "SHORT"}, {"symbol": "EQPT", "market": "us", "change_pct": -20.6, "score": 29.064, "why": "-20.60% today, volume 1.6x 3-month average (day losers)", "direction": "SHORT"}, {"symbol": "ZEC", "market": "crypto", "change_pct": -11.48, "score": 15.52, "why": "-11.48% in 24h on $249M Binance volume", "direction": "SHORT"}, {"symbol": "USDCHF", "market": "forex", "change_pct": 0.78, "score": 8.128, "why": "+0.78% today", "direction": "LONG"}, {"symbol": "ETH", "market": "crypto", "change_pct": -4.71, "score": 7.697, "why": "-4.71% in 24h on $665M Binance volume", "direction": "SHORT"}, {"symbol": "NZDUSD", "market": "forex", "change_pct": 0.67, "score": 6.976, "why": "+0.67% today", "direction": "LONG"}, {"symbol": "SOL", "market": "crypto", "change_pct": -5.02, "score": 6.589, "why": "-5.02% in 24h on $210M Binance volume", "direction": "SHORT"}, {"symbol": "USDCAD", "market": "forex", "change_pct": 0.5, "score": 5.152, "why": "+0.50% today", "direction": "LONG"}], "_written": "2026-11-10T19:05:18Z"}, "scan_result": {"scanned_utc": "2026-11-10T18:11:24Z", "_note": "Recorded from the cloud run log of the 18:11 UTC scheduled scan.", "debated": [], "skipped": [{"symbol": "AAON", "market": "us", "direction": "LONG", "reason": "The plan optimizer found no plan that passes your rules."}, {"symbol": "HIMS", "market": "us", "direction": "SHORT", "reason": "Shorting US stocks is off in your settings."}, {"symbol": "EQPT", "market": "us", "direction": "SHORT", "reason": "Shorting US stocks is off in your settings."}, {"symbol": "ZEC", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."}, {"symbol": "ETH", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."}, {"symbol": "SOL", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."}, {"symbol": "USDCHF", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."}, {"symbol": "NZDUSD", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."}, {"symbol": "USDCAD", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."}], "markets_open": ["crypto", "us", "forex"], "health": "DEGRADED", "budget_left": 2, "_written": "2026-11-10T20:24:06Z"}, "brief": {"computed_utc": "2026-11-10T20:26:15Z", "title": "Market brief", "which": "all", "health": {"status": "OK", "critical_down": [], "markets_down": []}, "mood": [{"market": "nse", "indexes": [{"symbol": "^NSEI", "name": "NIFTY 50", "price": 25044.65, "change_today_pct": 0.06, "vs_sma20_pct": 7.75, "vs_sma50_pct": 7.65, "trend": "MIXED"}, {"symbol": "^NSEBANK", "name": "Bank NIFTY", "price": 59741.25, "change_today_pct": 1.11, "vs_sma20_pct": 7.42, "vs_sma50_pct": 6.87, "trend": "MIXED"}, {"symbol": "^INDIAVIX", "name": "India VIX fear gauge", "price": 17.42, "change_today_pct": -0.29, "vs_sma20_pct": 11.57, "vs_sma50_pct": 27.45, "trend": "UP"}, {"symbol": "USDINR=X", "name": "USD/INR", "price": 93.918, "change_today_pct": 0.02, "vs_sma20_pct": -0.9, "vs_sma50_pct": -1.5, "trend": "DOWN"}], "crypto_market": null, "error": null}, {"market": "us", "indexes": [{"symbol": "^GSPC", "name": "S&P 500", "price": 7515.71, "change_today_pct": -0.45, "vs_sma20_pct": -1.5, "vs_sma50_pct": -2.05, "trend": "DOWN"}, {"symbol": "^IXIC", "name": "Nasdaq", "price": 25047.055, "change_today_pct": -0.82, "vs_sma20_pct": -3.17, "vs_sma50_pct": -5.15, "trend": "DOWN"}, {"symbol": "^VIX", "name": "VIX fear gauge", "price": 20.0, "change_today_pct": 0.4, "vs_sma20_pct": 3.63, "vs_sma50_pct": 16.99, "trend": "UP"}, {"symbol": "^TNX", "name": "US 10-year yield", "price": 4.983, "change_today_pct": 2.45, "vs_sma20_pct": -0.28, "vs_sma50_pct": -1.14, "trend": "DOWN"}, {"symbol": "DX-Y.NYB", "name": "Dollar index", "price": 102.25, "change_today_pct": 0.59, "vs_sma20_pct": 0.32, "vs_sma50_pct": 1.05, "trend": "UP"}], "crypto_market": null, "error": null}, {"market": "crypto", "indexes": [{"symbol": "BTC-USD", "name": "Bitcoin", "price": 73601.31, "change_today_pct": -2.16, "vs_sma20_pct": -5.71, "vs_sma50_pct": -9.54, "trend": "DOWN"}, {"symbol": "^VIX", "name": "VIX fear gauge", "price": 20.0, "change_today_pct": 0.4, "vs_sma20_pct": 3.63, "vs_sma50_pct": 16.99, "trend": "UP"}], "crypto_market": {"btc_dominance_pct": 59.72, "total_mcap_change_24h_pct": -4.44}, "error": null}], "events": [], "event_notes": [], "overnight": [{"symbol": "BTC/USDT", "price": 73696.0, "change_pct": -1.48}, {"symbol": "ETH/USDT", "price": 2053.23, "change_pct": -3.53}, {"symbol": "EUR/USD", "price": 1.1167, "change_pct": 0.18}, {"symbol": "USD/INR", "price": 93.918, "change_pct": 0.02}, {"symbol": "USD/JPY", "price": 158.8, "change_pct": 0.32}], "watchlist": [], "retakes": [{"debate": "20261110-1749-USDJPY-LONG", "condition": "Take another look if the price climbs above today's high of 158.85 and stays there for a whole hour, with the stretch cooling off, and the desk finds a plan whose replays win more often than it needs to break even.", "last_price": 158.80599975585938}], "track": {"take": {"resolved": 0, "wins": 0, "losses": 0, "avg_r": null, "not_filled": 0, "pending": 0}, "skip": {"resolved": 5, "wins": 2, "losses": 3, "avg_r": -0.588, "not_filled": 0, "pending": 1}, "debates": 6}, "calibration": {"plain": "The Judge has been right in 3 of 5 resolved debates.", "advice": ["Only 5 resolved debates: too few to change any rule. Keep collecting."]}, "paper": {"plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -2.95%."}, "_written": "2026-11-10T20:26:19Z"}, "calibration": {"computed_utc": "2026-11-10T20:26:15Z", "resolved": 5, "accuracy": 0.6, "take": {"n": 0, "right": 0}, "skip": {"n": 5, "right": 3}, "by_confidence": [{"confidence": "60-75%", "n": 1, "right": 0, "hit_rate": 0.0}, {"confidence": "75-90%", "n": 4, "right": 3, "hit_rate": 0.75}], "misses": [{"id": "20261110-1355-ETH-LONG", "call": "SKIP", "judge": "SKIP", "confidence": 72, "right": false, "status": "target", "r": 0.616, "headline": "Skip it for now: the first goal pays only about $1.30 for every $1 you could lose, Ether is still sliding, and very few people are trading right now."}, {"id": "20261110-1453-NVDA-LONG", "call": "SKIP", "judge": "SKIP", "confidence": 85, "right": false, "status": "target", "r": 1.207, "headline": "Skip it: the payoff looks fine on paper, but in 10,000 replays the price almost never reached the profit goal before the safety exit."}], "advice": ["Only 5 resolved debates: too few to change any rule. Keep collecting."], "plain": "The Judge has been right in 3 of 5 resolved debates.", "_written": "2026-11-10T20:26:15Z"}, "quality": {"computed_utc": "2026-11-10T20:27:57Z", "agents": {"bull": {"debates": 6, "numbers_checked": 111, "numbers_confirmed": 76, "numbers_wrong": 0, "numbers_unconfirmed": 35, "judge_verified": 63, "judge_wrong": 11, "judge_stale": 3, "judge_unverifiable": 3, "guardrail_failures": 0, "accuracy_pct": 81.8, "code_confirmed_pct": 68.5}, "bear": {"debates": 6, "numbers_checked": 120, "numbers_confirmed": 89, "numbers_wrong": 0, "numbers_unconfirmed": 31, "judge_verified": 49, "judge_wrong": 3, "judge_stale": 11, "judge_unverifiable": 14, "guardrail_failures": 0, "accuracy_pct": 77.8, "code_confirmed_pct": 74.2}}, "judge": {"resolved": 5, "accuracy": 0.6}, "plain": "Bull Claude: 81.8% of checked claims correct, 0 wrong numbers caught by code; Bear Claude: 77.8% of checked claims correct, 0 wrong numbers caught by code", "_written": "2026-11-10T20:27:57Z"}, "schedule_utc": {"weekdays": ["05:00", "08:00", "15:00", "18:00"], "weekends": ["00:00", "06:00", "12:00", "18:00"], "briefs_weekdays": ["03:15", "14:00"]}, "budget": {"used": 0, "max": 8}, "costs": [{"market": "Crypto", "source": "CoinDCX spot crypto-to-crypto (C2C) pairs, Regular level: 0.17% maker and taker, +18% GST on fees"}, {"market": "US stocks", "source": "INDmoney Plan A: 0.25% per trade (max $25), +18% GST; SEC 0.00206% on sells; IFSCA turnover fee 0.005% incl. GST; FINRA TAF waived to 2026-12-31"}, {"market": "NSE intraday", "source": "Enrich Money equity intraday: 0.02% brokerage, STT 0.025% sell, NSE txn 0.00297%, clearing 0.0025%, SEBI 0.0001%, stamp 0.003% buy, GST 18%"}, {"market": "NSE delivery", "source": "Enrich Money equity delivery: 0.2% brokerage, STT 0.1% both sides, NSE txn 0.00297%, clearing 0.0025%, SEBI 0.0001%, stamp 0.015% buy, DP Rs15 + Rs5.50 CDSL per sell, GST 18%"}, {"market": "Forex", "source": "Enrich Money NSE currency futures: 0.02% brokerage, NSE txn 0.0009%, clearing 0.0015%, SEBI 0.0001%, stamp 0.0001% buy, GST 18%, no STT"}]}</script>
 <script>
 (function () {
   "use strict";
   var D = JSON.parse(document.getElementById("index-data").textContent);
-  var app = document.getElementById("app");
-  var F = "all";
-  try { F = localStorage.getItem("td-filter") || "all"; } catch (e) {}
-  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
-  function when(iso) {
-    var d = new Date(iso); if (isNaN(d)) return "";
-    var today = new Date(); var same = d.toDateString() === today.toDateString();
-    return same ? d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) : d.toLocaleDateString([], {day: "numeric", month: "short"});
-  }
-  var MK = {crypto: "Crypto", us: "US stocks", nse: "NSE India", forex: "Forex"};
   var items = D.debates || [];
-  function lessonsCard() {
-    var h = "";
-    if (D.health && D.health.status && D.health.status !== "OK")
-      h += '<section class="intro" style="background:var(--warn-soft)"><h2>Data sources: ' + esc(D.health.status) + "</h2><p style=\"margin:0\">" +
-        esc((D.health.critical_down || []).length ? "Not working: " + D.health.critical_down.join(", ") + ". Those markets are skipped until they recover." : "A non-critical source is down; the desk notes what is missing.") + "</p></section>";
-    if (D.lessons && D.lessons.headline)
-      h += '<section class="intro" style="background:var(--paper);border:1px solid var(--line)"><h2>This week\'s lessons</h2><p style="margin:0 0 8px">' + esc(D.lessons.headline) + "</p>" +
-        ((D.lessons.worked || []).length ? '<p class="sched" style="color:var(--bull)">Worked: ' + esc(D.lessons.worked.slice(0, 2).join(" · ")) + "</p>" : "") +
-        ((D.lessons.failed || []).length ? '<p class="sched" style="color:var(--bear)">Failed: ' + esc(D.lessons.failed.slice(0, 2).join(" · ")) + "</p>" : "") + "</section>";
-    if (D.settings && D.settings.summary)
-      h += '<details class="intro" style="background:var(--paper);border:1px solid var(--line)"><summary style="cursor:pointer;font-weight:600">Your settings</summary><ul style="margin:8px 0 0;padding-left:18px;font-size:.86rem;display:grid;gap:4px">' +
-        D.settings.summary.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + '</ul><p class="sched">Change them by telling Claude, e.g. "/trade-settings my NSE capital is 2 lakh".</p></details>';
-    return h;
+  var IC = {
+    now: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3L4 14h7l-1 7 9-11h-7z"/></svg>',
+    debates: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg>',
+    markets: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg>',
+    journal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h11a1 1 0 011 1v16a1 1 0 01-1 1H6zM6 3a2 2 0 00-2 2v14a2 2 0 002 2M9 8h6M9 12h6"/></svg>',
+    settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>',
+    mark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg>'
+  };
+  var VIEWS = [["now", "Now"], ["debates", "Debates"], ["markets", "Markets"], ["journal", "Journal"], ["settings", "Settings"]];
+  var MK = {crypto: "Crypto", us: "US stocks", nse: "NSE", forex: "Forex"};
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
+  function n(x, d) { return typeof x === "number" ? x.toLocaleString(undefined, {maximumFractionDigits: d == null ? (Math.abs(x) >= 100 ? 2 : 4) : d}) : "–"; }
+  function pct(x) { return typeof x === "number" ? '<span class="num ' + (x >= 0 ? "up" : "down") + '">' + (x >= 0 ? "+" : "") + x.toFixed(2) + "%</span>" : "–"; }
+  function ago(iso) {
+    var t = new Date(iso); if (isNaN(t)) return "–";
+    var m = Math.round((Date.now() - t) / 60000);
+    return m < 1 ? "just now" : m < 60 ? m + " min ago" : m < 1440 ? Math.round(m / 60) + " h ago" : Math.round(m / 1440) + " d ago";
   }
-  function trackCard() {
-    var t = D.track; if (!t) return "";
-    var tk = t.take || {}, sk = t.skip || {};
-    return '<section class="intro" style="background:var(--paper);border:1px solid var(--line)"><h2>Track record</h2>' +
-      '<p style="margin:0 0 10px">What really happened after each decision, checked automatically against real prices. It needs dozens of trades before it proves anything.</p>' +
-      '<div class="stats"><div><small>TAKE calls that won / lost</small><b class="num"><span style="color:var(--bull)">' + (tk.wins || 0) + '</span> / <span style="color:var(--bear)">' + (tk.losses || 0) + "</span></b></div>" +
-      '<div><small>SKIPs that would have lost (good skips)</small><b class="num" style="color:var(--bull)">' + (sk.losses || 0) + "</b></div>" +
-      '<div><small>SKIPs that would have won (missed)</small><b class="num" style="color:var(--warn)">' + (sk.wins || 0) + "</b></div></div>" +
-      ((tk.pending || 0) + (sk.pending || 0) ? '<p class="sched">' + ((tk.pending || 0) + (sk.pending || 0)) + " still running.</p>" : "") +
-      (D.paper && D.paper.plain ? '<p class="sched" style="color:var(--ink-2)"><b>Practice account:</b> ' + esc(D.paper.plain) + "</p>" : "") +
-      (D.has_brief ? '<p class="sched"><a href="brief.html" style="color:var(--clay-ink)">Open today\'s market brief →</a></p>' : "") + "</section>";
+  function when(iso) { var d = new Date(iso); if (isNaN(d)) return ""; return d.toDateString() === new Date().toDateString() ? d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) : d.toLocaleDateString([], {day: "numeric", month: "short"}); }
+  function callOf(x) { return x.decision === "LIVE" ? "LIVE" : (x.final_call || x.decision); }
+  function pillFor(c, conf) {
+    var cls = c === "TAKE" ? "p-take" : c === "LIVE" ? "p-live" : "p-skip";
+    return '<span class="pill ' + cls + '">' + esc(c === "LIVE" ? "Live" : c) + (conf != null && c !== "LIVE" ? ' <span class="num">' + esc(conf) + "%</span>" : "") + "</span>";
   }
-  function render() {
+  function sym(x) { return String(x.symbol || "").split("/")[0]; }
+
+  /* next scheduled scan from the UTC schedule */
+  function nextRun() {
+    var S = D.schedule_utc; if (!S) return null;
+    var now = new Date(), best = null;
+    for (var dd = 0; dd < 3; dd++) {
+      var day = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + dd));
+      var wk = day.getUTCDay(), list = (wk === 0 || wk === 6) ? S.weekends : S.weekdays;
+      (list || []).forEach(function (hm) {
+        var p = hm.split(":"), t = new Date(day.getTime() + (+p[0]) * 3600000 + (+p[1]) * 60000);
+        if (t > now && (!best || t < best)) best = t;
+      });
+      if (best) break;
+    }
+    return best;
+  }
+  function lastScan() { return (D.scan_result && D.scan_result.scanned_utc) || (D.scan && D.scan.scanned_utc) || null; }
+  function healthPill() {
+    var h = D.health && D.health.status;
+    return h === "OK" ? ["p-ok", "Data OK"] : h === "DOWN" ? ["p-down", "Data down"] : h ? ["p-warn", "Data partly down"] : ["p-info", "Data unknown"];
+  }
+
+  /* ---------- views ---------- */
+  function statusStrip() {
+    var hp = healthPill(), ls = lastScan(), nr = nextRun();
+    var stale = ls && (Date.now() - new Date(ls)) > 8 * 3600000;
+    var b = D.budget;
+    return '<section class="status" aria-label="System status">' +
+      '<div class="stat"><small>Data sources</small><b><span class="pill ' + hp[0] + '">' + hp[1] + "</span></b></div>" +
+      '<div class="stat"><small>Last scan</small><b class="' + (stale ? "down" : "") + '">' + esc(ls ? ago(ls) : "none yet") + "</b></div>" +
+      '<div class="stat"><small>Next scan</small><b>' + esc(nr ? nr.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) + (nr.toDateString() !== new Date().toDateString() ? " " + nr.toLocaleDateString([], {weekday: "short"}) : "") : "–") + "</b></div>" +
+      '<div class="stat"><small>Debates left today</small><b>' + (b ? '<span class="num">' + Math.max(0, b.max - b.used) + "</span> of " + b.max : "–") + "</b></div></section>" +
+      (stale ? '<p class="note" style="color:var(--bad)">The last scheduled scan was over 8 hours ago. A run may have failed (for example, the Claude usage limit). Check the routines page.</p>' : "");
+  }
+  function heroCard() {
+    var dayAgo = Date.now() - 24 * 3600000;
+    var takes = items.filter(function (x) { return callOf(x) === "TAKE" && new Date(x.created_utc) > dayAgo && (x.outcome === "pending" || !x.outcome); });
+    if (takes.length) {
+      return takes.map(function (x) {
+        return '<section class="card hero"><div class="between"><span class="label">Right now</span>' + pillFor("TAKE", x.confidence) + "</div>" +
+          '<div class="big">' + esc(x.direction + " " + x.symbol) + "</div><p>" + esc(x.headline || "") + "</p>" +
+          (x.ticket ? '<div class="ticket">' + x.ticket.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "") +
+          '<a class="btn" href="' + esc(x.href) + '">Open the full debate →</a></section>';
+      }).join("");
+    }
+    var sr = D.scan_result, skipped = (sr && sr.skipped) || [];
+    var recent = items.filter(function (x) { return x.decision !== "LIVE"; }).slice(0, 3);
+    var reasons = {};
+    skipped.forEach(function (s) { reasons[s.reason] = (reasons[s.reason] || 0) + 1; });
+    var top = Object.keys(reasons).sort(function (a, b) { return reasons[b] - reasons[a]; }).slice(0, 3);
+    return '<section class="card hero"><div class="between"><span class="label">Right now</span><span class="pill p-skip">No trade</span></div>' +
+      '<div class="big">Nothing worth taking</div>' +
+      "<p>" + (skipped.length ? "The last scan checked " + skipped.length + " ideas and none passed your rules." : "No recent trade passed every check.") +
+      " Skipping is often the safest choice; the desk keeps watching.</p>" +
+      (top.length ? '<ul class="why">' + top.map(function (r) { return "<li><span></span><span>" + esc(r) + ' <span class="num" style="color:var(--muted)">×' + reasons[r] + "</span></span></li>"; }).join("") + "</ul>" : "") +
+      (skipped.length ? '<details><summary>See every idea that was filtered out</summary><div class="list" style="margin-top:8px">' +
+        skipped.map(function (s) { return '<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><h3>' + esc(s.direction + " " + s.symbol) + "</h3><p>" + esc(s.reason) + "</p></div><span class=\"pill p-info\">" + esc(MK[s.market] || s.market) + "</span></div>"; }).join("") + "</div></details>" : "") +
+      "</section>";
+  }
+  function watching() {
+    var w = items.filter(function (x) { return x.retake_status === "watching"; });
+    if (!w.length) return "";
+    return '<section class="card"><div class="between"><h2>Watching for a better moment</h2><span class="pill p-info">' + w.length + "</span></div>" +
+      '<div class="list" style="margin-top:6px">' + w.map(function (x) {
+        return '<a class="item" href="' + esc(x.href) + '"><span class="av m-' + esc(x.market) + '">' + esc(sym(x).slice(0, 5)) + '</span><div><h3>' + esc(x.direction + " " + x.symbol) + "</h3><p>" + esc(x.retake_plain || "") + "</p></div><span class=\"pill p-info\">Watching</span></a>";
+      }).join("") + "</div></section>";
+  }
+  function debateRow(x) {
+    var line = x.decision === "LIVE" ? "In progress: " + (x.progress || "") : (x.headline || x.preview || "");
+    var res = x.outcome && x.outcome !== "pending" && x.outcome_r != null ? ' · result <span class="num ' + (x.outcome_r >= 0 ? "up" : "down") + '">' + (x.outcome_r >= 0 ? "+" : "") + x.outcome_r + "R</span>" : "";
+    return '<a class="item" href="' + esc(x.href) + '"><span class="av m-' + esc(x.market) + '">' + esc(sym(x).slice(0, 5)) + "</span>" +
+      "<div><h3>" + esc(x.direction + " " + x.symbol) + '</h3><p>' + esc(line) + res + "</p></div>" +
+      '<div class="end"><time>' + esc(when(x.created_utc)) + "</time>" + pillFor(callOf(x), x.confidence) + "</div></a>";
+  }
+  function miniStats() {
+    var cal = D.calibration || {}, pap = (D.paper && D.paper.desk) || {};
+    return '<section class="grid2"><a class="tile" href="#journal"><small>Judge has been right</small><b class="num">' + (cal.resolved ? (Math.round((cal.accuracy || 0) * cal.resolved)) + " of " + cal.resolved : "–") + "</b></a>" +
+      '<a class="tile" href="#journal"><small>Practice account</small><b class="num">' + (pap.return_pct != null ? (pap.return_pct >= 0 ? "+" : "") + pap.return_pct.toFixed(2) + "%" : "–") + "</b></a></section>";
+  }
+  function viewNow() {
+    var live = items.filter(function (x) { return x.decision === "LIVE"; });
+    var recent = items.filter(function (x) { return x.decision !== "LIVE"; }).slice(0, 4);
+    return '<header><h1>Right now</h1><p class="lead">' + esc(new Date().toLocaleDateString([], {weekday: "long", day: "numeric", month: "long"})) + "</p></header>" +
+      statusStrip() + heroCard() + watching() +
+      (live.length ? '<section class="card"><h2>Debating now</h2><div class="list" style="margin-top:6px">' + live.map(debateRow).join("") + "</div></section>" : "") +
+      '<section class="card"><div class="between"><h2>Recent debates</h2><a class="btn" href="#debates">All</a></div><div class="list" style="margin-top:6px">' +
+      (recent.length ? recent.map(debateRow).join("") : '<p class="empty">No debates yet.</p>') + "</div></section>" + miniStats();
+  }
+
+  var F = "all";
+  function viewDebates() {
     var list = items.filter(function (x) {
-      if (F === "all") return true;
-      if (F === "TAKE" || F === "SKIP" || F === "LIVE") return x.decision === F;
-      return x.market === F;
+      var c = callOf(x);
+      return F === "all" || F === c || F === x.market;
     });
-    var nT = items.filter(function (x) { return x.decision === "TAKE"; }).length, nS = items.filter(function (x) { return x.decision === "SKIP"; }).length;
-    var filters = [["all", "All"], ["TAKE", "Take"], ["SKIP", "Skip"], ["LIVE", "Live now"], ["crypto", "Crypto"], ["us", "US stocks"], ["nse", "NSE"], ["forex", "Forex"]]
-      .map(function (f) { return '<button class="f" data-f="' + f[0] + '" aria-pressed="' + (F === f[0]) + '">' + f[1] + "</button>"; }).join("");
-    var rows = list.map(function (x) {
-      var sym = String(x.symbol || "").split("/")[0];
-      var line = x.decision === "LIVE" ? "<b>Debate in progress:</b> " + esc(x.progress || "") : (x.headline ? "<b>Judge:</b> " + esc(x.headline) : esc(x.preview || ""));
-      var OUTL = {target: "target hit", stop: "stop hit", expired: "time ran out", not_filled: "never filled", pending: "running"};
-      if (x.outcome && OUTL[x.outcome]) line += ' <span style="white-space:nowrap">· <b style="color:var(--ink-2)">Result:</b> ' + OUTL[x.outcome] + (x.outcome_r != null ? " (" + (x.outcome_r > 0 ? "+" : "") + x.outcome_r + "R)" : "") + "</span>";
-      if (x.final_call) x.decision = x.final_call;
-      return '<a class="row" href="' + esc(x.href) + '"><span class="av ' + esc(x.market) + '">' + esc(sym.slice(0, 5)) + '<em class="' + esc(x.direction) + '" aria-hidden="true">' + (x.direction === "SHORT" ? "↓" : "↑") + "</em></span>" +
-        '<div class="mid"><h3>' + esc(x.direction + " " + x.symbol) + " · " + esc(MK[x.market] || x.market) + "</h3><p>" + line + "</p></div>" +
-        '<div class="end"><time>' + esc(when(x.created_utc)) + '</time><span class="badge ' + esc(x.decision) + '">' + (x.decision === "LIVE" ? "LIVE" : esc(x.decision)) + (x.confidence != null && x.decision !== "LIVE" ? ' <span class="num">' + esc(x.confidence) + "%</span>" : "") + "</span></div></a>";
-    }).join("");
-    app.innerHTML = '<header class="top"><div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg></span><div><h1>Trade Debate Desk</h1><p>AI analysts argue about trades. A Judge decides. You choose.</p></div></div>' +
-      '<div class="filters" role="toolbar" aria-label="Filter debates">' + filters + "</div></header>" +
-      '<main class="wrap"><section class="intro"><h2>New here? This is how it works</h2><p>Each row below is a group chat about one possible trade. Open one to read the whole conversation.</p>' +
-      '<div class="how"><div><i style="background:var(--clay-soft);color:var(--clay-ink)">1</i><b>A trade idea</b>For example: buy Bitcoin now, sell it higher later.</div>' +
-      '<div><i style="background:var(--bull-soft);color:var(--bull)">2</i><b>Bull vs Bear</b>Bull Claude argues for it. Bear Claude argues against it.</div>' +
-      '<div><i style="background:var(--judge-soft);color:var(--judge)">3</i><b>3 rounds + a Judge</b>The Judge checks the proof after every round.</div>' +
-      '<div><i style="background:var(--warn-soft);color:var(--warn)">4</i><b>TAKE or SKIP</b>The Judge gives a verdict. You make the final call.</div></div>' +
-      (D.schedule ? '<p class="sched">New debates arrive automatically: ' + esc(D.schedule) + ".</p>" : "") + "</section>" +
-      '<section class="stats" aria-label="Totals"><div><small>Debates</small><b class="num">' + items.length + '</b></div><div><small>Judge said TAKE</small><b class="num" style="color:var(--bull)">' + nT + '</b></div><div><small>Judge said SKIP</small><b class="num" style="color:var(--bear)">' + nS + "</b></div></section>" +
-      trackCard() + lessonsCard() +
-      '<section class="list" aria-label="Debates">' + (rows || '<div class="empty">No debates match this filter yet.</div>') + "</section>" +
-      '<p class="disc">Updated ' + esc(new Date(D.generated_utc).toLocaleString()) + ". Made by AI from free public market data. Not financial advice. This tool never places trades.</p></main>";
+    var fl = [["all", "All"], ["TAKE", "Take"], ["SKIP", "Skip"], ["LIVE", "Live"], ["crypto", "Crypto"], ["us", "US"], ["nse", "NSE"], ["forex", "Forex"]];
+    return '<header><h1>Debates</h1><p class="lead">Each one is a group chat: Bull Claude for the trade, Bear Claude against, the Judge decides.</p></header>' +
+      '<div class="chips" role="toolbar" aria-label="Filter">' + fl.map(function (f) { return '<button class="chip" data-f="' + f[0] + '" aria-pressed="' + (F === f[0]) + '">' + f[1] + "</button>"; }).join("") + "</div>" +
+      '<section class="card" style="padding:8px 14px"><div class="list">' + (list.length ? list.map(debateRow).join("") : '<p class="empty" style="padding:12px 0">No debates match this filter.</p>') + "</div></section>";
   }
-  render();
-  app.addEventListener("click", function (e) {
+
+  function viewMarkets() {
+    var B = D.brief;
+    if (!B) return '<header><h1>Markets</h1></header><section class="card"><p class="empty">The morning brief has not run yet. It runs before NSE (08:45 IST) and US (19:30 IST) opens on weekdays.</p></section>';
+    var mood = (B.mood || []).map(function (m) {
+      return (m.indexes || []).map(function (i) {
+        return '<div class="tile"><small>' + esc(i.name) + '</small><b class="num">' + n(i.price) + "</b><span>" + pct(i.change_today_pct) + ' <span class="note" style="display:inline">' + esc(i.trend === "UP" ? "uptrend" : i.trend === "DOWN" ? "downtrend" : "no clear trend") + "</span></span></div>";
+      }).join("");
+    }).join("");
+    var ev = (B.events || []).map(function (e) { return "<li><span>" + esc(new Date(e.time_utc).toLocaleString([], {weekday: "short", hour: "2-digit", minute: "2-digit"})) + "</span><span>" + esc(e.title) + " · " + esc(e.currency) + (e.tier === 1 ? ' <span class="pill p-warn">major</span>' : "") + "</span></li>"; }).join("");
+    var ov = (B.overnight || []).map(function (o) { return '<div class="tile"><small>' + esc(o.symbol) + '</small><b class="num">' + n(o.price) + "</b>" + pct(o.change_pct) + "</div>"; }).join("");
+    var wl = (B.watchlist || []).map(function (w) {
+      return '<div class="item" style="grid-template-columns:auto minmax(0,1fr) auto"><span class="av m-' + esc(w.market) + '">' + esc(String(w.symbol).split("/")[0].slice(0, 5)) + "</span><div><h3>" + esc(w.symbol) + ' <span class="num" style="font-weight:400">' + n(w.price) + "</span></h3><p>Floor " + n(w.floor) + " · ceiling " + n(w.ceiling) + (w.note ? " · " + esc(w.note) : "") + "</p></div><span class=\"pill " + (w.volatility === "HIGH" || w.volatility === "EXTREME" ? "p-warn" : "p-ok") + '">' + esc(w.volatility || "") + "</span></div>";
+    }).join("");
+    return '<header><h1>Markets</h1><p class="lead">From the brief, ' + esc(ago(B.computed_utc)) + '. <a href="brief.html" style="color:var(--clay-ink)">Open full brief →</a></p></header>' +
+      '<section class="card"><h2>Mood</h2><div class="grid3" style="margin-top:10px">' + (mood || '<p class="empty">No data.</p>') + "</div></section>" +
+      '<section class="card"><h2>Big events, next 24 hours</h2>' + (ev ? '<ul class="kv" style="margin-top:6px">' + ev + "</ul>" : '<p class="empty" style="margin-top:6px">No major events. A calmer day is likely.</p>') + "</section>" +
+      '<section class="card"><h2>Overnight</h2><div class="grid3" style="margin-top:10px">' + ov + "</div></section>" +
+      '<section class="card"><h2>Your watchlist</h2><div class="list" style="margin-top:4px">' + (wl || '<p class="empty" style="padding:8px 0">No active entries. Turn some on in config/watchlist.json, or ask Claude to add them.</p>') + "</div></section>";
+  }
+
+  function curve(p) {
+    var a = (p.desk && p.desk.curve) || [], b = (p.take_everything && p.take_everything.curve) || [];
+    var all = a.concat(b).map(function (c) { return c.balance; });
+    if (all.length < 2) return '<p class="empty">The chart appears once trades have results.</p>';
+    var lo = Math.min.apply(null, all), hi = Math.max.apply(null, all), pad = (hi - lo) * 0.1 || 1;
+    lo -= pad; hi += pad;
+    function path(c, len) { return c.map(function (pt, i) { var x = 10 + i * (300 / Math.max(1, len - 1)), y = 10 + (1 - (pt.balance - lo) / (hi - lo)) * 110; return (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1); }).join(" "); }
+    var len = Math.max(a.length, b.length);
+    var y0 = 10 + (1 - (p.start_capital - lo) / (hi - lo)) * 110;
+    return '<svg class="chart" viewBox="0 0 320 130" role="img" aria-label="Practice account balance over trades"><line x1="10" x2="310" y1="' + y0.toFixed(1) + '" y2="' + y0.toFixed(1) + '" stroke="#e7e4d9" stroke-dasharray="4 4"/>' +
+      (b.length > 1 ? '<path d="' + path(b, len) + '" fill="none" stroke="#c9c6ba" stroke-width="2"/>' : "") +
+      (a.length > 1 ? '<path d="' + path(a, len) + '" fill="none" stroke="#d97757" stroke-width="2.5"/>' : "") + "</svg>" +
+      '<div class="row" style="gap:16px;font-size:12px;color:var(--muted)"><span><span class="dotc" style="background:#d97757"></span> Following the desk</span><span><span class="dotc" style="background:#c9c6ba"></span> Taking every idea</span></div>';
+  }
+  function viewJournal() {
+    var t = D.track || {}, tk = t.take || {}, sk = t.skip || {}, cal = D.calibration || {}, p = D.paper || {}, q = (D.quality && D.quality.agents) || {};
+    var res = items.filter(function (x) { return x.outcome && x.outcome !== "pending"; });
+    return '<header><h1>Journal</h1><p class="lead">What really happened after each decision, after costs. It needs dozens of trades before it proves anything.</p></header>' +
+      '<section class="grid3"><div class="tile"><small>TAKE calls won / lost</small><b class="num"><span class="up">' + (tk.wins || 0) + '</span> / <span class="down">' + (tk.losses || 0) + "</span></b></div>" +
+      '<div class="tile"><small>Good skips</small><b class="num up">' + (sk.losses || 0) + "</b></div>" +
+      '<div class="tile"><small>Missed winners</small><b class="num" style="color:var(--warn)">' + (sk.wins || 0) + "</b></div></section>" +
+      '<section class="card"><div class="between"><h2>Practice account</h2><span class="num" style="font-weight:600">' + esc(p.currency || "") + " " + n(p.desk ? p.desk.balance : null, 0) + "</span></div>" +
+      '<p class="note" style="margin:4px 0 10px">' + esc(p.plain || "") + "</p>" + curve(p) + "</section>" +
+      '<section class="card"><h2>Results</h2><div class="list" style="margin-top:6px">' + (res.length ? res.map(function (x) {
+        var good = (callOf(x) === "SKIP") === ((x.outcome_r || 0) <= 0);
+        return '<a class="item" href="' + esc(x.href) + '"><span class="av m-' + esc(x.market) + '">' + esc(sym(x).slice(0, 5)) + "</span><div><h3>" + esc(x.direction + " " + x.symbol) + "</h3><p>" + esc(callOf(x)) + " · " + esc({target: "target hit", stop: "stop hit", expired: "time ran out", not_filled: "never filled"}[x.outcome] || x.outcome) + "</p></div>" +
+          '<div class="end"><span class="num ' + ((x.outcome_r || 0) >= 0 ? "up" : "down") + '">' + (x.outcome_r != null ? (x.outcome_r >= 0 ? "+" : "") + x.outcome_r + "R" : "–") + '</span><span class="pill ' + (good ? "p-ok" : "p-warn") + '">' + (good ? "Right call" : "Missed") + "</span></div></a>";
+      }).join("") : '<p class="empty">No results yet.</p>') + "</div></section>" +
+      '<section class="card"><h2>How the agents are doing</h2><ul class="kv" style="margin-top:6px">' +
+      "<li><span>The Judge</span><span>" + esc(cal.plain || "–") + "</span></li>" +
+      ["bull", "bear"].map(function (s) { var a = q[s] || {}; return "<li><span>" + (s === "bull" ? "Bull Claude" : "Bear Claude") + "</span><span>" + (a.accuracy_pct != null ? a.accuracy_pct + "% of checked claims correct, " + (a.numbers_wrong || 0) + " wrong numbers caught" : "–") + "</span></li>"; }).join("") +
+      "</ul>" + ((cal.advice || []).length ? '<p class="note" style="margin-top:8px">' + esc(cal.advice.join(" ")) + "</p>" : "") + "</section>";
+  }
+
+  function viewSettings() {
+    var S = D.settings || {};
+    return '<header><h1>Settings</h1><p class="lead">The rules the desk follows. Change them by asking Claude, for example “/trade-settings my NSE capital is 2 lakh”.</p></header>' +
+      '<section class="card"><h2>Your rules</h2><ul class="kv" style="margin-top:6px">' + (S.summary || []).map(function (l) { var i = l.indexOf(":"); return i > 0 ? "<li><span>" + esc(l.slice(0, i)) + "</span><span>" + esc(l.slice(i + 1)) + "</span></li>" : "<li><span>" + esc(l) + "</span></li>"; }).join("") + "</ul></section>" +
+      '<section class="card"><h2>Brokers and costs</h2><p class="note" style="margin:4px 0 6px">Copied from each broker’s official pricing page. Every reward-to-risk number on this site is after these costs.</p><ul class="kv">' +
+      (D.costs || []).map(function (c) { return "<li><span>" + esc(c.market) + '</span><span style="text-align:right">' + esc(c.source) + "</span></li>"; }).join("") + "</ul></section>" +
+      '<section class="card"><h2>Schedule</h2><ul class="kv" style="margin-top:6px"><li><span>Market scans</span><span>' + esc(D.schedule || "–") + "</span></li><li><span>Morning briefs</span><span>Weekdays 08:45 and 19:30 IST</span></li></ul></section>" +
+      '<p class="note" style="text-align:center">AI analysis of free public data. Not financial advice. The desk never places orders.</p>';
+  }
+
+  /* ---------- shell ---------- */
+  function route() { var h = (location.hash || "#now").slice(1); return VIEWS.some(function (v) { return v[0] === h; }) ? h : "now"; }
+  function render() {
+    var r = route();
+    document.getElementById("view").innerHTML = '<div class="view">' + ({now: viewNow, debates: viewDebates, markets: viewMarkets, journal: viewJournal, settings: viewSettings}[r])() + "</div>";
+    var nav = VIEWS.map(function (v) { return '<a class="nav" href="#' + v[0] + '"' + (v[0] === r ? ' aria-current="page"' : "") + ">" + IC[v[0]] + v[1] + "</a>"; }).join("");
+    document.getElementById("sidenav").innerHTML = nav;
+    document.getElementById("tabs").innerHTML = VIEWS.map(function (v) { return '<a href="#' + v[0] + '"' + (v[0] === r ? ' aria-current="page"' : "") + ">" + IC[v[0]] + v[1] + "</a>"; }).join("");
+    var hp = healthPill();
+    document.getElementById("topdot").innerHTML = '<span class="pill ' + hp[0] + '">' + hp[1] + "</span>";
+    document.getElementById("sidefoot").innerHTML = "Updated " + esc(ago(D.generated_utc)) + "<br>" + '<span class="pill ' + hp[0] + '" style="margin-top:6px">' + hp[1] + "</span>";
+    document.title = (r === "now" ? "" : VIEWS.find(function (v) { return v[0] === r; })[1] + " · ") + "Trade Debate Desk";
+  }
+  document.getElementById("m1").innerHTML = IC.mark;
+  document.getElementById("m2").innerHTML = IC.mark;
+  window.addEventListener("hashchange", function () { render(); window.scrollTo(0, 0); });
+  document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-f]"); if (!b) return;
-    F = b.dataset.f; try { localStorage.setItem("td-filter", F); } catch (er) {}
-    render();
+    F = b.dataset.f; render();
   });
+  render();
   if (items.some(function (x) { return x.decision === "LIVE"; }) && D.live_reload) setTimeout(function () { location.reload(); }, 60000);
 })();
 </script>

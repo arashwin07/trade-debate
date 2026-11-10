@@ -225,6 +225,18 @@ td small{display:block;color:var(--muted);font-size:.72rem}
 .reb{border-left:3px solid var(--line);padding-left:10px;margin:0 0 10px;font-size:.88rem}
 .reb em{display:block;font-style:normal;color:var(--muted);font-size:.8rem}
 .disc{font-size:.74rem;color:var(--muted);text-align:center;margin:14px auto 0;max-width:520px}
+details.rnd{display:flex;flex-direction:column}
+details.rnd>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:center;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-block:8px 2px;box-shadow:var(--shadow)}
+details.rnd>summary::-webkit-details-marker{display:none}
+details.rnd>summary:hover{border-color:var(--clay)}
+details.rnd>summary .rn{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--clay-ink)}
+details.rnd>summary .rt{font-size:.9rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+details.rnd>summary .rs{font-size:.78rem;color:var(--muted)}
+details.rnd>summary::after{content:"Open";grid-column:3;font-size:.72rem;color:var(--muted)}
+details.rnd[open]>summary::after{content:"Close"}
+details.rnd[open]{display:flex;flex-direction:column;gap:6px}
+@media (max-width:520px){details.rnd>summary{grid-template-columns:minmax(0,1fr) auto}details.rnd>summary .rt{grid-column:1/-1;white-space:normal}details.rnd>summary .rs{display:none}}
 
 /* desk (code) cards */
 .evstrip{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-top:1px solid var(--line);font-size:.84rem;cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;width:100%;text-align:left}
@@ -391,7 +403,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
   /* ---------- welcome + question ---------- */
   function welcome() {
     var open = true;
-    try { open = localStorage.getItem("td-welcome") !== "closed"; } catch (e) {}
+    try { open = localStorage.getItem("td-welcome") === "open"; } catch (e) { open = false; }
     var how = [
       [I.idea, "var(--clay-soft)", "var(--clay-ink)", "1. A trade idea", "A possible trade: " + dir + " " + base + "."],
       [I.talk, "var(--bull-soft)", "var(--bull)", "2. Two sides argue", "Bull Claude argues FOR it. Bear Claude argues AGAINST it."],
@@ -488,6 +500,39 @@ td small{display:block;color:var(--muted);font-size:.72rem}
 
   /* ---------- final ---------- */
   function decisionOf(v) { var d = String(v.decision || "").toUpperCase(); return d === "TAKE" || d === "BUY" ? "TAKE" : "SKIP"; }
+  /* ---------- final call first (summary on top), rounds folded ---------- */
+  function topCard() {
+    var call, cls, head, sub = "";
+    if (DF) { call = DF.final_call; head = (V && V.headline_plain) || DF.summary_plain; }
+    else if (V) { call = decisionOf(V); head = V.headline_plain || V.summary; sub = "Risk checks still running…"; }
+    else { call = "LIVE"; head = ST.k === "round" ? "Round " + ST.n + " is being argued." : "The Judge is reviewing."; }
+    cls = call === "TAKE" ? "TAKE" : call === "SKIP" ? "SKIP" : "PENDING";
+    var tm = (DF && DF.timemachine && DF.timemachine.mc) || ((R[2] || {}).desk && R[2].desk.timemachine && R[2].desk.timemachine.mc) || null;
+    var rr = DF && DF.sizing ? (DF.sizing.r_after_costs_target1 != null ? DF.sizing.r_after_costs_target1 :
+      (DF.sizing.per_unit_loss_at_stop ? DF.sizing.per_unit_gain_at_target1 / DF.sizing.per_unit_loss_at_stop : null)) : null;
+    var block = DF && (DF.checks || []).filter(function (c) { return c.level === "block"; })[0];
+    var facts = [];
+    if (V && V.confidence != null) facts.push(["Judge is sure", V.confidence + "%"]);
+    if (tm) facts.push(["Target first / stop first", Math.round(tm.p_target * 100) + "% / " + Math.round(tm.p_stop * 100) + "%"]);
+    if (rr != null) facts.push(["Pays vs risk, after costs", rr.toFixed(2) + "x"]);
+    return '<section class="jcard final" id="top" style="margin-top:4px"><div class="jb">' +
+      '<div class="verdict"><div class="stamp ' + cls + '">' + esc(call === "LIVE" ? "LIVE" : call) + "<small>" + (call === "TAKE" ? "Take the trade" : call === "SKIP" ? "Skip the trade" : "Debate running") + "</small></div>" +
+      '<div><p class="lead">' + rich(head || "") + "</p>" + (sub ? '<small style="color:var(--muted)">' + esc(sub) + "</small>" : "") + "</div></div>" +
+      (facts.length ? '<div class="facts">' + facts.map(function (f) { return "<div><small>" + f[0] + '</small><b class="num">' + esc(f[1]) + "</b></div>"; }).join("") + "</div>" : "") +
+      (block ? '<div class="issue"><span class="gp block">Main reason</span><span>' + rich(block.plain) + "</span></div>" : "") +
+      (DF && DF.ticket_plain ? '<div class="ticket"><b>Your ticket · place it yourself</b>' + DF.ticket_plain.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "") +
+      (V && call === "SKIP" && (V.retake_plain) ? '<div class="box change"><h4>What would change the Judge’s mind</h4><p>' + rich(V.retake_plain) + "</p></div>" : "") +
+      '<p style="margin:0;font-size:.82rem;color:var(--muted)">The full debate is below: three rounds, then the Judge’s reasoning and every risk check. Tap a round to open it.</p>' +
+      "</div></section>";
+  }
+  function roundFold(n) {
+    var inner = roundBlock(n); if (!inner) return "";
+    var r = R[n - 1] || {}, x = r.result, live = ST.k !== "done" && (ST.n === n);
+    var sc = x && x.score ? " · Bull " + x.score.bull + " – " + x.score.bear + " Bear" : "";
+    var title = x ? (x.title_plain || "") : live ? "In progress…" : "";
+    return '<details class="rnd" ' + (live || !x ? "open" : "") + '><summary><span class="rn">Round ' + n + " · " + ROUND[n][0] + '</span><span class="rt">' + esc(title) + '</span><span class="rs num">' + esc(sc) + "</span></summary>" + inner + "</details>";
+  }
+
   function finalCard() {
     var h = '<div class="divider" id="final"><span>The Judge\'s final decision</span><small>After checking all three rounds against live data.</small></div>';
     if (!V) {
@@ -513,8 +558,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     var plan = V.plan_plain || planText(V.trade_plan);
     var change = V.retake_plain || V.retake_conditions || V.invalidation || "";
     h += '<section class="jcard final"><div class="jh"><span class="av judge">J</span><div><b>Final conclusion</b><small>The Judge · ' + esc(when(V._written)) + "</small></div></div>" +
-      '<div class="jb"><div class="verdict"><div class="stamp ' + dec + '">' + dec + "<small>" + (dec === "TAKE" ? "Take the trade" : "Skip the trade") + "</small></div>" +
-      '<div class="conf"><p class="lead">' + rich(headline) + '</p><div class="track"><span style="width:' + (+V.confidence || 0) + '%"></span></div><small>How sure the Judge is: <b class="num">' + esc(V.confidence) + "%</b>" + (V.winner ? " · " + (V.winner === "bull" ? "Bull Claude won the debate" : V.winner === "bear" ? "Bear Claude won the debate" : "the debate was close to a draw") : "") + "</small></div></div>" +
+      '<div class="jb"><div class="conf"><div class="track"><span style="width:' + (+V.confidence || 0) + '%"></span></div><small>Ruling: <b>' + dec + '</b> · how sure the Judge is: <b class="num">' + esc(V.confidence) + "%</b>" + (V.winner ? " · " + (V.winner === "bull" ? "Bull Claude won the debate" : V.winner === "bear" ? "Bear Claude won the debate" : "the debate was close to a draw") : "") + "</small></div>" +
       '<div><p class="sec-t">What happened, in simple words</p><div class="read" style="font-family:var(--f-read)">' + paras(explain) + "</div></div>" +
       (rounds ? '<div><p class="sec-t">Round by round</p><div class="rounds">' + rounds + "</div></div>" : "") +
       '<div class="box plan"><h4>' + (dec === "TAKE" ? "The plan, in simple words" : "The trade that was suggested") + "</h4><p>" + rich(plan) + "</p></div>" +
@@ -621,7 +665,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       DF.management.map(function (m) { return "<li><b>When " + esc(m.when) + ":</b> " + rich(m.do) + "</li>"; }).join("") + "</ul></div>";
     return '<div class="divider" id="risk"><span>Risk manager</span><small>Costs, position size and your limits, checked by code.</small></div>' +
       '<section class="dcard" style="width:min(100%,680px)"><div class="dh"><span class="ic">' + I.lock + '</span><div><b>Final call</b><small>Judge: ' + esc(DF.judge_decision) + " · Risk gate: " + esc(DF.gate) + "</small></div></div>" +
-      '<div class="db"><div class="bigcall"><span class="stamp ' + esc(DF.final_call) + '">' + esc(DF.final_call) + '</span><p class="lead" style="margin:0;flex:1;min-width:200px">' + rich(DF.summary_plain) + "</p></div>" +
+      '<div class="db"><div class="bigcall"><p class="lead" style="margin:0;flex:1;min-width:200px">' + rich(DF.summary_plain) + "</p></div>" +
       tk + (sizeTxt ? '<p class="read" style="margin:0;font-size:.9rem">' + sizeTxt + "</p>" : "") +
       '<div><p class="sec-t">Every check</p><div style="display:grid;gap:6px">' + rows + "</div></div></div></section>";
   }
@@ -734,7 +778,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
   /* ---------- render ---------- */
   function render() {
     EV = {}; evN = 0;
-    var chat = welcome() + qcard() + roundBlock(1) + roundBlock(2) + roundBlock(3) + finalCard() + riskCard() + outcomeCard() +
+    var chat = topCard() + qcard() + roundFold(1) + roundFold(2) + roundFold(3) + finalCard() + riskCard() + outcomeCard() + welcome() +
       '<p class="disc">Made by AI from free public market data, which can be up to 15 minutes late for some markets. Not financial advice. This tool never places trades.</p>';
     app.innerHTML = header() + '<main class="chat">' + chat + "</main>" +
       '<footer class="composer">' + I.lock + "Only Bull Claude, Bear Claude and the Judge can send messages. You're here to watch and decide.</footer>";
@@ -746,7 +790,10 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     if (!t) return;
     if (t.dataset.term) termSheet(t.dataset.term);
     else if (t.dataset.ev) evSheet(t.dataset.ev);
-    else if (t.dataset.go) { var el = document.getElementById(t.dataset.go); if (el) el.scrollIntoView({behavior: "smooth", block: "start"}); }
+    else if (t.dataset.go) {
+      var el = document.getElementById(t.dataset.go);
+      if (el) { var fold = el.closest("details"); if (fold) fold.open = true; el.scrollIntoView({behavior: "smooth", block: "start"}); }
+    }
     else {
       var s = t.dataset.sheet;
       if (s === "market") marketSheet(); else if (s === "guide") guideSheet(); else if (s === "judge-tech") judgeTech(); else if (s === "events") eventsSheet();

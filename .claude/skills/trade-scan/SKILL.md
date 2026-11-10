@@ -21,8 +21,9 @@ Work from the project root. Use `python`, falling back to `python3`.
    - `python tools/events.py --market <m> --symbol <s> --style <style>` status BLOCK;
    - `python tools/regime.py <s> --market <m> --style <style>`: calendar CLOSED_HOLIDAY;
    - if `budget.skip_debate_when_optimizer_finds_nothing` is true: `python tools/optimizer.py --symbol <s> --market <m> --direction <d> --style <style>` status NO_PLAN or NO_EDGE (the code found no plan that passes your rules, so a debate would only confirm SKIP).
-6. If nothing is left, report the skipped candidates and reasons (this is a useful answer: "nothing worth debating right now"), commit `debates/_last_scan.json` and `docs/` in the cloud, and stop.
+6. If nothing is left, write `debates/_last_scan_result.json` (format in step 8b, `debated: []`), run `python tools/render.py --index-only`, report the skipped candidates and reasons (this is a useful answer: "nothing worth debating right now"), commit `debates/` and `docs/` in the cloud, and stop.
 7. Tell the user which trades will be debated and why, plus the filtered-out list.
 8. For each pick, one after another, follow `.claude/skills/trade-debate/SKILL.md` exactly (`"mode": "scan"`, `"scan_reason"`).
+8b. Write `debates/_last_scan_result.json` for the dashboard: `{"scanned_utc": "<now>", "debated": [{"symbol", "market", "direction", "id"}], "skipped": [{"symbol", "market", "direction", "reason": "<one plain sentence>"}], "markets_open": [...], "health": "<OK|DEGRADED|DOWN>", "budget_left": n}`.
 9. `python tools/render.py --all`. In the cloud: `git add debates docs && git commit -m "Scan <UTC time>: <TRADE FINAL_CALL, ...>" && git push origin HEAD:main`.
 10. Reply with a short table: proposed trade, market, Judge ruling, risk gate, **final call**, one-line reason, page link; then the filtered-out list; then the budget left today. End with: AI analysis, not financial advice, no orders placed.

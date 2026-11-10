@@ -1,0 +1,19 @@
+{
+  "scanned_utc": "2026-11-10T18:11:24Z",
+  "_note": "Recorded from the cloud run log of the 18:11 UTC scheduled scan.",
+  "debated": [],
+  "skipped": [
+    {"symbol": "AAON", "market": "us", "direction": "LONG", "reason": "The plan optimizer found no plan that passes your rules."},
+    {"symbol": "HIMS", "market": "us", "direction": "SHORT", "reason": "Shorting US stocks is off in your settings."},
+    {"symbol": "EQPT", "market": "us", "direction": "SHORT", "reason": "Shorting US stocks is off in your settings."},
+    {"symbol": "ZEC", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."},
+    {"symbol": "ETH", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."},
+    {"symbol": "SOL", "market": "crypto", "direction": "SHORT", "reason": "Shorting crypto is off in your settings."},
+    {"symbol": "USDCHF", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."},
+    {"symbol": "NZDUSD", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."},
+    {"symbol": "USDCAD", "market": "forex", "direction": "LONG", "reason": "Not a forex pair Indian residents may trade."}
+  ],
+  "markets_open": ["crypto", "us", "forex"],
+  "health": "DEGRADED",
+  "budget_left": 2
+}
