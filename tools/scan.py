@@ -139,6 +139,10 @@ def main():
         except Exception as e:
             notes.append(f"{m}: scan failed ({e})")
 
+    # proposed trade = follow today's move (momentum continuation); Bull defends it, Bear attacks it
+    for c in cands:
+        c["direction"] = "LONG" if c["change_pct"] >= 0 else "SHORT"
+
     # keep market diversity: best of each market first, then fill by score
     best = {}
     for c in sorted(cands, key=lambda x: -x["score"]):

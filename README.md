@@ -1,12 +1,12 @@
 # Trade Debate Desk
 
-Three Claude agents debate a trade on live market data:
+Three Claude agents debate a **proposed trade** (asset + direction, e.g. `LONG BTC/USDT`, `SHORT EURUSD`) on live market data:
 
 | Agent | File | Role |
 |---|---|---|
-| **Bull Claude** | `.claude/agents/bull-claude.md` | Always argues BUY, with cited live evidence. Never switches sides. |
-| **Bear Claude** | `.claude/agents/bear-claude.md` | Always argues SELL / don't buy, with cited live evidence. Never switches sides. |
-| **The Judge** | `.claude/agents/trade-judge.md` | Fact-checks both, scores them, rules **BUY / SELL / NO TRADE** with a trade plan. |
+| **Bull Claude** | `.claude/agents/bull-claude.md` | Always argues **FOR** taking the trade, with cited live evidence. Never switches sides. |
+| **Bear Claude** | `.claude/agents/bear-claude.md` | Always argues **AGAINST** taking the trade, with cited live evidence. Never switches sides. |
+| **The Judge** | `.claude/agents/trade-judge.md` | Fact-checks both, scores them, decides **TAKE** or **SKIP**. |
 
 ## Workflow
 ```
@@ -18,8 +18,16 @@ snapshot (live data + news) ─► R1 Opening  (Bull ∥ Bear)
 ```
 
 ## Commands (open Claude Code in this folder)
-- `/trade-debate BTC` · `/trade-debate AAPL swing` · `/trade-debate RELIANCE intraday nse` · `/trade-debate EURUSD`
-- `/trade-scan` (finds top movers in open markets and debates them) · `/trade-scan crypto,nse 3 swing`
+- `/trade-debate BTC long` · `/trade-debate AAPL short swing` · `/trade-debate RELIANCE long intraday nse` · `/trade-debate EURUSD short entry 1.1230 stop 1.1260`
+- Direction defaults to `long` if you leave it out.
+- `/trade-scan` (finds top movers in open markets, proposes a trade in the direction of the move, debates each) · `/trade-scan crypto,nse 3 swing`
+
+## Adding features
+The project is split so new pieces slot in without rewrites:
+- `tools/` holds data scripts (add a new market or data source here),
+- `.claude/agents/` holds the debaters and the Judge (add a new specialist agent here),
+- `.claude/skills/` holds the workflows (add a new command here),
+- `tools/render.py` turns each `debates/<id>/` folder into the viewer page.
 
 ## Free data sources
 | Market | Prices and indicators | News |

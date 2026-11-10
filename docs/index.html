@@ -46,8 +46,13 @@ h2{font-size:1.25rem}
 .verdict-head{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:22px;align-items:center;border-bottom:1px solid var(--line)}
 .stamp{font:800 clamp(1.6rem,4.5vw,2.4rem)/1 var(--f-display);padding:14px 20px;border-radius:10px;border:3px solid currentColor;
   text-transform:uppercase;letter-spacing:.02em;text-align:center;min-width:150px}
-.stamp.BUY{color:var(--bull);background:var(--bull-soft)} .stamp.SELL{color:var(--bear);background:var(--bear-soft)}
-.stamp.NO{color:var(--judge);background:var(--judge-soft)}
+.stamp.TAKE{color:var(--bull);background:var(--bull-soft)} .stamp.SKIP{color:var(--bear);background:var(--bear-soft)}
+.stamp.PENDING{color:var(--judge);background:var(--judge-soft)}
+.trade-banner{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.trade-banner .t{font:800 1.35rem/1.1 var(--f-display)}
+.dir{font:700 .8rem/1 var(--f-mono);padding:6px 10px;border-radius:6px;letter-spacing:.06em}
+.dir.LONG{color:var(--bull);background:var(--bull-soft)} .dir.SHORT{color:var(--bear);background:var(--bear-soft)}
+.flaws{margin:0;padding-left:18px;font-size:.87rem}
 .stamp small{display:block;font:500 .72rem/1.4 var(--f-mono);letter-spacing:.06em;margin-top:6px}
 .verdict-head p{margin:6px 0 0;max-width:68ch;font-size:1.02rem}
 .conf{height:8px;border-radius:99px;background:var(--line);overflow:hidden;max-width:320px;margin-top:10px}
@@ -112,9 +117,9 @@ td.num{white-space:nowrap}
 @media (prefers-reduced-motion:no-preference){.conf span,.bar span{transition:width .6s ease}}
 </style></head><body>
 <main class="wrap">
-  <header class="top"><div><div class="eyebrow">Bull Claude vs Bear Claude · ruled by the Judge</div><h1>Trade Debate Desk</h1></div>
-  <span class="chip">Updated 2026-11-10 11:12 UTC</span></header>
-  <div class="tbl"><table><thead><tr><th>Time (UTC)</th><th>Asset</th><th>Market</th><th>Style</th><th>Mode</th><th>Price</th><th>Ruling</th><th>Conf.</th><th>Summary</th></tr></thead>
-  <tbody><tr><td class='num'>2026-11-10T11:06:32Z</td><td><a href='d/20261110-1106-BTC.html'><b>BTC/USDT</b></a></td><td>crypto</td><td>intraday</td><td>named</td><td class='num'>74,195.42</td><td><span class='chip judge'>NO TRADE</span></td><td class='num'>78%</td><td class='muted'>Stand aside on BTC/USDT until after the US October CPI release at 13:30 UTC today, about 2h20m away and inside both sides&#x27; 4-8 hour window. The debate is a near-draw (28 vs 29): the bull&#x27;s revised long pays a real 1.8R to VWAP, and the bear&#x27;s short has a valid plan but has not triggered. Re-assess after the print: a reclaim of VWAP near 74,736 favours longs, and a 1h close below 74,091 favours shorts.</td></tr></tbody></table></div>
+  <header class="top"><div><div class="eyebrow">Bull Claude (for) vs Bear Claude (against) · the Judge decides TAKE or SKIP</div><h1>Trade Debate Desk</h1></div>
+  <span class="chip">Updated 2026-11-10 11:22 UTC</span></header>
+  <div class="tbl"><table><thead><tr><th>Time (UTC)</th><th>Proposed trade</th><th>Market</th><th>Style</th><th>Mode</th><th>Price</th><th>Ruling</th><th>Conf.</th><th>Summary</th></tr></thead>
+  <tbody><tr><td class='num'>2026-11-10T11:06:32Z</td><td><a href='d/20261110-1106-BTC.html'><b>LONG BTC/USDT</b></a></td><td>crypto</td><td>intraday</td><td>named</td><td class='num'>74,195.42</td><td><span class='chip bear'>SKIP</span></td><td class='num'>78%</td><td class='muted'>Stand aside on BTC/USDT until after the US October CPI release at 13:30 UTC today, about 2h20m away and inside both sides&#x27; 4-8 hour window. The debate is a near-draw (28 vs 29): the bull&#x27;s revised long pays a real 1.8R to VWAP, and the bear&#x27;s short has a valid plan but has not triggered. Re-assess after the print: a reclaim of VWAP near 74,736 favours longs, and a 1h close below 74,091 favours shorts.</td></tr></tbody></table></div>
   <p class="disc">AI analysis of public data. Not financial advice. No orders are placed.</p>
 </main></body></html>

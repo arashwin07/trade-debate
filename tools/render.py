@@ -64,8 +64,13 @@ h2{font-size:1.25rem}
 .verdict-head{display:grid;grid-template-columns:auto 1fr;gap:20px;padding:22px;align-items:center;border-bottom:1px solid var(--line)}
 .stamp{font:800 clamp(1.6rem,4.5vw,2.4rem)/1 var(--f-display);padding:14px 20px;border-radius:10px;border:3px solid currentColor;
   text-transform:uppercase;letter-spacing:.02em;text-align:center;min-width:150px}
-.stamp.BUY{color:var(--bull);background:var(--bull-soft)} .stamp.SELL{color:var(--bear);background:var(--bear-soft)}
-.stamp.NO{color:var(--judge);background:var(--judge-soft)}
+.stamp.TAKE{color:var(--bull);background:var(--bull-soft)} .stamp.SKIP{color:var(--bear);background:var(--bear-soft)}
+.stamp.PENDING{color:var(--judge);background:var(--judge-soft)}
+.trade-banner{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px}
+.trade-banner .t{font:800 1.35rem/1.1 var(--f-display)}
+.dir{font:700 .8rem/1 var(--f-mono);padding:6px 10px;border-radius:6px;letter-spacing:.06em}
+.dir.LONG{color:var(--bull);background:var(--bull-soft)} .dir.SHORT{color:var(--bear);background:var(--bear-soft)}
+.flaws{margin:0;padding-left:18px;font-size:.87rem}
 .stamp small{display:block;font:500 .72rem/1.4 var(--f-mono);letter-spacing:.06em;margin-top:6px}
 .verdict-head p{margin:6px 0 0;max-width:68ch;font-size:1.02rem}
 .conf{height:8px;border-radius:99px;background:var(--line);overflow:hidden;max-width:320px;margin-top:10px}
@@ -155,8 +160,17 @@ def link(url, text):
     return f'<a href="{e(url)}" target="_blank" rel="noopener">{e(text)}</a>' if url else e(text)
 
 
+LEGACY = {"BUY": "TAKE", "SELL": "SKIP", "NO TRADE": "SKIP"}  # first demo used BUY/SELL/NO TRADE
+
+
+def norm_decision(v):
+    d = str((v or {}).get("decision", "PENDING")).upper().strip()
+    return LEGACY.get(d, d) if d in ("TAKE", "SKIP", "PENDING") or d in LEGACY else d
+
+
 def speech(d, side):
     name = "Bull Claude" if side == "bull" else "Bear Claude"
+    role = "FOR the trade" if side == "bull" else "AGAINST the trade"
     if not d:
         return f'<article class="speech {side}"><div class="who"><b>{name}</b></div><p class="muted">No statement filed for this round.</p></article>'
     ev = "".join(
@@ -165,12 +179,16 @@ def speech(d, side):
     reb = "".join(f'<div><em>{e(x.get("opponent_point"))}</em>{e(x.get("response"))}</div>' for x in d.get("rebuttals") or [])
     p = d.get("plan") or {}
     plan = " · ".join(f"{k.replace('_', ' ')}: {', '.join(v) if isinstance(v, list) else v}" for k, v in p.items() if v)
+    flaws = "".join(f"<li>{e(x)}</li>" for x in d.get("plan_flaws") or [])
+    recon = d.get("conditions_to_reconsider")
     return f"""<article class="speech {side}">
-  <div class="who"><b>{name}</b><span class="chip {side}">{e(d.get('stance'))}</span></div>
+  <div class="who"><b>{name}</b><span class="chip {side}">{role}</span></div>
   <h3>{e(d.get('headline'))}</h3>
   <div class="prose">{paras(d.get('argument'))}</div>
   {f'<div class="reb">{reb}</div>' if reb else ''}
-  {f'<div class="plan">{e(plan)}</div>' if plan else ''}
+  {f'<div class="plan">{"Trade plan" if side == "bull" else "Bear alternative"} · {e(plan)}</div>' if plan else ''}
+  {f'<div><div class="eyebrow">Flaws in the plan</div><ul class="flaws">{flaws}</ul></div>' if flaws else ''}
+  {f'<div class="plan">Would reconsider if: {e(recon)}</div>' if recon else ''}
   <details><summary>Evidence ({len(d.get('evidence') or [])})</summary><ul class="ev">{ev}</ul></details>
 </article>"""
 
@@ -178,8 +196,9 @@ def speech(d, side):
 def scorebars(sc):
     b, r = sc.get("bull") or {}, sc.get("bear") or {}
     rows = ""
-    for k in ["evidence_quality", "data_accuracy", "rebuttal_strength", "plan_quality"]:
-        bv, rv = b.get(k, 0) or 0, r.get(k, 0) or 0
+    for k in ["evidence_quality", "data_accuracy", "rebuttal_strength", "plan_reasoning"]:
+        bv = b.get(k, b.get("plan_quality", 0) if k == "plan_reasoning" else 0) or 0
+        rv = r.get(k, r.get("plan_quality", 0) if k == "plan_reasoning" else 0) or 0
         rows += f'<div class="score-row"><span class="muted">{k.replace("_", " ").capitalize()}</span>' \
                 f'<div class="bar b" title="Bull {bv}/10"><span style="width:{bv*10}%"></span></div>' \
                 f'<div class="bar r" title="Bear {rv}/10"><span style="width:{rv*10}%"></span></div></div>'
@@ -190,22 +209,25 @@ def scorebars(sc):
 def verdict_block(v):
     if not v:
         return '<section class="verdict"><div class="pending">The Judge has not ruled yet. Debate in progress.</div></section>'
-    dec = str(v.get("decision", "NO TRADE")).upper()
-    cls = "BUY" if dec == "BUY" else "SELL" if dec == "SELL" else "NO"
+    dec = norm_decision(v)
+    cls = dec if dec in ("TAKE", "SKIP") else "PENDING"
     tp = v.get("trade_plan") or {}
     kv = "".join(f"<dt>{e(k.replace('_', ' ').capitalize())}</dt><dd>{e(', '.join(val) if isinstance(val, list) else val)}</dd>"
                  for k, val in tp.items() if val)
     risks = "".join(f"<li>{e(x)}</li>" for x in v.get("key_risks") or [])
+    plan_title = "Trade plan" if dec == "TAKE" else "The trade that was proposed"
+    cond_title, cond = ("Invalidation", v.get("invalidation")) if dec == "TAKE" else \
+        ("What would make it worth taking", v.get("retake_conditions") or v.get("invalidation"))
     return f"""<section class="verdict" aria-label="Judge verdict">
   <div class="verdict-head">
-    <div class="stamp {cls}">{e(dec)}<small>Judge's ruling</small></div>
+    <div class="stamp {cls}">{e(dec)}<small>{'Take the trade' if dec == 'TAKE' else 'Skip the trade' if dec == 'SKIP' else "Judge's ruling"}</small></div>
     <div><div class="eyebrow">Confidence {e(v.get('confidence'))}% · winner: {e(v.get('winner'))}</div>
       <div class="conf"><span style="width:{int(v.get('confidence') or 0)}%"></span></div>
       <p>{e(v.get('summary'))}</p></div>
   </div>
   <div class="verdict-body">
-    <section><h2>Trade plan</h2><dl class="kv">{kv}</dl>
-      <h2 style="margin-top:18px">Invalidation</h2><p class="mono" style="margin:6px 0 0;font-size:.88rem">{e(v.get('invalidation'))}</p></section>
+    <section><h2>{plan_title}</h2><dl class="kv">{kv}</dl>
+      <h2 style="margin-top:18px">{cond_title}</h2><p class="mono" style="margin:6px 0 0;font-size:.88rem">{e(cond)}</p></section>
     <section><h2>Scorecard</h2>{scorebars(v.get('scorecard') or {})}
       <h2 style="margin-top:18px">Key risks</h2><ul class="plain">{risks}</ul></section>
   </div>
@@ -241,6 +263,7 @@ def debate_page(folder):
     meta = load(os.path.join(folder, "meta.json")) or {}
     snap = load(os.path.join(folder, "snapshot.json")) or {}
     v = load(os.path.join(folder, "verdict.json"))
+    direction = str(meta.get("direction", "LONG")).upper()
     chg = snap.get("change_24h_pct", snap.get("change_today_pct"))
     chg_lbl = "24h" if "change_24h_pct" in snap else "today"
     rounds = ""
@@ -272,13 +295,16 @@ def debate_page(folder):
       <div class="meta"><span class="chip">{e(snap.get('market_status'))}</span><span class="chip">Snapshot {e(snap.get('snapshot_utc'))}</span>{''.join(f'<span class="chip">{e(x)}</span>' for x in extra)}</div>
     </div>
   </header>
-  {f'<p class="muted" style="margin:0">Picked by the scanner: {e(meta.get("scan_reason"))}</p>' if meta.get('scan_reason') else ''}
+  <section class="trade-banner" aria-label="Proposed trade"><span class="eyebrow">Proposed trade</span>
+    <span class="dir {e(direction)}">{e(direction)}</span><span class="t">{e(snap.get('symbol', meta.get('symbol')))}</span>
+    <span class="muted">Bull Claude argues to take it · Bear Claude argues to skip it · the Judge decides</span>
+    {f'<span class="muted">Picked by the scanner: {e(meta.get("scan_reason"))}</span>' if meta.get('scan_reason') else ''}</section>
   {verdict_block(v)}
   <section style="display:grid;gap:12px"><h2>Live evidence both sides argued from</h2>{tf_table(snap)}</section>
   {rounds}
   {checks_table(v)}
   {f'<section style="display:grid;gap:12px"><h2>Headlines in the snapshot</h2><div class="news">{news}</div></section>' if news else ''}
-  <p class="disc">Bull Claude and Bear Claude argue fixed sides by design. The Judge's ruling is AI analysis of public market data and news. It is not licensed financial advice, prices may be delayed, and this workflow never places orders. You make and execute your own trades.</p>
+  <p class="disc">Bull Claude (for the trade) and Bear Claude (against the trade) argue fixed sides by design. The Judge's TAKE or SKIP ruling is AI analysis of public market data and news. It is not licensed financial advice, prices may be delayed, and this workflow never places orders. You make and execute your own trades.</p>
 </main>"""
     return title, body
 
@@ -297,18 +323,19 @@ def index_page():
             meta = load(os.path.join(f, "meta.json")) or {}
             snap = load(os.path.join(f, "snapshot.json")) or {}
             v = load(os.path.join(f, "verdict.json")) or {}
-            dec = str(v.get("decision", "PENDING")).upper()
-            cls = "bull" if dec == "BUY" else "bear" if dec == "SELL" else "judge"
-            rows.append(f"<tr><td class='num'>{e(meta.get('created_utc', d))}</td><td><a href='d/{e(d)}.html'><b>{e(snap.get('symbol', meta.get('symbol')))}</b></a></td>"
+            dec = norm_decision(v) if v else "PENDING"
+            cls = "bull" if dec == "TAKE" else "bear" if dec == "SKIP" else "judge"
+            trade = f"{str(meta.get('direction', 'LONG')).upper()} {snap.get('symbol', meta.get('symbol'))}"
+            rows.append(f"<tr><td class='num'>{e(meta.get('created_utc', d))}</td><td><a href='d/{e(d)}.html'><b>{e(trade)}</b></a></td>"
                         f"<td>{e(snap.get('market'))}</td><td>{e(snap.get('style'))}</td><td>{e(meta.get('mode'))}</td><td class='num'>{fmt_num(snap.get('price'))}</td>"
                         f"<td><span class='chip {cls}'>{e(dec)}</span></td><td class='num'>{e(v.get('confidence', ''))}%</td><td class='muted'>{e(v.get('summary', ''))}</td></tr>")
     body = f"""<title>Trade Debate Desk</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 {FONTS}<style>{CSS}</style>
 <main class="wrap">
-  <header class="top"><div><div class="eyebrow">Bull Claude vs Bear Claude · ruled by the Judge</div><h1>Trade Debate Desk</h1></div>
+  <header class="top"><div><div class="eyebrow">Bull Claude (for) vs Bear Claude (against) · the Judge decides TAKE or SKIP</div><h1>Trade Debate Desk</h1></div>
   <span class="chip">Updated {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}</span></header>
-  <div class="tbl"><table><thead><tr><th>Time (UTC)</th><th>Asset</th><th>Market</th><th>Style</th><th>Mode</th><th>Price</th><th>Ruling</th><th>Conf.</th><th>Summary</th></tr></thead>
+  <div class="tbl"><table><thead><tr><th>Time (UTC)</th><th>Proposed trade</th><th>Market</th><th>Style</th><th>Mode</th><th>Price</th><th>Ruling</th><th>Conf.</th><th>Summary</th></tr></thead>
   <tbody>{''.join(rows) or '<tr><td colspan="9" class="muted">No debates yet. Run /trade-debate or /trade-scan.</td></tr>'}</tbody></table></div>
   <p class="disc">AI analysis of public data. Not financial advice. No orders are placed.</p>
 </main>"""
