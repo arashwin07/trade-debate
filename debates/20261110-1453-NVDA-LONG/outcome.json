@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T17:58:31Z",
+  "checked_utc": "2026-11-10T18:11:12Z",
   "call": "SKIP",
   "judge_decision": "SKIP",
   "plan": {
@@ -11,8 +11,10 @@
       180.2
     ]
   },
-  "status": "pending",
-  "r": null,
-  "plain": "Waiting for the price to reach the entry.",
+  "status": "target",
+  "r": 1.5,
+  "filled_utc": "2026-11-10T18:00:00Z",
+  "closed_utc": "2026-11-10T18:00:00Z",
+  "plain": "Reached the first target before the stop: a gain of 1.50x the risk.",
   "window_end_utc": "2026-11-10T23:45:10Z"
 }

@@ -1,79 +1,151 @@
 {
-  "scanned_utc": "2026-11-10T12:22:11Z",
+  "scanned_utc": "2026-11-10T18:11:24Z",
   "open_markets": [
     "crypto",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped",
     "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "NZDUSD",
-      "market": "forex",
-      "change_pct": 1.3,
-      "score": 13.528,
-      "why": "+1.30% today",
+      "symbol": "AAON",
+      "market": "us",
+      "change_pct": 21.05,
+      "score": 32.482,
+      "why": "+21.05% today, volume 2.5x 3-month average (day gainers)",
       "direction": "LONG"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -5.15,
-      "score": 6.437,
-      "why": "-5.15% in 24h on $156M Binance volume",
-      "direction": "SHORT"
-    }
-  ],
-  "all_ranked": [
-    {
-      "symbol": "NZDUSD",
-      "market": "forex",
-      "change_pct": 1.3,
-      "score": 13.528,
-      "why": "+1.30% today",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "EURUSD",
-      "market": "forex",
-      "change_pct": 0.64,
-      "score": 6.632,
-      "why": "+0.64% today",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -5.15,
-      "score": 6.437,
-      "why": "-5.15% in 24h on $156M Binance volume",
+      "change_pct": -11.48,
+      "score": 15.52,
+      "why": "-11.48% in 24h on $249M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "AUDUSD",
+      "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.6,
-      "score": 6.24,
-      "why": "+0.60% today",
+      "change_pct": 0.78,
+      "score": 8.128,
+      "why": "+0.78% today",
       "direction": "LONG"
     },
     {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": -2.06,
-      "score": 2.551,
-      "why": "-2.06% in 24h on $148M Binance volume",
+      "symbol": "HIMS",
+      "market": "us",
+      "change_pct": -18.88,
+      "score": 31.582,
+      "why": "-18.88% today, volume 3.7x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EQPT",
+      "market": "us",
+      "change_pct": -20.6,
+      "score": 29.064,
+      "why": "-20.60% today, volume 1.6x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -1.35,
-      "score": 1.99,
-      "why": "-1.35% in 24h on $402M Binance volume",
+      "change_pct": -4.71,
+      "score": 7.697,
+      "why": "-4.71% in 24h on $665M Binance volume",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": 0.67,
+      "score": 6.976,
+      "why": "+0.67% today",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOL",
+      "market": "crypto",
+      "change_pct": -5.02,
+      "score": 6.589,
+      "why": "-5.02% in 24h on $210M Binance volume",
+      "direction": "SHORT"
+    }
+  ],
+  "all_ranked": [
+    {
+      "symbol": "AAON",
+      "market": "us",
+      "change_pct": 21.05,
+      "score": 32.482,
+      "why": "+21.05% today, volume 2.5x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "HIMS",
+      "market": "us",
+      "change_pct": -18.88,
+      "score": 31.582,
+      "why": "-18.88% today, volume 3.7x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EQPT",
+      "market": "us",
+      "change_pct": -20.6,
+      "score": 29.064,
+      "why": "-20.60% today, volume 1.6x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -11.48,
+      "score": 15.52,
+      "why": "-11.48% in 24h on $249M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "USDCHF",
+      "market": "forex",
+      "change_pct": 0.78,
+      "score": 8.128,
+      "why": "+0.78% today",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -4.71,
+      "score": 7.697,
+      "why": "-4.71% in 24h on $665M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": 0.67,
+      "score": 6.976,
+      "why": "+0.67% today",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOL",
+      "market": "crypto",
+      "change_pct": -5.02,
+      "score": 6.589,
+      "why": "-5.02% in 24h on $210M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "USDCAD",
+      "market": "forex",
+      "change_pct": 0.5,
+      "score": 5.152,
+      "why": "+0.50% today",
+      "direction": "LONG"
     }
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "computed_utc": "2026-11-10T17:58:33Z",
+  "computed_utc": "2026-11-10T18:11:13Z",
   "currency": "USD",
   "start_capital": 100000,
   "risk_per_trade_pct": 1.0,
@@ -18,11 +18,11 @@
     ]
   },
   "take_everything": {
-    "trades": 4,
-    "wins": 1,
+    "trades": 5,
+    "wins": 2,
     "losses": 3,
-    "balance": 98323.31,
-    "return_pct": -1.68,
+    "balance": 99798.16,
+    "return_pct": -0.2,
     "max_drawdown_pct": 2.97,
     "curve": [
       {
@@ -52,8 +52,14 @@
         "balance": 98323.31,
         "id": "20261110-1355-ETH-LONG",
         "r": 1.333
+      },
+      {
+        "t": "2026-11-10T18:00:00Z",
+        "balance": 99798.16,
+        "id": "20261110-1453-NVDA-LONG",
+        "r": 1.5
       }
     ]
   },
-  "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -1.68%."
+  "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -0.20%."
 }
