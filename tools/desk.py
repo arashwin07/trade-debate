@@ -182,34 +182,62 @@ def round_trip_cost(market, style, long, entry, exit_price, qty, costs, pip=0.00
     b = {}
     if market == "crypto":
         c = costs["crypto"]
-        b["exchange_fees"] = (buy_val + sell_val) * c["fee_pct_per_side"] / 100
+        fees = (buy_val + sell_val) * c["fee_pct_per_side"] / 100
+        b["exchange_fees"] = fees
+        b["gst"] = fees * c.get("gst_pct", 0) / 100
         b["slippage"] = (buy_val + sell_val) * c["slippage_pct_per_side"] / 100
     elif market == "us":
         c = costs["us"]
-        b["commission"] = 2 * c["commission_per_order"]
+
+        def brokerage(v):
+            x = v * c["brokerage_pct"] / 100
+            if c.get("brokerage_max_per_order"):
+                x = min(x, c["brokerage_max_per_order"])
+            return max(x, c.get("brokerage_min_per_order", 0)) if v > 0 else 0.0
+        brk = brokerage(buy_val) + brokerage(sell_val)
+        b["brokerage"] = brk
+        b["gst"] = brk * c.get("gst_pct", 0) / 100
         b["sec_fee"] = sell_val * c["sec_fee_pct_on_sell"] / 100
+        b["ifsca_fee"] = (buy_val + sell_val) * c.get("ifsca_fee_pct", 0) / 100
         b["slippage"] = (buy_val + sell_val) * c["slippage_pct_per_side"] / 100
     elif market == "nse":
         c = costs["nse_swing" if style == "swing" else "nse_intraday"]
         brk = sum(min(v * c["brokerage_pct"] / 100, c["brokerage_cap_per_order"]) if c["brokerage_cap_per_order"] else v * c["brokerage_pct"] / 100
                   for v in (buy_val, sell_val))
         txn = (buy_val + sell_val) * c["exchange_txn_pct"] / 100
+        clr = (buy_val + sell_val) * c.get("clearing_pct", 0) / 100
         sebi = (buy_val + sell_val) * c["sebi_pct"] / 100
         b["brokerage"] = brk
         b["stt"] = sell_val * c.get("stt_pct_sell", 0) / 100 + buy_val * c.get("stt_pct_buy", 0) / 100
         b["exchange_txn"] = txn
+        b["clearing"] = clr
         b["sebi"] = sebi
         b["stamp_duty"] = buy_val * c["stamp_pct_buy"] / 100
-        b["gst"] = (brk + txn + sebi) * c["gst_pct"] / 100
+        b["gst"] = (brk + txn + clr + sebi) * c["gst_pct"] / 100
         b["dp_charge"] = c.get("dp_charge_per_sell", 0)
         b["slippage"] = (buy_val + sell_val) * c["slippage_pct_per_side"] / 100
     elif market == "forex":
         c = costs["forex"]
+        brk = (buy_val + sell_val) * c.get("brokerage_pct", 0) / 100
+        txn = (buy_val + sell_val) * c.get("exchange_txn_pct", 0) / 100
+        clr = (buy_val + sell_val) * c.get("clearing_pct", 0) / 100
+        sebi = (buy_val + sell_val) * c.get("sebi_pct", 0) / 100
+        b["brokerage"] = brk
+        b["exchange_txn"] = txn
+        b["clearing"] = clr
+        b["sebi"] = sebi
+        b["stamp_duty"] = buy_val * c.get("stamp_pct_buy", 0) / 100
+        b["gst"] = (brk + txn + clr + sebi) * c.get("gst_pct", 0) / 100
         b["spread"] = c["spread_pips"] * pip * qty
         b["slippage"] = 2 * c["slippage_pips"] * pip * qty
-        b["commission_inr_converted_later"] = 0.0  # fixed per-order fee is in account currency, added in size()
     total = sum(b.values())
     return total, {k: round(v, 4) for k, v in b.items()}
+
+
+def after_tax(gain, market, costs):
+    """Profit you keep after a flat tax that cannot be offset by losses (Indian crypto). Losses are unchanged."""
+    t = costs.get(market, {}).get("tax_on_gains_pct", 0) if isinstance(costs.get(market), dict) else 0
+    return gain * (1 - t / 100) if gain > 0 and t else gain
 
 
 # ---------------------------------------------------------------- 3. size
@@ -232,14 +260,16 @@ def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_us
         out["notes"].append(f"Could not fetch the {inst}->{acct['currency']} rate; money amounts shown in {inst}.")
     out["fx_rate"] = rate
     conv = rate or 1.0
-    fixed_fee = 2 * cfg["costs"]["forex"]["commission_per_order"] if market == "forex" else 0.0  # account ccy
+    fixed_fee = 2 * cfg["costs"]["forex"].get("commission_per_order", 0.0) if market == "forex" else 0.0  # account ccy
     # cost per unit at the stop and at target 1 (linear part only)
     c_stop, _ = round_trip_cost(market, style, long, e, s, 1.0, cfg["costs"], pip)
     c_tgt, _ = round_trip_cost(market, style, long, e, t1, 1.0, cfg["costs"], pip)
     if not capital:
         out.update({"status": "NO_CAPITAL", "qty": None,
                     "per_unit_loss_at_stop": round((per_unit_risk + c_stop) * conv, 6),
-                    "per_unit_gain_at_target1": round((abs(t1 - e) - c_tgt) * conv, 6)})
+                    "per_unit_gain_at_target1": round(after_tax((abs(t1 - e) - c_tgt) * conv, market, cfg["costs"]), 6)})
+        if after_tax(1.0, market, cfg["costs"]) < 1.0:
+            out["notes"].append(f"Gains shown after {cfg['costs'][market]['tax_on_gains_pct']}% tax on profits (losses cannot be offset).")
         out["notes"].append("Capital is not set in config/desk.json, so no position size was calculated.")
         return out
     budget = capital * risk_cfg["risk_per_trade_pct"] / 100
@@ -271,7 +301,7 @@ def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_us
     total_stop, br_stop = round_trip_cost(market, style, long, e, s, qty, cfg["costs"], pip)
     total_t1, br_t1 = round_trip_cost(market, style, long, e, t1, qty, cfg["costs"], pip)
     loss_at_stop = (per_unit_risk * qty + total_stop) * conv + fixed_fee
-    gain_at_t1 = (abs(t1 - e) * qty - total_t1) * conv - fixed_fee
+    gain_at_t1 = after_tax((abs(t1 - e) * qty - total_t1) * conv - fixed_fee, market, cfg["costs"])
     out.update({
         "status": "OK" if qty > 0 else "TOO_SMALL", "qty": qty, "qty_step": step, "limited_by": limiter,
         "risk_budget": round(budget, 2), "position_value": round(qty * e * conv, 2),

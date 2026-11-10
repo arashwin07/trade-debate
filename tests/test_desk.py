@@ -53,26 +53,50 @@ class PlanCheck(unittest.TestCase):
 
 
 class Costs(unittest.TestCase):
-    def test_crypto(self):
+    def test_crypto_coindcx_c2c(self):
+        # CoinDCX USDT pairs: 0.17% per side + 18% GST on the fee, + 0.02% slippage per side
         total, b = desk.round_trip_cost("crypto", "intraday", True, 2000, 2100, 1.0, CFG["costs"])
-        self.assertAlmostEqual(b["exchange_fees"], (2000 + 2100) * 0.001, places=6)
-        self.assertAlmostEqual(total, (2000 + 2100) * 0.0012, places=6)
+        self.assertAlmostEqual(b["exchange_fees"], 4100 * 0.0017, places=4)
+        self.assertAlmostEqual(b["gst"], 4100 * 0.0017 * 0.18, places=4)
+        self.assertAlmostEqual(total, 4100 * (0.0017 * 1.18 + 0.0002), places=4)
 
-    def test_nse_intraday_zerodha_style(self):
+    def test_crypto_tax_on_profit_only(self):
+        self.assertAlmostEqual(desk.after_tax(100.0, "crypto", CFG["costs"]), 68.8)  # 31.2% tax on profit
+        self.assertEqual(desk.after_tax(-50.0, "crypto", CFG["costs"]), -50.0)       # losses are not reduced
+        self.assertEqual(desk.after_tax(100.0, "nse", CFG["costs"]), 100.0)           # no flat tax modelled for stocks
+
+    def test_us_indmoney_plan_a_cap(self):
+        # 100 shares at 400: 0.25% = $100 per order, capped at $25 -> $50 brokerage + 18% GST
+        _, b = desk.round_trip_cost("us", "intraday", True, 400, 404, 100, CFG["costs"])
+        self.assertAlmostEqual(b["brokerage"], 50.0)
+        self.assertAlmostEqual(b["gst"], 9.0)
+        self.assertAlmostEqual(b["sec_fee"], 40400 * 0.0000206, places=4)
+        # small order: 2 shares at 100 -> 0.25% = $0.50 per order, under the cap
+        _, b2 = desk.round_trip_cost("us", "intraday", True, 100, 101, 2, CFG["costs"])
+        self.assertAlmostEqual(b2["brokerage"], 0.5 + 0.505, places=6)
+
+    def test_nse_intraday_enrich(self):
         # 100 shares at 1000 -> 1010 : buy value 100,000, sell value 101,000
         total, b = desk.round_trip_cost("nse", "intraday", True, 1000, 1010, 100, CFG["costs"])
-        self.assertAlmostEqual(b["brokerage"], 40.0)                 # 0.03% = 30 / 30.3 per order, capped at 20 each
-        self.assertAlmostEqual(b["stt"], 101000 * 0.00025, places=6)  # 0.025% on the sell side
-        self.assertAlmostEqual(b["stamp_duty"], 100000 * 0.00003, places=6)
-        self.assertAlmostEqual(b["gst"], (40 + 201000 * 0.0000297 + 201000 * 0.000001) * 0.18, places=3)  # breakdown is rounded to 4 dp
+        self.assertAlmostEqual(b["brokerage"], 201000 * 0.0002, places=4)    # 0.02% each side, no cap
+        self.assertAlmostEqual(b["stt"], 101000 * 0.00025, places=4)         # 0.025% on the sell side
+        self.assertAlmostEqual(b["clearing"], 201000 * 0.000025, places=4)
+        self.assertAlmostEqual(b["stamp_duty"], 100000 * 0.00003, places=4)
+        self.assertAlmostEqual(b["gst"], (40.2 + 201000 * 0.0000297 + 201000 * 0.000025 + 201000 * 0.000001) * 0.18, places=3)
+
+    def test_nse_delivery_enrich(self):
+        _, b = desk.round_trip_cost("nse", "swing", True, 1000, 1050, 10, CFG["costs"])
+        self.assertAlmostEqual(b["brokerage"], (10000 + 10500) * 0.002, places=4)  # 0.2% delivery brokerage
+        self.assertAlmostEqual(b["dp_charge"], 20.5)
 
     def test_nse_short_sells_first(self):
         _, b = desk.round_trip_cost("nse", "intraday", False, 1000, 990, 100, CFG["costs"])
         self.assertAlmostEqual(b["stt"], 100000 * 0.00025, places=6)  # the sell happens at the entry price
 
-    def test_forex_spread(self):
+    def test_forex_enrich_currency_futures(self):
         _, b = desk.round_trip_cost("forex", "intraday", True, 83.2, 83.4, 1000, CFG["costs"], pip=0.0001)
         self.assertAlmostEqual(b["spread"], 1.0 * 0.0001 * 1000)
+        self.assertAlmostEqual(b["brokerage"], (83200 + 83400) * 0.0002, places=4)  # 0.02% of contract value
 
 
 class Sizing(unittest.TestCase):

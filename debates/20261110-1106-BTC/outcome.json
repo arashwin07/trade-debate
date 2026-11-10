@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T19:08:11Z",
+  "checked_utc": "2026-11-10T20:04:05Z",
   "call": "SKIP",
   "judge_decision": "NO TRADE",
   "plan": {
@@ -12,12 +12,12 @@
     ]
   },
   "status": "stop",
-  "r": -1.646,
+  "r": -2.188,
   "filled_utc": "2026-11-10T11:30:00Z",
   "closed_utc": "2026-11-10T13:30:00Z",
   "targets_hit_before_stop": 0,
   "plain": "Hit the safety exit (stop-loss) first: a loss of 1x the risk.",
   "r_gross": -1.0,
-  "cost_r": 0.646,
+  "cost_r": 1.188,
   "window_end_utc": "2026-11-10T19:12:21Z"
 }

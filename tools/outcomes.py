@@ -132,7 +132,7 @@ def update(folder, now=None):
             cost, _ = desk.round_trip_cost(market, style, long, plan["entry"], exit_px, 1.0, desk.config()["costs"], desk.pip_size(market, data_symbol))
             res["r_gross"] = res["r"]
             res["cost_r"] = round(cost / abs(plan["entry"] - plan["stop"]), 3)
-            res["r"] = round(res["r"] - res["cost_r"], 3)
+            res["r"] = round(desk.after_tax(res["r"] - res["cost_r"], market, desk.config()["costs"]), 3)  # profits after tax where it applies
         except Exception as e:
             res["cost_note"] = f"costs not applied ({type(e).__name__})"
     out.update(res)

@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T19:08:12Z",
+  "checked_utc": "2026-11-10T20:04:05Z",
   "call": "SKIP",
   "judge_decision": "SKIP",
   "plan": {
@@ -12,11 +12,11 @@
     ]
   },
   "status": "target",
-  "r": 1.095,
+  "r": 0.616,
   "filled_utc": "2026-11-10T14:10:00Z",
   "closed_utc": "2026-11-10T15:00:00Z",
   "plain": "Reached the first target before the stop: a gain of 1.33x the risk.",
   "r_gross": 1.333,
-  "cost_r": 0.238,
+  "cost_r": 0.437,
   "window_end_utc": "2026-11-10T22:05:20Z"
 }

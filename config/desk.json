@@ -1,5 +1,5 @@
 {
-  "_read_me": "YOUR settings. The desk sizes positions and blocks trades using these numbers. capital = null means 'not set': sizing then shows per-unit risk only and the risk gate warns. Costs are typical published rates (Nov 2026); check them against your own broker's charges page.",
+  "_read_me": "YOUR settings. The desk sizes positions and blocks trades using these numbers. capital = null means 'not set': sizing then shows per-unit risk only and the risk gate warns. Costs below were copied on 2026-11-11 from each broker's official pricing page (coindcx.com/fees, indmoney.com/pricing, enrichmoney.in/pricing). Re-check them if your broker announces a change.",
   "owner": {
     "residence": "IN",
     "utc_offset_minutes": 330
@@ -8,22 +8,22 @@
     "crypto": {
       "currency": "USD",
       "capital": null,
-      "broker": "Binance (spot)"
+      "broker": "CoinDCX (USDT pairs)"
     },
     "us": {
       "currency": "USD",
       "capital": null,
-      "broker": ""
+      "broker": "INDmoney (Plan A)"
     },
     "nse": {
       "currency": "INR",
       "capital": null,
-      "broker": "Zerodha"
+      "broker": "Enrich Money (Orca)"
     },
     "forex": {
       "currency": "INR",
       "capital": null,
-      "broker": "NSE currency derivatives"
+      "broker": "Enrich Money (Orca), NSE currency futures"
     }
   },
   "risk": {
@@ -53,39 +53,61 @@
   },
   "costs": {
     "crypto": {
-      "fee_pct_per_side": 0.1,
-      "slippage_pct_per_side": 0.02
+      "_source": "CoinDCX spot crypto-to-crypto (C2C) pairs, Regular level: 0.17% maker and taker, +18% GST on fees",
+      "fee_pct_per_side": 0.17,
+      "gst_pct": 18.0,
+      "slippage_pct_per_side": 0.02,
+      "tds_pct_on_sell": 1.0,
+      "_tds_note": "1% TDS on sells is not a cost (credited against your tax) but it ties up cash until you file your return",
+      "tax_on_gains_pct": 31.2,
+      "_tax_note": "India VDA rules as understood on 2026-11-11: 30% tax + 4% cess on crypto profits, losses cannot be set off. Confirm with your CA."
     },
     "us": {
-      "commission_per_order": 0.0,
-      "sec_fee_pct_on_sell": 0.00278,
-      "slippage_pct_per_side": 0.02
+      "_source": "INDmoney Plan A: 0.25% per trade (max $25), +18% GST; SEC 0.00206% on sells; IFSCA turnover fee 0.005% incl. GST; FINRA TAF waived to 2026-12-31",
+      "brokerage_pct": 0.25,
+      "brokerage_min_per_order": 0.0,
+      "brokerage_max_per_order": 25.0,
+      "gst_pct": 18.0,
+      "sec_fee_pct_on_sell": 0.00206,
+      "ifsca_fee_pct": 0.005,
+      "slippage_pct_per_side": 0.02,
+      "_fx_note": "INR<->USD conversion cost is paid when you deposit or withdraw, not on each trade, so it is not counted per trade"
     },
     "nse_intraday": {
-      "brokerage_pct": 0.03,
-      "brokerage_cap_per_order": 20.0,
+      "_source": "Enrich Money equity intraday: 0.02% brokerage, STT 0.025% sell, NSE txn 0.00297%, clearing 0.0025%, SEBI 0.0001%, stamp 0.003% buy, GST 18%",
+      "brokerage_pct": 0.02,
+      "brokerage_cap_per_order": 0.0,
       "stt_pct_sell": 0.025,
       "exchange_txn_pct": 0.00297,
+      "clearing_pct": 0.0025,
       "sebi_pct": 0.0001,
       "stamp_pct_buy": 0.003,
       "gst_pct": 18.0,
       "slippage_pct_per_side": 0.02
     },
     "nse_swing": {
-      "brokerage_pct": 0.0,
+      "_source": "Enrich Money equity delivery: 0.2% brokerage, STT 0.1% both sides, NSE txn 0.00297%, clearing 0.0025%, SEBI 0.0001%, stamp 0.015% buy, DP Rs15 + Rs5.50 CDSL per sell, GST 18%",
+      "brokerage_pct": 0.2,
       "brokerage_cap_per_order": 0.0,
       "stt_pct_buy": 0.1,
       "stt_pct_sell": 0.1,
       "exchange_txn_pct": 0.00297,
+      "clearing_pct": 0.0025,
       "sebi_pct": 0.0001,
       "stamp_pct_buy": 0.015,
       "gst_pct": 18.0,
-      "dp_charge_per_sell": 15.93,
+      "dp_charge_per_sell": 20.5,
       "slippage_pct_per_side": 0.02
     },
     "forex": {
+      "_source": "Enrich Money NSE currency futures: 0.02% brokerage, NSE txn 0.0009%, clearing 0.0015%, SEBI 0.0001%, stamp 0.0001% buy, GST 18%, no STT",
+      "brokerage_pct": 0.02,
+      "exchange_txn_pct": 0.0009,
+      "clearing_pct": 0.0015,
+      "sebi_pct": 0.0001,
+      "stamp_pct_buy": 0.0001,
+      "gst_pct": 18.0,
       "spread_pips": 1.0,
-      "commission_per_order": 20.0,
       "slippage_pips": 0.5
     }
   },

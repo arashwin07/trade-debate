@@ -84,7 +84,7 @@ def optimize(symbol, market, direction, style="intraday", folder=None):
     for c in cands:
         c_stop, _ = desk.round_trip_cost(market, style, long, c["entry"], c["stop"], 1.0, cfg["costs"], pip)
         c_tgt, _ = desk.round_trip_cost(market, style, long, c["entry"], c["target"], 1.0, cfg["costs"], pip)
-        r_net = (abs(c["target"] - c["entry"]) - c_tgt) / (abs(c["entry"] - c["stop"]) + c_stop)
+        r_net = desk.after_tax(abs(c["target"] - c["entry"]) - c_tgt, market, cfg["costs"]) / (abs(c["entry"] - c["stop"]) + c_stop)
         c["r_after_costs"] = round(r_net, 3)
         c["cost_r"] = round(c_stop / abs(c["entry"] - c["stop"]), 3)  # round-trip costs in units of the risk
         c["stop_in_atr"] = round(abs(c["entry"] - c["stop"]) / atr, 2)
