@@ -130,9 +130,14 @@ def main():
             elif m == "us":
                 cands += scan_us(a.top)
             elif m == "nse":
-                cands += scan_watchlist(NIFTY50, "nse", ".NS", a.top)
+                nse = scan_watchlist(NIFTY50, "nse", ".NS", a.top)
+                if not nse:
+                    notes.append("nse: no data returned (Yahoo Finance unreachable? check network allowlist)")
+                cands += nse
             elif m == "forex":
                 fx = scan_watchlist(FX, "forex", "=X", a.top)
+                if not fx:
+                    notes.append("forex: no data returned (Yahoo Finance unreachable? check network allowlist)")
                 for c in fx:  # forex moves are small; scale so they compete fairly with stocks/crypto
                     c["score"] = round(c["score"] * 8, 3)
                 cands += fx

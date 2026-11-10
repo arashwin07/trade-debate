@@ -39,6 +39,11 @@ The project is split so new pieces slot in without rewrites:
 
 Yahoo data can be delayed up to 15 minutes on some exchanges; every page shows the data timestamp.
 
+## Cloud network allowlist
+The cloud environment must be allowed to reach these hosts (claude.ai/code → environment settings → network access):
+`api.binance.com`, `data-api.binance.vision`, `fapi.binance.com`, `query1.finance.yahoo.com`, `feeds.finance.yahoo.com`, `news.google.com`, `api.alternative.me`
+(plus general web access for the agents' news research).
+
 ## 24/7
 Push this folder to a GitHub repo, enable GitHub Pages on `/docs`, and create a Claude Code cloud routine that runs `/trade-scan` on a schedule. Results are committed to the repo and visible on the Pages site from any device, with your PC off.
 
