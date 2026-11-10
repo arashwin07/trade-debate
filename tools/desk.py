@@ -428,6 +428,25 @@ def risk_gate(plan, facts, plan_issues, sz, snap, ev, tm, market, style, data_sy
         age = (now_utc() - last).total_seconds() / 60
         if age > r["max_data_age_minutes_intraday"] and status.startswith("OPEN"):
             add("stale_data", "block", f"The newest price data is {age:.0f} minutes old. Too old to trade on.")
+    pc = snap.get("price_check") or {}
+    if style == "intraday" and status.startswith("OPEN"):
+        d = pc.get("data_delay_minutes")
+        if d is not None and d > r["max_data_age_minutes_intraday"]:
+            add("stale_data", "block", f"The last trade we can see is {d:.0f} minutes old. Too old to trade on.")
+        elif d is not None and d >= r.get("warn_data_delay_minutes", 10):
+            add("data_delay", "warn", f"Our free price feed is about {d:.0f} minutes behind. Check the live price in your broker app before entering; "
+                "the entry, stop and target may need to move.")
+    diff = pc.get("second_source_diff_pct")
+    tv_lag = ((pc.get("second_source") or {}).get("feed_delay_minutes") or 0) - (pc.get("data_delay_minutes") or 0)
+    if diff is not None and status.startswith("OPEN") and tv_lag >= 5:  # second source is behind ours: a gap can be just its delay
+        if diff > r.get("block_price_mismatch_pct", 1.0):
+            add("price_mismatch", "warn", f"Our price and TradingView's {tv_lag:.0f}-minute-delayed price differ by {diff:.2f}%. "
+                "Part of that is its delay, but check the live price in your broker app before entering.")
+    elif diff is not None and status.startswith("OPEN"):
+        if diff > r.get("block_price_mismatch_pct", 1.0):
+            add("price_mismatch", "block", f"Two price sources disagree by {diff:.2f}%. Something is off with the data, so no trade.")
+        elif diff > r.get("warn_price_mismatch_pct", 0.3):
+            add("price_mismatch", "warn", f"Two price sources disagree by {diff:.2f}%. Check the live price in your broker app.")
     # events
     if ev:
         lvl = {"BLOCK": "block", "CAUTION": "warn"}.get(ev.get("status"), "pass")

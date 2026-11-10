@@ -24,7 +24,10 @@ CHECKS = [
     ("Yahoo forex", True, "forex", "https://query1.finance.yahoo.com/v8/finance/chart/EURUSD=X?interval=1d&range=5d", {}),
     ("TradingView calendar", True, "all", None, {"Origin": "https://in.tradingview.com", "Referer": "https://in.tradingview.com/"}),
     ("ForexFactory calendar (backup)", False, "all", "https://nfs.faireconomy.media/ff_calendar_thisweek.json", {}),
-    ("Nasdaq earnings", False, "us", None, {}),
+    ("TradingView scanner (earnings + 2nd price)", False, "us,nse", "https://scanner.tradingview.com/india/scan",
+     {"Origin": "https://in.tradingview.com", "Referer": "https://in.tradingview.com/", "Content-Type": "application/json",
+      "_body": '{"symbols":{"tickers":["NSE:RELIANCE"]},"columns":["close","earnings_release_next_date"]}'}),
+    ("Nasdaq earnings (US backup)", False, "us", None, {}),
     ("Fear & Greed index", False, "crypto", "https://api.alternative.me/fng/?limit=1", {}),
     ("Binance futures funding", False, "crypto", "https://fapi.binance.com/fapi/v1/premiumIndex?symbol=BTCUSDT", {}),
     ("Google News", False, "all", "https://news.google.com/rss/search?q=stock+market&hl=en-US&gl=US&ceid=US:en", {}),
@@ -40,16 +43,18 @@ def url_for(name):
     if name == "TradingView calendar":
         a = now.strftime("%Y-%m-%dT00:00:00.000Z")
         return f"https://economic-calendar.tradingview.com/events?from={a}&to={a.replace('T00', 'T23')}&countries=US,IN"
-    if name == "Nasdaq earnings":
+    if name.startswith("Nasdaq earnings"):
         return f"https://api.nasdaq.com/api/calendar/earnings?date={now.strftime('%Y-%m-%d')}"
 
 
 def check(item):
     name, critical, market, url, extra = item
     url = url or url_for(name)
+    extra = dict(extra); body = extra.pop("_body", None)
     t0 = time.time()
     try:
-        with urllib.request.urlopen(urllib.request.Request(url, headers={**UA, **extra}), timeout=15) as r:
+        req = urllib.request.Request(url, data=body.encode() if body else None, headers={**UA, **extra})
+        with urllib.request.urlopen(req, timeout=15) as r:
             body = r.read(200000)
         ok = len(body) >= 2  # Binance ping legitimately answers "{}"
         note = f"{len(body)} bytes"

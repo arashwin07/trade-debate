@@ -43,6 +43,9 @@
       "LEANS_STOP"
     ],
     "max_data_age_minutes_intraday": 30,
+    "warn_data_delay_minutes": 10,
+    "warn_price_mismatch_pct": 0.3,
+    "block_price_mismatch_pct": 1.0,
     "allow_short": {
       "crypto": false,
       "us": false,

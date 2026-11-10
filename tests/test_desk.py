@@ -169,6 +169,19 @@ class Gate(unittest.TestCase):
         self.assertEqual(self.base(plan=short, market="nse", sym="RELIANCE.NS", style="intraday")[0], "PASS")
         self.assertEqual(self.base(plan=short, market="nse", sym="RELIANCE.NS", style="swing")[0], "BLOCK")
 
+    def test_data_delay_and_price_mismatch(self):
+        snap = lambda pc: {"market_status": "OPEN", "timeframes": [], "price_check": pc}
+        g = lambda pc: self.base(market="nse", sym="RELIANCE.NS", snap=snap(pc))
+        self.assertEqual(g({"data_delay_minutes": 1})[0], "PASS")
+        res = g({"data_delay_minutes": 15})
+        self.assertEqual(res[0], "PASS")  # a warning, not a block
+        self.assertIn("data_delay", str(res))
+        self.assertEqual(g({"data_delay_minutes": 45})[0], "BLOCK")
+        tv0 = {"feed_delay_minutes": 0}; tv15 = {"feed_delay_minutes": 15}
+        self.assertEqual(g({"data_delay_minutes": 0, "second_source": tv0, "second_source_diff_pct": 2.0})[0], "BLOCK")
+        self.assertEqual(g({"data_delay_minutes": 0, "second_source": tv15, "second_source_diff_pct": 2.0})[0], "PASS")  # delayed source: warn only
+        self.assertEqual(g({"data_delay_minutes": 0, "second_source": tv0, "second_source_diff_pct": 0.1})[0], "PASS")
+
     def test_india_forex_rules(self):
         self.assertEqual(self.base(market="forex", sym="AUDUSD=X")[0], "BLOCK")
         self.assertEqual(self.base(market="forex", sym="USDINR=X")[0], "PASS")

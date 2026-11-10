@@ -281,6 +281,43 @@ def snapshot_crypto(sym, display, style):
     return out
 
 
+def tradingview_quote(market, sym):
+    """Second price source for US/NSE: TradingView's public scanner. It also says how delayed its own feed is."""
+    base = sym.upper().split(".")[0]
+    tickers = [f"NSE:{base}"] if market == "nse" else [f"NASDAQ:{base}", f"NYSE:{base}", f"AMEX:{base}"]
+    body = json.dumps({"symbols": {"tickers": tickers}, "columns": ["close", "update_mode", "last_bar_update_time"]}).encode()
+    req = urllib.request.Request(f"https://scanner.tradingview.com/{'india' if market == 'nse' else 'america'}/scan", data=body,
+                                 headers={**UA, "Content-Type": "application/json", "Origin": "https://in.tradingview.com", "Referer": "https://in.tradingview.com/"})
+    with urllib.request.urlopen(req, timeout=15) as f:
+        rows = json.loads(f.read()).get("data") or []
+    if not rows:
+        return None
+    close, mode, upd = rows[0]["d"]
+    delay = None
+    if isinstance(mode, str) and mode.startswith("delayed_streaming_"):
+        delay = int(mode.rsplit("_", 1)[1]) // 60
+    return {"source": "TradingView scanner", "ticker": rows[0]["s"], "price": close, "feed": mode,
+            "feed_delay_minutes": delay if delay is not None else (0 if mode == "streaming" else None),
+            "last_update_utc": iso(upd) if upd else None}
+
+
+def price_check(market, sym, price, is_open, last_trade_ts):
+    """How old is our price, and does a second source agree? Measured, not assumed."""
+    out = {"data_delay_minutes": round((time.time() - last_trade_ts) / 60, 1) if (is_open and last_trade_ts) else None,
+           "delay_note": None if is_open else "Market closed: delay can only be measured while the market is open."}
+    if market not in ("us", "nse"):
+        return out
+    try:
+        tv = tradingview_quote(market, sym)
+    except Exception as e:
+        tv, out["second_source_error"] = None, type(e).__name__
+    if tv:
+        out["second_source"] = tv
+        if price and tv.get("price"):
+            out["second_source_diff_pct"] = round(abs(price / tv["price"] - 1) * 100, 3)
+    return out
+
+
 def snapshot_yahoo(market, sym, style):
     plan = [("5m", "5d", True), ("15m", "1mo", False), ("1h", "3mo", False)] if style == "intraday" else [("1h", "3mo", False), ("1d", "1y", False), ("1wk", "5y", False)]
 
@@ -317,7 +354,8 @@ def snapshot_yahoo(market, sym, style):
         "last_trade_utc": iso(meta["regularMarketTime"]) if meta.get("regularMarketTime") else None,
         "market_status": status,
         "data_source": "Yahoo Finance chart API" + (" (NSE India)" if market == "nse" else ""),
-        "note": "Yahoo data for some exchanges can be delayed up to 15 min; check last_trade_utc.",
+        "note": "Yahoo data for some exchanges can be delayed up to 15 min; see price_check.data_delay_minutes.",
+        "price_check": price_check(market, sym, price, is_open and market != "forex", meta.get("regularMarketTime")),
         "timeframes": tfs,
     }
 

@@ -183,16 +183,49 @@ class AuditFixes(unittest.TestCase):
         finally:
             events.macro_events = orig
 
+    def _fail(self, *a, **k):
+        raise OSError("blocked")
+
     def test_earnings_unknown_blocks_us_swing(self):
         import events
-        om, oe = events.macro_events, events.earnings_events
+        om, oe, ot = events.macro_events, events.earnings_events, events.tradingview_earnings
         events.macro_events = lambda *a, **k: ([], [])
+        events.tradingview_earnings = self._fail
         events.earnings_events = lambda *a, **k: ([], ["Earnings calendar for 2026-11-11 unavailable (HTTPError)."])
-        try:
+        try:  # both earnings sources down
             self.assertEqual(events.guard("us", "AAPL", "swing")["status"], "BLOCK")
             self.assertEqual(events.guard("us", "AAPL", "intraday")["status"], "CAUTION")
+            self.assertEqual(events.guard("nse", "RELIANCE", "swing")["status"], "BLOCK")  # NSE has no backup source
         finally:
-            events.macro_events, events.earnings_events = om, oe
+            events.macro_events, events.earnings_events, events.tradingview_earnings = om, oe, ot
+
+    def test_earnings_backup_source_used(self):
+        import events
+        from datetime import datetime, timedelta, timezone
+        om, oe, ot = events.macro_events, events.earnings_events, events.tradingview_earnings
+        soon = (datetime.now(timezone.utc) + timedelta(days=3)).strftime("%Y-%m-%dT%H:%M:%SZ")
+        events.macro_events = lambda *a, **k: ([], [])
+        events.tradingview_earnings = self._fail
+        events.earnings_events = lambda *a, **k: ([{"kind": "earnings", "title": "AAPL earnings report", "currency": "USD", "impact": "High",
+                                                   "time_utc": soon, "minutes_from_now": 4320, "forecast": None, "previous": None}], [])
+        try:  # TradingView down, Nasdaq finds the report -> still blocks the swing trade
+            self.assertEqual(events.guard("us", "AAPL", "swing")["status"], "BLOCK")
+        finally:
+            events.macro_events, events.earnings_events, events.tradingview_earnings = om, oe, ot
+
+    def test_nse_results_block_swing(self):
+        import events
+        from datetime import datetime, timedelta, timezone
+        om, ot = events.macro_events, events.tradingview_earnings
+        soon = datetime.now(timezone.utc) + timedelta(days=2)
+        events.macro_events = lambda *a, **k: ([], [])
+        events.tradingview_earnings = lambda s, m, st, en, now: ([{"kind": "earnings", "title": "TCS quarterly results", "currency": "INR",
+                                                                   "impact": "High", "time_utc": soon.strftime("%Y-%m-%dT%H:%M:%SZ"),
+                                                                   "minutes_from_now": 2880, "forecast": None, "previous": None}], True)
+        try:
+            self.assertEqual(events.guard("nse", "TCS", "swing")["status"], "BLOCK")
+        finally:
+            events.macro_events, events.tradingview_earnings = om, ot
 
     def gate(self, **extra):
         plan = {"direction": "LONG", "entry": 100, "stop": 98, "targets": [104]}

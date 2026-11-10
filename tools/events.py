@@ -63,7 +63,7 @@ def currencies_for(market, symbol):
     if market == "forex" and len(s) >= 6:
         return {s[:3], s[3:6]}, []
     if market == "nse":
-        return {"USD", "INR"}, ["NSE company results dates are not in the free calendar: check them on the web (Moneycontrol, NSE announcements)."]
+        return {"USD", "INR"}, []
     if market == "crypto":
         return {"USD"}, ["Token unlocks and exchange listings are not in the free calendar: check them on the web."]
     return {"USD"}, []
@@ -143,6 +143,31 @@ def macro_events(curr, start, end, now):
     return uniq, notes
 
 
+def tradingview_earnings(symbol, market, start, end, now):
+    """Primary earnings source (reachable from the cloud): TradingView's screener gives the next report date
+    for US and NSE stocks. Returns (events, found) where found=False means the symbol was not recognised."""
+    sym = symbol.upper().split(".")[0]
+    tickers = [f"NSE:{sym}"] if market == "nse" else [f"NASDAQ:{sym}", f"NYSE:{sym}", f"AMEX:{sym}"]
+    body = json.dumps({"symbols": {"tickers": tickers}, "columns": ["earnings_release_next_date"]}).encode()
+    req = urllib.request.Request(f"https://scanner.tradingview.com/{'india' if market == 'nse' else 'america'}/scan", data=body,
+                                 headers={**UA, "Content-Type": "application/json", "Origin": "https://in.tradingview.com",
+                                          "Referer": "https://in.tradingview.com/"})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        rows = json.loads(r.read()).get("data") or []
+    out = []
+    for row in rows:
+        ts = (row.get("d") or [None])[0]
+        if not isinstance(ts, (int, float)):
+            continue
+        t = datetime.fromtimestamp(ts, timezone.utc)
+        if start - timedelta(hours=12) <= t <= end:
+            out.append({"kind": "earnings", "title": f"{sym} {'quarterly results' if market == 'nse' else 'earnings report'}",
+                        "currency": "INR" if market == "nse" else "USD", "impact": "High",
+                        "time_utc": t.strftime("%Y-%m-%dT%H:%M:%SZ"), "minutes_from_now": round((t - now).total_seconds() / 60),
+                        "forecast": None, "previous": None, "source": "TradingView"})
+    return out, bool(rows)
+
+
 def earnings_events(symbol, start, end, now):
     sym = symbol.upper().split(".")[0]
     out, notes = [], []
@@ -172,10 +197,19 @@ def guard(market, symbol, style="intraday", hours=None, now=None):
     curr, notes = currencies_for(market, symbol)
     events, n1 = macro_events(curr, start, end, now)
     notes += n1
-    if market == "us":
-        e2, n2 = earnings_events(symbol, now, end, now)
-        events += e2
-        notes += n2
+    if market in ("us", "nse"):
+        try:
+            e2, found = tradingview_earnings(symbol, market, now, end, now)
+            if not found:
+                raise LookupError("symbol not found on TradingView")
+            events += e2
+        except Exception as e:
+            if market == "us":  # backup source for US stocks
+                e2, n2 = earnings_events(symbol, now, end, now)
+                events += e2
+                notes += n2
+            else:
+                notes.append(f"Earnings calendar for {symbol} unavailable ({type(e).__name__}): NSE results date could not be checked.")
     events.sort(key=lambda x: x["time_utc"])
     for e in events:
         e["tier"] = 1 if e["kind"] == "earnings" or TIER1.search(e["title"] or "") else 2 if e["impact"] == "High" else 3
@@ -185,7 +219,7 @@ def guard(market, symbol, style="intraday", hours=None, now=None):
     t1_just = [e for e in events if e["tier"] == 1 and -LOOKBACK_MIN <= e["minutes_from_now"] < 0]
     t2_ahead = [e for e in ahead if e["tier"] == 2]
     unknown = any(n.startswith("Economic calendar unavailable") for n in notes)
-    earnings_unknown = market == "us" and any(n.startswith("Earnings calendar for") for n in notes)
+    earnings_unknown = market in ("us", "nse") and any(n.startswith("Earnings calendar for") for n in notes)
     blocking = earn_ahead if style == "swing" else t1_ahead
     if unknown:  # never treat "could not check" as "nothing scheduled"
         status = "BLOCK"
@@ -221,7 +255,8 @@ def guard(market, symbol, style="intraday", hours=None, now=None):
         "checked_utc": now.strftime("%Y-%m-%dT%H:%M:%SZ"), "market": market, "symbol": symbol, "style": style,
         "window_utc": [start.strftime("%Y-%m-%dT%H:%M:%SZ"), end.strftime("%Y-%m-%dT%H:%M:%SZ")],
         "currencies": sorted(curr), "status": status, "plain": plain, "events": events, "notes": notes,
-        "sources": ["TradingView economic calendar (ForexFactory as backup)"] + (["Nasdaq earnings calendar"] if market == "us" else []),
+        "sources": ["TradingView economic calendar (ForexFactory as backup)"] + (["TradingView earnings dates (Nasdaq as backup)"] if market == "us"
+                                                                                else ["TradingView NSE results dates"] if market == "nse" else []),
     }
 
 
