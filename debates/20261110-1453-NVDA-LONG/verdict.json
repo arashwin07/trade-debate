@@ -1,0 +1,52 @@
+{
+  "decision": "SKIP",
+  "confidence": 85,
+  "winner": "bear",
+  "headline_plain": "Skip it: the payoff looks fine on paper, but in 10,000 replays the price almost never reached the profit goal before the safety exit.",
+  "explain_plain": "The idea was to buy Nvidia today after it fell about 4.5%, hoping it bounces back before the market closes. Bull said the fall is only about worry over the boss, not the business, because every other chip company went up on Monday. Bear said the worry is still open, the price is still sliding, and surprise news about the boss can come at any minute. The news facts both sides used checked out, and Bull fixed his plan so a win pays $1.50 for every $1 he could lose. But when the desk replayed the rest of the day 10,000 times, the profit goal came first only about 3 times in 1,000, while the safety exit came first about 21 times in 100. Because the odds point toward losing, the answer is skip.",
+  "plan_plain": "The trade was: buy Nvidia at about $170.70. If it fell to $166.90, sell to stop losing more (about $3.80 a share). Take profit at $176.40, then $180.20, and close everything before the market shuts today at 21:00 UTC.",
+  "retake_plain": "Look again if the price climbs back above today's average price (about $172) and stays there for an hour with more and more shares trading, or if the company's board says the boss is cleared. Then the desk's replays would also need to show the profit goal coming first about as often as the safety exit.",
+  "summary": "Bull's final plan (170.70 / 166.90 / 176.40, 180.20) passes the desk's 1.5R reward rule and the stop is ~1x 1h ATR (0.99x, stop_tight warn), but the Time Machine is STRONG_STOP: 0.33% target-first vs 21.4% stop-first, avg -0.31R, history 0/59 target vs 6/59 stop. Bear also wins the scorecard 27-22, so two TAKE conditions fail. SKIP.",
+  "reasoning": "Two TAKE gates fail. First, the scorecard: Bull 22 vs Bear 27, so Bull does not beat Bear at all, let alone by 3. Second and decisive, desk_r3 Time Machine on the final plan (entry 170.70, stop 166.90, T1 176.40, T2 180.20, 315-minute window to the close): target-first 0.33%, stop-first 21.38%, neither 78.3%, avg R -0.307, P(green at close) 28.9%; real history 0 target / 6 stop / 53 neither of 59. Lean STRONG_STOP. At 1.5R the target needs ~40% of decided paths; it got ~2%.\n\nThe other gates pass or nearly pass: desk R multiples 1.5 and 2.5; stop 0.99x the 1h ATR (3.8564), flagged stop_tight but at the ~1x threshold; market open with fresh data; events.json CLEAR (only tier-3 macro). Live re-check at 15:44Z: 170.31 (-4.68%), day low 170.12 intact, entry 170.70 reachable. 1h RSI 26.8, 1h MACD histogram -0.47 and still falling, EMA9 < EMA21 on 5m/15m/1h, price below session VWAP 172.03. No sign of a turn.\n\nFact checks: the Yahoo article confirms NVDA was the only chip stock down Monday (close 178.62, -4.3%), AMD ~+4%, Broadcom ~+3%, SOX 'more than 6.8%', and the board probe. The Yahoo UK article confirms IG +432%, HL 8:1, II +274%, but gives no institutional data, so Bull's 'institutions also buying' is anecdotal. Bull's R3 errors: stop 1.04x ATR (desk 0.99x) and his own replay (0.2% / 14.1%) understated the stop-first rate (desk 21.4%); R1 used the 5m ATR. Bear's R3 numbers described Bull's R2 plan (stale) but the conclusion holds on the final plan. Bull's honesty in R3 was credited; his case rests on an unscheduled fear-fade catalyst the data does not show.",
+  "scorecard": {
+    "bull": {"evidence_quality": 6, "data_accuracy": 5, "rebuttal_strength": 6, "plan_reasoning": 5, "total": 22},
+    "bear": {"evidence_quality": 7, "data_accuracy": 7, "rebuttal_strength": 7, "plan_reasoning": 6, "total": 27}
+  },
+  "claim_checks": [
+    {"by": "bull", "round": 1, "claim": "NVDA was the only chip stock down Monday; AMD ~+4%, Broadcom ~+3%, SOX >+6.8%", "status": "verified", "note": "Yahoo article opened: 'only chip stock in the red', close 178.62 (-4.3%), SOX 'more than 6.8%'.", "note_plain": "Correct, the article says exactly that."},
+    {"by": "bull", "round": 1, "claim": "Board opened an independent probe into CEO Huang", "status": "verified", "note": "Confirmed in the Yahoo article.", "note_plain": "Correct."},
+    {"by": "bull", "round": 1, "claim": "UK retail buying: IG +432%, HL 8 buyers per seller, II +274%; institutions also buying", "status": "verified", "note": "Retail figures confirmed in the Yahoo UK article; institutional buying is a quote only, no data.", "note_plain": "The shop-buyer numbers are right, but 'big funds also bought' is just one person's comment."},
+    {"by": "bull", "round": 1, "claim": "Stop 169.40 is ~1.1x ATR", "status": "wrong", "note": "Used 5m ATR; desk_r1 0.36x of the 1h ATR.", "note_plain": "Wrong: measured against the normal hourly swing, the exit was far too close."},
+    {"by": "bull", "round": 2, "claim": "Time Machine on R2 plan: stop first 26%, target first 4.7%", "status": "verified", "note": "desk_r2: 26.0% / 4.8%.", "note_plain": "Correct."},
+    {"by": "bull", "round": 3, "claim": "Final plan pays 1.5R and 2.5R", "status": "verified", "note": "desk_r3 r_multiple_gross [1.5, 2.5].", "note_plain": "Correct, the payoff rule is met."},
+    {"by": "bull", "round": 3, "claim": "Stop is ~1.04x the 1h ATR", "status": "wrong", "note": "desk_r3 stop_in_atr 0.99 (ATR 3.8564), stop_tight warn.", "note_plain": "Slightly off: the desk says just under one normal hourly swing."},
+    {"by": "bull", "round": 3, "claim": "Replay: target first 0.2%, stop first 14.1%", "status": "wrong", "note": "desk_r3: 0.33% target-first, 21.38% stop-first; same STRONG_STOP lean.", "note_plain": "The desk found the exit gets hit more often than Bull said."},
+    {"by": "bull", "round": 3, "claim": "Price ~170.72, day low 170.12 holding, 5m RSI risen from 25 to 31", "status": "verified", "note": "Re-check 15:44Z: 170.31, low 170.12 intact, 5m RSI 30.3.", "note_plain": "Correct; the fall has slowed but not turned."},
+    {"by": "bear", "round": 1, "claim": "Price below EMAs/SMAs on all timeframes; 1h MACD histogram falling", "status": "verified", "note": "Snapshot and 15:44Z re-check: EMA9<EMA21 on all three, 1h hist -0.47 vs -0.44.", "note_plain": "Correct, the charts still point down."},
+    {"by": "bear", "round": 1, "claim": "1h ATR 3.86; tight stops get hit by noise", "status": "verified", "note": "Snapshot 1h ATR 3.8564; desk used it.", "note_plain": "Correct."},
+    {"by": "bear", "round": 1, "claim": "52-week low 164.27", "status": "verified", "note": "Matches snapshot and re-check.", "note_plain": "Correct."},
+    {"by": "bear", "round": 1, "claim": "Shareholder lawsuit, possible subpoena, Polymarket 18%", "status": "unverifiable", "note": "Bear withdrew these in R2 as single-source/snippet claims.", "note_plain": "Not proven, and Bear dropped them himself."},
+    {"by": "bear", "round": 2, "claim": "Earnings Nov 17, House briefing Nov 18", "status": "unverifiable", "note": "From CNBC/247WallSt summaries; both outside the intraday window either way.", "note_plain": "Not checked directly, and they fall after this trade would end anyway."},
+    {"by": "bear", "round": 3, "claim": "Bull's plan: target first 4.76%, stop first 26.03%", "status": "stale", "note": "Correct for the R2 plan; final plan per desk_r3 is 0.33% / 21.38%.", "note_plain": "Right numbers for Bull's older plan; the final plan is even less likely to reach its goal."},
+    {"by": "bear", "round": 3, "claim": "Price under session VWAP ~172.05", "status": "verified", "note": "Re-check VWAP 172.03 vs price 170.31.", "note_plain": "Correct, the price is below today's average."}
+  ],
+  "trade_plan": {"direction": "LONG", "entry": "170.70", "stop_loss": "166.90", "targets": ["176.40", "180.20"], "risk_reward": "1:1.5 and 1:2.5 (desk)", "timeframe": "intraday, exit before the 21:00 UTC close on 2026-11-10", "risk_rule": "Risk no more than 1% of trading capital on this idea."},
+  "trade_plan_numbers": {"direction": "LONG", "entry": 170.7, "stop": 166.9, "targets": [176.4, 180.2]},
+  "retake_conditions": "Price reclaims session VWAP (~172.0) and the 5m EMA21 (~173.0) and holds for ~1h on rising volume with the 1h MACD histogram turning up, or the board publishes a clearing statement; and a re-run Time Machine on a plan with >=1.5R to T1 and stop >=1x 1h ATR no longer leans toward the stop (target-first roughly equal to stop-first).",
+  "invalidation": "",
+  "key_risks": [
+    "Time Machine STRONG_STOP: 0.33% target-first vs 21.4% stop-first, avg -0.31R; history 0/59 target",
+    "Unscheduled headline risk from the board probe and congressional chip-limit push; gap through stop possible",
+    "Downtrend on 5m/15m/1h, price below VWAP, 1h MACD histogram still falling",
+    "Stop at 0.99x 1h ATR flagged stop_tight; 52-week low 164.27 only ~2.6 below the stop",
+    "Replay built on 60 mostly falling days; a fear-fade bounce is possible but unsupported by data"
+  ],
+  "key_risks_plain": [
+    "In 10,000 practice replays the profit goal almost never came first, but the safety exit often did.",
+    "Surprise news about the boss could come at any time and move the price fast.",
+    "The price is still going down on every chart and is below today's average price.",
+    "The safety exit is only about one normal hourly wiggle away, so ordinary moves could hit it.",
+    "A bounce could still happen, but nothing in the data shows it starting yet."
+  ],
+  "data_freshness": "Snapshot at 14:53Z (170.64); desk_r3 at 15:42Z (170.41); judge re-check at 15:44Z: 170.31 (-4.68%), day low 170.12 intact, 1h ATR 3.67, entry 170.70 still reachable. Market open until 21:00Z."
+}

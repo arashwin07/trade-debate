@@ -1,0 +1,22 @@
+{
+  "round": 3,
+  "leader": "bear",
+  "score": {"bull": 5, "bear": 7},
+  "title_plain": "Bear wins Round 3: the new goals pay more but are almost never reached",
+  "summary_plain": "Bull moved the plan so the first goal pays $1.50 for each $1 risked, which meets the desk's rule, and he honestly said the replays do not favor him. The desk's replays say the first goal comes first in about 3 of 1,000 tries, while the safety exit comes first in about 21 of 100, and in 59 real past days the goal was never hit first. Bear was right that the odds lean against the trade, though most of his numbers described Bull's older plan.",
+  "best_point_plain": {
+    "bull": "Bull was honest: he fixed the reward rule, admitted the odds test still fails, and said to keep it small or wait for a climb back over $172.",
+    "bear": "Even with a wider exit, the goal is rarely reached in the replays or in real history, and the CEO news can bring a surprise any minute that no calendar shows."
+  },
+  "checks": [
+    {"by": "bull", "claim": "New plan pays 1.5x and 2.5x the risk (entry 170.70, stop 166.90, targets 176.40 and 180.20)", "status": "verified", "note_plain": "The desk agrees: 1.5x and 2.5x. The rule is met on paper."},
+    {"by": "bull", "claim": "Stop is about 1.04x the hourly ATR (3.645)", "status": "wrong", "note_plain": "The desk gets 0.99x using a normal hourly swing of 3.86, and still calls the exit a little tight."},
+    {"by": "bull", "claim": "Time Machine on new plan: target first 0.2%, stop first 14.1%", "status": "wrong", "note_plain": "The desk's own replay says 0.3% target first and 21.4% stop first. The lean is the same (against the trade), but the exit is hit more often than Bull said."},
+    {"by": "bull", "claim": "Price about 170.72, day low 170.12 holding, 5-minute RSI up from 25 to 31", "status": "verified", "note_plain": "Matches Bear's fresh numbers (170.79, RSI 32) and the desk's live price of 170.41. The fall has slowed but not turned."},
+    {"by": "bear", "claim": "Bull's plan: stop 167.20, targets 174.80 and 178.60, first goal first 4.76%, stop first 26.03%", "status": "stale", "note_plain": "These numbers are right for Bull's Round 2 plan, but his final plan is different. The final plan's numbers are even worse for reaching the goal (0.3%)."},
+    {"by": "bear", "claim": "In 59 real past days the first goal was never hit first", "status": "verified", "note_plain": "The desk's history for the final plan also shows 0 target and 6 stop out of 59, so the point still holds."},
+    {"by": "bear", "claim": "Only chip stock down Monday (SOX +6.8%); board probe has no findings", "status": "unverifiable", "note_plain": "Both sides quote the same news summaries, but nothing in the desk's data confirms them. They are not what decides this round."},
+    {"by": "bear", "claim": "Event guard CLEAR but the CEO probe is on no calendar", "status": "verified", "note_plain": "The desk shows only small scheduled items today, so a surprise headline is a real risk the calendar cannot see."}
+  ],
+  "watch_next_plain": "The final ruling should weigh whether any plan can pass both the reward rule and the odds test, since the desk shows the goal almost never comes first."
+}

@@ -1,0 +1,202 @@
+{
+  "computed_utc": "2026-11-10T15:45:10Z",
+  "judge_decision": "SKIP",
+  "plan": {
+    "direction": "LONG",
+    "entry": 170.7,
+    "stop": 166.9,
+    "targets": [
+      176.4,
+      180.2
+    ]
+  },
+  "price_at_gate": 169.5,
+  "market_status": "OPEN (NMS, regular session 2026-11-10T14:30:00Z to 2026-11-10T21:00:00Z)",
+  "plan_check": {
+    "direction": "LONG",
+    "entry": 170.7,
+    "stop": 166.9,
+    "targets": [
+      176.4,
+      180.2
+    ],
+    "risk_per_unit": 3.8,
+    "reward_per_unit": [
+      5.7,
+      9.5
+    ],
+    "r_multiple_gross": [
+      1.5,
+      2.5
+    ],
+    "stop_distance_pct": 2.226,
+    "live_price": 169.5,
+    "entry_distance_pct": 0.708,
+    "atr": 3.7306,
+    "atr_timeframe": "1h",
+    "stop_in_atr": 1.02,
+    "entry_distance_in_atr": 0.32
+  },
+  "sizing": {
+    "account_currency": "USD",
+    "instrument_currency": "USD",
+    "capital": null,
+    "notes": [
+      "Capital is not set in config/desk.json, so no position size was calculated."
+    ],
+    "fx_rate": 1.0,
+    "status": "NO_CAPITAL",
+    "qty": null,
+    "per_unit_loss_at_stop": 3.87216,
+    "per_unit_gain_at_target1": 5.625676
+  },
+  "events": {
+    "status": "CLEAR",
+    "plain": "No major scheduled events inside the trade window.",
+    "events": [
+      {
+        "kind": "macro",
+        "title": "WASDE Poultry Production",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T17:00:00Z",
+        "minutes_from_now": 75,
+        "forecast": null,
+        "previous": 55.348,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Allotted at High",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 135,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Bid-to-Cover",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 135,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Total Accepted",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 135,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "API Crude Oil Stock Change",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T21:30:00Z",
+        "minutes_from_now": 345,
+        "forecast": 0.5,
+        "previous": -5.267,
+        "actual": null,
+        "tier": 3
+      }
+    ],
+    "notes": []
+  },
+  "timemachine": {
+    "plan": {
+      "symbol": "NVDA",
+      "market": "us",
+      "style": "intraday",
+      "direction": "LONG",
+      "entry": 170.7,
+      "stop": 166.9,
+      "targets": [
+        176.4,
+        180.2
+      ],
+      "window": "315 minutes"
+    },
+    "data": {
+      "bars": 4618,
+      "days": 60,
+      "source": "Yahoo Finance",
+      "interval": "5m"
+    },
+    "mc": {
+      "replays": 10000,
+      "seed": 19,
+      "window_bars": 2,
+      "steps": 63,
+      "p_target": 0.0033,
+      "p_stop": 0.2138,
+      "p_neither": 0.7829,
+      "p_green": 0.2889,
+      "p_each_target_before_stop": [
+        0.0033,
+        0.0
+      ],
+      "median_end": 169.447131,
+      "p5_end": 165.669011,
+      "p95_end": 173.269484,
+      "avg_R": -0.307,
+      "r_at_target": 1.5
+    },
+    "history": {
+      "samples": 59,
+      "target": 0,
+      "stop": 6,
+      "neither": 53,
+      "target_rate": 0.0,
+      "stop_rate": 0.1017,
+      "note": "one sample per past day, same time of day"
+    },
+    "lean": "STRONG_STOP",
+    "verdict": "Strongly toward the stop: at 1.50R the target must come first in 40% of the replays that hit a side; it did in 2% (target first 0.3% vs stop first 21.4%).",
+    "plain": "We replayed the trading window 10,000 times using this market's own recent price moves. The first target was reached before the safety exit in 0% of replays, the safety exit was hit first in 21%, and in 78% neither happened in time. In real history (59 past starts), the same distances hit the target first 0 times and the stop first 6 times. Overall: the odds lean clearly against the trade.",
+    "notes": [
+      "Only 315 minutes of the session are left, so the window ends at the close."
+    ],
+    "caveat": "A simulation from recent bars, not a prediction. News, earnings and gaps can do what the last 60 days never did."
+  },
+  "gate": "BLOCK",
+  "checks": [
+    {
+      "id": "event_guard",
+      "level": "pass",
+      "plain": "No major scheduled events inside the trade window."
+    },
+    {
+      "id": "time_machine",
+      "level": "block",
+      "plain": "Strongly toward the stop: at 1.50R the target must come first in 40% of the replays that hit a side; it did in 2% (target first 0.3% vs stop first 21.4%)."
+    },
+    {
+      "id": "reward_risk",
+      "level": "block",
+      "plain": "The first target pays 1.45x the risk after costs (per unit; fixed per-order fees not included until capital is set); your minimum is 1.5x."
+    },
+    {
+      "id": "capital_not_set",
+      "level": "warn",
+      "plain": "Your capital for this market is not set, so the position size could not be checked."
+    }
+  ],
+  "final_call": "SKIP",
+  "summary_plain": "The Judge said SKIP. The risk manager agrees: Strongly toward the stop: at 1.50R the target must come first in 40% of the replays that hit a side; it did in 2% (target first 0.3% vs stop first 21.4%).",
+  "ticket_plain": null
+}

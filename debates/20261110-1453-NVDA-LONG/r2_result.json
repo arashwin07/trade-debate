@@ -1,0 +1,20 @@
+{
+  "round": 2,
+  "leader": "bear",
+  "score": {"bull": 6, "bear": 6},
+  "title_plain": "Bull fixes the exit, Bear still narrowly ahead",
+  "summary_plain": "Bull admitted the safety exit was too close and moved it to $167.20, about one normal hourly swing away, which is a big improvement. The desk's replays now hit the safety exit first 26 times out of 100 (it was 71), but the first goal came first only about 5 times out of 100, and in real history it never came first in 59 tries. The first goal now pays only $1 for each $1 risked, so the odds still lean against the trade.",
+  "best_point_plain": {
+    "bull": "Bull owned his mistake and widened the exit to a normal size, which cut the chance of being knocked out early a lot.",
+    "bear": "Even with the wider exit, the first goal is rarely reached in the replays, and the CEO story could bring surprise news any minute that no calendar shows."
+  },
+  "checks": [
+    {"by": "bull", "claim": "New stop 167.20 is about 0.99x the 1h ATR (3.85)", "status": "verified", "note_plain": "The desk got the same number, 0.99 times the normal hourly swing. It still flags it as a little tight."},
+    {"by": "bull", "claim": "Time Machine: stop first 26%, target first 4.7%, avg R -0.33", "status": "verified", "note_plain": "The desk's own replay matches: 26% stop first, 4.8% target first, and the average result is a small loss."},
+    {"by": "bull", "claim": "Targets pay about 1x and 2x the risk", "status": "verified", "note_plain": "The desk agrees: 1.0x and 2.0x. The first goal is below the 1.5x we want."},
+    {"by": "bear", "claim": "Stop-first 71% and target-first 19% for the plan", "status": "stale", "note_plain": "True for Bull's old plan, but Bull changed the plan, so these numbers no longer describe it. The new desk numbers are 26% and about 5%."},
+    {"by": "bear", "claim": "1h ATR is about 3.85 and the 1h MACD is still negative", "status": "verified", "note_plain": "Matches the live data both sides quoted."},
+    {"by": "bear", "claim": "The event calendar is CLEAR but cannot show surprise CEO news", "status": "verified", "note_plain": "The desk shows only small scheduled items today, and the board probe is not on any calendar."}
+  ],
+  "watch_next_plain": "Can Bull find a plan where the first goal pays at least 1.5x the risk and the replays actually reach it, or will the lean against the trade stay?"
+}
