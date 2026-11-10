@@ -1,0 +1,230 @@
+{
+  "symbol": "NVDA",
+  "data_symbol": "NVDA",
+  "market": "us",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T14:53:10Z",
+  "name": "NVIDIA Corporation",
+  "currency": "USD",
+  "price": 170.64,
+  "previous_close": 178.67,
+  "change_today_pct": -4.49,
+  "day_high": 174.65,
+  "day_low": 170.12,
+  "day_volume": 74596725,
+  "week52_high": 243.37,
+  "week52_low": 164.27,
+  "last_trade_utc": "2026-11-10T14:53:09Z",
+  "market_status": "OPEN (NMS, regular session 2026-11-10T14:30:00Z to 2026-11-10T21:00:00Z)",
+  "data_source": "Yahoo Finance chart API",
+  "note": "Yahoo data for some exchanges can be delayed up to 15 min; check last_trade_utc.",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 318,
+      "last_candle_utc": "2026-11-10T14:53:09Z",
+      "close": 170.64,
+      "ema9": 172.91,
+      "ema21": 174.8,
+      "sma20": 175.81,
+      "sma50": 176.41,
+      "sma200": 182.49,
+      "rsi14": 25.1,
+      "macd": {
+        "macd": -1.5512,
+        "signal": -0.730608,
+        "histogram": -0.8206,
+        "prev_histogram": -0.846363
+      },
+      "atr14": 1.2266,
+      "bollinger": {
+        "upper": 181.76,
+        "lower": 169.85
+      },
+      "volume_vs_20avg": 0.0,
+      "recent_high_50": 179.15,
+      "recent_low_50": 170.12,
+      "change_over_window_pct": -15.13,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ],
+      "session_vwap_utc_day": 171.75
+    },
+    {
+      "timeframe": "15m",
+      "candles": 549,
+      "last_candle_utc": "2026-11-10T14:53:09Z",
+      "close": 170.64,
+      "ema9": 174.3,
+      "ema21": 176.36,
+      "sma20": 176.22,
+      "sma50": 181.27,
+      "sma200": 196.93,
+      "rsi14": 28.5,
+      "macd": {
+        "macd": -2.16,
+        "signal": -1.7995,
+        "histogram": -0.36051,
+        "prev_histogram": -0.187316
+      },
+      "atr14": 1.8525,
+      "bollinger": {
+        "upper": 180.88,
+        "lower": 171.55
+      },
+      "volume_vs_20avg": 0.0,
+      "recent_high_50": 190.26,
+      "recent_low_50": 170.12,
+      "change_over_window_pct": -25.03,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 457,
+      "last_candle_utc": "2026-11-10T14:53:09Z",
+      "close": 170.6,
+      "ema9": 176.29,
+      "ema21": 182.07,
+      "sma20": 181.37,
+      "sma50": 194.44,
+      "sma200": 216.31,
+      "rsi14": 27.6,
+      "macd": {
+        "macd": -6.3007,
+        "signal": -5.8303,
+        "histogram": -0.470405,
+        "prev_histogram": -0.353461
+      },
+      "atr14": 3.8564,
+      "bollinger": {
+        "upper": 193.05,
+        "lower": 169.7
+      },
+      "volume_vs_20avg": 0.0,
+      "recent_high_50": 209.98,
+      "recent_low_50": 170.12,
+      "change_over_window_pct": -22.6,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "title": "A Message to Our Company - NVIDIA Newsroom",
+      "source": "NVIDIA Newsroom",
+      "published": "Tue, 10 Nov 2026 12:51:09 GMT",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE1yQ0N5UXF4YktmNkhwcXFNMldwM2dYWkRVRXNHcFBvN3FqMkpSZTZvYV9OeEZnOXh0cVMwekUtcVo3UXdEZXVqbDlLQTQzUHVLQUdtcHAzTk1sLTNSM1JLVGFhS0Z5YVEySzNV?oc=5"
+    },
+    {
+      "title": "U.S. Commerce Dept. Inquiry Into Megaspeed Was Halted After Nvidia Intervention - The New York Times",
+      "source": "The New York Times",
+      "published": "Mon, 09 Nov 2026 16:02:52 GMT",
+      "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQRUh5TFdGSHdZMldSRkxUUjRNYjFRV3ZVdURtUkEwSG9mSHVhdlhES2ZObmtJVzFLRUhNbm4xdkl6YmZHV2d1VUNHNE9Md2ZKVlowUU5yOU8wa1AyMGNtdWNlX2NIUXpsOUJVa3pJNjRKa2MxWGdrTW9jYVNqLVM5cmpCblZSVzkwTVR5YzJ2TER0c3VpZ3AyZw?oc=5"
+    },
+    {
+      "title": "NVIDIA Corporation (NVDA) stock price, news, quote and history - Yahoo Finance UK",
+      "source": "Yahoo Finance UK",
+      "published": "Tue, 10 Nov 2026 09:19:11 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiUkFVX3lxTE81OEFKQTktenlhclpBTlVtWEJqNVpKOVNWNlRaNlRDRnR0dHRielpfZXdtR0pXcUcyNDN1WTlzOWVrWXZTNVhTbEVIOUxEaklxVWc?oc=5"
+    },
+    {
+      "title": "Nvidia stock closes lower after company opens probe into CEO Jensen Huang - ABC News - Breaking News, Latest News and Videos",
+      "source": "ABC News - Breaking News, Latest News and Videos",
+      "published": "Tue, 10 Nov 2026 00:00:14 GMT",
+      "url": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOSGdCVXFUbVFHRGZpeE1wVjZ1ekhMRHh0aVZmSG5sZTl6Q1dSeUVwTFBsQ09iTlVHNURTT3M4b2ttTGRqU0xWQTlUcld5dG55Zlh6ay11NFY2VGQ0djc2NWliS1RSYnVqYWRyajRUZ0YtWWtVaDRxcHNJcjlCUGw3bGFFWDgyT2J5M2d3aGNtYldaZXpDTWdJdm9aTDPSAaIBQVVfeXFMT0Z3cEdFWWhNemxyYVlQWFJEQm8tYllLbm1MTzFZektNR0RKczg3b2U1NXNfVkYxWklzQUR6bHVqQ1IyaU9KWnZER3VLUlRITnFaU3VhRTR6alp4dUhOeXFKM3BUZG1XeTQ5WFBRUGtBYlBRY3F6dzhYSkZNX3RuUFZKS2RHN1Z5MlNsTjdKelk5Q2RmT1hwT2hqU1h5LS1kQzh3?oc=5"
+    },
+    {
+      "title": "Nvidia stock edges higher as investors weigh potential fallout of CEO's affair with alleged spy - CNBC",
+      "source": "CNBC",
+      "published": "Tue, 10 Nov 2026 09:14:29 GMT",
+      "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxQYUp3aWtLM3FHZFMycjJkRGVUeXFXWUdPOV9fbEtkVUhwUk5oX2xDVHZ4alZwdl93VnY1UzMwSUN5QjJneHVzdTZHR21JUnkyU2NtZ05LazhQMHoteDNzSVUxQ2lTR0VVSk8yczdTVTd5cXFHNnFUR1hHdVlfc1psbktyRy1OTTQ?oc=5"
+    },
+    {
+      "title": "Nvidia shares sink while stock market surges - NBC News",
+      "source": "NBC News",
+      "published": "Mon, 09 Nov 2026 21:19:50 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxPXzlZWVRPREFzUWR3QTU0d2NGLTJ6cWhvZVdjbkY1eWRVa2RyUGRPSFpBaGlmMjNvTVpBTDZjbkR1NlFLRGkyZ291OWxHWC1xRVk3YkVmNjhOb1dJNDI3blNnV19XU3Jwa3JNNUVYWVFhYl80TVVzSzN1cGU4SmFDZ09FVEFuV29zUlV0Rk1SZU9Ec3ZSdlh3QVZ0aTAzbGxtbnd3SGJkN1FkQQ?oc=5"
+    },
+    {
+      "title": "NVIDIA Corporation (NVDA.TO) Stock Price, News, Quote & History - Yahoo! Finance Canada",
+      "source": "Yahoo! Finance Canada",
+      "published": "Tue, 10 Nov 2026 12:13:26 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5PRnBzWHBpa3laeGR6YzhER1Z6dHcwNkQzWmZVRExfX0pYZDhPQnQ0NkgtUXk2QjlGQjJfcVozZ3QxcU5KMzJaeDN5SE9qYzhZYmczOFZB?oc=5"
+    },
+    {
+      "title": "Nvidia stock plunges on investigation into CEO Jensen Huang - CNN",
+      "source": "CNN",
+      "published": "Mon, 09 Nov 2026 23:00:51 GMT",
+      "url": "https://news.google.com/rss/articles/CBMivAFBVV95cUxONjd1STlFVVdocVMyaDAzbjhBcDJuNVl4LVotRVBHWTVuS09pZ091aVNVN0xzci1wSHNPZTY3M0UzLW5JYmJ2cE1YRzYyZm9uM2lncGdnMlhYSGp6d24zcVU1T3d4T1NRMUFRZ1E4TzN3YmUtMV9wS2Fsb0JSdzRmSVlJNC1OVjFkSWZlTTF3VTAzWUk0eFpUTHo1Y0R2cEFpTnFMVy1FRWcyV2dxQUJHaUtDR1dOMlNjb3BRbQ?oc=5"
+    },
+    {
+      "title": "Here’s what Nvidia investors should be focusing on now. Hint: It’s not Jensen Huang’s affair. - MarketWatch",
+      "source": "MarketWatch",
+      "published": "Tue, 10 Nov 2026 13:30:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOMkVQSlh1ZXZRdExFYWVxX1I3UlE2T2EtXy1KNjluRGVsVDlhOUtqUlNKbENxNTdpTTVMZ2pxRUZiV1BrczUyamt6TGdvOUQtczB0djY0MlJTTTE1ekd3TkY0b2U4aXA4TWR6bG5PaVNKSWxHX2FiR1BDV0sxWEFHM1VKWmlyR2pZaUZxLWFPWWJEYktvaEJYdm1TWXVZb3FoRmxHZG5ERF9PWUpUWmNEdnZhUUQ5dHo4elFheDE0eDZETE9wNWowY2JR?oc=5"
+    },
+    {
+      "title": "Cathie Wood’s ARK sells Palantir, buys Nvidia stock amid strategic shifts - Investing.com",
+      "source": "Investing.com",
+      "published": "Tue, 10 Nov 2026 01:08:30 GMT",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxORUlrR0RDX01hdUR2MWotTlJTc3dKZmdZRlVUdzNRY3pvSXlUZE5EakxvMExNM1pkdllOREtEUHIwNUQxMHZQV2w2NjRLU2ZGcXhjd2VVenhjbzhyTktfZExZZUR1YnhXSUt2b1FKRjNpTU42QkdNektuZHZCNWhQTnlCc3VGbTRrWGNPWkZ5Q09WQWhwbnhoSVhGRF9EZ2NZVnpZWG1HeE9aREtEWEVYakhuSjVxZFpaZDFqRjBnQmhHYTRpcmdV?oc=5"
+    },
+    {
+      "title": "AI chip exports to China and oversight bills gain momentum in Congress",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:39:00 +0000",
+      "url": "https://finance.yahoo.com/video/ai-chip-exports-to-china-and-oversight-bills-gain-momentum-in-congress-143900242.html?.tsrc=rss"
+    },
+    {
+      "title": "Odds Huang Will Leave Nvidia Rise To 18%",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:47:12 +0000",
+      "url": "https://247wallst.com/investing/2026/11/10/odds-huang-will-leave-nvidia-rise-to-18/?.tsrc=rss"
+    },
+    {
+      "title": "Nvidia and Broadcom Are Scaling AI Data Centers With This Growth Stock. Here's Why It Could Soar.",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:35:00 +0000",
+      "url": "https://www.fool.com/investing/2026/11/10/nvidia-and-broadcom-are-scaling-ai-data-centers/?.tsrc=rss"
+    },
+    {
+      "title": "Investors pile into Nvidia after ‘honeytrap’ scandal",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:28:00 +0000",
+      "url": "https://uk.finance.yahoo.com/news/investors-pile-nvidia-honeytrap-scandal-142800843.html?.tsrc=rss"
+    },
+    {
+      "title": "US political shift and Nvidia curbs push AI compute towards China",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:27:44 +0000",
+      "url": "https://www.verdict.co.uk/us-political-shift-nvidia-ai-compute-towards-china/?.tsrc=rss"
+    },
+    {
+      "title": "Congress Wants China Chip Limits in the Defense Bill After Nvidia’s Spy Scandal",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:27:19 +0000",
+      "url": "https://247wallst.com/investing/2026/11/10/congress-wants-china-chip-limits-in-the-defense-bill-after-nvidias-spy-scandal/?.tsrc=rss"
+    },
+    {
+      "title": "Nvidia is the Only Chip Stock in the Red",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:18:21 +0000",
+      "url": "https://finance.yahoo.com/markets/stocks/articles/nvidia-only-chip-stock-red-141821143.html?.tsrc=rss"
+    },
+    {
+      "title": "Are These 6 Small-Cap ETFs Worth a Look Right Now?",
+      "source": "Yahoo Finance",
+      "published": "Tue, 10 Nov 2026 14:15:00 +0000",
+      "url": "https://www.fool.com/investing/2026/11/10/are-these-6-small-cap-etfs-worth-a-look-right-now/?.tsrc=rss"
+    }
+  ]
+}

@@ -23,8 +23,14 @@ The reader may know **nothing about trading**. Write your chat `messages` so a 1
 - Your friendly tone stays respectful; no insults.
 The technical version goes in `argument`, `evidence` and `plan`, which the reader opens only if they want detail.
 
+## The desk's numbers (code-checked, use them)
+The desk (tested code, not an AI) checks every plan. **Never do the money math yourself; quote the desk.**
+- `events.json`: the event guard (CLEAR / CAUTION / BLOCK) for scheduled market-moving events in the trade window.
+- `desk_r<N-1>.json` (from Round 2 on): the desk's check of YOUR previous plan: reward-to-risk per target, stop size in ATR, entry distance from the live price, issues, and the **Time Machine** odds (10,000 replays + real history of the same distances).
+- If the desk flagged your plan (tight stop, low reward-to-risk, Time Machine leaning to the stop), fix the plan or explain with evidence why it still works. Do not repeat a plan the desk already showed fails the rules.
+
 ## Evidence rules
-1. Read the debate's `meta.json` (the proposed trade and direction) and `snapshot.json` (live price, indicators on 3 timeframes, order book, news). Quote numbers exactly.
+1. Read the debate's `meta.json` (the proposed trade and direction), `snapshot.json` (live price, indicators on 3 timeframes, order book, news) and `events.json`. Quote numbers exactly.
 2. From Round 2 on, also read the Judge's notes on the previous round (`r<N-1>_result.json`) and fix anything the Judge marked wrong.
 3. Do your own live research with WebSearch and WebFetch across **several platforms** that fit the market:
    - Crypto: CoinDesk, The Block, Cointelegraph, Binance announcements, ETF flows, on-chain news
@@ -62,7 +68,8 @@ Write valid JSON (UTF-8) to the path you are given, e.g. `debates/<id>/r1_bull.j
   ],
   "rebuttals": [{"opponent_point": "Bear: order book ask-heavy (0.44)", "response": "technical answer"}],
   "plan": {"direction": "LONG", "entry": "74,000-74,250", "stop_loss": "73,400", "targets": ["75,200", "76,000"], "risk_reward": "1:2.1", "timeframe": "intraday, 4-8 hours"},
+  "plan_numbers": {"direction": "LONG", "entry": 74125, "stop": 73400, "targets": [75200, 76000]},
   "plan_plain": "Buy around $74,100. If it falls to $73,400, sell to limit the loss. Take profit at $75,200, then $76,000. You could win about $2 for every $1 you risk."
 }
 ```
-`reply_to` and `rebuttals` are empty in Round 1. Use 4-8 evidence items. After writing, check it parses (`python -c "import json;json.load(open('<path>',encoding='utf-8'))"`), then reply with only the file path and your headline.
+`reply_to` and `rebuttals` are empty in Round 1. Use 4-8 evidence items. **`plan_numbers` is required every round**: plain numbers only (entry = the single price you would place the limit order at), no text, because the desk checks it with code. After writing, check it parses (`python -c "import json;json.load(open('<path>',encoding='utf-8'))"`), then reply with only the file path and your headline.

@@ -1,0 +1,21 @@
+{
+  "checked_utc": "2026-11-10T14:49:57Z",
+  "call": "SKIP",
+  "judge_decision": "SKIP",
+  "plan": {
+    "direction": "LONG",
+    "entry": 0.56305,
+    "stop": 0.5612,
+    "targets": [
+      0.5651,
+      0.5675
+    ]
+  },
+  "status": "stop",
+  "r": -1.0,
+  "filled_utc": "2026-11-10T12:55:00Z",
+  "closed_utc": "2026-11-10T13:55:00Z",
+  "targets_hit_before_stop": 0,
+  "plain": "Hit the safety exit (stop-loss) first: a loss of 1x the risk.",
+  "window_end_utc": "2026-11-10T20:30:38Z"
+}

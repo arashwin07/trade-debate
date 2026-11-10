@@ -1,62 +1,65 @@
 ---
 name: trade-debate
-description: Debate a proposed trade you name (crypto, US stock, NSE stock or forex). Bull Claude argues FOR taking the trade, Bear Claude argues AGAINST it, over 3 rounds of live-evidence arguments, and the Judge decides TAKE or SKIP. The result is rendered as a viewable page. Use when the user says /trade-debate, or asks to debate, check or judge a specific trade.
+description: The full pre-trade desk for one proposed trade you name (crypto, US stock, NSE stock or forex). Live data + event guard, then Bull Claude argues FOR the trade and Bear Claude AGAINST over 3 rounds, with code-checked plan math and Time Machine odds after every round, a Judge result per round, the Judge's final TAKE or SKIP, then the risk gate (costs, position size, your limits) and a plain-language ticket. Rendered as a viewable chat page. Use when the user says /trade-debate, or asks to debate, check or judge a specific trade.
 argument-hint: SYMBOL [long|short] [intraday|swing] [crypto|us|nse|forex]
 ---
 
-# Trade debate: Bull Claude (for) vs Bear Claude (against), the Judge decides TAKE or SKIP
+# Trade desk: one proposed trade, start to finish
+
+**Rule: the agents ARGUE, the code CALCULATES.** Every money number (reward-to-risk, stop size, costs, position size, odds, limits) comes from `tools/desk.py`, `tools/timemachine.py` and `tools/events.py`. Never type such numbers yourself; read them from the files.
 
 Arguments: `$ARGUMENTS`. Parse them in any order as `SYMBOL [direction] [style] [market]`:
 - direction: `long` (also `buy`) or `short` (also `sell`). Default `long`.
 - style: `intraday` (default) or `swing`.
 - market: `crypto`, `us`, `nse` or `forex`; if missing, auto-detect (e.g. `BTC` → crypto, `RELIANCE.NS` → nse, `EURUSD` → forex, `AAPL` → us). A bare Indian name such as `TATAMOTORS` needs `nse`; if a symbol is ambiguous, ask the user.
-- The user may also give an entry, stop or target (e.g. `entry 74200 stop 73900`). Pass these into `meta.json` as `user_plan`; Bull defends that plan and may refine it.
+- The user may also give an entry, stop or target (e.g. `entry 74200 stop 73900`). Put them in `meta.json` as `user_plan`; Bull defends that plan and may refine it.
 
-The **proposed trade** is `<DIRECTION> <SYMBOL>`, for example `LONG BTC/USDT`. It is what gets debated.
+The **proposed trade** is `<DIRECTION> <SYMBOL>`, for example `LONG BTC/USDT`.
 
-Work from the project root (the folder that contains `tools/` and `.claude/`). Use `python` and fall back to `python3`.
+Work from the project root (the folder with `tools/`, `config/` and `.claude/`). Use `python`, falling back to `python3`. If any tool fails, stop and tell the user the exact error; never fill a gap with a guessed number.
 
-## 1. Set up the debate folder and live snapshot
-1. `ID` = UTC time, symbol and direction, e.g. `20261110-1205-BTC-LONG` (format `YYYYMMDD-HHMM-SYMBOL-DIRECTION`, symbol without `.NS`, `=X` or `/`).
-2. Run `python tools/market_data.py <SYMBOL> --market <market> --style <style> --out debates/<ID>/snapshot.json`.
-   If it fails, stop and tell the user the error (wrong symbol, data source down).
-3. Write `debates/<ID>/meta.json`:
-   `{"id": "<ID>", "symbol": "<display symbol>", "market": "...", "style": "...", "direction": "LONG|SHORT", "trade": "LONG BTC/USDT", "user_plan": {...} or null, "mode": "named", "created_utc": "<ISO time>"}`
-   (In scan mode use `"mode": "scan"` and add `"scan_reason"`.)
-4. Read the snapshot's `market_status`. If the market is CLOSED and the style is intraday, continue, but tell the agents in the prompt that the market is closed (the Judge treats it as a SKIP condition).
+## 1. Set up: live data and event guard
+1. `ID` = `YYYYMMDD-HHMM-SYMBOL-DIRECTION` in UTC, symbol without `.NS`, `=X` or `/` (e.g. `20261110-1205-BTC-LONG`).
+2. `python tools/market_data.py <SYMBOL> --market <market> --style <style> --out debates/<ID>/snapshot.json`
+3. `python tools/events.py --market <market> --symbol <SYMBOL> --style <style> --out debates/<ID>/events.json`
+4. Write `debates/<ID>/meta.json`: `{"id", "symbol", "market", "style", "direction": "LONG|SHORT", "trade": "LONG BTC/USDT", "user_plan": {...} or null, "mode": "named", "created_utc"}` (scan mode: `"mode": "scan"` and `"scan_reason"`).
+5. Render (`python tools/render.py debates/<ID>`). If the Artifact tool is available, publish `debates/<ID>/debate.html` (first time with `icon: "chat"`, later republish the same path).
+6. If `events.json` says BLOCK or the market is CLOSED for an intraday trade, still run the debate (the user wants the analysis) but put that fact in every agent prompt.
 
-## 2. Three debate rounds
-Right after writing meta.json, render once (`python tools/render.py debates/<ID>`) so the chat page exists and shows "Round 1 starting". If the Artifact tool is available, publish `debates/<ID>/debate.html` (first time with `icon: "chat"`; later steps republish the same file path).
+## 2. Three rounds (1 = First look, 2 = Challenge, 3 = Final word)
+For each round N:
 
-For each round N = 1, 2, 3 (names: 1 = First look, 2 = Challenge, 3 = Final word):
+**a. Debaters.** Launch both in the same message (two parallel Agent calls), `subagent_type` `bull-claude` and `bear-claude`:
 
-**a. Debaters.** Launch **both agents in the same message** (two parallel Agent calls), `subagent_type` `bull-claude` and `bear-claude`. Prompt template:
+> Proposed trade: **<TRADE>** (market `<market>`, style `<style>`). Market status: `<market_status>`. Event guard: `<status>: <plain>`.
+> Debate folder: `debates/<ID>/`. This is Round N (<name>).
+> Read `meta.json`, `snapshot.json`, `events.json`[, your previous round `r<N-1>_<you>.json`, your opponent's `r<N-1>_<opponent>.json`, the Judge's notes `r<N-1>_result.json` and the desk's check `desk_r<N-1>.json`].
+> Do fresh web research across several sources for this market, then write your Round N statement as JSON to `debates/<ID>/r<N>_<bull|bear>.json` following your output format (Bull: `plan_numbers` is required). Chat messages in plain language a beginner understands.
 
-> Proposed trade: **<TRADE>** (market `<market>`, style `<style>`). Market status: `<market_status>`.
-> Debate folder: `debates/<ID>/`. This is Round N (<First look | Challenge | Final word>).
-> Read `meta.json` and `snapshot.json`[, your previous round `r<N-1>_<you>.json`, your opponent's previous round `r<N-1>_<opponent>.json`, and the Judge's notes `r<N-1>_result.json`].
-> Do fresh web research across several sources for this market, then write your Round N statement as JSON to `debates/<ID>/r<N>_<bull|bear>.json` following your output format. Write the chat messages in plain language a beginner understands.
+Check both parse: `python -c "import json,sys;[json.load(open(p,encoding='utf-8')) for p in sys.argv[1:]]" debates/<ID>/r<N>_bull.json debates/<ID>/r<N>_bear.json`. Re-run a missing or broken one once. Render and republish.
 
-Check both files parse: `python -c "import json,sys;[json.load(open(p,encoding='utf-8')) for p in sys.argv[1:]]" debates/<ID>/r<N>_bull.json debates/<ID>/r<N>_bear.json`. If one is missing or broken, re-run only that agent once and ask it to fix the file. Render and republish so the user sees the messages arrive.
+**b. Desk check (code).** `python tools/desk.py analyze debates/<ID> --round N` → `desk_r<N>.json`: Bull's plan math, issues, and Time Machine odds (10,000 replays + real history). If it reports that Bull's plan has no usable numbers, re-run Bull once asking for `plan_numbers`. Render and republish.
 
-**b. Round Result.** Launch one Agent, `subagent_type` `trade-judge`, `model: "sonnet"` (round results are quick):
+**c. Round Result.** One Agent, `subagent_type` `trade-judge`, `model: "sonnet"`:
 
-> Mode A: Round Result for Round N. Proposed trade **<TRADE>**. Debate folder `debates/<ID>/`. Write `debates/<ID>/r<N>_result.json` following your Mode A format.
+> Mode A: Round Result for Round N. Proposed trade **<TRADE>**. Debate folder `debates/<ID>/`. Use `desk_r<N>.json` and `events.json` as the referee's numbers. Write `debates/<ID>/r<N>_result.json` following your Mode A format.
 
-Validate it parses, then render and republish. **If running in the cloud**, also `git add debates docs && git commit -qm "<ID>: round N" && git push origin HEAD:main` so the live page on GitHub Pages updates during the debate.
+Validate, render, republish. **In the cloud** also `git add debates docs && git commit -qm "<ID>: round N" && git push origin HEAD:main` so the live page updates.
 
-## 3. The Judge
-Launch one Agent with `subagent_type` `trade-judge`:
+## 3. The Judge's final conclusion
+One Agent, `subagent_type` `trade-judge`:
 
 > Mode B: Final Conclusion. Proposed trade: **<TRADE>** (market `<market>`, style `<style>`). Debate folder: `debates/<ID>/`.
-> Read meta.json, snapshot.json, all six statements r1_bull.json through r3_bear.json and the three round results. Re-check live data, fact-check both sides, and write your TAKE or SKIP ruling to `debates/<ID>/verdict.json` following your Mode B format, including all the plain-language fields.
+> Read meta.json, snapshot.json, events.json, all six statements, the three round results and desk_r3.json. Re-check live data, fact-check both sides, and write your TAKE or SKIP ruling to `debates/<ID>/verdict.json` following your Mode B format, including `trade_plan_numbers` and all plain-language fields.
 
-Validate that `verdict.json` parses, re-running the Judge once if not.
+Validate (re-run once if broken).
 
-## 4. Show the result
-1. `python tools/render.py debates/<ID>` (this also rebuilds `docs/index.html`, the dashboard of all debates).
-2. If the Artifact tool is available, republish `debates/<ID>/debate.html`.
-3. If running in the cloud (scheduled routine) or the user asked to sync: `git add debates docs && git commit -m "Debate <ID>: <TAKE|SKIP>" && git push`. GitHub Pages then shows it at `<pages-url>/d/<ID>.html`.
-4. Reply to the user with: the proposed trade, each round's result (leader and score), the final ruling (TAKE / SKIP) and confidence, the Judge's plain-language headline, the plan (if TAKE) or what would change the Judge's mind (if SKIP), and the page link. End with one line: this is AI analysis, not financial advice, and no order was placed.
+## 4. Risk gate and ticket (code)
+`python tools/desk.py gate debates/<ID>` → `desk_final.json`: fresh price, event guard refresh, costs for this market and broker, position size from `config/desk.json`, every risk rule (PASS / WARN / BLOCK with plain reasons), the **final call** (TAKE only if the Judge said TAKE and the gate passed) and, for a TAKE, a plain-language ticket the user can place themselves.
+
+## 5. Show the result
+1. `python tools/render.py debates/<ID>` (also rebuilds the dashboard). Republish the artifact if available.
+2. In the cloud: `git add debates docs && git commit -m "Debate <ID>: <final call>" && git push origin HEAD:main`.
+3. Reply with: the proposed trade, the event guard, each round's result, the Time Machine odds of the final plan, the Judge's ruling and confidence, the risk gate result with any block reasons, the **final call**, the ticket (if TAKE) or what would change the Judge's mind (if SKIP), and the page link. If capital is not set in `config/desk.json`, say so in one line. End with: AI analysis, not financial advice; no order was placed.
 
 Never place, simulate or route a real order. The user executes trades themselves.

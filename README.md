@@ -1,50 +1,57 @@
 # Trade Debate Desk
 
-Three Claude agents debate a **proposed trade** (asset + direction, e.g. `LONG BTC/USDT`, `SHORT EURUSD`) on live market data:
+A personal pre-trade desk for **crypto, US stocks, NSE and forex**. It does every step a careful trader does before pressing buy, and never presses buy itself.
 
-| Agent | File | Role |
-|---|---|---|
-| **Bull Claude** | `.claude/agents/bull-claude.md` | Always argues **FOR** taking the trade, with cited live evidence. Never switches sides. |
-| **Bear Claude** | `.claude/agents/bear-claude.md` | Always argues **AGAINST** taking the trade, with cited live evidence. Never switches sides. |
-| **The Judge** | `.claude/agents/trade-judge.md` | Fact-checks both, scores them, decides **TAKE** or **SKIP**. |
+**Core rule: the AI agents ARGUE, the code CALCULATES.** Every number your money depends on (reward-to-risk, stop size, costs, position size, odds, limits) comes from tested code in `tools/`, never from an AI.
 
-## Workflow
+## The pipeline for one proposed trade (e.g. `LONG ETH/USDT`)
 ```
-snapshot (live data + news) ─► R1 Opening  (Bull ∥ Bear)
-                              ─► R2 Rebuttal (each attacks the other's R1)
-                              ─► R3 Closing  (each answers the other's R2)
-                              ─► Judge: re-checks live price, fact-checks claims, scores, rules
-                              ─► debate page (debates/<id>/debate.html) + dashboard (docs/index.html)
+1. Live snapshot ............ tools/market_data.py   price + indicators on 3 timeframes + news (Binance / Yahoo)
+2. Event guard .............. tools/events.py        inflation, jobs, central banks (incl. RBI), earnings in the trade window
+3. Round 1, 2, 3 ............ Bull Claude (FOR) ∥ Bear Claude (AGAINST), plain-language chat with cited proof
+     after each round:
+     • Desk calculator ...... tools/desk.py analyze  Bull's plan math (reward-to-risk, stop vs ATR, entry vs price)
+     • Time Machine ......... tools/timemachine.py   10,000 replays from the asset's own last 60 days + real history
+     • Round result ......... the Judge (Mode A)
+4. Final conclusion ......... the Judge (Mode B): TAKE or SKIP
+5. Risk gate + ticket ....... tools/desk.py gate     costs for your broker, position size, your limits → final call
+6. Journal .................. tools/outcomes.py      later: did it hit the target or the stop? (TAKE and SKIP)
 ```
 
 ## Commands (open Claude Code in this folder)
-- `/trade-debate BTC long` · `/trade-debate AAPL short swing` · `/trade-debate RELIANCE long intraday nse` · `/trade-debate EURUSD short entry 1.1230 stop 1.1260`
-- Direction defaults to `long` if you leave it out.
-- `/trade-scan` (finds top movers in open markets, proposes a trade in the direction of the move, debates each) · `/trade-scan crypto,nse 3 swing`
+| Command | What it does |
+|---|---|
+| `/trade-debate ETH long` · `/trade-debate RELIANCE long swing nse` · `/trade-debate EURUSD short entry 1.1230 stop 1.1260` | The full desk on one trade |
+| `/trade-scan` · `/trade-scan crypto,nse 3 swing` | Journal update → scan open markets → filter out what your rules would block → full desk on the top picks |
+| `/trade-check NVDA long entry 170.5 stop 167 target 176` | Code-only check of any plan in seconds (no debate) |
+| `/trade-journal` | Track record: what really happened after every TAKE and SKIP |
 
-## Adding features
-The project is split so new pieces slot in without rewrites:
-- `tools/` holds data scripts (add a new market or data source here),
-- `.claude/agents/` holds the debaters and the Judge (add a new specialist agent here),
-- `.claude/skills/` holds the workflows (add a new command here),
-- `tools/render.py` turns each `debates/<id>/` folder into the viewer page.
+## Your settings: `config/desk.json`
+- `accounts.<market>.capital` (**set these**; until then no position size is calculated), currency, broker
+- `risk`: risk per trade %, daily limits, max trades per day, minimum reward-to-risk after costs (1.5), minimum stop size (1x ATR), shorting allowed per market
+- `costs`: Binance fees, NSE intraday/delivery charges (brokerage, STT, exchange, SEBI, stamp duty, GST, DP), US fees, forex spread. Typical published rates; check them against your broker.
+- `owner.residence: IN`: forex is limited to the pairs Indian residents may legally trade (INR pairs plus EUR/USD, GBP/USD, USD/JPY, exchange-traded on NSE/BSE only).
+
+## Tests
+`python -m unittest discover -s tests -v`: plan parsing, plan math, NSE/crypto/forex costs, position sizing (300 random cases: the loss at the stop never exceeds the budget), every risk-gate rule, Time Machine fairness and determinism, outcome tracking.
 
 ## Free data sources
-| Market | Prices and indicators | News |
-|---|---|---|
-| Crypto | Binance public API (+ order book, funding, Fear & Greed) | Google News, agents' web research (CoinDesk, The Block…) |
-| US stocks | Yahoo Finance | Google News, Yahoo Finance RSS, Reuters, CNBC… |
-| NSE India | Yahoo Finance (.NS) | Google News India, Moneycontrol, Economic Times… |
-| Forex | Yahoo Finance (=X) | Google News, FXStreet, Forex Factory calendar… |
+| Market | Prices | Events | News |
+|---|---|---|---|
+| Crypto | Binance public API (+ order book, funding, Fear & Greed) | TradingView / ForexFactory (USD macro) | Google News + agents' research |
+| US stocks | Yahoo Finance | macro + Nasdaq earnings calendar | Google News, Yahoo RSS + research |
+| NSE India | Yahoo Finance (.NS) | macro incl. India (RBI, CPI) | Google News India + research |
+| Forex | Yahoo Finance (=X) | macro for both currencies | Google News + research |
 
-Yahoo data can be delayed up to 15 minutes on some exchanges; every page shows the data timestamp.
+Yahoo data can be delayed up to 15 minutes on some exchanges; every page shows the data time.
 
 ## Cloud network allowlist
-The cloud environment must be allowed to reach these hosts (claude.ai/code → environment settings → network access):
-`api.binance.com`, `data-api.binance.vision`, `fapi.binance.com`, `query1.finance.yahoo.com`, `feeds.finance.yahoo.com`, `news.google.com`, `api.alternative.me`
-(plus general web access for the agents' news research).
+If the cloud environment's network access is restricted, allow: `api.binance.com`, `data-api.binance.vision`, `fapi.binance.com`, `query1.finance.yahoo.com`, `feeds.finance.yahoo.com`, `news.google.com`, `api.alternative.me`, `economic-calendar.tradingview.com`, `nfs.faireconomy.media`, `api.nasdaq.com` (plus general web access for research).
 
 ## 24/7
-Push this folder to a GitHub repo, enable GitHub Pages on `/docs`, and create a Claude Code cloud routine that runs `/trade-scan` on a schedule. Results are committed to the repo and visible on the Pages site from any device, with your PC off.
+Cloud routines run `/trade-scan` on a schedule; results are committed here and shown on the GitHub Pages dashboard (`docs/`).
 
-AI analysis of public data. Not financial advice. This workflow never places orders.
+## Credits
+The Time Machine, risk gate and sizing ideas are adapted from the MIT-licensed [day-trader-skill](https://github.com/Jakeschincariol/day-trader-skill), rebuilt for all four markets.
+
+AI analysis of public data. Not financial advice. This tool never places orders.

@@ -1,0 +1,48 @@
+{
+  "_read_me": "YOUR settings. The desk sizes positions and blocks trades using these numbers. capital = null means 'not set': sizing then shows per-unit risk only and the risk gate warns. Costs are typical published rates (Nov 2026); check them against your own broker's charges page.",
+
+  "owner": {
+    "residence": "IN",
+    "utc_offset_minutes": 330
+  },
+
+  "accounts": {
+    "crypto": {"currency": "USD", "capital": null, "broker": "Binance (spot)"},
+    "us":     {"currency": "USD", "capital": null, "broker": ""},
+    "nse":    {"currency": "INR", "capital": null, "broker": "Zerodha"},
+    "forex":  {"currency": "INR", "capital": null, "broker": "NSE currency derivatives"}
+  },
+
+  "risk": {
+    "risk_per_trade_pct": 1.0,
+    "max_loss_per_trade": null,
+    "daily_loss_limit_pct": 3.0,
+    "max_trades_per_day": 3,
+    "min_reward_risk_after_costs": 1.5,
+    "min_stop_atr": 1.0,
+    "max_entry_distance_atr": 1.0,
+    "max_position_pct": 25.0,
+    "max_share_of_day_volume_pct": 1.0,
+    "block_timemachine_lean": ["STRONG_STOP"],
+    "warn_timemachine_lean": ["LEANS_STOP"],
+    "max_data_age_minutes_intraday": 30,
+    "allow_short": {"crypto": false, "us": false, "nse_intraday": true, "nse_swing": false, "forex": true}
+  },
+
+  "costs": {
+    "crypto": {"fee_pct_per_side": 0.10, "slippage_pct_per_side": 0.02},
+    "us":     {"commission_per_order": 0.0, "sec_fee_pct_on_sell": 0.00278, "slippage_pct_per_side": 0.02},
+    "nse_intraday": {"brokerage_pct": 0.03, "brokerage_cap_per_order": 20.0, "stt_pct_sell": 0.025, "exchange_txn_pct": 0.00297,
+                     "sebi_pct": 0.0001, "stamp_pct_buy": 0.003, "gst_pct": 18.0, "slippage_pct_per_side": 0.02},
+    "nse_swing":    {"brokerage_pct": 0.0, "brokerage_cap_per_order": 0.0, "stt_pct_buy": 0.1, "stt_pct_sell": 0.1, "exchange_txn_pct": 0.00297,
+                     "sebi_pct": 0.0001, "stamp_pct_buy": 0.015, "gst_pct": 18.0, "dp_charge_per_sell": 15.93, "slippage_pct_per_side": 0.02},
+    "forex":  {"spread_pips": 1.0, "commission_per_order": 20.0, "slippage_pips": 0.5}
+  },
+
+  "sizing": {
+    "forex_unit_step": 1000,
+    "stocks_whole_units": true
+  },
+
+  "india_forex_allowed_pairs": ["USDINR", "EURINR", "GBPINR", "JPYINR", "EURUSD", "GBPUSD", "USDJPY"]
+}

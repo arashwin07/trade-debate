@@ -83,6 +83,16 @@ button{font:inherit;color:inherit}
   }
   var MK = {crypto: "Crypto", us: "US stocks", nse: "NSE India", forex: "Forex"};
   var items = D.debates || [];
+  function trackCard() {
+    var t = D.track; if (!t) return "";
+    var tk = t.take || {}, sk = t.skip || {};
+    return '<section class="intro" style="background:var(--paper);border:1px solid var(--line)"><h2>Track record</h2>' +
+      '<p style="margin:0 0 10px">What really happened after each decision, checked automatically against real prices. It needs dozens of trades before it proves anything.</p>' +
+      '<div class="stats"><div><small>TAKE calls that won / lost</small><b class="num"><span style="color:var(--bull)">' + (tk.wins || 0) + '</span> / <span style="color:var(--bear)">' + (tk.losses || 0) + "</span></b></div>" +
+      '<div><small>SKIPs that would have lost (good skips)</small><b class="num" style="color:var(--bull)">' + (sk.losses || 0) + "</b></div>" +
+      '<div><small>SKIPs that would have won (missed)</small><b class="num" style="color:var(--warn)">' + (sk.wins || 0) + "</b></div></div>" +
+      ((tk.pending || 0) + (sk.pending || 0) ? '<p class="sched">' + ((tk.pending || 0) + (sk.pending || 0)) + " still running.</p>" : "") + "</section>";
+  }
   function render() {
     var list = items.filter(function (x) {
       if (F === "all") return true;
@@ -95,6 +105,9 @@ button{font:inherit;color:inherit}
     var rows = list.map(function (x) {
       var sym = String(x.symbol || "").split("/")[0];
       var line = x.decision === "LIVE" ? "<b>Debate in progress:</b> " + esc(x.progress || "") : (x.headline ? "<b>Judge:</b> " + esc(x.headline) : esc(x.preview || ""));
+      var OUTL = {target: "target hit", stop: "stop hit", expired: "time ran out", not_filled: "never filled", pending: "running"};
+      if (x.outcome && OUTL[x.outcome]) line += ' <span style="white-space:nowrap">· <b style="color:var(--ink-2)">Result:</b> ' + OUTL[x.outcome] + (x.outcome_r != null ? " (" + (x.outcome_r > 0 ? "+" : "") + x.outcome_r + "R)" : "") + "</span>";
+      if (x.final_call) x.decision = x.final_call;
       return '<a class="row" href="' + esc(x.href) + '"><span class="av ' + esc(x.market) + '">' + esc(sym.slice(0, 5)) + '<em class="' + esc(x.direction) + '" aria-hidden="true">' + (x.direction === "SHORT" ? "↓" : "↑") + "</em></span>" +
         '<div class="mid"><h3>' + esc(x.direction + " " + x.symbol) + " · " + esc(MK[x.market] || x.market) + "</h3><p>" + line + "</p></div>" +
         '<div class="end"><time>' + esc(when(x.created_utc)) + '</time><span class="badge ' + esc(x.decision) + '">' + (x.decision === "LIVE" ? "LIVE" : esc(x.decision)) + (x.confidence != null && x.decision !== "LIVE" ? ' <span class="num">' + esc(x.confidence) + "%</span>" : "") + "</span></div></a>";
@@ -108,6 +121,7 @@ button{font:inherit;color:inherit}
       '<div><i style="background:var(--warn-soft);color:var(--warn)">4</i><b>TAKE or SKIP</b>The Judge gives a verdict. You make the final call.</div></div>' +
       (D.schedule ? '<p class="sched">New debates arrive automatically: ' + esc(D.schedule) + ".</p>" : "") + "</section>" +
       '<section class="stats" aria-label="Totals"><div><small>Debates</small><b class="num">' + items.length + '</b></div><div><small>Judge said TAKE</small><b class="num" style="color:var(--bull)">' + nT + '</b></div><div><small>Judge said SKIP</small><b class="num" style="color:var(--bear)">' + nS + "</b></div></section>" +
+      trackCard() +
       '<section class="list" aria-label="Debates">' + (rows || '<div class="empty">No debates match this filter yet.</div>') + "</section>" +
       '<p class="disc">Updated ' + esc(new Date(D.generated_utc).toLocaleString()) + ". Made by AI from free public market data. Not financial advice. This tool never places trades.</p></main>";
   }

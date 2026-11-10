@@ -1,0 +1,20 @@
+{
+  "round": 1,
+  "leader": "bear",
+  "score": {"bull": 4, "bear": 7},
+  "title_plain": "Bear leads Round 1",
+  "summary_plain": "Bull says Nvidia was sold off because of a story about its boss, not because chips are weak, so it should bounce. Bear says the story is still unfolding and the price keeps sliding. The desk's check backs Bear: Bull's safety exit is so close that normal wiggles would hit it, and when the desk replayed the day 10,000 times the price hit the safety exit first 71 times out of 100 and the first goal only 19 times out of 100.",
+  "best_point_plain": {
+    "bull": "Every other chip stock went up while Nvidia went down, so this looks like a problem with the one company, not the whole industry.",
+    "bear": "Nvidia normally moves about $3.86 in an hour, but Bull's safety exit is only $1.40 away, so ordinary wiggles could knock the trade out."
+  },
+  "checks": [
+    {"by": "bull", "claim": "Stop 169.40 is about 1.1x the ATR (normal swing)", "status": "wrong", "note_plain": "That is true only for the tiny 5-minute swing. Against the normal 1-hour swing the desk says the stop is just 0.36x, which is much too close."},
+    {"by": "bull", "claim": "5m RSI 28.1 (very oversold)", "status": "stale", "note_plain": "The saved data says 25.1. The number moved, and it is still low, but it is not the figure Bull gave."},
+    {"by": "bull", "claim": "Targets pay about 1.6x and 2.8x the risk", "status": "verified", "note_plain": "The desk got 1.57x and 2.75x, so the math is right. But the desk's replays say reaching them is unlikely."},
+    {"by": "bear", "claim": "1h ATR is 3.86 and the stop sits inside a normal hourly swing", "status": "verified", "note_plain": "Matches the saved data and the desk's own check."},
+    {"by": "bear", "claim": "5m RSI 25.1 and price below its average lines on every chart", "status": "verified", "note_plain": "Matches the saved data."},
+    {"by": "bear", "claim": "Chip index up 6.8% while Nvidia fell, 52-week low 164.27", "status": "verified", "note_plain": "The 52-week low matches the data. The chip index move comes from a news article that both sides cited."}
+  ],
+  "watch_next_plain": "Can Bull move the safety exit to a sensible distance and still show a good payoff, and can Bear show the price will keep sliding rather than bounce?"
+}

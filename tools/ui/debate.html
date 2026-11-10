@@ -225,6 +225,38 @@ td small{display:block;color:var(--muted);font-size:.72rem}
 .reb{border-left:3px solid var(--line);padding-left:10px;margin:0 0 10px;font-size:.88rem}
 .reb em{display:block;font-style:normal;color:var(--muted);font-size:.8rem}
 .disc{font-size:.74rem;color:var(--muted);text-align:center;margin:14px auto 0;max-width:520px}
+
+/* desk (code) cards */
+.evstrip{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-top:1px solid var(--line);font-size:.84rem;cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;width:100%;text-align:left}
+.evstrip:hover{background:var(--page)}
+.gp{font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.gp.CLEAR,.gp.PASS,.gp.pass,.gp.TAKE{background:var(--bull-soft);color:var(--bull)}
+.gp.CAUTION,.gp.warn{background:var(--warn-soft);color:var(--warn)}
+.gp.BLOCK,.gp.block,.gp.SKIP{background:var(--bear-soft);color:var(--bear)}
+.dcard{align-self:center;width:min(100%,620px);background:var(--paper);border:1px dashed #d8c7b8;border-radius:var(--r);overflow:hidden;margin-block:8px 2px}
+.dh{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--clay-soft);border-bottom:1px dashed #e8d3c6}
+.dh .ic{width:30px;height:30px;border-radius:9px;background:var(--clay);color:#fff;display:grid;place-items:center;flex:none}
+.dh .ic svg{width:17px;height:17px}
+.dh div{min-width:0;flex:1}
+.dh b{display:block;font-size:.88rem;font-weight:600;color:var(--clay-ink)}
+.dh small{font-size:.72rem;color:var(--muted)}
+.db{padding:12px 16px;display:grid;gap:10px}
+.tm{display:grid;gap:6px}
+.tmbar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--line)}
+.tmbar span{display:block;height:100%}
+.tmbar .t{background:var(--bull)} .tmbar .s{background:var(--bear)} .tmbar .n{background:#cfccc0}
+.tmleg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.76rem;color:var(--ink-2)}
+.tmleg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.facts div{background:var(--page);border-radius:10px;padding:8px 10px;display:grid;gap:1px}
+.facts small{font-size:.68rem;color:var(--muted)}
+.facts b{font-size:.92rem}
+@media (max-width:520px){.facts{grid-template-columns:1fr 1fr}}
+.issue{display:flex;gap:8px;align-items:flex-start;font-size:.84rem}
+.ticket{background:var(--ink);color:var(--page);border-radius:12px;padding:12px 14px;font:400 .86rem/1.55 var(--f-num);display:grid;gap:4px}
+.ticket b{color:#f2b49b;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.bigcall{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bigcall .stamp{font-size:1.25rem;transform:none}
 </style>
 
 <div class="shell" id="app"></div>
@@ -269,7 +301,10 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     breakout: {t: "Breakout", d: "When price pushes through a floor or ceiling it had been stuck at.", m: ["breakout", "breakdown"]},
     liquidation: {t: "Liquidation", d: "When a trader using borrowed money is forced to close because they lost too much. Many at once can cause sharp moves.", m: ["liquidation", "liquidations"]},
     candle: {t: "Candle", d: "One bar on a price chart showing the open, high, low and close for a time period, like 5 minutes or 1 hour.", m: ["candle", "candles"]},
-    timeframe: {t: "Timeframe", d: "The time each candle covers: 5m = 5 minutes, 1h = 1 hour, 1d = 1 day.", m: ["timeframe", "timeframes"]}
+    timeframe: {t: "Timeframe", d: "The time each candle covers: 5m = 5 minutes, 1h = 1 hour, 1d = 1 day.", m: ["timeframe", "timeframes"]},
+    timemachine: {t: "Time Machine", d: "A simulation: it replays the next few hours (or days) 10,000 times using this market's own recent price moves, and counts how often the profit target came before the safety exit. It also checks real past days. It shows the odds, not the future.", m: ["Time Machine", "replays"]},
+    r: {t: "R (multiples of the risk)", d: "R measures results in units of what you risked. -1R means you lost exactly what you planned to risk; +2R means you won twice that.", m: ["1R", "2R", "-1R"]},
+    gate: {t: "Risk manager / risk gate", d: "A set of fixed rules, run by code, that can block a trade even when the Judge likes it: costs, position size, your loss limits, big events, market hours.", m: ["risk manager", "risk gate"]}
   };
   var LOOK = {}, pats = [];
   Object.keys(G).forEach(function (k) { G[k].m.forEach(function (w) { LOOK[w.toLowerCase()] = k; pats.push(w); }); });
@@ -377,7 +412,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       (D.scan_reason ? " The scanner picked it because: " + esc(D.scan_reason) + "." : "") + "</p></div>" +
       '<div class="qstats"><div><small>' + esc(base) + " price now</small><b class=\"num\">" + cur + money(S.price) + "</b></div>" +
       "<div><small>Change " + lbl + '</small><b class="num ' + ((chg || 0) >= 0 ? "up" : "down") + '">' + (typeof chg === "number" ? (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%" : "–") + "</b></div>" +
-      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div></section>" +
+      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + "</section>" +
       '<div class="sys">Prices from ' + esc(S.data_source || "public data") + " at " + esc(hhmm(S.snapshot_utc)) + ". Tap “Live data” at the top for every number both sides can use.</div>";
   }
 
@@ -422,6 +457,8 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       if (!s) h += '<div class="typing bear"><span class="av bear">B</span><span class="dots"><i></i><i></i><i></i></span>Bear Claude is researching live data…</div>';
     }
     if (b || s) h += '<button class="more" data-sheet="tech-' + n + '">Show the technical version of Round ' + n + "</button>";
+    if (r.desk) h += deskCard(n, r.desk);
+    else if (b && s) h += '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The desk calculator is checking Bull\'s plan…</div>';
     if (r.result) h += resultCard(n, r.result);
     else if (b && s) h += '<div class="typing" style="align-self:center"><span class="av judge">J</span><span class="dots"><i></i><i></i><i></i></span>The Judge is checking Round ' + n + "…</div>";
     return h;
@@ -488,6 +525,77 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       "</div></section>";
     return h;
   }
+  /* ---------- desk (code) ---------- */
+  var EVN = D.events || null, DF = D.desk_final || null, OUT = D.outcome || null;
+  var GLV = {pass: "OK", warn: "Careful", block: "Blocked"};
+  function eventStrip() {
+    if (!EVN) return "";
+    var label = {CLEAR: "No big events", CAUTION: "Caution", BLOCK: "Big event ahead"}[EVN.status] || EVN.status;
+    return '<button class="evstrip" data-sheet="events"><span class="gp ' + esc(EVN.status) + '">' + esc(label) + "</span><span>" +
+      "<b>Calendar check:</b> " + rich(EVN.plain) + "</span></button>";
+  }
+  function tmBlock(tm) {
+    if (!tm) return "";
+    if (tm.error) return '<div class="issue"><span class="gp warn">Note</span><span>The Time Machine could not run: ' + esc(tm.error) + "</span></div>";
+    var m = tm.mc || {}, h = tm.history || {};
+    var t = Math.round((m.p_target || 0) * 100), s = Math.round((m.p_stop || 0) * 100), n = Math.max(0, 100 - t - s);
+    var leanTxt = {COIN_FLIP: "about a coin flip", LEANS_TARGET: "leans in favour", STRONG_TARGET: "clearly in favour", LEANS_STOP: "leans against", STRONG_STOP: "clearly against", NEUTRAL: "undecided"}[tm.lean] || "";
+    return '<div class="tm"><p class="sec-t" style="margin:0">Time Machine · ' + esc((m.replays || 0).toLocaleString()) + " replays · " + esc(leanTxt) + "</p>" +
+      '<div class="tmbar" role="img" aria-label="Target first ' + t + "%, stop first " + s + "%, neither " + n + '%"><span class="t" style="width:' + t + '%"></span><span class="s" style="width:' + s + '%"></span><span class="n" style="width:' + n + '%"></span></div>' +
+      '<div class="tmleg"><span><i style="background:var(--bull)"></i>Profit target first ' + t + '%</span><span><i style="background:var(--bear)"></i>Safety exit first ' + s + '%</span><span><i style="background:#cfccc0"></i>Neither in time ' + n + "%</span></div>" +
+      (h.samples ? '<small style="color:var(--muted);font-size:.76rem">Real history: from ' + esc(h.samples) + " past starting points, the same distances hit the target first " + esc(h.target) + " times and the stop first " + esc(h.stop) + " times.</small>" : "") +
+      "</div>";
+  }
+  function deskCard(n, d) {
+    if (d.error) return '<section class="dcard"><div class="dh"><span class="ic">' + I.chart + "</span><div><b>Desk calculator · Round " + n + "</b><small>Code, not AI</small></div></div><div class=\"db\">" + esc(d.error) + "</div></section>";
+    var f = d.plan_check || {}, p = d.plan || {};
+    var rr = (f.r_multiple_gross || []).map(function (x) { return x.toFixed(2) + "x"; }).join(" / ");
+    var issues = (d.plan_issues || []).map(function (i) { return '<div class="issue"><span class="gp ' + esc(i.level) + '">' + esc(GLV[i.level] || i.level) + "</span><span>" + rich(i.plain) + "</span></div>"; }).join("");
+    return '<section class="dcard" id="desk-' + n + '"><div class="dh"><span class="ic">' + I.chart + '</span><div><b>Desk calculator · Bull\'s plan after Round ' + n + "</b><small>Checked by tested code, not by an AI</small></div></div>" +
+      '<div class="db"><div class="facts">' +
+      "<div><small>Buy / sell at</small><b class=\"num\">" + money(p.entry) + "</b></div>" +
+      "<div><small>Safety exit (stop)</small><b class=\"num\">" + money(p.stop) + "</b></div>" +
+      "<div><small>Profit targets</small><b class=\"num\">" + (p.targets || []).map(money).join(", ") + "</b></div>" +
+      "<div><small>Win vs risk per target</small><b class=\"num\">" + esc(rr) + "</b></div>" +
+      "<div><small>Stop vs normal move (ATR)</small><b class=\"num\">" + esc(f.stop_in_atr) + "x</b></div>" +
+      "<div><small>Entry vs price now</small><b class=\"num\">" + (f.entry_distance_pct != null ? (f.entry_distance_pct > 0 ? "+" : "") + f.entry_distance_pct + "%" : "–") + "</b></div></div>" +
+      issues + tmBlock(d.timemachine) + "</div></section>";
+  }
+  function riskCard() {
+    if (!DF) return V ? '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The risk manager is checking costs, size and your limits…</div>' : "";
+    var sz = DF.sizing || {}, checks = DF.checks || [];
+    var order = {block: 0, warn: 1, pass: 2};
+    var rows = checks.slice().sort(function (a, b) { return order[a.level] - order[b.level]; }).map(function (c) {
+      return '<div class="issue"><span class="gp ' + esc(c.level) + '">' + esc(GLV[c.level] || c.level) + "</span><span>" + rich(c.plain) + "</span></div>";
+    }).join("");
+    var sizeTxt = sz.status === "NO_CAPITAL" ? "Your capital is not set yet, so no position size was calculated. Per unit: lose about " + esc(sz.account_currency) + " " + money(sz.per_unit_loss_at_stop) + " at the stop, make about " + money(sz.per_unit_gain_at_target1) + " at the first target (after costs)."
+      : sz.qty ? "Size: " + esc(sz.qty) + " units (limited by " + esc(sz.limited_by) + "). Worst case at the stop: " + esc(sz.account_currency) + " " + money(sz.loss_at_stop_incl_costs) + " including " + money(sz.costs_round_trip_at_stop) + " of costs. At the first target: +" + money(sz.gain_at_target1_after_costs) + "." : "";
+    var tk = DF.ticket_plain ? '<div class="ticket"><b>Your ticket · place it yourself</b>' + DF.ticket_plain.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "";
+    return '<div class="divider" id="risk"><span>Risk manager</span><small>Costs, position size and your limits, checked by code.</small></div>' +
+      '<section class="dcard" style="width:min(100%,680px)"><div class="dh"><span class="ic">' + I.lock + '</span><div><b>Final call</b><small>Judge: ' + esc(DF.judge_decision) + " · Risk gate: " + esc(DF.gate) + "</small></div></div>" +
+      '<div class="db"><div class="bigcall"><span class="stamp ' + esc(DF.final_call) + '">' + esc(DF.final_call) + '</span><p class="lead" style="margin:0;flex:1;min-width:200px">' + rich(DF.summary_plain) + "</p></div>" +
+      tk + (sizeTxt ? '<p class="read" style="margin:0;font-size:.9rem">' + sizeTxt + "</p>" : "") +
+      '<div><p class="sec-t">Every check</p><div style="display:grid;gap:6px">' + rows + "</div></div></div></section>";
+  }
+  function outcomeCard() {
+    if (!OUT) return "";
+    var label = {target: "Target reached", stop: "Stop hit", expired: "Time ran out", not_filled: "Never started", pending: "Still running", no_plan: "No plan"}[OUT.status] || OUT.status;
+    var good = OUT.call === "SKIP" ? OUT.status === "stop" || (OUT.status === "expired" && OUT.r < 0) : OUT.status === "target" || (OUT.status === "expired" && OUT.r > 0);
+    var verdictLine = OUT.status === "pending" || OUT.status === "not_filled" || OUT.status === "no_plan" ? "" :
+      (OUT.call === "SKIP" ? (good ? "Skipping was the right call: the trade would have lost." : "Skipping missed a winner this time.") : (good ? "The TAKE call worked." : "The TAKE call lost this time; the stop limited the damage."));
+    return '<div class="divider" id="outcome"><span>What happened next</span><small>Checked automatically against real prices.</small></div>' +
+      '<section class="dcard"><div class="db"><div class="issue"><span class="gp ' + (OUT.status === "pending" ? "warn" : good ? "pass" : "block") + '">' + esc(label) + "</span><span>" + rich(OUT.plain) +
+      (OUT.r != null ? ' <b class="num">(' + (OUT.r > 0 ? "+" : "") + esc(OUT.r) + "R)</b>" : "") + "</span></div>" +
+      (verdictLine ? '<p class="lead" style="margin:0;font-size:.95rem">' + esc(verdictLine) + "</p>" : "") + "</div></section>";
+  }
+  function eventsSheet() {
+    if (!EVN) return;
+    var rows = (EVN.events || []).map(function (e) { return "<tr><td>" + esc(when(e.time_utc)) + "<small>" + esc(e.minutes_from_now >= 0 ? "in " + Math.round(e.minutes_from_now / 60 * 10) / 10 + " h" : Math.round(-e.minutes_from_now) + " min ago") + "</small></td><td>" + esc(e.title) + "<small>" + esc(e.currency) + " · " + (e.tier === 1 ? "major" : esc(e.impact)) + "</small></td><td>" + esc(e.forecast || "") + "<small>prev " + esc(e.previous || "–") + "</small></td></tr>"; }).join("");
+    sheet("Calendar check", "Scheduled events in the trade window", "<p>" + esc(EVN.plain) + "</p>" + (rows ? '<div class="tbl"><table><thead><tr><th>When</th><th>Event</th><th>Forecast</th></tr></thead><tbody>' + rows + "</tbody></table></div>" : "") +
+      (EVN.notes || []).map(function (n) { return '<p style="font-size:.84rem;color:var(--muted);font-family:var(--f-ui)">' + esc(n) + "</p>"; }).join("") +
+      '<p style="font-size:.8rem;color:var(--muted);font-family:var(--f-ui)">Source: ' + esc((EVN.sources || []).join(", ")) + ". Big reports like inflation (CPI), jobs and interest-rate decisions can move prices past any stop-loss.</p>");
+  }
+
   function planText(p) {
     if (!p) return "";
     var s = (p.direction === "SHORT" ? "Sell" : "Buy") + " around " + (p.entry || "?") + ". Safety exit (stop-loss) at " + (p.stop_loss || "?") + ".";
@@ -577,7 +685,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
   /* ---------- render ---------- */
   function render() {
     EV = {}; evN = 0;
-    var chat = welcome() + qcard() + roundBlock(1) + roundBlock(2) + roundBlock(3) + finalCard() +
+    var chat = welcome() + qcard() + roundBlock(1) + roundBlock(2) + roundBlock(3) + finalCard() + riskCard() + outcomeCard() +
       '<p class="disc">Made by AI from free public market data, which can be up to 15 minutes late for some markets. Not financial advice. This tool never places trades.</p>';
     app.innerHTML = header() + '<main class="chat">' + chat + "</main>" +
       '<footer class="composer">' + I.lock + "Only Bull Claude, Bear Claude and the Judge can send messages. You're here to watch and decide.</footer>";
@@ -592,7 +700,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     else if (t.dataset.go) { var el = document.getElementById(t.dataset.go); if (el) el.scrollIntoView({behavior: "smooth", block: "start"}); }
     else {
       var s = t.dataset.sheet;
-      if (s === "market") marketSheet(); else if (s === "guide") guideSheet(); else if (s === "judge-tech") judgeTech();
+      if (s === "market") marketSheet(); else if (s === "guide") guideSheet(); else if (s === "judge-tech") judgeTech(); else if (s === "events") eventsSheet();
       else if (s.indexOf("tech-") === 0) techSheet(+s.slice(5));
     }
   });

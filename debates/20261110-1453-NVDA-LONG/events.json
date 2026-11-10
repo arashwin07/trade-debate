@@ -1,0 +1,82 @@
+{
+  "checked_utc": "2026-11-10T14:53:12Z",
+  "market": "us",
+  "symbol": "NVDA",
+  "style": "intraday",
+  "window_utc": [
+    "2026-11-10T13:53:12Z",
+    "2026-11-10T22:53:12Z"
+  ],
+  "currencies": [
+    "USD"
+  ],
+  "status": "CLEAR",
+  "plain": "No major scheduled events inside the trade window.",
+  "events": [
+    {
+      "kind": "macro",
+      "title": "WASDE Poultry Production",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T17:00:00Z",
+      "minutes_from_now": 127,
+      "forecast": null,
+      "previous": 55.348,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Allotted at High",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 187,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Bid-to-Cover",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 187,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Total Accepted",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 187,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "API Crude Oil Stock Change",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T21:30:00Z",
+      "minutes_from_now": 397,
+      "forecast": 0.5,
+      "previous": -5.267,
+      "actual": null,
+      "tier": 3
+    }
+  ],
+  "notes": [],
+  "sources": [
+    "TradingView economic calendar (ForexFactory as backup)",
+    "Nasdaq earnings calendar"
+  ]
+}

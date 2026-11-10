@@ -56,6 +56,7 @@ def collect(folder):
             "bull": load(os.path.join(folder, f"r{n}_bull.json")),
             "bear": load(os.path.join(folder, f"r{n}_bear.json")),
             "result": load(os.path.join(folder, f"r{n}_result.json")),
+            "desk": load(os.path.join(folder, f"desk_r{n}.json")),
         })
     verdict = load(os.path.join(folder, "verdict.json"))
     return {
@@ -74,6 +75,9 @@ def collect(folder):
         "snapshot": snap,
         "rounds": rounds,
         "verdict": verdict,
+        "events": load(os.path.join(folder, "events.json")),
+        "desk_final": load(os.path.join(folder, "desk_final.json")),
+        "outcome": load(os.path.join(folder, "outcome.json")),
         "generated_utc": now(),
     }
 
@@ -135,6 +139,8 @@ def render_index():
             d = collect(folder)
             v = d["verdict"]
             dec = decision(v) or "LIVE"
+            fin = d.get("desk_final") or {}
+            out = d.get("outcome") or {}
             last_bear = next((r["bear"] for r in reversed(d["rounds"]) if r["bear"]), None)
             items.append({
                 "id": d["id"], "href": f"d/{d['id']}.html",
@@ -145,8 +151,17 @@ def render_index():
                 "headline": (v or {}).get("headline_plain") or (v or {}).get("summary"),
                 "progress": progress_text(d) if dec == "LIVE" else None,
                 "preview": (last_bear or {}).get("headline"),
+                "final_call": fin.get("final_call"), "gate": fin.get("gate"),
+                "outcome": out.get("status"), "outcome_r": out.get("r"),
             })
-    data = {"debates": items, "generated_utc": now(), "schedule": cfg.get("schedule_plain"), "live_reload": True}
+    track = None
+    try:
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import outcomes
+        track = outcomes.summary()
+    except Exception:
+        pass
+    data = {"debates": items, "generated_utc": now(), "schedule": cfg.get("schedule_plain"), "live_reload": True, "track": track}
     write(os.path.join(DOCS, "index.html"), full_doc(inject("index.html", data, "Trade Debate Desk")))
     print("wrote", os.path.join(DOCS, "index.html"))
 

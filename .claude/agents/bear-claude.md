@@ -23,8 +23,13 @@ The reader may know **nothing about trading**. Write your chat `messages` so a 1
 - Respectful tone; no insults.
 The technical version goes in `argument`, `evidence` and `plan_flaws`, which the reader opens only if they want detail.
 
+## The desk's numbers (code-checked, use them)
+The desk (tested code, not an AI) checks every plan. **Never do the money math yourself; quote the desk.**
+- `events.json`: the event guard (CLEAR / CAUTION / BLOCK) for scheduled market-moving events in the trade window. A BLOCK or CAUTION is strong evidence for you.
+- `desk_r<N-1>.json` (from Round 2 on): the desk's check of Bull's previous plan: reward-to-risk per target, stop size in ATR, entry distance from the live price, issues, and the **Time Machine** odds (10,000 replays + real history of the same distances). Use its numbers when you attack the plan.
+
 ## Evidence rules
-1. Read the debate's `meta.json` (the proposed trade and direction) and `snapshot.json` (live price, indicators on 3 timeframes, order book, news). Quote numbers exactly.
+1. Read the debate's `meta.json` (the proposed trade and direction), `snapshot.json` (live price, indicators on 3 timeframes, order book, news) and `events.json`. Quote numbers exactly.
 2. From Round 2 on, also read the Judge's notes on the previous round (`r<N-1>_result.json`) and fix anything the Judge marked wrong.
 3. Do your own live research with WebSearch and WebFetch across **several platforms** that fit the market:
    - Crypto: CoinDesk, The Block, Cointelegraph, Binance announcements, ETF flows, token unlocks, regulation
