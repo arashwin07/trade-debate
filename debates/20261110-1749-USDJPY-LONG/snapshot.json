@@ -1,0 +1,182 @@
+{
+  "symbol": "USD/JPY",
+  "data_symbol": "USDJPY=X",
+  "market": "forex",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T17:49:32Z",
+  "name": "USD/JPY",
+  "currency": "JPY",
+  "price": 158.79,
+  "previous_close": 158.29,
+  "change_today_pct": 0.32,
+  "day_high": 158.85,
+  "day_low": 157.86,
+  "day_volume": 0,
+  "week52_high": 163.98,
+  "week52_low": 152.28,
+  "last_trade_utc": "2026-11-10T17:49:31Z",
+  "market_status": "OPEN (forex 24/5)",
+  "data_source": "Yahoo Finance chart API",
+  "note": "Yahoo data for some exchanges can be delayed up to 15 min; check last_trade_utc.",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 1344,
+      "last_candle_utc": "2026-11-10T17:49:31Z",
+      "close": 158.79,
+      "ema9": 158.79,
+      "ema21": 158.77,
+      "sma20": 158.79,
+      "sma50": 158.68,
+      "sma200": 158.21,
+      "rsi14": 58.8,
+      "macd": {
+        "macd": 0.037586,
+        "signal": 0.046173,
+        "histogram": -0.008587,
+        "prev_histogram": -0.008383
+      },
+      "atr14": 0.04413,
+      "bollinger": {
+        "upper": 158.85,
+        "lower": 158.73
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 158.45,
+      "change_over_window_pct": 0.14,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ],
+      "session_vwap_utc_day": null
+    },
+    {
+      "timeframe": "15m",
+      "candles": 2054,
+      "last_candle_utc": "2026-11-10T17:49:29Z",
+      "close": 158.79,
+      "ema9": 158.76,
+      "ema21": 158.63,
+      "sma20": 158.65,
+      "sma50": 158.3,
+      "sma200": 158.16,
+      "rsi14": 70.2,
+      "macd": {
+        "macd": 0.148586,
+        "signal": 0.154342,
+        "histogram": -0.005757,
+        "prev_histogram": -0.001755
+      },
+      "atr14": 0.08072,
+      "bollinger": {
+        "upper": 158.97,
+        "lower": 158.34
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 157.87,
+      "change_over_window_pct": 0.33,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 1565,
+      "last_candle_utc": "2026-11-10T17:49:31Z",
+      "close": 158.79,
+      "ema9": 158.56,
+      "ema21": 158.34,
+      "sma20": 158.24,
+      "sma50": 158.18,
+      "sma200": 158.01,
+      "rsi14": 76.2,
+      "macd": {
+        "macd": 0.187546,
+        "signal": 0.103615,
+        "histogram": 0.08393,
+        "prev_histogram": 0.088676
+      },
+      "atr14": 0.159279,
+      "bollinger": {
+        "upper": 158.87,
+        "lower": 157.62
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 157.66,
+      "change_over_window_pct": -0.15,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ]
+    }
+  ],
+  "news": [
+    {
+      "title": "Japanese Yen Forecast: USD/JPY Seven-Week Resistance Standoff Faces Fed, BoJ - StoneX",
+      "source": "StoneX",
+      "published": "Tue, 10 Nov 2026 08:23:49 GMT",
+      "url": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNc0V3MEhXNVc3anJ0N000bTJ5blFkM253VHpfcXNGWUlWY013emU0d0hxVTh5T1dJNG56aTRCQll4ekJxSzRHY2lsWklpTkVmX3hSQ3pjcDUzR3lsN3c2aEpOd1FtQi1RNUJxbVBaZlJ6bnY0b3JBNnYxSFNSR2k3VFhRTXZqVV85T1Vza0prMC12eEliU25xS2pkaHpFdE9uVV83eUJnNGhSam9ORkY5WWhtU09qenROVTRhRUtCcw?oc=5"
+    },
+    {
+      "title": "USDJPY Chart | USD to JPY Rate and News - Mitrade",
+      "source": "Mitrade",
+      "published": "Tue, 10 Nov 2026 09:36:30 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTE1XbzVUTHJYWVlyV2FYLWI0RzNiWjdmcW02ajYyMmRsaDAwM0ZHM3RaNUhSdW4wTmVabTdiQ1IyMDJ5czNfaW5xSWpIUUk0MU45dWhNQ1lDZFJVblBhMlZ4UWxlUzFWVVk?oc=5"
+    },
+    {
+      "title": "Japanese Yen Outlook: EUR/JPY and GBP/JPY Outbid USD/JPY - FOREX.com",
+      "source": "FOREX.com",
+      "published": "Mon, 09 Nov 2026 22:19:32 GMT",
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNNDNfd0JCck14c09hZ2tTRjRtTnRoNG1sb1RTS3RCa1FlbGNiVUNsWHBzNDZwR3RLdnVLdzYzaUxtbjBqU1ljUHBkajlFNlhyNUsxekNSRzQ1N1Q5dnhzY3lZb3dPLTcwbEl4ZERVNm5qT1BET3ZkLUwzdHRpWkJYYm9aazhCbDhmR1NZeW9uTzB4N0hrX1FTSUQ0SmFHWGo0VS1zONIBsAFBVV95cUxPa1Z4V3d6cUQ1YzdOQkZOOFh3bzRKYkE4QTItakxUSzhHWTE3Y21jWFhPc1RkRE9ranVOaGFwd1RvZWVpWndRZGJYTU41S1dXaWZmZUNwYWxVSmQxMU9HeWpLT1V3Q3ZZLW1waE05N0ZYZlpKbmxHTWctdzdvbURBZXJvbjVoYjBYeW5HOXoyNUlSRzRXQ2dDT0NXSGt6dEZGcUdVVFRwTHRkekRsd1ZrbA?oc=5"
+    },
+    {
+      "title": "USD/JPY: Could Japanese growth spring a surprise? – ING - www.tmgm.com",
+      "source": "www.tmgm.com",
+      "published": "Tue, 10 Nov 2026 14:23:19 GMT",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQdFZtZkt6dUZNYVBqcmJRRVJlZ3lkaXpUNUcyZjZSQ0lYXzR5Sk9MLTZybmk5VFBrdTY4MHhiekNjZ3ZoLVhuei1uS3BkNTg3OTdFRTU2dU5UT0NfeWZVMFM2TXBtUnFyc21VNFQ3eU9JY2xzVVQxdExQY3lyWl9oYTh5b1NweHZ3amRUTVMzWGJ6UU1tN1BCcTlwRzRPX1RsYktRb2NudjRxRlJUbDZF?oc=5"
+    },
+    {
+      "title": "Japanese Yen Outlook: EUR/JPY and GBP/JPY Outbid USD/JPY - Forex Factory",
+      "source": "Forex Factory",
+      "published": "Tue, 10 Nov 2026 05:19:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOZU5rR25mWnZUelVxWEJsdTBxNlhhX0lRbXVXMlgycFNrUWF3a2drS21XM0N0MGNaLW1KeWNIQlQ4NGRMOF9Wdk9XMFpidVRBZzdIdElFTzdkZ1A4TE1PdFh4ZHlBXzVDTWlJaURJNF9QaHRyUUJVYm40bG43QXN1aTU3dUo1OHFDandGVUJqMENLUXFKeWNBQ2h30gGfAUFVX3lxTE9xQnp2Z3ZvZ0llb0d2bjFkREFURGpQVUU1NTVFX3Jib1NmZkVRVFNOR21WVTBOanR3X2tjT0hSdFF4NVNjemNJLWhrbGtTbllNSVNBWWVFdXJKcEJRVEVCWG03d2NDc2FwUUNqZ3gtNVZaOFpscUhKYm1Bc1hJLXNTaFlhOERhVER6MjhNQlhYczVmVlJvckJrcjM5UFB5NA?oc=5"
+    },
+    {
+      "title": "USD/JPY Technical Outlook: In-Depth Forex Analysis for Savvy Traders - Action Forex",
+      "source": "Action Forex",
+      "published": "Mon, 09 Nov 2026 13:17:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE91MW51eTVkV2hGdWJtWEZORWZZdzF6cnFCMDlhd0ViWk9XeGxVbi1fX1I3MzZXWk9tVE93QXBFRG1qR0JPMWVfdXF6QVQ1ZEhheUVuUUNMN3g3ejJyekRvSzR5T3NPVjByZmlQWGpYb2hrMUNGcHloeW1B?oc=5"
+    },
+    {
+      "title": "U.S. Dollar Rallies As CPI Exceeds Estimates: Analysis For EUR/USD, GBP/USD, USD/CAD, USD/JPY - FXEmpire",
+      "source": "FXEmpire",
+      "published": "Tue, 10 Nov 2026 17:11:32 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi1gFBVV95cUxNUEFiM0dHVnpORE81LVNiZTNCRTFMYnRpdG92eG1tcFc1dnVCMGNmbXd0b3pzb1MzNVYxOU1TTU9EVUJad2psdUZ1UUFDS3JzOFlTbmpxY0pYVjI0QTFWS0M3c0ROMWJkWndUSVZQZTJTczV6dk1YMmQzT1EtZi1MSF9OZVFpVzRKdWN2U0NFbkdKYk5XbGRyTjJiT0ZoZHJ6SlBWejFjWFJ4MWREM0dldHhUN1dTY1FXNWlfX1RWTGNPWlFlSDBfZk5iaEoyMDVmSWRLVkl3?oc=5"
+    },
+    {
+      "title": "USD/JPY Coiled for CPI - FOREX.com",
+      "source": "FOREX.com",
+      "published": "Tue, 10 Nov 2026 09:41:39 GMT",
+      "url": "https://news.google.com/rss/articles/CBMieEFVX3lxTE44WHV0djJYckwwbTBFb2hROWR6WFZnMXJEXzlKR1IzOVFmZmJPdElLMml4dFVlekZ2VERDdUR3RmxqZmtyNkxFMnZVMlNRaVJmQlM1VVR5OE1jTXZWMFk4dGZIQWFaYmVIYWNDVS1DOG93cGNOWFdfag?oc=5"
+    },
+    {
+      "title": "Weekly forex forecast: EUR/USD, XAU/USD, GBP/USD, USD/JPY, Bitcoin and more [Video] - FXStreet",
+      "source": "FXStreet",
+      "published": "Mon, 09 Nov 2026 15:16:34 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNUDBiQktsRUx5RzFFaHNQZ3lJb0VsNmFZdHNDcXZtWnR2Q0d4N290YUoyaEIxbEJYVWdxaTlTcmV6VVQwdWlGbDlpQlFPYUtoSkpmRW9mSmM0MXBESEt6eF9Wd0NuWnFwdU1PVFhfYmJrNGZGem0weXIyOFZvSFhsdnN0bUQzMXpuazFSLXVtTXkwQnZUYVFFbWI5V1RpVzllYUZRZGxqV1hjUFoxMjFldWRMTUhNQXRLRHlXdklsREE?oc=5"
+    },
+    {
+      "title": "USD/JPY Fed-Fueled Pullback Ahead of BoJ - StoneX",
+      "source": "StoneX",
+      "published": "Mon, 09 Nov 2026 04:10:43 GMT",
+      "url": "https://news.google.com/rss/articles/CBMikgFBVV95cUxNeDFSRGxPUDEyLU9Qdjh1cjEyTlUxVGZRUjVWd0IyOUY4RnZaaHRuRTdrQnhnWGZoaWR3Wlh6dGdNY1AtdjZ4RDNuX3RPUzlBV2tsdnQzYkNRU3kwT1FjSGplc0FneUxfaEMySXlzTDN5U2ItNXhPb0R1dkFZN3VqMDNrR05nYjBHcHk5Y0x1RXZidw?oc=5"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "round": 2,
+  "recorded_files": [
+    "snapshot.json",
+    "events.json",
+    "levels.json",
+    "optimizer.json",
+    "desk_r1.json",
+    "desk_r2.json",
+    "fresh pulls: 3"
+  ],
+  "bull": {
+    "checked": 9,
+    "matched": 9,
+    "issues": [],
+    "wrong": 0,
+    "unconfirmed": 0
+  },
+  "bear": {
+    "checked": 15,
+    "matched": 15,
+    "issues": [],
+    "wrong": 0,
+    "unconfirmed": 0
+  }
+}

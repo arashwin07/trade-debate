@@ -1,0 +1,118 @@
+{
+  "checked_utc": "2026-11-10T17:58:28Z",
+  "market": "forex",
+  "symbol": "USD/JPY",
+  "style": "intraday",
+  "window_utc": [
+    "2026-11-10T16:58:28Z",
+    "2026-11-11T01:58:28Z"
+  ],
+  "currencies": [
+    "JPY",
+    "USD"
+  ],
+  "status": "CLEAR",
+  "plain": "No major scheduled events inside the trade window.",
+  "events": [
+    {
+      "kind": "macro",
+      "title": "WASDE Poultry Production",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T17:00:00Z",
+      "minutes_from_now": -58,
+      "forecast": null,
+      "previous": 55.348,
+      "actual": 55.264,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Allotted at High",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 2,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Bid-to-Cover",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 2,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "10-Year Note Auction Total Accepted",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T18:00:00Z",
+      "minutes_from_now": 2,
+      "forecast": null,
+      "previous": null,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "API Crude Oil Stock Change",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T21:30:00Z",
+      "minutes_from_now": 212,
+      "forecast": 0.5,
+      "previous": -5.267,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "Reuters Tankan Non-Manufacturers Index",
+      "currency": "JPY",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T23:00:00Z",
+      "minutes_from_now": 302,
+      "forecast": null,
+      "previous": 23,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "Broad Money",
+      "currency": "JPY",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T23:50:00Z",
+      "minutes_from_now": 352,
+      "forecast": null,
+      "previous": 2343.4,
+      "actual": null,
+      "tier": 3
+    },
+    {
+      "kind": "macro",
+      "title": "Money Supply M2",
+      "currency": "JPY",
+      "impact": "Medium",
+      "time_utc": "2026-11-10T23:50:00Z",
+      "minutes_from_now": 352,
+      "forecast": null,
+      "previous": 1297.2,
+      "actual": null,
+      "tier": 3
+    }
+  ],
+  "notes": [],
+  "sources": [
+    "TradingView economic calendar (ForexFactory as backup)"
+  ]
+}

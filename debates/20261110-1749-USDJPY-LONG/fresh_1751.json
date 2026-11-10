@@ -1,0 +1,120 @@
+{
+  "symbol": "USD/JPY",
+  "data_symbol": "USDJPY=X",
+  "market": "forex",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T17:51:53Z",
+  "name": "USD/JPY",
+  "currency": "JPY",
+  "price": 158.79,
+  "previous_close": 158.29,
+  "change_today_pct": 0.32,
+  "day_high": 158.85,
+  "day_low": 157.86,
+  "day_volume": 0,
+  "week52_high": 163.98,
+  "week52_low": 152.28,
+  "last_trade_utc": "2026-11-10T17:51:51Z",
+  "market_status": "OPEN (forex 24/5)",
+  "data_source": "Yahoo Finance chart API",
+  "note": "Yahoo data for some exchanges can be delayed up to 15 min; check last_trade_utc.",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 1345,
+      "last_candle_utc": "2026-11-10T17:51:51Z",
+      "close": 158.79,
+      "ema9": 158.79,
+      "ema21": 158.77,
+      "sma20": 158.79,
+      "sma50": 158.69,
+      "sma200": 158.22,
+      "rsi14": 58.8,
+      "macd": {
+        "macd": 0.035799,
+        "signal": 0.044155,
+        "histogram": -0.008356,
+        "prev_histogram": -0.00824
+      },
+      "atr14": 0.042172,
+      "bollinger": {
+        "upper": 158.84,
+        "lower": 158.74
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 158.45,
+      "change_over_window_pct": 0.14,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ],
+      "session_vwap_utc_day": null
+    },
+    {
+      "timeframe": "15m",
+      "candles": 2054,
+      "last_candle_utc": "2026-11-10T17:51:51Z",
+      "close": 158.79,
+      "ema9": 158.76,
+      "ema21": 158.63,
+      "sma20": 158.65,
+      "sma50": 158.3,
+      "sma200": 158.16,
+      "rsi14": 70.3,
+      "macd": {
+        "macd": 0.149354,
+        "signal": 0.154573,
+        "histogram": -0.005218,
+        "prev_histogram": -0.001372
+      },
+      "atr14": 0.081056,
+      "bollinger": {
+        "upper": 158.97,
+        "lower": 158.34
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 157.87,
+      "change_over_window_pct": 0.33,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 1565,
+      "last_candle_utc": "2026-11-10T17:51:51Z",
+      "close": 158.79,
+      "ema9": 158.57,
+      "ema21": 158.34,
+      "sma20": 158.24,
+      "sma50": 158.18,
+      "sma200": 158.01,
+      "rsi14": 76.1,
+      "macd": {
+        "macd": 0.188074,
+        "signal": 0.103797,
+        "histogram": 0.084277,
+        "prev_histogram": 0.089059
+      },
+      "atr14": 0.159565,
+      "bollinger": {
+        "upper": 158.87,
+        "lower": 157.62
+      },
+      "volume_vs_20avg": null,
+      "recent_high_50": 158.85,
+      "recent_low_50": 157.66,
+      "change_over_window_pct": -0.15,
+      "trend_facts": [
+        "EMA9 above EMA21",
+        "price above SMA50",
+        "price above SMA200"
+      ]
+    }
+  ]
+}

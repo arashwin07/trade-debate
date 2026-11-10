@@ -1,0 +1,19 @@
+{
+  "round": 1,
+  "leader": "even",
+  "score": {"bull": 6, "bear": 6},
+  "title_plain": "Round 1 is a draw",
+  "summary_plain": "Bull wants to buy USD/JPY on a small dip because hot US inflation is lifting the dollar and the price is climbing. Bear says the price already jumped, is stretched near today's top, and an earlier desk test of a different plan lost more often than it won. The desk replayed Bull's own plan 10,000 times: the first goal came first 60% of the time and the stop came first 40%, but the first goal pays only 0.65 for each 1 risked, so it is about a coin flip. No big news is due soon, and nobody had a wrong number.",
+  "best_point_plain": {
+    "bull": "Waiting for a small dip to 158.72 and putting the exit just under a price level that held before is a smarter plan than buying at the top.",
+    "bear": "The price is stretched after a big jump and sits just under today's high, so buying here is late and the short charts are already losing steam."
+  },
+  "checks": [
+    {"by": "bull", "claim": "1h RSI 76.2, price above EMA9, EMA21, SMA50 and SMA200", "status": "verified", "note_plain": "Matches the live data: the uptrend is real but stretched."},
+    {"by": "bull", "claim": "Entry 158.72, stop 158.55 (about 1.1 ATR), targets 158.83 and 159.00", "status": "verified", "note_plain": "The desk agrees: the stop is 1.07 ATR and the reward is 0.65 to the first target and 1.65 to the second."},
+    {"by": "bear", "claim": "Optimizer NO_EDGE: target first 26.5%, stop first 66.6%", "status": "verified", "note_plain": "True for the optimizer's plan, but that was a different plan than Bull's, whose desk replay shows 60% target first."},
+    {"by": "bear", "claim": "1h RSI 76.3 and 5m/15m MACD negative", "status": "verified", "note_plain": "Matches the data: short-term push is fading."},
+    {"by": "bear", "claim": "StoneX says seven-week resistance standoff", "status": "unverifiable", "note_plain": "Only a headline snippet was available, so it cannot be fully checked."}
+  ],
+  "watch_next_plain": "Round 2 should settle whether price can hold above today's high of 158.85 or falls back, and whether a first goal that pays only 0.65 for each 1 risked is worth the trade."
+}

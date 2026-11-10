@@ -1,0 +1,19 @@
+{
+  "round": 3,
+  "leader": "bear",
+  "score": {"bull": 6, "bear": 8},
+  "title_plain": "Bear wins Round 3",
+  "summary_plain": "Bull kept his plan (buy at 158.76, exit at 158.61, goal 159.00, pays 1.6 for each 1 risked) and openly agreed it has no proven edge. The desk replayed it 10,000 times: the goal came first 36 times in 100 and the exit first 62 times, but it needs about 38 wins to break even, so it loses a little on average. Bear used Bull's own honesty, pointed out that all four other versions Bull tried also fall short, and noted a US bond sale at 18:00 UTC is minutes away. Bull's capped risk is real, but a small bet that loses slightly is still a losing bet.",
+  "best_point_plain": {
+    "bull": "He was honest: the most you can lose is 0.15, the dollar is strong, no big event is scheduled, and he tested wider versions instead of hiding the thin odds.",
+    "bear": "Small size makes a bet cheaper, not better: the plan wins 36 times in 100 when it needs 38, and every version Bull tried also lands just under break-even."
+  },
+  "checks": [
+    {"by": "bull", "claim": "Final plan pays 1.6 for each 1 risked", "status": "verified", "note_plain": "The desk agrees: 1.6 to 1, but the stop is only 0.94 times a normal hour's move, so a normal wiggle can hit it."},
+    {"by": "bull", "claim": "Real history: 13 goal-first vs 33 stop-first of 59", "status": "wrong", "note_plain": "The desk says 31 stops (and 15 neither). 33 was from an older plan. It is a small slip and points the same way."},
+    {"by": "bear", "claim": "Replays: goal first 35.8%, stop first 62.5%, average -0.047 per 1 risked, needs 38%", "status": "verified", "note_plain": "Matches the desk exactly."},
+    {"by": "bear", "claim": "Bond sale at 18:00 UTC is inside the window", "status": "verified", "note_plain": "True, the desk lists it as a medium event, 10 minutes away. The event check still says CLEAR."},
+    {"by": "bear", "claim": "Price 158.81, day high 158.85, 1-hour RSI 76.6", "status": "verified", "note_plain": "Matches the fresh price pulls, and the desk shows the live price at 158.81."}
+  ],
+  "watch_next_plain": "No more rounds: the final ruling should check whether the price is still near 158.76 and whether the bond sale moved the dollar."
+}

@@ -1,0 +1,317 @@
+{
+  "computed_utc": "2026-11-10T17:49:40Z",
+  "symbol": "USD/JPY",
+  "market": "forex",
+  "window_hours": 72,
+  "keywords": [
+    "USD",
+    "USD/",
+    "dollar"
+  ],
+  "items": [
+    {
+      "title": "US Dollar Opens Lower in Cuba's Informal Currency Market",
+      "source": "CubaHeadlines",
+      "sources": [
+        "CubaHeadlines"
+      ],
+      "tier": 3,
+      "published_utc": "2026-11-10T17:02:18Z",
+      "age_hours": 0.8,
+      "url": "https://news.google.com/rss/articles/CBMiWEFVX3lxTE4xRHRHWHRBY2RDNk9HZnMwRzMxaERfem9ZLUFtS3huTW1tQy1HbXJjMl96clZjM1BiZF9MLXMxdHpMaEFiV1RWSnJkWVJXWTdHOFZIVFJReUE?oc=5",
+      "summary": "US Dollar Opens Lower in Cuba's Informal Currency Market&nbsp;&nbsp;CubaHeadlines"
+    },
+    {
+      "title": "British Pound falls below 1.34 as hot US CPI puts 50-bps Fed hike in play",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T15:16:18Z",
+      "age_hours": 2.6,
+      "url": "https://www.fxstreet.com/news/british-pound-falls-below-134-as-hot-cpi-puts-50-bps-fed-hike-in-play-202611101516",
+      "summary": "The Pound Sterling (GBP) dives over 0.40% against the US Dollar (USD) on Tuesday as hot US inflation suggests the Federal Reserve’s (Fed) job is not done."
+    },
+    {
+      "title": "Canadian Dollar comes under pressure as US CPI reinforces hawkish Fed outlook",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T14:56:10Z",
+      "age_hours": 2.9,
+      "url": "https://www.fxstreet.com/news/canadian-dollar-comes-under-pressure-as-us-cpi-reinforces-hawkish-fed-outlook-202611101456",
+      "summary": "USD/CAD climbs to its highest level since October 16 on Tuesday as stronger-than-expected US inflation lifts the US Dollar (USD), while falling Oil prices amid hopes for US-Iran diplomacy add further pressure on the Canadian Dollar (CAD)."
+    },
+    {
+      "title": "Euro slips below 1.1200 as hotter US inflation fuels Fed rate hike bets",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T14:05:21Z",
+      "age_hours": 3.7,
+      "url": "https://www.fxstreet.com/news/euro-slips-below-11200-as-hotter-us-inflation-fuels-fed-rate-hike-bets-202611101405",
+      "summary": "EUR/USD extends its decline on Tuesday, trading around 1.1190, down 0.28% on the day at the time of writing."
+    },
+    {
+      "title": "GBP/USD Price Forecast: Pound bulls fail to find follow-through above 1.3450",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:58:42Z",
+      "age_hours": 4.8,
+      "url": "https://www.fxstreet.com/news/gbp-usd-price-forecast-pound-bulls-fail-to-find-follow-through-above-13450-202611101258",
+      "summary": "The British Pound (GBP) trims some gains on Tuesday, with the US Dollar (USD) drawing support from hawkish comments by Federal Reserve (Fed) Governor Christopher Waller earlier in the day. GBP/USD dips, however, remain contained above 1.3420 so far, with the pair holding most of Monday's gains."
+    },
+    {
+      "title": "Australian Dollar falls below 0.6900 as hotter US CPI fuel Fed rate hike bets",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:55:51Z",
+      "age_hours": 4.9,
+      "url": "https://www.fxstreet.com/news/australian-dollar-slips-toward-06900-as-fed-rate-hike-expectations-rise-202611101255",
+      "summary": "AUD/USD trades around 0.6905 on Tuesday, down 0.31% on the day at the time of writing, as the Australian Dollar (AUD) loses some ground against the US Dollar (USD) following Monday's strong rebound."
+    },
+    {
+      "title": "USD/INR: Break below 94.00 on flows – Societe Generale",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:50:00Z",
+      "age_hours": 5.0,
+      "url": "https://www.fxstreet.com/news/usd-inr-break-below-9400-on-flows-societe-generale-202611101250",
+      "summary": "Societe Generale’s Kenneth Broux and co-authors highlight that the decline in Brent below $90 supports India’s terms of trade and coincides with stronger portfolio inflows into FAR‑eligible bonds and equities. "
+    },
+    {
+      "title": "USD/KRW: AI-linked reversal toward 1400 – TD Securities",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:46:56Z",
+      "age_hours": 5.0,
+      "url": "https://www.fxstreet.com/news/usd-krw-ai-linked-reversal-toward-1400-td-securities-202611101246",
+      "summary": "TD Securities expects the Korean Won (KRW) to weaken, with USD/KRW retracing higher toward 1400 as markets rotate out of the AI build-out theme and global equities remain under pressure."
+    },
+    {
+      "title": "US Dollar Index (DXY) trims losses ahead of US inflation data",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:09:31Z",
+      "age_hours": 5.7,
+      "url": "https://www.fxstreet.com/news/us-dollar-index-dxy-trims-losses-ahead-of-us-inflation-data-202611101209",
+      "summary": "The US Dollar (USD) is posting minor gains against most peers on Tuesday, fuelled by hawkish comments by Federal Reserve (Fed) Governor Christopher Waller, with investors focusing on October's Consumer Price Index (CPI) release."
+    },
+    {
+      "title": "What will flip the US Dollar's trajectory as inflation cools toward the Fed's 2% target in 2027?",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T12:05:32Z",
+      "age_hours": 5.7,
+      "url": "https://www.fxstreet.com/news/what-will-flip-the-us-dollars-trajectory-as-inflation-cools-toward-the-feds-2-target-in-2027-202611101205",
+      "summary": "The US Dollar (USD) is facing a shifting macroeconomic narrative as market focus rotates between near-term Federal Reserve (Fed) policy expectations, energy price dynamics, and equity market underperformance."
+    },
+    {
+      "title": "EUR/USD Price Forecast: Fears of aggressive Fed tightening lift US Dollar",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T11:52:14Z",
+      "age_hours": 6.0,
+      "url": "https://www.fxstreet.com/news/eur-usd-price-forecast-fears-of-aggressive-fed-tightening-lift-us-dollar-202611101152",
+      "summary": "The Euro (EUR) surrenders its early gains and turns marginally lower at around 1.1220 against the US Dollar (USD) during the European trade on Tuesday."
+    },
+    {
+      "title": "Silver Price Forecast: XAG/USD plummets to near $52 as Fed’s Waller cautions larger rate hike",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T11:15:53Z",
+      "age_hours": 6.6,
+      "url": "https://www.fxstreet.com/news/silver-price-forecast-xag-usd-plummets-to-near-52-as-feds-waller-cautions-larger-rate-hike-202611101115",
+      "summary": "Silver price (XAG/USD) is severely down over 2% to near $52.20 during the European trading session."
+    },
+    {
+      "title": "US Dollar: Supported near term, softer later – ING",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T10:56:02Z",
+      "age_hours": 6.9,
+      "url": "https://www.fxstreet.com/news/us-dollar-supported-near-term-softer-later-ing-202611101056",
+      "summary": "ING’s Chris Turner expects the US Dollar (USD) to remain underpinned into early 2027 by strong US growth, inflation above 3% and a hawkish Federal Reserve. He notes that as headline inflation falls back towards the Fed’s 2% target, short-dated US rates should decline."
+    },
+    {
+      "title": "Gold drops toward $4,050 as US CPI fuels speculation of larger Fed rate hike",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T10:46:19Z",
+      "age_hours": 7.1,
+      "url": "https://www.fxstreet.com/news/gold-falls-over-1-as-hawkish-fed-remarks-weigh-ahead-of-us-cpi-202611101046",
+      "summary": "Gold (XAU/USD) extends its intraday decline on Tuesday after US inflation came in hotter than expected. The metal is down about 2.20%, erasing all of the previous day’s gains as the US Dollar strengthens. At the time of writing, XAU/USD trades around $4,050, down from Monday’s high near $4,148."
+    },
+    {
+      "title": "British Pound turns upside down against USD as Fed’s Waller warns of bigger rate hike",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:38:16Z",
+      "age_hours": 8.2,
+      "url": "https://www.fxstreet.com/news/british-pound-turns-upside-down-against-usd-as-feds-waller-warns-of-bigger-rate-hike-202611100938",
+      "summary": "The British Pound (GBP) gives back its early gains and turns negative at around 1.3430 against the US Dollar (USD) during the European trading session on Tuesday."
+    },
+    {
+      "title": "Silver price today: Silver falls, according to FXStreet data",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:30:34Z",
+      "age_hours": 8.3,
+      "url": "https://www.fxstreet.com/news/silver-price-today-silver-falls-according-to-fxstreet-data-202611100930",
+      "summary": "Silver prices (XAG/USD) fell on Tuesday, according to FXStreet data. Silver trades at $52.51 per troy ounce, down 1.58% from the $53.35 it cost on Monday."
+    },
+    {
+      "title": "EUR/USD (EURUSD=X) Live Rate, Chart & News - Yahoo Finance",
+      "source": "Yahoo! Finance Canada",
+      "sources": [
+        "Yahoo! Finance Canada"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:27:01Z",
+      "age_hours": 8.4,
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE8zSUFCZmxoakVmQW1kNlNLdzU5SzNSb01UdHBTdVJKMXlVVkl4cnV3eXUwcXpFWHF3STc0OXFnWXRWY2p1ZkJNVlpWSG5rRWx1aTBrNHhSbHduZw?oc=5",
+      "summary": "EUR/USD (EURUSD=X) Live Rate, Chart & News - Yahoo Finance&nbsp;&nbsp;Yahoo! Finance Canada"
+    },
+    {
+      "title": "US Dollar: Selective strength and year-end drift – TD Securities",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:22:05Z",
+      "age_hours": 8.5,
+      "url": "https://www.fxstreet.com/news/us-dollar-selective-strength-and-year-end-drift-td-securities-202611100922",
+      "summary": "TD Securities’ macro team, led by Jayati Bharadwaj and colleagues, argues that the US Dollar (USD) is losing its status as an effortless haven, with muted gains despite an AI-driven global equity selloff. They expect US vs Rest of the World (RoW) equity performance to remain the key driver."
+    },
+    {
+      "title": "EUR/USD: Range-bound then recovering – ING",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:16:19Z",
+      "age_hours": 8.6,
+      "url": "https://www.fxstreet.com/news/eur-usd-range-bound-then-recovering-ing-202611100916",
+      "summary": "ING’s Chris Turner projects EUR/USD to trade soft in a 1.10–1.15 range over the next four to five months as French budget politics keep a risk premium in the Euro ahead of April elections."
+    },
+    {
+      "title": "US Dollar: Energy slide supports softer Dollar – MUFG",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:11:52Z",
+      "age_hours": 8.6,
+      "url": "https://www.fxstreet.com/news/us-dollar-energy-slide-supports-softer-dollar-mufg-202611100911",
+      "summary": "MUFG’s Lee Hardman notes the US Dollar has weakened, with the Dollar Index dropping below Friday’s high as Brent declines towards USD90. Lower Oil prices and falling US Treasury yields are easing pressure on the Fed, while markets await the October US CPI report. Futures still price a December Fed h"
+    },
+    {
+      "title": "USD/JPY: Japanese growth surprise risk – ING",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T09:06:35Z",
+      "age_hours": 8.7,
+      "url": "https://www.fxstreet.com/news/usd-jpy-japanese-growth-surprise-risk-ing-202611100906",
+      "summary": "ING's Chris Turner flags Japan as a potential positive growth surprise that could weigh on USD/JPY. Turner notes South Korea’s chip-led upswing and upgraded GDP forecasts as a template, with Japan supplying key manufacturing equipment and benefiting from loose fiscal policy. "
+    },
+    {
+      "title": "Gold slides below $4,100 as Fed hike bets exert pressure ahead of US CPI",
+      "source": "fxstreet.com",
+      "sources": [
+        "fxstreet.com"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-10T05:22:32Z",
+      "age_hours": 12.5,
+      "url": "https://www.fxstreet.com/news/gold-drifts-lower-as-traders-look-to-us-cpi-report-for-fed-rate-cues-amid-iran-uncertainty-202611100522",
+      "summary": "Gold (XAU/USD) extends its intraday descent and slides below the $4,100 mark during the first half of the European session on Tuesday, reversing a major part of the previous day's strong gains to the $4,150 resistance."
+    },
+    {
+      "title": "EUR/USD (EURUSD=X) live rate, chart and news",
+      "source": "Yahoo Finance Singapore",
+      "sources": [
+        "Yahoo Finance Singapore"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-09T20:21:45Z",
+      "age_hours": 21.5,
+      "url": "https://news.google.com/rss/articles/CBMiWkFVX3lxTE9KWjJPTE90NjkzSllGWnB3UGFlWk5ENy1yRUhfYTNKYjdIY01fQWl2N2duaUhZbmxsZjlqMU1zbkgtZEpSa1FoRjloWFAtLUxLdkM1bnl6WldLdw?oc=5",
+      "summary": "EUR/USD (EURUSD=X) live rate, chart and news&nbsp;&nbsp;Yahoo Finance Singapore"
+    },
+    {
+      "title": "Weekly forex forecast: EUR/USD, XAU/USD, GBP/USD, USD/JPY, Bitcoin and more [Video]",
+      "source": "FXStreet",
+      "sources": [
+        "FXStreet"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-09T15:16:34Z",
+      "age_hours": 26.6,
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNUDBiQktsRUx5RzFFaHNQZ3lJb0VsNmFZdHNDcXZtWnR2Q0d4N290YUoyaEIxbEJYVWdxaTlTcmV6VVQwdWlGbDlpQlFPYUtoSkpmRW9mSmM0MXBESEt6eF9Wd0NuWnFwdU1PVFhfYmJrNGZGem0weXIyOFZvSFhsdnN0bUQzMXpuazFSLXVtTXkwQnZUYVFFbWI5V1RpVzllYUZRZGxqV1hjUFoxMjFldWRMTUhNQXRLRHlXdklsREE?oc=5",
+      "summary": "Weekly forex forecast: EUR/USD, XAU/USD, GBP/USD, USD/JPY, Bitcoin and more [Video]&nbsp;&nbsp;FXStreet"
+    },
+    {
+      "title": "Forex Today: US Dollar retreats following NFP-inspired rally",
+      "source": "FXStreet",
+      "sources": [
+        "FXStreet"
+      ],
+      "tier": 2,
+      "published_utc": "2026-11-09T07:14:14Z",
+      "age_hours": 34.6,
+      "url": "https://news.google.com/rss/articles/CBMipAFBVV95cUxNUEl0ZjRRZEF1dUZGRnlCdTJPdGtVSmVpX2kwa0FESVFqbVp1bEU1eVdoQmh4c2VsNWxldHY2MlhRbTdFSVN5Y0VUSllDeU1NS3lwZTFRVlpIY3JMam1kQmE5b0hpYk5CV1F6V2dIQmllR1ZtSzgySkpfVjRvV0thYWVCbXA2Zlh0M3NhTmVrOE9KR25ibGExWFFyTXVTeW5fdEZQVQ?oc=5",
+      "summary": "Forex Today: US Dollar retreats following NFP-inspired rally&nbsp;&nbsp;FXStreet"
+    }
+  ],
+  "count": 25,
+  "dropped_stale": 0,
+  "feed_errors": [],
+  "rules": "Only items from the last 72 hours that mention the asset; same story from several outlets merged; tier 1 = major newsroom, 2 = specialist or aggregator, 3 = other."
+}

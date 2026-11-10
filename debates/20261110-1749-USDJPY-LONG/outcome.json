@@ -1,0 +1,17 @@
+{
+  "checked_utc": "2026-11-10T17:58:31Z",
+  "call": "SKIP",
+  "judge_decision": "SKIP",
+  "plan": {
+    "direction": "LONG",
+    "entry": 158.76,
+    "stop": 158.61,
+    "targets": [
+      159.0
+    ]
+  },
+  "status": "pending",
+  "r": null,
+  "plain": "Waiting for the price to reach the entry.",
+  "window_end_utc": "2026-11-11T01:58:27Z"
+}

@@ -1,0 +1,19 @@
+{
+  "round": 2,
+  "leader": "bear",
+  "score": {"bull": 6, "bear": 7},
+  "title_plain": "Bear edges Round 2",
+  "summary_plain": "Bull fixed his plan: he now waits for a dip to 158.76 and aims for one goal at 159.00 that pays 1.6 for each 1 risked, and he admitted the odds are thin. Bear attacked Bull's older plan (they wrote at the same time), so some of his points no longer apply, but his main message still holds. The desk replayed Bull's new plan 10,000 times: the goal came first only 36 times in 100 and the stop came first 62 times, while it needs about 38 to break even. In real history the goal came first 13 times and the stop 33 times, so it is still about a coin flip that loses a little on average.",
+  "best_point_plain": {
+    "bull": "He listened to the desk, dropped the goal that paid too little and rebuilt the plan so it pays 1.6 for each 1 risked, and he honestly said it is a thin trade.",
+    "bear": "Even with a better plan, no version the code tried has a real edge: the price is stretched, the short charts are fading and the odds sit just under break-even."
+  },
+  "checks": [
+    {"by": "bull", "claim": "New plan: entry 158.76, stop 158.61, target 159.00 pays 1.6 for each 1 risked", "status": "verified", "note_plain": "The desk agrees: 1.6 to 1, but the stop is only 0.94 times a normal hour's move, so normal wiggles could hit it."},
+    {"by": "bull", "claim": "New plan wins about 35 to 38 times in 100", "status": "verified", "note_plain": "The desk says 35.8%, with the stop first 62.5% and an average result of about -0.05 per 1 risked."},
+    {"by": "bear", "claim": "Bull's Round 1 first goal pays only 0.65 for each 1 risked and hit first 60%", "status": "verified", "note_plain": "True for the old plan, but Bull has already dropped that goal, so it matters less now."},
+    {"by": "bear", "claim": "1h RSI 76.1, 5m and 15m MACD negative", "status": "verified", "note_plain": "Matches the fresh data: the long chart is stretched and the short charts are cooling."},
+    {"by": "bear", "claim": "StoneX says seven-week resistance standoff", "status": "unverifiable", "note_plain": "Only a headline snippet exists, and Bull says the same."}
+  ],
+  "watch_next_plain": "Round 3 should settle whether Bull can show any real reason this 1.6 to 1 plan wins more than 38 times in 100, and whether the 10-year bond sale at 18:00 UTC moves the price."
+}

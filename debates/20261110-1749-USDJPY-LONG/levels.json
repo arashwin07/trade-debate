@@ -1,0 +1,272 @@
+{
+  "computed_utc": "2026-11-10T17:49:38Z",
+  "symbol": "USD/JPY",
+  "market": "forex",
+  "style": "intraday",
+  "price": 158.8,
+  "atr": 0.159422,
+  "atr_timeframe": "1h",
+  "levels": [
+    {
+      "price": 157.248993,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.977,
+      "dist_atr": -9.73
+    },
+    {
+      "price": 157.380005,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.894,
+      "dist_atr": -8.91
+    },
+    {
+      "price": 157.533005,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.798,
+      "dist_atr": -7.95
+    },
+    {
+      "price": 157.648005,
+      "kind": "pivot",
+      "label": "Pivot S2 (second floor)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.725,
+      "dist_atr": -7.23
+    },
+    {
+      "price": 157.655334,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 3x)",
+      "touches": 3,
+      "side": "below",
+      "dist_pct": -0.721,
+      "dist_atr": -7.18
+    },
+    {
+      "price": 157.763672,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 3x)",
+      "touches": 3,
+      "side": "below",
+      "dist_pct": -0.653,
+      "dist_atr": -6.5
+    },
+    {
+      "price": 157.845001,
+      "kind": "prev_day",
+      "label": "Yesterday's low",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.601,
+      "dist_atr": -5.99
+    },
+    {
+      "price": 157.865498,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 4x)",
+      "touches": 4,
+      "side": "below",
+      "dist_pct": -0.588,
+      "dist_atr": -5.86
+    },
+    {
+      "price": 157.865997,
+      "kind": "today",
+      "label": "Today's low so far",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.588,
+      "dist_atr": -5.86
+    },
+    {
+      "price": 157.970006,
+      "kind": "pivot",
+      "label": "Pivot S1 (first floor)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.523,
+      "dist_atr": -5.21
+    },
+    {
+      "price": 157.983002,
+      "kind": "today",
+      "label": "Today's open",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.514,
+      "dist_atr": -5.12
+    },
+    {
+      "price": 157.983002,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 2x)",
+      "touches": 2,
+      "side": "below",
+      "dist_pct": -0.514,
+      "dist_atr": -5.12
+    },
+    {
+      "price": 157.988495,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 2x)",
+      "touches": 2,
+      "side": "below",
+      "dist_pct": -0.511,
+      "dist_atr": -5.09
+    },
+    {
+      "price": 158.123993,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.426,
+      "dist_atr": -4.24
+    },
+    {
+      "price": 158.162999,
+      "kind": "swing_low",
+      "label": "Swing low (price turned up here 3x)",
+      "touches": 3,
+      "side": "below",
+      "dist_pct": -0.401,
+      "dist_atr": -4.0
+    },
+    {
+      "price": 158.167002,
+      "kind": "pivot",
+      "label": "Pivot point",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.399,
+      "dist_atr": -3.97
+    },
+    {
+      "price": 158.188004,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.385,
+      "dist_atr": -3.84
+    },
+    {
+      "price": 158.292007,
+      "kind": "prev_day",
+      "label": "Yesterday's close",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.32,
+      "dist_atr": -3.19
+    },
+    {
+      "price": 158.302994,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.313,
+      "dist_atr": -3.12
+    },
+    {
+      "price": 158.363998,
+      "kind": "prev_day",
+      "label": "Yesterday's high",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.275,
+      "dist_atr": -2.73
+    },
+    {
+      "price": 158.489003,
+      "kind": "pivot",
+      "label": "Pivot R1 (first ceiling)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.196,
+      "dist_atr": -1.95
+    },
+    {
+      "price": 158.503006,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.187,
+      "dist_atr": -1.86
+    },
+    {
+      "price": 158.573995,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 3x)",
+      "touches": 3,
+      "side": "below",
+      "dist_pct": -0.142,
+      "dist_atr": -1.42
+    },
+    {
+      "price": 158.661499,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 2x)",
+      "touches": 2,
+      "side": "below",
+      "dist_pct": -0.087,
+      "dist_atr": -0.87
+    },
+    {
+      "price": 158.686,
+      "kind": "pivot",
+      "label": "Pivot R2 (second ceiling)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.072,
+      "dist_atr": -0.72
+    },
+    {
+      "price": 158.768005,
+      "kind": "swing_high",
+      "label": "Swing high (price turned down here 1x)",
+      "touches": 1,
+      "side": "below",
+      "dist_pct": -0.02,
+      "dist_atr": -0.2
+    },
+    {
+      "price": 158.847,
+      "kind": "today",
+      "label": "Today's high so far",
+      "touches": 1,
+      "side": "above",
+      "dist_pct": 0.03,
+      "dist_atr": 0.29
+    }
+  ],
+  "nearest_above": {
+    "price": 158.847,
+    "kind": "today",
+    "label": "Today's high so far",
+    "touches": 1,
+    "side": "above",
+    "dist_pct": 0.03,
+    "dist_atr": 0.29
+  },
+  "nearest_below": {
+    "price": 158.768005,
+    "kind": "swing_high",
+    "label": "Swing high (price turned down here 1x)",
+    "touches": 1,
+    "side": "below",
+    "dist_pct": -0.02,
+    "dist_atr": -0.2
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "computed_utc": "2026-11-10T17:49:36Z",
+  "symbol": "USD/JPY",
+  "market": "forex",
+  "style": "intraday",
+  "atr_pct_now": 0.1,
+  "atr_pct_typical": 0.118,
+  "ratio": 0.85,
+  "level": "NORMAL",
+  "size_multiplier": 1.0,
+  "fear_gauges": {},
+  "fear_high": [],
+  "calendar": {
+    "status": "OPEN",
+    "plain": "Forex trades 24 hours on weekdays."
+  },
+  "plain": "Normal movement (0.9x its usual range)."
+}

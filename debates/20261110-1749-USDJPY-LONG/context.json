@@ -1,0 +1,31 @@
+{
+  "computed_utc": "2026-11-10T17:49:40Z",
+  "symbol": "USD/JPY",
+  "market": "forex",
+  "direction": "LONG",
+  "indexes": [
+    {
+      "symbol": "DX-Y.NYB",
+      "name": "Dollar index",
+      "price": 102.363,
+      "change_today_pct": 0.7,
+      "vs_sma20_pct": 0.42,
+      "vs_sma50_pct": 1.16,
+      "trend": "UP"
+    },
+    {
+      "symbol": "^TNX",
+      "name": "US 10-year yield",
+      "price": 5.015,
+      "change_today_pct": 3.1,
+      "vs_sma20_pct": 0.33,
+      "vs_sma50_pct": -0.52,
+      "trend": "MIXED"
+    }
+  ],
+  "notes": [],
+  "asset_change_pct": 0.32,
+  "score": 1,
+  "verdict": "NEUTRAL",
+  "plain": "The wider market is mixed for this trade: Dollar index is in an uptrend."
+}

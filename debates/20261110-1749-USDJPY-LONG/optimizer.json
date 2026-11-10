@@ -1,0 +1,89 @@
+{
+  "computed_utc": "2026-11-10T17:49:42Z",
+  "symbol": "USD/JPY",
+  "market": "forex",
+  "style": "intraday",
+  "direction": "LONG",
+  "price": 158.8,
+  "atr": 0.159422,
+  "candidates_tried": 24,
+  "passed_cost_rule": 12,
+  "replays_each": 1500,
+  "status": "NO_EDGE",
+  "plain": "12 plans pay enough on paper, but none passes the odds test: reach the target first at least 20% of the time, not lean toward the stop, and make money on average in the replays (best target-first chance 26%, best average -0.09R). The odds do not favour this trade right now.",
+  "best": [
+    {
+      "entry": 158.8,
+      "stop": 158.640578,
+      "target": 159.118844,
+      "why": {
+        "entry": "live price",
+        "stop": "1x ATR",
+        "target": "2R"
+      },
+      "r_after_costs": 1.666,
+      "stop_in_atr": 1.0,
+      "p_target": 0.2646,
+      "p_stop": 0.6659,
+      "p_neither": 0.0695,
+      "avg_R": -0.099,
+      "lean": "COIN_FLIP",
+      "verdict": "Close to break-even: at 2.00R the target must come first in 33% of the replays that hit a side; it did in 28% (target first 26.5% vs stop first 66.6%).",
+      "history": {
+        "samples": 59,
+        "target": 10,
+        "stop": 33,
+        "neither": 16
+      }
+    },
+    {
+      "entry": 158.775976,
+      "stop": 158.616554,
+      "target": 159.09482,
+      "why": {
+        "entry": "limit just above Swing high (price turned down here 1x)",
+        "stop": "1x ATR",
+        "target": "2R"
+      },
+      "r_after_costs": 1.666,
+      "stop_in_atr": 1.0,
+      "p_target": 0.2645,
+      "p_stop": 0.6659,
+      "p_neither": 0.0696,
+      "avg_R": -0.099,
+      "lean": "COIN_FLIP",
+      "verdict": "Close to break-even: at 2.00R the target must come first in 33% of the replays that hit a side; it did in 28% (target first 26.5% vs stop first 66.6%).",
+      "history": {
+        "samples": 59,
+        "target": 10,
+        "stop": 33,
+        "neither": 16
+      }
+    },
+    {
+      "entry": 158.8,
+      "stop": 158.637586,
+      "target": 159.124829,
+      "why": {
+        "entry": "live price",
+        "stop": "just beyond Swing high (price turned down here 2x)",
+        "target": "2R"
+      },
+      "r_after_costs": 1.671,
+      "stop_in_atr": 1.02,
+      "p_target": 0.2609,
+      "p_stop": 0.6629,
+      "p_neither": 0.0762,
+      "avg_R": -0.1,
+      "lean": "LEANS_STOP",
+      "verdict": "Leans toward the stop: at 2.00R the target must come first in 33% of the replays that hit a side; it did in 28% (target first 26.1% vs stop first 66.3%).",
+      "history": {
+        "samples": 59,
+        "target": 10,
+        "stop": 33,
+        "neither": 16
+      }
+    }
+  ],
+  "notes": []
+}

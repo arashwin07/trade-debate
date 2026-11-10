@@ -1,0 +1,53 @@
+{
+  "computed_utc": "2026-11-10T17:54:41Z",
+  "plan": {
+    "symbol": "USD/JPY",
+    "market": "forex",
+    "style": "intraday",
+    "direction": "LONG",
+    "entry": 158.76,
+    "stop": 158.57,
+    "targets": [
+      159.0
+    ],
+    "window": "480 minutes"
+  },
+  "data": {
+    "bars": 16911,
+    "days": 70,
+    "source": "Yahoo Finance",
+    "interval": "5m"
+  },
+  "mc": {
+    "replays": 5000,
+    "seed": 19,
+    "window_bars": 2,
+    "steps": 96,
+    "p_target": 0.4036,
+    "p_stop": 0.5582,
+    "p_neither": 0.0382,
+    "p_green": 0.4246,
+    "p_each_target_before_stop": [
+      0.4036
+    ],
+    "median_end": 158.701064,
+    "p5_end": 158.106142,
+    "p95_end": 159.270132,
+    "avg_R": -0.045,
+    "r_at_target": 1.263
+  },
+  "history": {
+    "samples": 59,
+    "target": 16,
+    "stop": 24,
+    "neither": 19,
+    "target_rate": 0.2712,
+    "stop_rate": 0.4068,
+    "note": "one sample per past day, same time of day"
+  },
+  "lean": "COIN_FLIP",
+  "verdict": "Close to break-even: at 1.26R the target must come first in 44% of the replays that hit a side; it did in 42% (target first 40.4% vs stop first 55.8%).",
+  "plain": "We replayed the trading window 5,000 times using this market's own recent price moves. The first target was reached before the safety exit in 40% of replays, the safety exit was hit first in 56%, and in 4% neither happened in time. In real history (59 past starts), the same distances hit the target first 16 times and the stop first 24 times. Overall: about a coin flip once the reward size is counted.",
+  "notes": [],
+  "caveat": "A simulation from recent bars, not a prediction. News, earnings and gaps can do what the last 60 days never did."
+}

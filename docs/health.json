@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T17:02:23Z",
+  "checked_utc": "2026-11-10T17:48:52Z",
   "status": "OK",
   "critical_down": [],
   "markets_down": [],
@@ -9,7 +9,7 @@
       "critical": true,
       "market": "crypto",
       "ok": true,
-      "ms": 773,
+      "ms": 752,
       "note": "45 bytes"
     },
     {
@@ -17,7 +17,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 292,
+      "ms": 468,
       "note": "2 bytes"
     },
     {
@@ -25,7 +25,7 @@
       "critical": true,
       "market": "us",
       "ok": true,
-      "ms": 260,
+      "ms": 559,
       "note": "1718 bytes"
     },
     {
@@ -33,7 +33,7 @@
       "critical": true,
       "market": "nse",
       "ok": true,
-      "ms": 279,
+      "ms": 361,
       "note": "1625 bytes"
     },
     {
@@ -41,7 +41,7 @@
       "critical": true,
       "market": "forex",
       "ok": true,
-      "ms": 209,
+      "ms": 377,
       "note": "1695 bytes"
     },
     {
@@ -49,15 +49,15 @@
       "critical": true,
       "market": "all",
       "ok": true,
-      "ms": 1183,
-      "note": "25477 bytes"
+      "ms": 1278,
+      "note": "25602 bytes"
     },
     {
       "name": "ForexFactory calendar (backup)",
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 256,
+      "ms": 392,
       "note": "14055 bytes"
     },
     {
@@ -65,15 +65,15 @@
       "critical": false,
       "market": "us",
       "ok": true,
-      "ms": 3318,
-      "note": "37676 bytes"
+      "ms": 1729,
+      "note": "35554 bytes"
     },
     {
       "name": "Fear & Greed index",
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 892,
+      "ms": 1589,
       "note": "208 bytes"
     },
     {
@@ -81,7 +81,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 300,
+      "ms": 288,
       "note": "231 bytes"
     },
     {
@@ -89,39 +89,39 @@
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 900,
-      "note": "129376 bytes"
+      "ms": 805,
+      "note": "128854 bytes"
     },
     {
       "name": "CNBC news",
       "critical": false,
       "market": "us",
       "ok": true,
-      "ms": 527,
-      "note": "20415 bytes"
+      "ms": 490,
+      "note": "20376 bytes"
     },
     {
       "name": "Economic Times news",
       "critical": false,
       "market": "nse",
       "ok": true,
-      "ms": 326,
-      "note": "48296 bytes"
+      "ms": 247,
+      "note": "48327 bytes"
     },
     {
       "name": "Cointelegraph news",
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 226,
-      "note": "52566 bytes"
+      "ms": 175,
+      "note": "52383 bytes"
     },
     {
       "name": "FXStreet news",
       "critical": false,
       "market": "forex",
       "ok": true,
-      "ms": 209,
+      "ms": 174,
       "note": "24985 bytes"
     }
   ]

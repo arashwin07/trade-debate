@@ -1,0 +1,11 @@
+{
+  "status": "watching",
+  "checked_utc": "2026-11-10T17:58:30Z",
+  "last_price": 158.81199645996094,
+  "condition": {
+    "price_above": 158.85,
+    "price_below": null,
+    "hold_minutes": 60,
+    "expires_hours": 24
+  }
+}

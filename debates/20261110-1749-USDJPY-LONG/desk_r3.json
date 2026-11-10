@@ -1,0 +1,212 @@
+{
+  "round": 3,
+  "computed_utc": "2026-11-10T17:55:19Z",
+  "plan_source": "r3_bull.json",
+  "plan": {
+    "direction": "LONG",
+    "entry": 158.76,
+    "stop": 158.61,
+    "targets": [
+      159.0
+    ]
+  },
+  "events": {
+    "checked_utc": "2026-11-10T17:49:34Z",
+    "market": "forex",
+    "symbol": "USDJPY",
+    "style": "intraday",
+    "window_utc": [
+      "2026-11-10T16:49:34Z",
+      "2026-11-11T01:49:34Z"
+    ],
+    "currencies": [
+      "JPY",
+      "USD"
+    ],
+    "status": "CLEAR",
+    "plain": "No major scheduled events inside the trade window.",
+    "events": [
+      {
+        "kind": "macro",
+        "title": "WASDE Poultry Production",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T17:00:00Z",
+        "minutes_from_now": -50,
+        "forecast": null,
+        "previous": 55.348,
+        "actual": 55.264,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Allotted at High",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 10,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Bid-to-Cover",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 10,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "10-Year Note Auction Total Accepted",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T18:00:00Z",
+        "minutes_from_now": 10,
+        "forecast": null,
+        "previous": null,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "API Crude Oil Stock Change",
+        "currency": "USD",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T21:30:00Z",
+        "minutes_from_now": 220,
+        "forecast": 0.5,
+        "previous": -5.267,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "Reuters Tankan Non-Manufacturers Index",
+        "currency": "JPY",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T23:00:00Z",
+        "minutes_from_now": 310,
+        "forecast": null,
+        "previous": 23,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "Broad Money",
+        "currency": "JPY",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T23:50:00Z",
+        "minutes_from_now": 360,
+        "forecast": null,
+        "previous": 2343.4,
+        "actual": null,
+        "tier": 3
+      },
+      {
+        "kind": "macro",
+        "title": "Money Supply M2",
+        "currency": "JPY",
+        "impact": "Medium",
+        "time_utc": "2026-11-10T23:50:00Z",
+        "minutes_from_now": 360,
+        "forecast": null,
+        "previous": 1297.2,
+        "actual": null,
+        "tier": 3
+      }
+    ],
+    "notes": [],
+    "sources": [
+      "TradingView economic calendar (ForexFactory as backup)"
+    ]
+  },
+  "plan_check": {
+    "direction": "LONG",
+    "entry": 158.76,
+    "stop": 158.61,
+    "targets": [
+      159.0
+    ],
+    "risk_per_unit": 0.15,
+    "reward_per_unit": [
+      0.24
+    ],
+    "r_multiple_gross": [
+      1.6
+    ],
+    "stop_distance_pct": 0.094,
+    "live_price": 158.81,
+    "entry_distance_pct": -0.031,
+    "atr": 0.159279,
+    "atr_timeframe": "1h",
+    "stop_in_atr": 0.94,
+    "entry_distance_in_atr": 0.31
+  },
+  "plan_issues": [
+    {
+      "level": "warn",
+      "id": "stop_tight",
+      "plain": "The stop is only 0.94x the normal 1h move (ATR 0.159279). Normal wiggles could hit it."
+    }
+  ],
+  "timemachine": {
+    "plan": {
+      "symbol": "USD/JPY",
+      "market": "forex",
+      "style": "intraday",
+      "direction": "LONG",
+      "entry": 158.76,
+      "stop": 158.61,
+      "targets": [
+        159.0
+      ],
+      "window": "480 minutes"
+    },
+    "data": {
+      "bars": 16911,
+      "days": 70,
+      "source": "Yahoo Finance",
+      "interval": "5m"
+    },
+    "mc": {
+      "replays": 10000,
+      "seed": 19,
+      "window_bars": 2,
+      "steps": 96,
+      "p_target": 0.3587,
+      "p_stop": 0.6249,
+      "p_neither": 0.0164,
+      "p_green": 0.3692,
+      "p_each_target_before_stop": [
+        0.3587
+      ],
+      "median_end": 158.698005,
+      "p5_end": 158.101166,
+      "p95_end": 159.278062,
+      "avg_R": -0.047,
+      "r_at_target": 1.6
+    },
+    "history": {
+      "samples": 59,
+      "target": 13,
+      "stop": 31,
+      "neither": 15,
+      "target_rate": 0.2203,
+      "stop_rate": 0.5254,
+      "note": "one sample per past day, same time of day"
+    },
+    "lean": "COIN_FLIP",
+    "verdict": "Close to break-even: at 1.60R the target must come first in 38% of the replays that hit a side; it did in 36% (target first 35.9% vs stop first 62.5%).",
+    "plain": "We replayed the trading window 10,000 times using this market's own recent price moves. The first target was reached before the safety exit in 36% of replays, the safety exit was hit first in 62%, and in 2% neither happened in time. In real history (59 past starts), the same distances hit the target first 13 times and the stop first 31 times. Overall: about a coin flip once the reward size is counted.",
+    "notes": [],
+    "caveat": "A simulation from recent bars, not a prediction. News, earnings and gaps can do what the last 60 days never did."
+  }
+}

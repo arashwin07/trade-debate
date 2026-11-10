@@ -1,0 +1,30 @@
+2026-11-10T17:49:36Z  regime     NORMAL x1.0 | OPEN
+2026-11-10T17:49:38Z  levels     27 levels around 158.8
+2026-11-10T17:49:40Z  news       25 fresh items, 0 stale dropped, feed errors: []
+2026-11-10T17:49:41Z  context    NEUTRAL (score 1)
+2026-11-10T17:49:42Z  fundament  Currencies have no company accounts; their drivers are interest rates, inflation and central banks (see the event guard and market context).
+2026-11-10T17:49:48Z  optimizer  NO_EDGE: tried 24, 12 passed costs
+2026-11-10T17:50:41Z  validate   r1_bull.json: OK
+2026-11-10T17:50:41Z  validate   r1_bear.json: OK
+2026-11-10T17:50:55Z  validate   r1_bull.json: OK
+2026-11-10T17:50:55Z  validate   r1_bear.json: OK
+2026-11-10T17:50:58Z  desk       round 1: plan={'direction': 'LONG', 'entry': 158.72, 'stop': 158.55, 'targets': [158.83, 159.0]} issues=0 TM=COIN_FLIP
+2026-11-10T17:50:58Z  claims     round 1: bull: 9/9 confirmed, 0 wrong, 0 unconfirmed; bear: 6/6 confirmed, 0 wrong, 0 unconfirmed
+2026-11-10T17:51:22Z  validate   r1_result.json: OK
+2026-11-10T17:53:00Z  validate   r2_bear.json: OK
+2026-11-10T17:53:25Z  validate   r2_bull.json: OK
+2026-11-10T17:53:42Z  validate   r2_bull.json: OK
+2026-11-10T17:53:42Z  validate   r2_bear.json: OK
+2026-11-10T17:53:45Z  desk       round 2: plan={'direction': 'LONG', 'entry': 158.76, 'stop': 158.61, 'targets': [159.0]} issues=1 TM=COIN_FLIP
+2026-11-10T17:53:45Z  claims     round 2: bull: 9/9 confirmed, 0 wrong, 0 unconfirmed; bear: 15/15 confirmed, 0 wrong, 0 unconfirmed
+2026-11-10T17:54:04Z  validate   r2_result.json: OK
+2026-11-10T17:55:05Z  validate   r3_bull.json: OK
+2026-11-10T17:55:19Z  validate   r3_bull.json: OK
+2026-11-10T17:55:22Z  desk       round 3: plan={'direction': 'LONG', 'entry': 158.76, 'stop': 158.61, 'targets': [159.0]} issues=1 TM=COIN_FLIP
+2026-11-10T17:56:26Z  validate   r3_bear.json: OK
+2026-11-10T17:56:41Z  validate   r3_bear.json: OK
+2026-11-10T17:56:41Z  claims     round 3: bull: 9/9 confirmed, 0 wrong, 0 unconfirmed; bear: 9/9 confirmed, 0 wrong, 0 unconfirmed
+2026-11-10T17:56:56Z  validate   r3_result.json: OK
+2026-11-10T17:58:11Z  validate   verdict.json: OK
+2026-11-10T17:58:27Z  validate   verdict.json: OK
+2026-11-10T17:58:29Z  gate       judge=SKIP gate=BLOCK final=SKIP | blocks: 1
