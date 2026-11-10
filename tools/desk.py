@@ -418,6 +418,61 @@ def management(plan, market, style, atr):
     return steps
 
 
+def tick_size(market, data_symbol, price):
+    """X: the smallest price step the exchange accepts, so ticket prices are valid orders."""
+    if market == "crypto":
+        try:
+            d = market_data.binance(f"/api/v3/exchangeInfo?symbol={data_symbol}")
+            f = {x["filterType"]: x for x in d["symbols"][0]["filters"]}
+            return float(f["PRICE_FILTER"]["tickSize"])
+        except Exception:
+            return 0.01
+    if market == "nse":
+        return 0.05 if price >= 250 else 0.01   # NSE equity tick (0.01 below Rs 250, 0.05 at or above); check your broker for exceptions
+    if market == "forex":
+        return 0.0025 if data_symbol.startswith("USDINR") or data_symbol.endswith("INR=X") else (0.001 if "JPY" in data_symbol else 0.00001)
+    return 0.01
+
+
+def round_plan_to_tick(plan, tick):
+    """Entry to the nearest tick; stop rounded AWAY from the entry and targets TOWARD it (both the cautious side)."""
+    long = plan["direction"] == "LONG"
+    nd = max(0, -int(math.floor(math.log10(tick)))) if tick < 1 else 0
+    q = lambda x, f: round(f(x / tick) * tick, nd)
+    out = dict(plan)
+    out["entry"] = q(plan["entry"], round)
+    out["stop"] = q(plan["stop"], math.floor if long else math.ceil)
+    out["targets"] = [q(t, math.floor if long else math.ceil) for t in plan["targets"]]
+    return out
+
+
+def exposure_check(market, direction, data_symbol, exclude, cfg):
+    """E: other TAKE ideas still open (journal says pending) that would move together with this one."""
+    base = os.path.join(ROOT, "debates")
+    pair = data_symbol.replace("=X", "")
+    clash = []
+    for d in os.listdir(base) if os.path.isdir(base) else []:
+        if d == exclude:
+            continue
+        fin = load(os.path.join(base, d, "desk_final.json"))
+        out = load(os.path.join(base, d, "outcome.json"), {})
+        if not fin or fin.get("final_call") != "TAKE" or out.get("status") not in (None, "pending"):
+            continue
+        meta = load(os.path.join(base, d, "meta.json"), {})
+        m2, s2, _ = market_data.detect(meta.get("symbol", ""), meta.get("market", "auto"))
+        same_dir = (meta.get("direction", "LONG").upper() == direction)
+        if market == "crypto" and m2 == "crypto" and same_dir:
+            clash.append(f"{meta.get('trade')} (crypto coins tend to move together)")
+        elif market == "forex" and m2 == "forex":
+            p2 = s2.replace("=X", "")
+            shared = {pair[:3], pair[3:6]} & {p2[:3], p2[3:6]}
+            if shared:
+                clash.append(f"{meta.get('trade')} (shares {', '.join(shared)})")
+        elif market == m2 and market in ("us", "nse") and same_dir:
+            clash.append(f"{meta.get('trade')} (same stock market, same direction)")
+    return clash
+
+
 def ticket_plain(plan, sz, market, display, broker):
     long = plan["direction"] == "LONG"
     side = "BUY" if long else "SELL (short)"
@@ -539,7 +594,16 @@ def cmd_gate(folder):
     extra = {"regime": reg, "claims": load(os.path.join(folder, "claims_r3.json")), "optimizer": load(os.path.join(folder, "optimizer.json"))}
     gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if tm and not tm.get("error") else None,
                              market, style, data_symbol, cfg, trades_today(cfg, exclude=os.path.basename(folder.rstrip("/\\"))), extra)
+    clash = exposure_check(market, plan["direction"], data_symbol, os.path.basename(folder.rstrip("/\\")), cfg)
+    if clash:
+        checks.append({"id": "exposure", "level": "warn",
+                       "plain": "You already have open ideas that would move together with this one: " + "; ".join(clash) + ". Together they add up to a bigger bet than either alone."})
     final = "TAKE" if judge in ("TAKE", "BUY") and gate == "PASS" else "SKIP"
+    if final == "TAKE":
+        tick = tick_size(market, data_symbol, plan["entry"])
+        plan = round_plan_to_tick(plan, tick)
+        out["plan"] = plan
+        out["tick_size"] = tick
     blocks = [c["plain"] for c in checks if c["level"] == "block"]
     if judge in ("TAKE", "BUY") and gate == "BLOCK":
         summary = "The Judge said TAKE, but the risk manager BLOCKED it: " + blocks[0]

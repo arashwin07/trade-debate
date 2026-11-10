@@ -1,0 +1,27 @@
+name: tests
+# G: every push runs the full test suite (no network needed), so a broken calculation never reaches the desk.
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "30 2 * * *"   # nightly: also checks that every free data source still answers
+jobs:
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Unit tests
+        run: python -m unittest discover -s tests -v
+  data-sources:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Data-source health
+        run: python tools/health.py

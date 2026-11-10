@@ -83,6 +83,20 @@ button{font:inherit;color:inherit}
   }
   var MK = {crypto: "Crypto", us: "US stocks", nse: "NSE India", forex: "Forex"};
   var items = D.debates || [];
+  function lessonsCard() {
+    var h = "";
+    if (D.health && D.health.status && D.health.status !== "OK")
+      h += '<section class="intro" style="background:var(--warn-soft)"><h2>Data sources: ' + esc(D.health.status) + "</h2><p style=\"margin:0\">" +
+        esc((D.health.critical_down || []).length ? "Not working: " + D.health.critical_down.join(", ") + ". Those markets are skipped until they recover." : "A non-critical source is down; the desk notes what is missing.") + "</p></section>";
+    if (D.lessons && D.lessons.headline)
+      h += '<section class="intro" style="background:var(--paper);border:1px solid var(--line)"><h2>This week\'s lessons</h2><p style="margin:0 0 8px">' + esc(D.lessons.headline) + "</p>" +
+        ((D.lessons.worked || []).length ? '<p class="sched" style="color:var(--bull)">Worked: ' + esc(D.lessons.worked.slice(0, 2).join(" · ")) + "</p>" : "") +
+        ((D.lessons.failed || []).length ? '<p class="sched" style="color:var(--bear)">Failed: ' + esc(D.lessons.failed.slice(0, 2).join(" · ")) + "</p>" : "") + "</section>";
+    if (D.settings && D.settings.summary)
+      h += '<details class="intro" style="background:var(--paper);border:1px solid var(--line)"><summary style="cursor:pointer;font-weight:600">Your settings</summary><ul style="margin:8px 0 0;padding-left:18px;font-size:.86rem;display:grid;gap:4px">' +
+        D.settings.summary.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("") + '</ul><p class="sched">Change them by telling Claude, e.g. "/trade-settings my NSE capital is 2 lakh".</p></details>';
+    return h;
+  }
   function trackCard() {
     var t = D.track; if (!t) return "";
     var tk = t.take || {}, sk = t.skip || {};
@@ -123,7 +137,7 @@ button{font:inherit;color:inherit}
       '<div><i style="background:var(--warn-soft);color:var(--warn)">4</i><b>TAKE or SKIP</b>The Judge gives a verdict. You make the final call.</div></div>' +
       (D.schedule ? '<p class="sched">New debates arrive automatically: ' + esc(D.schedule) + ".</p>" : "") + "</section>" +
       '<section class="stats" aria-label="Totals"><div><small>Debates</small><b class="num">' + items.length + '</b></div><div><small>Judge said TAKE</small><b class="num" style="color:var(--bull)">' + nT + '</b></div><div><small>Judge said SKIP</small><b class="num" style="color:var(--bear)">' + nS + "</b></div></section>" +
-      trackCard() +
+      trackCard() + lessonsCard() +
       '<section class="list" aria-label="Debates">' + (rows || '<div class="empty">No debates match this filter yet.</div>') + "</section>" +
       '<p class="disc">Updated ' + esc(new Date(D.generated_utc).toLocaleString()) + ". Made by AI from free public market data. Not financial advice. This tool never places trades.</p></main>";
   }

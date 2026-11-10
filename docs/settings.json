@@ -1,0 +1,18 @@
+{
+  "summary": [
+    "Capital per market: crypto not set, us not set, nse not set, forex not set",
+    "Risk per trade: 1.0% of capital",
+    "Daily loss limit: 3.0%; max 3 TAKE calls per day",
+    "A trade must pay at least 1.5x its risk after costs; stop at least 1.0x ATR",
+    "Biggest position: 25.0% of capital",
+    "Shorting allowed: nse_intraday, forex; not allowed: crypto, us, nse_swing",
+    "AI usage: at most 8 debates a day, 2 per scan",
+    "Residence: IN (forex limited to: USDINR, EURINR, GBPINR, JPYINR, EURUSD, GBPUSD, USDJPY)"
+  ],
+  "capital_set": {
+    "crypto": false,
+    "us": false,
+    "nse": false,
+    "forex": false
+  }
+}

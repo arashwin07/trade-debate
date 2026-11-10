@@ -144,5 +144,36 @@ class Phase2(unittest.TestCase):
         self.assertTrue(validate.validate_verdict(dict(base, retake_numbers={"price_above": 900}), 100, "intraday"))
 
 
+class Phase3(unittest.TestCase):
+    def test_tick_rounding_is_cautious(self):
+        p = desk.round_plan_to_tick({"direction": "LONG", "entry": 1324.42, "stop": 1290.63, "targets": [1372.07]}, 0.05)
+        self.assertEqual(p, {"direction": "LONG", "entry": 1324.4, "stop": 1290.6, "targets": [1372.05]})
+        s = desk.round_plan_to_tick({"direction": "SHORT", "entry": 100.004, "stop": 101.001, "targets": [98.009]}, 0.01)
+        self.assertEqual((s["stop"], s["targets"][0]), (101.01, 98.01))  # stop away from entry, target toward it
+
+    def test_backtest_indicators_no_peeking(self):
+        import backtest
+        bars = [dict(t=1000 + 300 * i, o=100 + i * 0.1, h=100.5 + i * 0.1, l=99.5 + i * 0.1, c=100 + i * 0.1) for i in range(400)]
+        hb = backtest.hourly(bars)
+        self.assertEqual(len(hb), len({b["t"] // 3600 for b in bars}))
+        ind = backtest.indicators(hb)
+        self.assertIsNone(ind[5])                     # not enough history yet
+        self.assertGreater(ind[-1]["e9"], ind[-1]["e21"])  # rising market: fast average above slow
+
+    def test_settings_bounds(self):
+        import settings, copy
+        cfg = copy.deepcopy(desk.config())
+        self.assertEqual(settings.check(cfg), [])
+        cfg["risk"]["risk_per_trade_pct"] = 9
+        cfg["accounts"]["nse"]["capital"] = -5
+        errs = settings.check(cfg)
+        self.assertEqual(len(errs), 2)
+
+    def test_quality_runs_on_real_folder(self):
+        import quality
+        q = quality.run()
+        self.assertIn("bull", q["agents"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

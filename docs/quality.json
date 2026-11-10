@@ -1,0 +1,38 @@
+{
+  "computed_utc": "2026-11-10T17:07:40Z",
+  "agents": {
+    "bull": {
+      "debates": 5,
+      "numbers_checked": 68,
+      "numbers_confirmed": 43,
+      "numbers_wrong": 0,
+      "numbers_unconfirmed": 25,
+      "judge_verified": 52,
+      "judge_wrong": 9,
+      "judge_stale": 3,
+      "judge_unverifiable": 3,
+      "guardrail_failures": 0,
+      "accuracy_pct": 81.2,
+      "code_confirmed_pct": 63.2
+    },
+    "bear": {
+      "debates": 5,
+      "numbers_checked": 69,
+      "numbers_confirmed": 41,
+      "numbers_wrong": 0,
+      "numbers_unconfirmed": 28,
+      "judge_verified": 37,
+      "judge_wrong": 3,
+      "judge_stale": 11,
+      "judge_unverifiable": 11,
+      "guardrail_failures": 0,
+      "accuracy_pct": 72.5,
+      "code_confirmed_pct": 59.4
+    }
+  },
+  "judge": {
+    "resolved": 4,
+    "accuracy": 0.75
+  },
+  "plain": "Bull Claude: 81.2% of checked claims correct, 0 wrong numbers caught by code; Bear Claude: 72.5% of checked claims correct, 0 wrong numbers caught by code"
+}

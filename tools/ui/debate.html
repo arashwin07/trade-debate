@@ -412,7 +412,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       (D.scan_reason ? " The scanner picked it because: " + esc(D.scan_reason) + "." : "") + "</p></div>" +
       '<div class="qstats"><div><small>' + esc(base) + " price now</small><b class=\"num\">" + cur + money(S.price) + "</b></div>" +
       "<div><small>Change " + lbl + '</small><b class="num ' + ((chg || 0) >= 0 ? "up" : "down") + '">' + (typeof chg === "number" ? (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%" : "–") + "</b></div>" +
-      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + contextStrip() + fundStrip() + noteStrip() + "</section>" +
+      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + contextStrip() + fundStrip() + derivStrip() + noteStrip() + "</section>" +
       optimizerCard() +
       '<div class="sys">Prices from ' + esc(S.data_source || "public data") + " at " + esc(hhmm(S.snapshot_utc)) + ". Tap “Live data” at the top for every number both sides can use.</div>";
   }
@@ -549,6 +549,10 @@ td small{display:block;color:var(--muted);font-size:.72rem}
   function fundStrip() {
     var F = D.fundamentals; if (!F || !F.plain || F.error) return "";
     return '<div class="evstrip" style="cursor:default"><span class="gp CLEAR" style="background:var(--judge-soft);color:var(--judge)">Fundamentals</span><span>' + rich(F.plain) + "</span></div>";
+  }
+  function derivStrip() {
+    var X = D.derivatives; if (!X || !X.facts) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CAUTION">Futures crowd</span><span>' + rich(X.plain) + "</span></div>";
   }
   function noteStrip() {
     if (!D.user_note) return "";

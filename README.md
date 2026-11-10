@@ -31,6 +31,15 @@ Every tool appends to debates/<id>/audit.log.
 | `/trade-scan` · `/trade-scan crypto,nse 3 swing` | Journal update → scan open markets → filter out what your rules would block → full desk on the top picks |
 | `/trade-check NVDA long entry 170.5 stop 167 target 176` | Code-only check of any plan in seconds (no debate) |
 | `/trade-journal` | Track record: what really happened after every TAKE and SKIP |
+| `/trade-brief nse` · `/trade-brief us` | Morning brief before the bell: mood, events, overnight moves, watchlist, track record |
+| `/trade-settings` | Show or change capital, risk limits, shorting rules, costs, AI usage limits (validated) |
+| `/trade-review` | Weekly lessons: calibration, agent quality, practice account, backtests → suggested changes |
+
+## More tools
+`tools/context.py` (market tailwind/headwind) · `fundamentals.py` (growth, margins, debt, valuation; coin supply) · `derivatives.py` (crypto open interest, funding, crowd) ·
+`watch.py` (watchlist + retake watcher) · `paper.py` (practice account) · `backtest.py` (code backtest of the desk's rules) · `quality.py` (agent accuracy) ·
+`notify.py` (Telegram if `TELEGRAM_BOT_TOKEN`/`TELEGRAM_CHAT_ID` are set, otherwise Claude's push notification) · `settings.py` · `.github/workflows/tests.yml` (tests on every push, nightly data-source check).
+Your watchlist and notes: `config/watchlist.json`.
 
 ## Your settings: `config/desk.json`
 - `accounts.<market>.capital` (**set these**; until then no position size is calculated), currency, broker
