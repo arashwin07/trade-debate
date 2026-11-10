@@ -1,0 +1,106 @@
+{
+  "round": 2,
+  "recorded_files": [
+    "snapshot.json",
+    "events.json",
+    "desk_r1.json",
+    "desk_r2.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 14,
+    "matched": 6,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Time Machine on new plan (entry 171.00, stop 167.20, target 174.80): stop first 26.1%, target first 4.7%, neither 69.2%, avg R -0.33; history 59 starts: 0 target, 8 stop",
+        "number": 4.7,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.7% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock down Monday: AMD +~4%, Broadcom +~3%, PHLX Semiconductor Index +6.8%",
+        "number": 6.8,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "6.8% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock down Monday: AMD +~4%, Broadcom +~3%, PHLX Semiconductor Index +6.8%",
+        "number": 4.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.3% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Board said no reason to believe national security or Nvidia secrets were compromised; Huang remains CEO during the investigation; Ives: Huang 'not replaceable'",
+        "number": 10.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "10 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 4,
+        "claim": "Fresh RSI14 28.1 (5m), 29.7 (15m), 28.2 (1h); price 171.59 vs session VWAP 171.75; day low 170.12; 5m Bollinger lower 170.28",
+        "number": 28.1,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "28.1 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 4,
+        "claim": "Fresh RSI14 28.1 (5m), 29.7 (15m), 28.2 (1h); price 171.59 vs session VWAP 171.75; day low 170.12; 5m Bollinger lower 170.28",
+        "number": 29.7,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "29.7 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 4,
+        "claim": "Fresh RSI14 28.1 (5m), 29.7 (15m), 28.2 (1h); price 171.59 vs session VWAP 171.75; day low 170.12; 5m Bollinger lower 170.28",
+        "number": 28.2,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "28.2 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 6,
+        "claim": "Analysts quiet: Citi gave no opinion; JPMorgan, Evercore ISI, Jefferies had not published since the scandal; stock down 22.07% over the past month",
+        "number": 22.07,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "22.07% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 8
+  },
+  "bear": {
+    "checked": 10,
+    "matched": 8,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Fresh data at 14:55:52Z: price 171.50, -4.01%; VWAP 171.75; 5m RSI 27.4, 15m 29.7, 1h 28.4; 5m Bollinger lower 170.26; 15m lower 172.11; 5m EMA9 173.25, EMA21 174.97; 1h ATR 3.8499; 1h MACD histogram -0.355; EMA9 under EMA21 and price under SMA50/SMA200 on 5m, 15m, 1h",
+        "number": 27.4,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "27.4 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "52-week low $164.27 vs live price 171.50; day low 170.12; day high 174.65; day volume 79.9M",
+        "number": 52.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "52 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 2
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "checked_utc": "2026-11-10T16:53:54Z",
+  "status": "DEGRADED",
+  "critical_down": [],
+  "markets_down": [],
+  "sources": [
+    {
+      "name": "Binance prices",
+      "critical": true,
+      "market": "crypto",
+      "ok": true,
+      "ms": 874,
+      "note": "45 bytes"
+    },
+    {
+      "name": "Binance main API",
+      "critical": false,
+      "market": "crypto",
+      "ok": false,
+      "ms": 602,
+      "note": "2 bytes"
+    },
+    {
+      "name": "Yahoo US stocks",
+      "critical": true,
+      "market": "us",
+      "ok": true,
+      "ms": 454,
+      "note": "1716 bytes"
+    },
+    {
+      "name": "Yahoo NSE stocks",
+      "critical": true,
+      "market": "nse",
+      "ok": true,
+      "ms": 562,
+      "note": "1625 bytes"
+    },
+    {
+      "name": "Yahoo forex",
+      "critical": true,
+      "market": "forex",
+      "ok": true,
+      "ms": 536,
+      "note": "1695 bytes"
+    },
+    {
+      "name": "TradingView calendar",
+      "critical": true,
+      "market": "all",
+      "ok": true,
+      "ms": 5070,
+      "note": "25477 bytes"
+    },
+    {
+      "name": "ForexFactory calendar (backup)",
+      "critical": false,
+      "market": "all",
+      "ok": true,
+      "ms": 361,
+      "note": "14055 bytes"
+    },
+    {
+      "name": "Nasdaq earnings",
+      "critical": false,
+      "market": "us",
+      "ok": true,
+      "ms": 3639,
+      "note": "37676 bytes"
+    },
+    {
+      "name": "Fear & Greed index",
+      "critical": false,
+      "market": "crypto",
+      "ok": true,
+      "ms": 938,
+      "note": "208 bytes"
+    },
+    {
+      "name": "Binance futures funding",
+      "critical": false,
+      "market": "crypto",
+      "ok": true,
+      "ms": 379,
+      "note": "231 bytes"
+    },
+    {
+      "name": "Google News",
+      "critical": false,
+      "market": "all",
+      "ok": true,
+      "ms": 764,
+      "note": "129094 bytes"
+    },
+    {
+      "name": "CNBC news",
+      "critical": false,
+      "market": "us",
+      "ok": true,
+      "ms": 521,
+      "note": "20415 bytes"
+    },
+    {
+      "name": "Economic Times news",
+      "critical": false,
+      "market": "nse",
+      "ok": true,
+      "ms": 438,
+      "note": "48296 bytes"
+    },
+    {
+      "name": "Cointelegraph news",
+      "critical": false,
+      "market": "crypto",
+      "ok": true,
+      "ms": 269,
+      "note": "52566 bytes"
+    },
+    {
+      "name": "FXStreet news",
+      "critical": false,
+      "market": "forex",
+      "ok": true,
+      "ms": 148,
+      "note": "24985 bytes"
+    }
+  ]
+}

@@ -57,6 +57,7 @@ def collect(folder):
             "bear": load(os.path.join(folder, f"r{n}_bear.json")),
             "result": load(os.path.join(folder, f"r{n}_result.json")),
             "desk": load(os.path.join(folder, f"desk_r{n}.json")),
+            "claims": load(os.path.join(folder, f"claims_r{n}.json")),
         })
     verdict = load(os.path.join(folder, "verdict.json"))
     return {
@@ -76,6 +77,9 @@ def collect(folder):
         "rounds": rounds,
         "verdict": verdict,
         "events": load(os.path.join(folder, "events.json")),
+        "regime": load(os.path.join(folder, "regime.json")),
+        "optimizer": load(os.path.join(folder, "optimizer.json")),
+        "news": load(os.path.join(folder, "news.json")),
         "desk_final": load(os.path.join(folder, "desk_final.json")),
         "outcome": load(os.path.join(folder, "outcome.json")),
         "generated_utc": now(),

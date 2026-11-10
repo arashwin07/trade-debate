@@ -412,7 +412,8 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       (D.scan_reason ? " The scanner picked it because: " + esc(D.scan_reason) + "." : "") + "</p></div>" +
       '<div class="qstats"><div><small>' + esc(base) + " price now</small><b class=\"num\">" + cur + money(S.price) + "</b></div>" +
       "<div><small>Change " + lbl + '</small><b class="num ' + ((chg || 0) >= 0 ? "up" : "down") + '">' + (typeof chg === "number" ? (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%" : "–") + "</b></div>" +
-      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + "</section>" +
+      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + "</section>" +
+      optimizerCard() +
       '<div class="sys">Prices from ' + esc(S.data_source || "public data") + " at " + esc(hhmm(S.snapshot_utc)) + ". Tap “Live data” at the top for every number both sides can use.</div>";
   }
 
@@ -457,7 +458,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       if (!s) h += '<div class="typing bear"><span class="av bear">B</span><span class="dots"><i></i><i></i><i></i></span>Bear Claude is researching live data…</div>';
     }
     if (b || s) h += '<button class="more" data-sheet="tech-' + n + '">Show the technical version of Round ' + n + "</button>";
-    if (r.desk) h += deskCard(n, r.desk);
+    if (r.desk) h += deskCard(n, r.desk, r.claims);
     else if (b && s) h += '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The desk calculator is checking Bull\'s plan…</div>';
     if (r.result) h += resultCard(n, r.result);
     else if (b && s) h += '<div class="typing" style="align-self:center"><span class="av judge">J</span><span class="dots"><i></i><i></i><i></i></span>The Judge is checking Round ' + n + "…</div>";
@@ -534,6 +535,34 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     return '<button class="evstrip" data-sheet="events"><span class="gp ' + esc(EVN.status) + '">' + esc(label) + "</span><span>" +
       "<b>Calendar check:</b> " + rich(EVN.plain) + "</span></button>";
   }
+  function regimeStrip() {
+    var R0 = D.regime; if (!R0) return "";
+    var lv = {NORMAL: ["CLEAR", "Normal movement"], LOW: ["CLEAR", "Quiet market"], HIGH: ["CAUTION", "Extra jumpy"], EXTREME: ["BLOCK", "Very jumpy"]}[R0.level] || ["CAUTION", R0.level];
+    var cal = R0.calendar && R0.calendar.status !== "OPEN" && R0.calendar.status !== "CLOSED" ? " " + R0.calendar.plain : "";
+    return '<button class="evstrip" data-term="atr"><span class="gp ' + lv[0] + '">' + lv[1] + "</span><span><b>Volatility check:</b> " + rich(R0.plain + cal) + "</span></button>";
+  }
+  function optimizerCard() {
+    var O = D.optimizer; if (!O) return "";
+    var b = (O.best || [])[0];
+    var label = {PLAN_FOUND: ["pass", "Plan found"], NO_EDGE: ["block", "No edge"], NO_PLAN: ["block", "No plan"]}[O.status] || ["warn", O.status];
+    var rows = (O.best || []).map(function (c, i) {
+      return "<tr><td>" + (i + 1) + '</td><td class="num">' + money(c.entry) + "<small>" + esc(c.why.entry) + '</small></td><td class="num">' + money(c.stop) + "<small>" + esc(c.why.stop) + '</small></td><td class="num">' + money(c.target) + "<small>" + esc(c.why.target) + '</small></td><td class="num">' + esc(c.r_after_costs) + 'x</td><td class="num">' + Math.round(c.p_target * 100) + "% / " + Math.round(c.p_stop * 100) + "%</td></tr>";
+    }).join("");
+    return '<section class="dcard"><div class="dh"><span class="ic">' + I.idea + '</span><div><b>Plan optimizer · before the debate</b><small>Code tried ' + esc(O.candidates_tried) + " plans built from real price levels</small></div></div>" +
+      '<div class="db"><div class="issue"><span class="gp ' + label[0] + '">' + label[1] + "</span><span>" + rich(O.plain) + "</span></div>" +
+      (rows ? '<details><summary>See the best plans the code found</summary><div class="tbl" style="margin-top:8px"><table><thead><tr><th>#</th><th>Entry</th><th>Stop</th><th>Target</th><th>Win vs risk</th><th>Target / stop first</th></tr></thead><tbody>' + rows + "</tbody></table></div></details>" : "") +
+      "</div></section>";
+  }
+  function claimsLine(c) {
+    if (!c) return "";
+    function one(side) {
+      var x = c[side] || {}; if (!x.checked) return "";
+      var name = side === "bull" ? "Bull" : "Bear";
+      return '<div class="issue"><span class="gp ' + (x.wrong ? "block" : x.unconfirmed ? "warn" : "pass") + '">' + (x.wrong ? x.wrong + " wrong" : x.unconfirmed ? "Some unconfirmed" : "All checked") + "</span><span><b>" + name + "'s numbers:</b> " + esc(x.matched) + " of " + esc(x.checked) + " confirmed against the recorded data." +
+        (x.issues || []).filter(function (i) { return i.level === "wrong"; }).map(function (i) { return " " + esc(i.plain); }).join("") + "</span></div>";
+    }
+    return one("bull") + one("bear");
+  }
   function tmBlock(tm) {
     if (!tm) return "";
     if (tm.error) return '<div class="issue"><span class="gp warn">Note</span><span>The Time Machine could not run: ' + esc(tm.error) + "</span></div>";
@@ -546,7 +575,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       (h.samples ? '<small style="color:var(--muted);font-size:.76rem">Real history: from ' + esc(h.samples) + " past starting points, the same distances hit the target first " + esc(h.target) + " times and the stop first " + esc(h.stop) + " times.</small>" : "") +
       "</div>";
   }
-  function deskCard(n, d) {
+  function deskCard(n, d, claims) {
     if (d.error) return '<section class="dcard"><div class="dh"><span class="ic">' + I.chart + "</span><div><b>Desk calculator · Round " + n + "</b><small>Code, not AI</small></div></div><div class=\"db\">" + esc(d.error) + "</div></section>";
     var f = d.plan_check || {}, p = d.plan || {};
     var rr = (f.r_multiple_gross || []).map(function (x) { return x.toFixed(2) + "x"; }).join(" / ");
@@ -559,7 +588,7 @@ td small{display:block;color:var(--muted);font-size:.72rem}
       "<div><small>Win vs risk per target</small><b class=\"num\">" + esc(rr) + "</b></div>" +
       "<div><small>Stop vs normal move (ATR)</small><b class=\"num\">" + esc(f.stop_in_atr) + "x</b></div>" +
       "<div><small>Entry vs price now</small><b class=\"num\">" + (f.entry_distance_pct != null ? (f.entry_distance_pct > 0 ? "+" : "") + f.entry_distance_pct + "%" : "–") + "</b></div></div>" +
-      issues + tmBlock(d.timemachine) + "</div></section>";
+      issues + tmBlock(d.timemachine) + claimsLine(claims) + "</div></section>";
   }
   function riskCard() {
     if (!DF) return V ? '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The risk manager is checking costs, size and your limits…</div>' : "";
@@ -643,7 +672,8 @@ td small{display:block;color:var(--muted);font-size:.72rem}
     if (S.fear_greed_index && S.fear_greed_index.value != null) extra += "<dt>Fear &amp; Greed</dt><dd>" + esc(S.fear_greed_index.value) + " (" + esc(S.fear_greed_index.label) + ")</dd>";
     if (S.order_book_top100 && S.order_book_top100.bid_ask_ratio != null) extra += "<dt>Buyers vs sellers waiting</dt><dd>" + esc(S.order_book_top100.bid_ask_ratio) + "x</dd>";
     if (typeof S.perp_funding_rate_pct === "number") extra += "<dt>Funding rate</dt><dd>" + esc(S.perp_funding_rate_pct) + "%</dd>";
-    var news = (S.news || []).filter(function (n) { return n.title; }).slice(0, 8).map(function (n) { return '<li><a href="' + esc(n.url) + '" target="_blank" rel="noopener">' + esc(n.title) + "</a> <small>" + esc(n.source) + "</small></li>"; }).join("");
+    var NW = D.news && D.news.items ? D.news.items.map(function (n) { return {title: n.title, url: n.url, source: n.source + " · " + n.age_hours + " h ago" + (n.tier === 1 ? " · major newsroom" : "")}; }) : (S.news || []);
+    var news = NW.filter(function (n) { return n.title; }).slice(0, 10).map(function (n) { return '<li><a href="' + esc(n.url) + '" target="_blank" rel="noopener">' + esc(n.title) + "</a> <small>" + esc(n.source) + "</small></li>"; }).join("");
     sheet("Live market data", "What both sides could see", "<p>These numbers were collected live when the debate started (" + esc(when(S.snapshot_utc)) + "). Every claim in the chat should match them.</p>" +
       '<dl class="kv"><dt>Price</dt><dd class="num">' + money(S.price) + "</dd><dt>Market</dt><dd>" + esc(S.market_status) + "</dd><dt>Source</dt><dd>" + esc(S.data_source) + "</dd>" + extra + "</dl>" +
       '<div class="tbl"><table><thead><tr><th>Candle</th><th>Close</th><th>RSI</th><th>MACD</th><th>EMA 9 / 21</th><th>ATR</th><th>Volume</th><th>Trend</th></tr></thead><tbody>' + rows + "</tbody></table></div>" +

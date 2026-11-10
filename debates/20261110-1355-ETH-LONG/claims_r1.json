@@ -1,0 +1,46 @@
+{
+  "round": 1,
+  "recorded_files": [
+    "snapshot.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 9,
+    "matched": 9,
+    "issues": [],
+    "wrong": 0,
+    "unconfirmed": 0
+  },
+  "bear": {
+    "checked": 15,
+    "matched": 12,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "Price 2069.31, below SMA50 and SMA200 on 5m, 15m and 1h; 1h change -10.5%; 1h volume 6.93x average",
+        "number": 200.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "200 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Order book top 100 bid/ask ratio 0.69",
+        "number": 1.03,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.03 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Order book top 100 bid/ask ratio 0.69",
+        "number": 1.5,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.5 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 3
+  }
+}

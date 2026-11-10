@@ -1,0 +1,23 @@
+2026-11-10T16:45:30Z  validate   r1_bull.json: OK
+2026-11-10T16:45:30Z  validate   r1_bear.json: OK
+2026-11-10T16:45:30Z  validate   r2_bull.json: OK
+2026-11-10T16:45:30Z  validate   r2_bear.json: OK
+2026-11-10T16:45:30Z  validate   r3_bull.json: OK
+2026-11-10T16:45:30Z  validate   r3_bear.json: OK
+2026-11-10T16:45:30Z  validate   r1_result.json: OK
+2026-11-10T16:45:30Z  validate   r2_result.json: OK
+2026-11-10T16:45:30Z  validate   r3_result.json: OK
+2026-11-10T16:45:30Z  validate   verdict.json: OK
+2026-11-10T16:46:09Z  claims     round 1: bull: 14/18 matched, 1 issue(s); bear: 12/17 matched, 1 issue(s)
+2026-11-10T16:46:09Z  claims     round 2: bull: 16/38 matched, 0 issue(s); bear: 9/20 matched, 2 issue(s)
+2026-11-10T16:46:09Z  claims     round 3: bull: 8/20 matched, 1 issue(s); bear: 10/35 matched, 2 issue(s)
+2026-11-10T16:46:47Z  claims     round 1: bull: 10/15 matched, 5 issue(s); bear: 7/11 matched, 4 issue(s)
+2026-11-10T16:46:48Z  claims     round 2: bull: 6/14 matched, 8 issue(s); bear: 8/10 matched, 2 issue(s)
+2026-11-10T16:46:48Z  claims     round 3: bull: 4/8 matched, 4 issue(s); bear: 7/11 matched, 4 issue(s)
+2026-11-10T16:47:05Z  claims     round 1: bull: 10/15 confirmed, 0 wrong, 5 unconfirmed; bear: 7/11 confirmed, 0 wrong, 4 unconfirmed
+2026-11-10T16:47:06Z  claims     round 2: bull: 6/14 confirmed, 0 wrong, 8 unconfirmed; bear: 8/10 confirmed, 0 wrong, 2 unconfirmed
+2026-11-10T16:47:06Z  claims     round 3: bull: 4/8 confirmed, 0 wrong, 4 unconfirmed; bear: 7/11 confirmed, 0 wrong, 4 unconfirmed
+2026-11-10T16:57:04Z  regime     EXTREME x0.25 | OPEN
+2026-11-10T16:57:05Z  levels     25 levels around 166.86
+2026-11-10T16:57:07Z  news       25 fresh items, 0 stale dropped, feed errors: []
+2026-11-10T16:57:09Z  optimizer  NO_EDGE: tried 18, 10 passed costs

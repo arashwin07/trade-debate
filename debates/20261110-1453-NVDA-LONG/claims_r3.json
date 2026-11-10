@@ -1,0 +1,92 @@
+{
+  "round": 3,
+  "recorded_files": [
+    "snapshot.json",
+    "events.json",
+    "desk_r1.json",
+    "desk_r2.json",
+    "desk_r3.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 8,
+    "matched": 4,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "Price 170.72 (-4.45%), day low 170.12, day high 174.65; 5m RSI 31.4, 15m 30.1, 1h 27.2; 5m MACD histogram -0.164; session VWAP 172.06; 5m EMA21 173.07; 1h ATR 3.6451",
+        "number": 31.4,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "31.4 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 0,
+        "claim": "Price 170.72 (-4.45%), day low 170.12, day high 174.65; 5m RSI 31.4, 15m 30.1, 1h 27.2; 5m MACD histogram -0.164; session VWAP 172.06; 5m EMA21 173.07; 1h ATR 3.6451",
+        "number": 3.65,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "3.65 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "Time Machine on new plan (entry 170.70, stop 166.90, target 176.40, 5h window): target first 0.2%, stop first 14.1%, neither 85.7%, avg R -0.27; history 0 target / 6 stop. Nearer target 173.00: 14.9% vs 14.1%",
+        "number": 14.1,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "14.1% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "Time Machine on new plan (entry 170.70, stop 166.90, target 176.40, 5h window): target first 0.2%, stop first 14.1%, neither 85.7%, avg R -0.27; history 0 target / 6 stop. Nearer target 173.00: 14.9% vs 14.1%",
+        "number": 85.7,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "85.7% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 4
+  },
+  "bear": {
+    "checked": 11,
+    "matched": 7,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Fresh data 15:42:02Z: price 170.79, -4.41%; day high 174.65, low 170.12; volume 133.2M; 5m session VWAP 172.05; RSI 32.0 (5m), 30.1 (15m), 27.3 (1h); 1h EMA9 175.35 vs EMA21 181.14; 1h MACD histogram -0.43; 15m -0.37; 5m -0.17; 5m EMA21 173.06, SMA50 175.40; 1h ATR 3.6514",
+        "number": 27.3,
+        "problem": "mismatch",
+        "level": "unconfirmed",
+        "plain": "27.3 does not match the recorded 1h RSI (27.6). The agent may have used a newer live pull that was not saved.",
+        "expected": 27.6
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock down Monday: AMD +~4%, Broadcom +~3%, SOX +6.8%",
+        "number": 6.8,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "6.8% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock down Monday: AMD +~4%, Broadcom +~3%, SOX +6.8%",
+        "number": 4.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.3% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "52-week low $164.27; Bull's stop 167.20; day low 170.12",
+        "number": 52.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "52 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 4
+  }
+}

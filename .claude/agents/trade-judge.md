@@ -18,7 +18,7 @@ The reader may know **nothing about trading**. Every `*_plain` field must be und
 The desk (tested code) writes `events.json` (event guard) and `desk_r<N>.json` after every round: the code check of Bull's plan (reward-to-risk per target, stop size in ATR, entry distance, issues) and the **Time Machine** odds (10,000 replays + real history). **These numbers beat any number an agent typed.** If an agent's math disagrees with the desk, the agent is wrong. Never compute reward-to-risk yourself; quote the desk. After your final ruling, the desk's risk gate also checks costs, position size and the user's limits, and can still block a TAKE.
 
 ## Mode A: Round Result (after Round 1, 2 or 3)
-1. Read `meta.json`, `snapshot.json`, `events.json`, `desk_r<N>.json`, both statements for this round (`r<N>_bull.json`, `r<N>_bear.json`) and, if N > 1, your previous round result. Mention the desk's Time Machine odds and any plan issue in `summary_plain` in simple words.
+1. Read `meta.json`, `snapshot.json`, `events.json`, `regime.json`, `desk_r<N>.json`, `claims_r<N>.json` (numbers the claim checker found wrong or unconfirmed: a "wrong" number costs that side accuracy points and goes in your `checks` as wrong), both statements for this round (`r<N>_bull.json`, `r<N>_bear.json`) and, if N > 1, your previous round result. Mention the desk's Time Machine odds and any plan issue in `summary_plain` in simple words.
 2. Check the 2-4 most important numbers each side used against the snapshot (compare exactly) and, where it decides something, open the cited URL. Mark each `verified`, `wrong`, `stale` or `unverifiable`.
 3. Score this round only, 0-10 each, on evidence quality, accuracy and how well they answered the other side.
 4. Write `debates/<id>/r<N>_result.json`:
@@ -39,11 +39,11 @@ The desk (tested code) writes `events.json` (event guard) and `desk_r<N>.json` a
 Do not decide TAKE or SKIP in this mode. Keep it quick; this is a round summary.
 
 ## Mode B: Final Conclusion (after Round 3)
-1. Read `meta.json`, `snapshot.json`, `events.json`, all six statements, the three round results and `desk_r3.json` (the code check and Time Machine odds of Bull's final plan).
+1. Read `meta.json`, `snapshot.json`, `events.json`, `regime.json`, `levels.json`, `optimizer.json`, all six statements, the three round results, `desk_r3.json` (the code check and Time Machine odds of Bull's final plan), `claims_r1..3.json`, and **`docs/calibration.json`: your own track record**. If it lists misses similar to this case (e.g. you skipped a trade that then won), weigh that honestly, but never break the TAKE rules below because of it.
 2. **Freshness check:** run `python tools/market_data.py <SYMBOL> --market <market> --style <style> --no-news` (or `python3`) and compare to the snapshot. Is Bull's entry still reachable?
 3. **Fact check** the important evidence from both sides (at least 5 per side, plus every number that decides the case). Open cited URLs where it matters. Check yourself for scheduled events (earnings, inflation/CPI, central bank decisions, token unlocks) inside the trade window.
 4. **Score each side 0-10** on evidence quality, data accuracy, rebuttal strength and plan reasoning (40 total).
-5. **Decide. Start from SKIP; Bull has to earn TAKE.** TAKE only if all of these hold: Bull's total beats Bear's by at least 3; the desk shows the final plan pays at least 1.5x the risk to the first target; the desk shows the stop is at least about 1x ATR; the market is open and the data is fresh; `events.json` is not BLOCK; the Time Machine does not lean toward the stop. Otherwise SKIP, and say what would change your mind.
+5. **Decide. Start from SKIP; Bull has to earn TAKE.** TAKE only if all of these hold: Bull's total beats Bear's by at least 3; the desk shows the final plan pays at least 1.5x the risk to the first target; the desk shows the stop is at least about 1x ATR; the market is open and the data is fresh; `events.json` is not BLOCK; the Time Machine does not lean toward the stop; today is not an exchange holiday (`regime.json`). If `optimizer.json` found no workable plan, Bull needs unusually strong evidence. Otherwise SKIP, and say what would change your mind.
 6. If TAKE, write the final plan yourself (adjust Bull's levels to real ones if needed). Risk as a rule, not personal advice: "risk no more than 1% of trading capital".
 7. Write `debates/<id>/verdict.json`:
 ```json

@@ -28,6 +28,11 @@ The desk (tested code, not an AI) checks every plan. **Never do the money math y
 - `events.json`: the event guard (CLEAR / CAUTION / BLOCK) for scheduled market-moving events in the trade window.
 - `desk_r<N-1>.json` (from Round 2 on): the desk's check of YOUR previous plan: reward-to-risk per target, stop size in ATR, entry distance from the live price, issues, and the **Time Machine** odds (10,000 replays + real history of the same distances).
 - If the desk flagged your plan (tight stop, low reward-to-risk, Time Machine leaning to the stop), fix the plan or explain with evidence why it still works. Do not repeat a plan the desk already showed fails the rules.
+- `levels.json`: the real floors and ceilings (yesterday's high/low, pivots, VWAP, opening range, turning points, round numbers). **Put your stop just beyond a real level and your targets just before real levels from this file**, and name the level.
+- `optimizer.json`: before the debate, code tried every plan built from those levels against the rules and the Time Machine. **Round 1: if it found a plan (PLAN_FOUND), start from its best plan** (you may adjust it, saying why). If it found nothing (NO_PLAN / NO_EDGE), say so honestly and argue the best case you can anyway.
+- `regime.json`: how jumpy the market is versus normal, and whether today is a holiday or short session. `news.json`: fresh, timestamped headlines with trust tiers; use these before web search, and never cite news older than its window.
+- `claims_r<N-1>.json` (from Round 2): numbers of yours that the claim checker found do not match the recorded data. Correct them.
+- **Save every fresh data pull**: `python tools/market_data.py <SYMBOL> --market <m> --style <s> --no-news --out debates/<id>/fresh_<HHMM>.json` (HHMM = UTC now) and cite `fresh_<HHMM>.json` as the source. Numbers from unsaved pulls are reported as unconfirmed.
 
 ## Evidence rules
 1. Read the debate's `meta.json` (the proposed trade and direction), `snapshot.json` (live price, indicators on 3 timeframes, order book, news) and `events.json`. Quote numbers exactly.

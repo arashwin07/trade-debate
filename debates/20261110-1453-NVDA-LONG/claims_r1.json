@@ -1,0 +1,97 @@
+{
+  "round": 1,
+  "recorded_files": [
+    "snapshot.json",
+    "events.json",
+    "desk_r1.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 15,
+    "matched": 10,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "NVDA 171.05, down 4.26% on the day, day low 170.12",
+        "number": 4.26,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.26% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Board opened independent probe into CEO Huang over ties to alleged Chinese intelligence asset; shareholder lawsuit filed",
+        "number": 4.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.3% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "Other chip stocks rose Nov 9: AMD ~+4%, Broadcom ~+3%, PHLX Semiconductor Index >+6.8%",
+        "number": 6.8,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "6.8% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "RSI14 28.1 (5m), 28.5 (15m), 27.6 (1h)",
+        "number": 28.1,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "28.1 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "UK retail dip buying: IG buys +432%, Hargreaves Lansdown 8 buyers per seller, Interactive Investor buys +274%; institutions also buying",
+        "number": 432.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "432% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 5
+  },
+  "bear": {
+    "checked": 11,
+    "matched": 7,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Nvidia board opened an independent investigation into CEO Jensen Huang over ties to a Megaspeed executive; shareholder suit reportedly followed the close; Bloomberg says Nvidia's general counsel contacted a Commerce official about a Megaspeed smuggling probe",
+        "number": 4.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.3% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock in the red Monday; AMD +~4%, Broadcom +~3%, PHLX Semiconductor Index +6.8%",
+        "number": 6.8,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "6.8% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 2,
+        "claim": "NVDA was the only chip stock in the red Monday; AMD +~4%, Broadcom +~3%, PHLX Semiconductor Index +6.8%",
+        "number": 4.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "4.3% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 6,
+        "claim": "1h ATR14 = 3.8564; 52-week low $164.27; 1h SMA200 216.31; 1h MACD histogram -0.47 (prev -0.35)",
+        "number": 52.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "52 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 4
+  }
+}

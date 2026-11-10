@@ -6,16 +6,22 @@ A personal pre-trade desk for **crypto, US stocks, NSE and forex**. It does ever
 
 ## The pipeline for one proposed trade (e.g. `LONG ETH/USDT`)
 ```
-1. Live snapshot ............ tools/market_data.py   price + indicators on 3 timeframes + news (Binance / Yahoo)
-2. Event guard .............. tools/events.py        inflation, jobs, central banks (incl. RBI), earnings in the trade window
-3. Round 1, 2, 3 ............ Bull Claude (FOR) ∥ Bear Claude (AGAINST), plain-language chat with cited proof
-     after each round:
-     • Desk calculator ...... tools/desk.py analyze  Bull's plan math (reward-to-risk, stop vs ATR, entry vs price)
-     • Time Machine ......... tools/timemachine.py   10,000 replays from the asset's own last 60 days + real history
-     • Round result ......... the Judge (Mode A)
-4. Final conclusion ......... the Judge (Mode B): TAKE or SKIP
-5. Risk gate + ticket ....... tools/desk.py gate     costs for your broker, position size, your limits → final call
-6. Journal .................. tools/outcomes.py      later: did it hit the target or the stop? (TAKE and SKIP)
+0. Health + budget .......... tools/health.py, budget.py   all data sources up? debates left today? (scan mode)
+1. Live snapshot ............ tools/market_data.py   price + indicators on 3 timeframes (Binance / Yahoo)
+2. Event guard .............. tools/events.py        inflation, jobs, central banks (incl. RBI), earnings in the window
+3. Volatility + calendar .... tools/regime.py        how jumpy vs normal (cuts size), holidays, half days, VIX / India VIX
+4. Levels ................... tools/levels.py        real floors/ceilings: yesterday H/L, pivots, VWAP, opening range, turning points
+5. News ..................... tools/news.py          fresh, timestamped, de-duplicated, trust-ranked headlines
+6. Plan optimizer ........... tools/optimizer.py     best plan from real levels that passes the rules + Time Machine, or "none"
+7. Round 1, 2 (parallel), Round 3 (Bull, then Bear answers Bull's FINAL plan)
+     after each agent file:   tools/validate.py      guardrails: format, sides, sane numbers (re-run the agent if broken)
+     after each round:        tools/desk.py analyze  plan math + Time Machine (10,000 replays + real history)
+                              tools/claims.py        every cited data number checked against the recorded data
+                              the Judge (Mode A)     round result
+8. Final conclusion ......... the Judge (Mode B), reading its own track record (tools/calibration.py)
+9. Risk gate + ticket ....... tools/desk.py gate     costs, size (x volatility), all rules → final call + ticket
+10. Journal ................. tools/outcomes.py      what really happened (TAKE and SKIP), feeds calibration
+Every tool appends to debates/<id>/audit.log.
 ```
 
 ## Commands (open Claude Code in this folder)
@@ -46,7 +52,7 @@ A personal pre-trade desk for **crypto, US stocks, NSE and forex**. It does ever
 Yahoo data can be delayed up to 15 minutes on some exchanges; every page shows the data time.
 
 ## Cloud network allowlist
-If the cloud environment's network access is restricted, allow: `api.binance.com`, `data-api.binance.vision`, `fapi.binance.com`, `query1.finance.yahoo.com`, `feeds.finance.yahoo.com`, `news.google.com`, `api.alternative.me`, `economic-calendar.tradingview.com`, `nfs.faireconomy.media`, `api.nasdaq.com` (plus general web access for research).
+If the cloud environment's network access is restricted, allow: `api.binance.com`, `data-api.binance.vision`, `fapi.binance.com`, `query1.finance.yahoo.com`, `feeds.finance.yahoo.com`, `news.google.com`, `api.alternative.me`, `economic-calendar.tradingview.com`, `nfs.faireconomy.media`, `api.nasdaq.com`, and the news feeds (`www.cnbc.com`, `feeds.content.dowjones.io`, `economictimes.indiatimes.com`, `www.livemint.com`, `www.business-standard.com`, `cointelegraph.com`, `www.theblock.co`, `www.coindesk.com`, `www.fxstreet.com`) plus general web access for research.
 
 ## 24/7
 Cloud routines run `/trade-scan` on a schedule; results are committed here and shown on the GitHub Pages dashboard (`docs/`).

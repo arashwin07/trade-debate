@@ -259,9 +259,9 @@ def plain_summary(mc, hist, lean, style):
 
 
 # ---------------------------------------------------------------- main
-def run(symbol, market, direction, entry, stop, targets, style="intraday", hours=8.0, days=10, replays=REPLAYS, seed=SEED, now=None):
+def prepare(symbol, market, style="intraday", hours=8.0, days=10, now=None):
+    """Download and pool the history once; reuse it for many plans (the optimizer tries dozens)."""
     market, data_sym, display = detect(symbol, market)
-    long = direction.upper() == "LONG"
     bars, offset = load_bars(market, data_sym, style)
     if len(bars) < 50:
         raise ValueError(f"not enough history ({len(bars)} bars)")
@@ -273,7 +273,7 @@ def run(symbol, market, direction, entry, stop, targets, style="intraday", hours
         raise ValueError(f"only {n_days} days of 5-minute data; need {MIN_DAYS}")
     notes = []
     if style == "swing":
-        steps, start_slot = int(days), 0
+        steps, start_slot, today_key = int(days), 0, None
     else:
         today_key, cur = day_and_slot(int(now), offset, 300)
         start_slot = cur + 1
@@ -286,19 +286,34 @@ def run(symbol, market, direction, entry, stop, targets, style="intraday", hours
             if left < steps:
                 notes.append(f"Only {left * 5} minutes of the session are left, so the window ends at the close.")
                 steps = left
-    mc = simulate(pool, slots, round_clock, start_slot, steps, entry, stop, targets, long, replays, seed)
-    today_key = day_and_slot(int(now), offset, 300)[0] if style != "swing" else None
-    hist = history(days_map, round_clock, start_slot, steps, entry, stop, targets[0], long, today_key, style, bars)
+    return {"market": market, "display": display, "style": style, "bars": bars, "pool": pool, "days_map": days_map,
+            "slots": slots, "round_clock": round_clock, "n_days": n_days, "steps": steps, "start_slot": start_slot,
+            "today_key": today_key, "notes": notes}
+
+
+def run_plan(ctx, direction, entry, stop, targets, replays=REPLAYS, seed=SEED, with_history=True):
+    long = direction.upper() == "LONG"
+    mc = simulate(ctx["pool"], ctx["slots"], ctx["round_clock"], ctx["start_slot"], ctx["steps"], entry, stop, targets, long, replays, seed)
+    hist = (history(ctx["days_map"], ctx["round_clock"], ctx["start_slot"], ctx["steps"], entry, stop, targets[0], long,
+                    ctx["today_key"], ctx["style"], ctx["bars"]) if with_history else {"samples": 0, "target": 0, "stop": 0, "neither": 0})
     lean, line = verdict(mc)
+    return mc, hist, lean, line
+
+
+def run(symbol, market, direction, entry, stop, targets, style="intraday", hours=8.0, days=10, replays=REPLAYS, seed=SEED, now=None, ctx=None):
+    ctx = ctx or prepare(symbol, market, style, hours, days, now)
+    mc, hist, lean, line = run_plan(ctx, direction, entry, stop, targets, replays, seed)
+    long = direction.upper() == "LONG"
+    steps = ctx["steps"]
     return {
         "computed_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "plan": {"symbol": display, "market": market, "style": style, "direction": "LONG" if long else "SHORT",
+        "plan": {"symbol": ctx["display"], "market": ctx["market"], "style": style, "direction": "LONG" if long else "SHORT",
                  "entry": entry, "stop": stop, "targets": targets,
                  "window": f"{steps * 5} minutes" if style != "swing" else f"{steps} trading days"},
-        "data": {"bars": len(bars), "days": n_days, "source": "Binance" if market == "crypto" else "Yahoo Finance",
+        "data": {"bars": len(ctx["bars"]), "days": ctx["n_days"], "source": "Binance" if ctx["market"] == "crypto" else "Yahoo Finance",
                  "interval": "1d" if style == "swing" else "5m"},
         "mc": mc, "history": hist, "lean": lean, "verdict": line,
-        "plain": plain_summary(mc, hist, lean, style), "notes": notes,
+        "plain": plain_summary(mc, hist, lean, style), "notes": ctx["notes"],
         "caveat": "A simulation from recent bars, not a prediction. News, earnings and gaps can do what the last 60 days never did.",
     }
 

@@ -26,7 +26,11 @@ The technical version goes in `argument`, `evidence` and `plan_flaws`, which the
 ## The desk's numbers (code-checked, use them)
 The desk (tested code, not an AI) checks every plan. **Never do the money math yourself; quote the desk.**
 - `events.json`: the event guard (CLEAR / CAUTION / BLOCK) for scheduled market-moving events in the trade window. A BLOCK or CAUTION is strong evidence for you.
-- `desk_r<N-1>.json` (from Round 2 on): the desk's check of Bull's previous plan: reward-to-risk per target, stop size in ATR, entry distance from the live price, issues, and the **Time Machine** odds (10,000 replays + real history of the same distances). Use its numbers when you attack the plan.
+- `desk_r<N-1>.json` (from Round 2 on): the desk's check of Bull's previous plan: reward-to-risk per target, stop size in ATR, entry distance from the live price, issues, and the **Time Machine** odds (10,000 replays + real history of the same distances). Use its numbers when you attack the plan. **In Round 3 you speak after Bull: read `r3_bull.json` and `desk_r3.json` and attack Bull's FINAL plan, not an older one.**
+- `levels.json`: real floors and ceilings; point out ceilings in the way of Bull's targets (or floors under a short). `optimizer.json`: if code found no plan that passes the rules (NO_PLAN / NO_EDGE), that is strong evidence for you.
+- `regime.json`: unusual volatility, holidays and short sessions. `news.json`: fresh, timestamped headlines with trust tiers; use these before web search, and never cite news older than its window.
+- `claims_r<N-1>.json` (from Round 2): numbers the claim checker found wrong, for both sides. Use Bull's; correct yours.
+- **Save every fresh data pull**: `python tools/market_data.py <SYMBOL> --market <m> --style <s> --no-news --out debates/<id>/fresh_<HHMM>.json` (HHMM = UTC now) and cite `fresh_<HHMM>.json` as the source. Numbers from unsaved pulls are reported as unconfirmed.
 
 ## Evidence rules
 1. Read the debate's `meta.json` (the proposed trade and direction), `snapshot.json` (live price, indicators on 3 timeframes, order book, news) and `events.json`. Quote numbers exactly.

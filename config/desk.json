@@ -39,6 +39,24 @@
     "forex":  {"spread_pips": 1.0, "commission_per_order": 20.0, "slippage_pips": 0.5}
   },
 
+  "budget": {
+    "_why": "Each full debate uses about 10 AI agent calls. These limits keep the 24/7 runs inside your Claude plan.",
+    "max_debates_per_day": 8,
+    "max_debates_per_scan": 2,
+    "skip_debate_when_optimizer_finds_nothing": true,
+    "models": {"debaters": "sonnet", "round_judge": "sonnet", "final_judge": "opus"}
+  },
+
+  "volatility": {
+    "_why": "When a market is far more jumpy than usual, stops get hit by noise and gaps. Size is cut automatically.",
+    "high_ratio": 1.6,
+    "extreme_ratio": 2.5,
+    "size_multiplier_high": 0.5,
+    "size_multiplier_extreme": 0.25,
+    "vix_high": 25,
+    "india_vix_high": 20
+  },
+
   "sizing": {
     "forex_unit_step": 1000,
     "stocks_whole_units": true

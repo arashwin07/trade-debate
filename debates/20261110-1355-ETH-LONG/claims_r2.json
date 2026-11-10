@@ -1,0 +1,152 @@
+{
+  "round": 2,
+  "recorded_files": [
+    "snapshot.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 13,
+    "matched": 7,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "Fresh price 2072.66; 5m RSI 37.5, 15m RSI 31.2, 1h RSI 27.3 (5m and 15m up from 34.4 and 28.5 at the first snapshot)",
+        "number": 37.5,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "37.5 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 0,
+        "claim": "Fresh price 2072.66; 5m RSI 37.5, 15m RSI 31.2, 1h RSI 27.3 (5m and 15m up from 34.4 and 28.5 at the first snapshot)",
+        "number": 31.2,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "31.2 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 0,
+        "claim": "Fresh price 2072.66; 5m RSI 37.5, 15m RSI 31.2, 1h RSI 27.3 (5m and 15m up from 34.4 and 28.5 at the first snapshot)",
+        "number": 27.3,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "27.3 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Order book top 100 bid/ask ratio 1.19 ($1.44M bids vs $1.21M asks), was 0.69",
+        "number": 1.19,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.19 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 4,
+        "claim": "Session VWAP 2096.13; 1h EMA21 2113.72; 1h ATR14 21.02; 5m ATR14 10.10",
+        "number": 10.1,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "10.1 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "Perp funding +0.0025%; Fear & Greed 32 (previous 29)",
+        "number": 0.0025,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "0.0025% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 6
+  },
+  "bear": {
+    "checked": 11,
+    "matched": 1,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "1h RSI 27.1, 15m 30.6, 5m 36.8; 1h MACD hist -2.73 (prev -1.22); all timeframes below SMA50/SMA200; 1h vol 7.07x, 5m vol 0.4x",
+        "number": 27.1,
+        "problem": "mismatch",
+        "level": "unconfirmed",
+        "plain": "27.1 does not match the recorded 5m RSI (34.4). The agent may have used a newer live pull that was not saved.",
+        "expected": 34.4
+      },
+      {
+        "evidence": 0,
+        "claim": "1h RSI 27.1, 15m 30.6, 5m 36.8; 1h MACD hist -2.73 (prev -1.22); all timeframes below SMA50/SMA200; 1h vol 7.07x, 5m vol 0.4x",
+        "number": 2.73,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "2.73 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Price 2071.25; VWAP 2096.14; 1h EMA21 2113.66; 1h SMA20 2116.82; 1h SMA50 2142.47; 1h ATR14 21.02",
+        "number": 49.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "49 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Price 2071.25; VWAP 2096.14; 1h EMA21 2113.66; 1h SMA20 2116.82; 1h SMA50 2142.47; 1h ATR14 21.02",
+        "number": 25.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "25 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Price 2071.25; VWAP 2096.14; 1h EMA21 2113.66; 1h SMA20 2116.82; 1h SMA50 2142.47; 1h ATR14 21.02",
+        "number": 42.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "42 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "Price 2071.25; VWAP 2096.14; 1h EMA21 2113.66; 1h SMA20 2116.82; 1h SMA50 2142.47; 1h ATR14 21.02",
+        "number": 71.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "71 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Order book top-100 bid/ask ratio now 1.19 (was 0.69)",
+        "number": 1.19,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.19 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Order book top-100 bid/ask ratio now 1.19 (was 0.69)",
+        "number": 1.63,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.63 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Order book top-100 bid/ask ratio now 1.19 (was 0.69)",
+        "number": 1.37,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.37 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "Fear and Greed 32 (Fear), previous 29; perp funding +0.0025%",
+        "number": 0.0025,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "0.0025% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 10
+  }
+}

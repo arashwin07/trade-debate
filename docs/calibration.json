@@ -1,0 +1,43 @@
+{
+  "computed_utc": "2026-11-10T16:55:04Z",
+  "resolved": 4,
+  "accuracy": 0.75,
+  "take": {
+    "n": 0,
+    "right": 0
+  },
+  "skip": {
+    "n": 4,
+    "right": 3
+  },
+  "by_confidence": [
+    {
+      "confidence": "60-75%",
+      "n": 1,
+      "right": 0,
+      "hit_rate": 0.0
+    },
+    {
+      "confidence": "75-90%",
+      "n": 3,
+      "right": 3,
+      "hit_rate": 1.0
+    }
+  ],
+  "misses": [
+    {
+      "id": "20261110-1355-ETH-LONG",
+      "call": "SKIP",
+      "judge": "SKIP",
+      "confidence": 72,
+      "right": false,
+      "status": "target",
+      "r": 1.333,
+      "headline": "Skip it for now: the first goal pays only about $1.30 for every $1 you could lose, Ether is still sliding, and very few people are trading right now."
+    }
+  ],
+  "advice": [
+    "Only 4 resolved debates: too few to change any rule. Keep collecting."
+  ],
+  "plain": "The Judge has been right in 3 of 4 resolved debates."
+}

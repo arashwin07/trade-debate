@@ -1,0 +1,80 @@
+{
+  "round": 3,
+  "recorded_files": [
+    "snapshot.json",
+    "fresh pulls: 0"
+  ],
+  "bull": {
+    "checked": 9,
+    "matched": 7,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "Price 2068.78; EMA9 < EMA21 and price below SMA50 and SMA200 on 5m, 15m and 1h; 1h MACD histogram -3.79 (prev -3.08)",
+        "number": 3.79,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "3.79 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 5,
+        "claim": "Order book top-100 bid/ask ratio 0.84 now (earlier 0.69, 1.19, 2.07)",
+        "number": 0.84,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "0.84 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 2
+  },
+  "bear": {
+    "checked": 11,
+    "matched": 6,
+    "issues": [
+      {
+        "evidence": 0,
+        "claim": "Price 2068.56; EMA9<EMA21 and price<SMA50 on 5m/15m/1h; RSI 35.4/30.3/27.8; 1h MACD hist -3.78 (prev -3.08); volume vs avg 0.12x (5m), 0.07x (15m)",
+        "number": 27.8,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "27.8 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 0,
+        "claim": "Price 2068.56; EMA9<EMA21 and price<SMA50 on 5m/15m/1h; RSI 35.4/30.3/27.8; 1h MACD hist -3.78 (prev -3.08); volume vs avg 0.12x (5m), 0.07x (15m)",
+        "number": 3.78,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "3.78 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 1,
+        "claim": "1h ATR14 19.86, 15m ATR14 12.73, 5m ATR14 9.93; session VWAP 2095.93; Bull stop distance 14 (2068-2054)",
+        "number": 19.86,
+        "problem": "mismatch",
+        "level": "unconfirmed",
+        "plain": "19.86 does not match the recorded 1h ATR (21.0241). The agent may have used a newer live pull that was not saved.",
+        "expected": 21.0241
+      },
+      {
+        "evidence": 3,
+        "claim": "Micro-base: five 5m candles after the 13:30 flush with lows 2061.16, 2061.11, 2063.32, 2068.09, 2066.66; 24h low 2028.32",
+        "number": 24.0,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "24 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 4,
+        "claim": "Perp funding +0.0026%; order-book bid/ask 1.12 now (0.69, 1.19, 2.07 earlier)",
+        "number": 1.12,
+        "problem": "unconfirmed",
+        "level": "unconfirmed",
+        "plain": "1.12 was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      }
+    ],
+    "wrong": 0,
+    "unconfirmed": 5
+  }
+}

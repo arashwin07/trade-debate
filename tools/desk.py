@@ -22,6 +22,7 @@ sys.path.insert(0, HERE)
 import market_data  # noqa: E402
 import events as events_mod  # noqa: E402
 import timemachine  # noqa: E402
+from audit import audit  # noqa: E402
 
 NUM = re.compile(r"-?\d[\d,]*\.?\d*")
 
@@ -212,8 +213,9 @@ def round_trip_cost(market, style, long, entry, exit_price, qty, costs, pip=0.00
 
 
 # ---------------------------------------------------------------- 3. size
-def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_usd=None):
-    """Quantity that keeps (loss at stop + costs) inside the per-trade risk budget, then capped."""
+def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_usd=None, vol_multiplier=1.0):
+    """Quantity that keeps (loss at stop + costs) inside the per-trade risk budget, then capped.
+    vol_multiplier (from regime.py) shrinks the budget when the market is unusually jumpy."""
     acct = cfg["accounts"][market]
     capital = acct.get("capital")
     risk_cfg = cfg["risk"]
@@ -243,6 +245,9 @@ def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_us
     budget = capital * risk_cfg["risk_per_trade_pct"] / 100
     if risk_cfg.get("max_loss_per_trade"):
         budget = min(budget, risk_cfg["max_loss_per_trade"])
+    if vol_multiplier < 1.0:
+        budget *= vol_multiplier
+        out["notes"].append(f"Risk budget multiplied by {vol_multiplier} because the market is unusually volatile.")
     budget_inst = (budget - fixed_fee) / conv
     if market == "crypto":
         step, min_notional = crypto_rules(data_symbol)
@@ -283,12 +288,33 @@ def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_us
 
 
 # ---------------------------------------------------------------- 4. risk gate (pure-ish)
-def risk_gate(plan, facts, plan_issues, sz, snap, ev, tm, market, style, data_symbol, cfg, trades_today):
+def risk_gate(plan, facts, plan_issues, sz, snap, ev, tm, market, style, data_symbol, cfg, trades_today, extra=None):
     r = cfg["risk"]
     checks = []
+    extra = extra or {}
 
     def add(cid, level, plain):
         checks.append({"id": cid, "level": level, "plain": plain})
+
+    reg = extra.get("regime")
+    if reg:
+        cal = reg.get("calendar", {})
+        if cal.get("status") == "CLOSED_HOLIDAY":
+            add("holiday", "block" if style == "intraday" else "warn", cal.get("plain", "Exchange holiday."))
+        if cal.get("half_day"):
+            add("half_day", "warn", cal.get("plain", "Short trading session today."))
+        if reg.get("level") in ("HIGH", "EXTREME"):
+            add("volatility", "warn", reg["plain"])
+        elif reg.get("fear_high"):
+            add("fear_gauge", "warn", reg["plain"])
+    cl = extra.get("claims")
+    if cl:
+        wrong = sum((cl.get(s) or {}).get("wrong", 0) for s in ("bull", "bear"))
+        if wrong:
+            add("claims", "warn", f"The claim checker found {wrong} number(s) in the final round that do not match the recorded data.")
+    opt = extra.get("optimizer")
+    if opt and opt.get("status") in ("NO_PLAN", "NO_EDGE"):
+        add("optimizer", "warn", "Before the debate, the plan optimizer found no plan that passes your rules: " + opt.get("plain", ""))
 
     for i in plan_issues:
         add(i["id"], i["level"], i["plain"])
@@ -431,6 +457,7 @@ def cmd_analyze(folder, rnd):
         facts, issues = plan_check(plan, fresh.get("price"), atr, tf, market, cfg["risk"])
         out.update({"plan_check": facts, "plan_issues": issues, "timemachine": tm_brief(run_tm(plan, market, display, style))})
     save(os.path.join(folder, f"desk_r{rnd}.json"), out)
+    audit(folder, "desk", f"round {rnd}: plan={plan} issues={len(out.get('plan_issues') or [])} TM={(out.get('timemachine') or {}).get('lean')}")
     tm = out.get("timemachine") or {}
     print(f"wrote desk_r{rnd}.json: plan={plan} | TM: {tm.get('verdict') or tm.get('error')} | events: {ev['status']}")
 
@@ -473,9 +500,19 @@ def cmd_gate(folder):
     tm = r3.get("timemachine") if r3.get("plan") == plan else None
     tm = tm or tm_brief(run_tm(plan, market, display, style))
     day_vol = fresh.get("day_volume")
-    sz = size(plan, market, style, data_symbol, cfg, day_volume=day_vol, quote_volume_usd=fresh.get("quote_volume_24h_usdt"))
+    reg = load(os.path.join(folder, "regime.json"))
+    if not reg:
+        try:
+            import regime
+            reg = regime.compute(display, market, style)
+            save(os.path.join(folder, "regime.json"), reg)
+        except Exception:
+            reg = None
+    sz = size(plan, market, style, data_symbol, cfg, day_volume=day_vol, quote_volume_usd=fresh.get("quote_volume_24h_usdt"),
+              vol_multiplier=(reg or {}).get("size_multiplier", 1.0))
+    extra = {"regime": reg, "claims": load(os.path.join(folder, "claims_r3.json")), "optimizer": load(os.path.join(folder, "optimizer.json"))}
     gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if tm and not tm.get("error") else None,
-                             market, style, data_symbol, cfg, trades_today(cfg, exclude=os.path.basename(folder.rstrip("/\\"))))
+                             market, style, data_symbol, cfg, trades_today(cfg, exclude=os.path.basename(folder.rstrip("/\\"))), extra)
     final = "TAKE" if judge in ("TAKE", "BUY") and gate == "PASS" else "SKIP"
     blocks = [c["plain"] for c in checks if c["level"] == "block"]
     if judge in ("TAKE", "BUY") and gate == "BLOCK":
@@ -491,6 +528,7 @@ def cmd_gate(folder):
         "ticket_plain": ticket_plain(plan, sz, market, display, cfg["accounts"][market].get("broker")) if final == "TAKE" else None,
     })
     save(os.path.join(folder, "desk_final.json"), out)
+    audit(folder, "gate", f"judge={judge} gate={gate} final={final} | blocks: {len(blocks)}")
     print(f"wrote desk_final.json: judge={judge} gate={gate} final={final} | {summary}")
 
 
@@ -501,10 +539,16 @@ def cmd_check(a):
     fresh = market_data.build(display, market, a.style, with_news=False)
     atr, tf = atr_for(fresh, a.style)
     facts, issues = plan_check(plan, fresh.get("price"), atr, tf, market, cfg["risk"])
-    sz = size(plan, market, a.style, data_symbol, cfg, fresh.get("day_volume"))
+    try:
+        import regime
+        reg = regime.compute(display, market, a.style)
+    except Exception:
+        reg = None
+    sz = size(plan, market, a.style, data_symbol, cfg, fresh.get("day_volume"), vol_multiplier=(reg or {}).get("size_multiplier", 1.0))
     ev = events_mod.guard(market, display, a.style)
     tm = tm_brief(run_tm(plan, market, display, a.style))
-    gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if not tm.get("error") else None, market, a.style, data_symbol, cfg, 0)
+    gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if not tm.get("error") else None, market, a.style, data_symbol, cfg,
+                             trades_today(cfg), {"regime": reg})
     print(json.dumps({"plan_check": facts, "sizing": sz, "gate": gate, "checks": checks,
                       "timemachine": {k: tm.get(k) for k in ("lean", "verdict", "plain")} if tm else None}, indent=2))
 
