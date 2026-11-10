@@ -1,0 +1,25 @@
+{
+  "agent": "bull",
+  "round": 1,
+  "stance": "BUY",
+  "headline": "BTC at 74,195 sits at the 24h low (74,058.7) with 15m/5m RSI at 36 and Fear at 32: buy the washed-out bounce toward 74,741 VWAP and 75,400 with a stop under 73,510.",
+  "argument": "Price is pressed against the bottom of its 24h range (low 74,058.7, high 75,568.18) and the 5m lower Bollinger band (74,142.09), with the last close at 74,195.42. RSI is 36.0 on 5m, 36.1 on 15m and 38.5 on 1h, the zone where intraday sellers have usually run out of fuel. The 5m MACD histogram is only -3.05 (prev -2.87), so downside momentum on the fastest frame is nearly flat, and ATR on 5m is just 103.97, so this selloff is slowing rather than accelerating.\n\nThe mean-reversion room is large. Session VWAP is 74,741.48, about 546 points (0.7%) above price, and the 1h upper Bollinger band is 75,403.35. Volume is 0.37x its 20-bar average on 5m, 0.35x on 15m and 0.09x on 1h, so this drift lower is on very thin participation, not capitulation selling.\n\nSentiment supports a contrarian long. Fear and Greed is 32 (Fear), up from 29 the previous reading, and perp funding is only +0.0088%, so leverage is not crowded long. The week's worst flow news is already known: US spot BTC ETFs lost $1.28B last week (The Block, Nov 7) and BTC fell 5.6% in one day, yet price is still holding 74k, which means much of the bad news is priced. The main risk is today's US CPI, which is a two-sided catalyst; a soft print would squeeze shorts into VWAP quickly. Risk is defined: stop below the 1h 50-bar low of 73,510.",
+  "evidence": [
+    {"claim": "Price is at the bottom of its 24h range, near the low", "value": "price 74,195.42; 24h low 74,058.7; 24h high 75,568.18", "source": "snapshot: Binance public API", "time": "2026-11-10T11:06Z", "url": ""},
+    {"claim": "RSI is washed-out on all three intraday frames", "value": "5m 36.0 / 15m 36.1 / 1h 38.5", "source": "snapshot: Binance 5m, 15m, 1h candles", "time": "2026-11-10T11:05Z", "url": ""},
+    {"claim": "Price is at the 5m lower Bollinger band, with room back to session VWAP", "value": "5m BB lower 74,142.09; session VWAP 74,741.48 (about +0.74% above price)", "source": "snapshot: Binance 5m", "time": "2026-11-10T11:05Z", "url": ""},
+    {"claim": "The selloff is on very light volume, not capitulation", "value": "volume vs 20-bar avg: 0.37 (5m), 0.35 (15m), 0.09 (1h)", "source": "snapshot: Binance 5m/15m/1h", "time": "2026-11-10T11:05Z", "url": ""},
+    {"claim": "5m MACD histogram is nearly flat, so downside momentum is fading on the trigger timeframe", "value": "histogram -3.0522 vs prev -2.8736; ATR14 103.97", "source": "snapshot: Binance 5m", "time": "2026-11-10T11:05Z", "url": ""},
+    {"claim": "Sentiment is in Fear and improving, with funding barely positive, so longs are not crowded", "value": "Fear & Greed 32 (prev 29); perp funding +0.0088%", "source": "snapshot: alternative.me and Binance perp funding", "time": "2026-11-10T11:06Z", "url": ""},
+    {"claim": "ETF outflow bad news is already known: $1.28B weekly outflow, worst since late June, after a 5.6% one-day BTC drop on Thursday, yet price still holds near 74k", "value": "-$1.28B week ending Nov 6; IBIT -$403M Friday", "source": "The Block (SoSoValue data)", "time": "2026-11-07", "url": "https://theblock.co/news/markets/2026-11-07-bitcoin-etfs-flip-negative-for-2026-after-1-28-billion-outflow-week-worst-since-june-435984"},
+    {"claim": "Upside target is the 1h upper Bollinger band; downside invalidation is the 1h 50-bar low", "value": "1h BB upper 75,403.35; 1h recent low 73,510.0", "source": "snapshot: Binance 1h", "time": "2026-11-10T11:00Z", "url": ""}
+  ],
+  "rebuttals": [],
+  "plan": {
+    "entry": "74,050-74,250 (scale in; second half only if the 74,058 24h low holds)",
+    "stop_loss": "73,450 (below the 1h 50-bar low of 73,510)",
+    "targets": ["74,741 (session VWAP, take partial)", "75,400 (1h upper Bollinger)"],
+    "risk_reward": "1:1.8 to the second target, from a 74,150 average entry (risk 700, reward 1,250)",
+    "timeframe": "intraday, 4-8 hours; avoid adding into the US CPI print"
+  }
+}

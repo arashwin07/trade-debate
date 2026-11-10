@@ -1,0 +1,188 @@
+{
+  "symbol": "BTC/USDT",
+  "data_symbol": "BTCUSDT",
+  "market": "crypto",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T11:06:31Z",
+  "price": 74195.42,
+  "change_24h_pct": 0.08,
+  "high_24h": 75568.18,
+  "low_24h": 74058.7,
+  "quote_volume_24h_usdt": 894918264,
+  "market_status": "OPEN (crypto trades 24/7)",
+  "data_source": "Binance public API",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T11:05:00Z",
+      "close": 74195.42,
+      "ema9": 74254.5,
+      "ema21": 74334.52,
+      "sma20": 74340.26,
+      "sma50": 74542.15,
+      "sma200": 74815.57,
+      "rsi14": 36.0,
+      "macd": {
+        "macd": -89.6428,
+        "signal": -86.5906,
+        "histogram": -3.0522,
+        "prev_histogram": -2.8736
+      },
+      "atr14": 103.97,
+      "bollinger": {
+        "upper": 74538.44,
+        "lower": 74142.09
+      },
+      "volume_vs_20avg": 0.37,
+      "recent_high_50": 74996.01,
+      "recent_low_50": 74115.65,
+      "change_over_window_pct": 0.03,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ],
+      "session_vwap_utc_day": 74741.48
+    },
+    {
+      "timeframe": "15m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T11:00:00Z",
+      "close": 74195.42,
+      "ema9": 74351.75,
+      "ema21": 74509.86,
+      "sma20": 74558.78,
+      "sma50": 74789.47,
+      "sma200": 75042.23,
+      "rsi14": 36.1,
+      "macd": {
+        "macd": -151.59,
+        "signal": -113.36,
+        "histogram": -38.2307,
+        "prev_histogram": -38.9188
+      },
+      "atr14": 182.67,
+      "bollinger": {
+        "upper": 74998.24,
+        "lower": 74119.33
+      },
+      "volume_vs_20avg": 0.35,
+      "recent_high_50": 75442.01,
+      "recent_low_50": 74115.65,
+      "change_over_window_pct": -2.53,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T11:00:00Z",
+      "close": 74195.42,
+      "ema9": 74560.46,
+      "ema21": 74733.11,
+      "sma20": 74817.19,
+      "sma50": 75006.47,
+      "sma200": 76697.27,
+      "rsi14": 38.5,
+      "macd": {
+        "macd": -157.23,
+        "signal": -93.0602,
+        "histogram": -64.1708,
+        "prev_histogram": -49.2183
+      },
+      "atr14": 422.22,
+      "bollinger": {
+        "upper": 75403.35,
+        "lower": 74231.02
+      },
+      "volume_vs_20avg": 0.09,
+      "recent_high_50": 76200.0,
+      "recent_low_50": 73510.0,
+      "change_over_window_pct": -8.52,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    }
+  ],
+  "order_book_top100": {
+    "bid_value_usdt": 373638,
+    "ask_value_usdt": 2250199,
+    "bid_ask_ratio": 0.17,
+    "spread": 0.01
+  },
+  "fear_greed_index": {
+    "value": 32,
+    "label": "Fear",
+    "previous": 29,
+    "source": "alternative.me"
+  },
+  "perp_funding_rate_pct": 0.0088,
+  "news": [
+    {
+      "title": "Prediction: This Will Be the Price of Bitcoin by the End of 2030 - Yahoo Finance",
+      "source": "Yahoo Finance",
+      "published": "Mon, 09 Nov 2026 23:13:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMinwFBVV95cUxPYXZjV19MRkwzeW52WWhRb1lxNnJEQjVhQi1VZ2kxSFlId1Q0T3BFZGFVSTNydTZYdWF6OTIwRnpjWnJlakMtMjBoeGs5djBGSjFESl9hTThPVE5mLWFXandROEhjRU53THNLQWRLZTc0XzdhTHVMcDhUOFh2eXE5Z3R5V3RHSC1Hb3dLT0FzR1g5V09wS0hOUTVLdmw4djA?oc=5"
+    },
+    {
+      "title": "Bitcoin (BTC) price falls as Fed rate-hike bets build ahead of U.S. CPI report - CoinDesk",
+      "source": "CoinDesk",
+      "published": "Tue, 10 Nov 2026 10:48:37 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPNzc4R3R1MGRYNW9BMkFIWlN4YjlEdHdDSnlJMjdnMlB0NmFxLTJCWXBaQ1R3ZS1WZEJrOFh2Q3hFcGRhZUJpNTZaZ3Nxb21Sa3VyWnY3MHEzaG9KMkNsd05XMTdDQjJUMi1sS3NjdXN5M3VpTmJsVWxLN2FKMkhiQ19TYkg0SFBsM284YkNuQ05EUG5PWGlIaG5RM1FnbTVGMms1ZFd6YmhmOTJqX0x3NkxkQVRTV0k0QWR1SlF5RlY?oc=5"
+    },
+    {
+      "title": "BTC price range on Nov 10, 2026 at 2am EST Crypto Prediction Market - Robinhood",
+      "source": "Robinhood",
+      "published": "Tue, 10 Nov 2026 06:03:19 GMT",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxOUzRrMEp2RXVSVkkzLVpFbHY4a21oOXdkUW9TRWN5Y0h6Y01ONVMzS28wZk45UVlNendyZkNNM1ZXeTJEOHVvV05FRzRYSElSOFhuM1VuaTRjSDBBc1E2YkFBOG1tR1VNelczMEpMVExkRGFyUVkzV3JsSHROaFJod0VmeWI0Qm9rTzlTVmh0RFY0b0lFZXZqZlAtR2FreHJOc2dGZHM1Q3dVaWEtTnhVMjJtOWxrQQ?oc=5"
+    },
+    {
+      "title": "Bitcoin Price Forecast: Can US CPI revive the BTC bulls or trigger further losses? - FXStreet",
+      "source": "FXStreet",
+      "published": "Tue, 10 Nov 2026 06:08:31 GMT",
+      "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPeDBWTGlQN0ctaERJSjZiQV9hSS03VWRiQjRIUWhjSjVyTGRPWEFHYlR3RE5pc3NuVGdnc0ljZkUzVWRETzhTWjdoUXhVN3h6UERLclllYUxsTDM0Qi1pOEgyc1VvLWx4clFIWWRsOExGNjhOVHlwT25HNkt4Q3pmSzgtYlZyNWctVHVQdTg2a0xtbXppOE9IVXdCd09KUkxpWUdtaFZZclhIRWFqdnhrNDVZZlkzNmlDZm1Ick1kVHpjcUw5?oc=5"
+    },
+    {
+      "title": "Why is Bitcoin price stuck below $75,000? - Crypto News",
+      "source": "Crypto News",
+      "published": "Tue, 10 Nov 2026 05:54:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMia0FVX3lxTE5xNEFDZ1dhQUZHcjltMm40YmZveHZTMzkxS2hxdGF2RDBzNmhHay0zY1d0cmpYbEJhOURuTGdOc1d6ZVFRT05xdVFyX2JYNE1HNlhDN0NnYzQ0dVVDZUUwaW9LVFVYblU0WHA4?oc=5"
+    },
+    {
+      "title": "Bitcoin price $74,600: US CPI without an annual rate - CryptoTicker.io",
+      "source": "CryptoTicker.io",
+      "published": "Tue, 10 Nov 2026 05:21:40 GMT",
+      "url": "https://news.google.com/rss/articles/CBMicEFVX3lxTFBtNW9Bak5xRnJmcVhpRUZSaEd3akFrTHNsbE1aU0UxSkd2OFQ2NHNMb0d6ZENTWkNUaGFaeUxoSTBORThxTW5OdkVJWTNzSDJUMkFBMWVBUldidFVvay1GNHViUDV4LUpNbExXQ21kNDQ?oc=5"
+    },
+    {
+      "title": "Trump Media Adds 1,510 BTC as Noteholders Near $1B Repayment Option - Bitcoin Foundation",
+      "source": "Bitcoin Foundation",
+      "published": "Tue, 10 Nov 2026 09:40:34 GMT",
+      "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxQRzFWOXhkUXNOMjRJQVpocXZVQzR4ZHhuT0Y4QWJnakZFZk00WTBPSWUwem5FVXhZQ192aGhITDk1TnhnOFBKYXExVmNzS0tTSHBYdXpNWTVuTkp6Z0poWnJBY1lJUWpBSHdoTjBZRGN4MzBkdmtGMGFEVFhhZWRsWGhtb2RaUmtEV19qQkswQWV1Rlp0U3hQS09YMTM4LWtsdkthZmJoeWdlMHFMODdR?oc=5"
+    },
+    {
+      "title": "Current price of Bitcoin for November 9, 2026 - Fortune",
+      "source": "Fortune",
+      "published": "Mon, 09 Nov 2026 12:45:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiZ0FVX3lxTFA5LUJPMnBZbk9qcW9VZVZzMzBSMEsxQklpMUNvMDJueC1vMXZVWXRLVkJBMWQ5THdodl8xb3dLTF8xZ3hxeUFwdHJCbjZ2dTNQVXV6d0pxb016M0NkdVRIbmIzMjFVek0?oc=5"
+    },
+    {
+      "title": "Public Companies Sold $869 Million of Bitcoin in One Week. Is a Bitcoin Price Crash Coming? - 24/7 Wall St.",
+      "source": "24/7 Wall St.",
+      "published": "Mon, 09 Nov 2026 18:57:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQVksyRXRzc2dPbm5XUFJvTXFjcld1NGtLYmFZOTVEeEEtLVFnQUllV0E1WlMzUXJOSG00czRNNHJyUnRlcHRYcDZnRlB2cHNOMVg3Y0M1N1ZmV09SMTFZQXZMOFROdDVJU24zZFplaVJRbVJSTUUwcnVPbjJQa05SSURmcERsU0VLTWZ6MmVWWWo4VmZtdjRpSFhlZjVzZzZ6WDZQSnZfMjdFcThkblBDR0UyUl9Ob1F0U0VraTVQZkRTQUFsOGlDZGNTRDZlOExaVHV4U3JQdUItYWZ0N0tNOQ?oc=5"
+    },
+    {
+      "title": "Prediction: This Will Be the Price of Bitcoin by the End of 2030 - The Motley Fool",
+      "source": "The Motley Fool",
+      "published": "Mon, 09 Nov 2026 22:53:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNWm41ZXJBM3VBV0tEa2lEblJXWkJQTDVRcG90eHl4S1M3VjVUWDhsR3B3ME9Ed2FVQ1NyZmgzeUMzVDNFZkozUzlwWkdNRmxnVzJ0dDhpQjFIdzlQQThPNHhQdS1oclJGZllIaXdJVTg5bVZUd0R0ejNTRHQ2dlB1LUZpU3lCNE16eUpLMUtFb1VReWhjOG9Z?oc=5"
+    }
+  ]
+}

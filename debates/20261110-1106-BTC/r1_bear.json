@@ -1,0 +1,25 @@
+{
+  "agent": "bear",
+  "round": 1,
+  "stance": "SELL",
+  "headline": "BTC at 74,195 sits below every key average on 5m/15m/1h, bids are only 0.17x asks, and US spot ETFs just lost $1.28B in a week into a CPI print - sell rallies toward 74,500, do not buy.",
+  "argument": "Structure is bearish on all three timeframes in the snapshot. Price (74,195.42) is below the 5m SMA200 (74,815.57), the 15m SMA200 (75,042.23) and the 1h SMA200 (76,697.27). EMA9 is under EMA21 on every timeframe, and the 1h MACD histogram is -64.17, deeper than its previous -49.22, so downside momentum is still building. The 1h window is down 8.52%. Price is also under the UTC-day VWAP of 74,741.48, so everyone who bought today is underwater.\n\nThe order book leans heavily to sellers: top-100 bids are 373,638 USDT against 2,250,199 USDT of asks, a 0.17 ratio. There is almost no resting demand near the market.\n\nThe macro and flow backdrop adds to the risk. CoinDesk's headline this morning says BTC is falling as Fed rate-hike bets build ahead of US CPI, so the event risk skews hawkish. The Block reports US spot BTC ETFs lost 1.28 billion dollars last week, the worst since late June, flipping year-to-date flows to about -914 million, with IBIT and FBTC both leaking. The Binance hack of around 6.3 billion dollars on Oct 30 and the post-midterm risk-off tone hurt sentiment further.\n\nBull will point to RSI 36 and low volume as bounce signals. But 1h volume is only 0.09x its 20-bar average, so any bounce lacks buyers, and it runs straight into the 1h EMA9 at 74,560, the 1h EMA21 at 74,733 and VWAP at 74,741. Buying here means paying for a bounce into three layers of resistance with a hot CPI print ahead. Fear & Greed at 32 shows no capitulation yet, so there is room to fall. The better trade is to sell rallies, or stay flat.",
+  "evidence": [
+    {"claim": "Price is below the SMA200 on all three timeframes (5m 74,815.57; 15m 75,042.23; 1h 76,697.27) and EMA9 is below EMA21 on each", "value": "74,195.42 vs 74,815.57 / 75,042.23 / 76,697.27", "source": "snapshot: Binance 5m/15m/1h indicators", "time": "2026-11-10T11:06Z", "url": ""},
+    {"claim": "1h MACD histogram is -64.17 and falling (previous -49.22); 1h window change is -8.52%", "value": "-64.1708", "source": "snapshot: Binance 1h", "time": "2026-11-10T11:00Z", "url": ""},
+    {"claim": "Top-100 order book is ask-heavy: 373,638 USDT of bids vs 2,250,199 USDT of asks", "value": "0.17", "source": "snapshot: Binance order book", "time": "2026-11-10T11:06Z", "url": ""},
+    {"claim": "Price is below the UTC-day session VWAP; the 1h EMA9 (74,560.46) and EMA21 (74,733.11) are stacked as overhead resistance", "value": "VWAP 74,741.48", "source": "snapshot: Binance 5m VWAP and 1h EMAs", "time": "2026-11-10T11:06Z", "url": ""},
+    {"claim": "CoinDesk headline: BTC falls as Fed rate-hike bets build ahead of US CPI report (hawkish event risk today)", "value": "published 10:48 GMT", "source": "snapshot news: CoinDesk (headline only; article body not opened)", "time": "2026-11-10T10:48Z", "url": ""},
+    {"claim": "US spot BTC ETFs had -1.28B net outflows in the week ending Nov 6, the worst week since late June; year-to-date flows flipped to about -914.1M; Thu -430.2M and Fri -411.9M", "value": "-1.28B", "source": "The Block (opened)", "time": "2026-11-07", "url": "https://theblock.co/news/markets/2026-11-07-bitcoin-etfs-flip-negative-for-2026-after-1-28-billion-outflow-week-worst-since-june-435984"},
+    {"claim": "Binance disclosed a hack of about 6.3B dollars (incl. 17,985 BTC); BTC fell below 77,000 on the news. This is a two-week-old confidence overhang, not a today catalyst", "value": "6.3B", "source": "Search results: Al Jazeera, The National, Motley Fool (snippets, pages not opened)", "time": "2026-10-30", "url": "https://aljazeera.com/news/2026/10/30/binance-says-6-3bn-stolen-in-biggest-crypto-heist-in-history-what-we-know"},
+    {"claim": "Volume is thin, so bounces lack buyers: 1h volume is 0.09x its 20-bar average and 5m is 0.37x. Fear & Greed is 32 (Fear), up from 29, so no capitulation washout yet", "value": "0.09 / 32", "source": "snapshot: Binance 1h volume; alternative.me", "time": "2026-11-10T11:06Z", "url": ""}
+  ],
+  "rebuttals": [],
+  "plan": {
+    "entry": "short on a bounce into 74,450-74,650 (1h EMA9 74,560 area); do not chase below 74,150",
+    "stop_loss": "75,050 (above the 5m recent high of 74,996 and the 1h SMA50 of 75,006)",
+    "targets": ["73,510 (1h recent low, 50 bars)", "73,000"],
+    "risk_reward": "1:1.6 to the first target, 1:2.4 to the second (from entry 74,550)",
+    "timeframe": "intraday, 4-8 hours; stand aside or cut size around the US CPI release"
+  }
+}

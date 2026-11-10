@@ -1,0 +1,51 @@
+{
+  "decision": "NO TRADE",
+  "confidence": 78,
+  "winner": "draw",
+  "summary": "Stand aside on BTC/USDT until after the US October CPI release at 13:30 UTC today, about 2h20m away and inside both sides' 4-8 hour window. The debate is a near-draw (28 vs 29): the bull's revised long pays a real 1.8R to VWAP, and the bear's short has a valid plan but has not triggered. Re-assess after the print: a reclaim of VWAP near 74,736 favours longs, and a 1h close below 74,091 favours shorts.",
+  "reasoning": "Two facts decide this. First, the BLS schedule confirms October 2026 CPI is released today, Nov 10, at 8:30 ET (13:30 UTC). That is about 2h20m after the re-check and inside the 4-8 hour window both sides proposed. Under the rules, a major scheduled event inside the trade window means NO TRADE. Both debaters accepted the risk ('do not add into the print', 'flat or half size through CPI'), which concedes that neither plan survives the event cleanly. Second, the scores are within 3 points (bull 28, bear 29).\n\nThe bull's best work was in Round 3. The bull replaced the 700-point stop with 73,900, below the 24h low of 74,091.64 and the 5m low of 74,115.65. From 74,200 that is 300 of risk against about 536 to VWAP (74,736.41 now) and about 1,185 to the 1h upper band (75,385.52), so the 1.8R and 4.0R figures check out on live data. The bear's Round 3 still attacked the old 0.84R plan and never answered the revised one. That is a real gap in the bear's rebuttal. However, a 300-point stop is only 0.7x the 1h ATR (427) and sits in front of a CPI print that CoinDesk says is being traded on December-hike pricing. Slippage through it is likely.\n\nThe bear's macro claims are verified. The Block confirms the -$1.28B ETF week, YTD -$914.1M, and the daily flows. CoinDesk's markets page carries the rate-hike and CPI headlines and the Waller line. The bear's structure claims (below the SMA200 on all frames, 1h MACD histogram deepening to -56.4) remain true. The bear's 0.17 order-book reading was a transient print, which the bear later withdrew; the live book now reads 0.37. The bear's short entry zone of 74,450-74,650 has not been reached (price 74,317), so there is no live short to take either.",
+  "scorecard": {
+    "bull": {"evidence_quality": 6, "data_accuracy": 8, "rebuttal_strength": 7, "plan_quality": 7, "total": 28},
+    "bear": {"evidence_quality": 8, "data_accuracy": 7, "rebuttal_strength": 6, "plan_quality": 8, "total": 29}
+  },
+  "claim_checks": [
+    {"by": "bull", "round": 1, "claim": "Price 74,195.42 near 24h low 74,058.7; high 75,568.18", "status": "verified", "note": "Matches snapshot. Live 24h low is now 74,091.64 (the old low rolled out of the window); live price is 74,317.19."},
+    {"by": "bull", "round": 1, "claim": "RSI 36.0 / 36.1 / 38.5 on 5m / 15m / 1h", "status": "verified", "note": "Matches snapshot. Live readings are 45.6 / 40.7 / 40.8. The bull later conceded that 36-39 is not oversold."},
+    {"by": "bull", "round": 1, "claim": "Session VWAP 74,741.48; 5m lower BB 74,142.09; 1h upper BB 75,403.35", "status": "verified", "note": "Matches snapshot. Live: VWAP 74,736.41, 1h upper BB 75,385.52."},
+    {"by": "bull", "round": 1, "claim": "Volume 0.37x / 0.35x / 0.09x of the 20-bar average", "status": "verified", "note": "Matches snapshot. The 1h reading is for an hour still in progress, so it overstates how thin the move is."},
+    {"by": "bull", "round": 1, "claim": "The Block: -$1.28B ETF week, worst since late June, IBIT -$403M Friday, BTC -5.6% Thursday", "status": "verified", "note": "Article opened; all figures confirmed."},
+    {"by": "bull", "round": 1, "claim": "R:R 1:1.8 with stop 73,450", "status": "verified", "note": "Arithmetic is correct to target 2 only. The first target was 0.84R, as the bear pointed out."},
+    {"by": "bull", "round": 2, "claim": "Spot BTC ETFs took inflows on Nov 4 (+$75M)", "status": "verified", "note": "CryptoSlate was cited from a search snippet, but The Block independently shows Wednesday Nov 4 at +$74.6M."},
+    {"by": "bull", "round": 2, "claim": "In-line September CPI sent BTC toward 79,000 (Cointelegraph)", "status": "unverifiable", "note": "Search summary only; page not opened and the URL is a bare domain."},
+    {"by": "bull", "round": 2, "claim": "Binance hack moved 18,270 BTC; about $3B frozen", "status": "unverifiable", "note": "Search snippets only; not material to the decision."},
+    {"by": "bull", "round": 3, "claim": "Stop 73,900, entry 74,200: 1.8R to VWAP and 4.0R to 75,396", "status": "verified", "note": "On live data: risk 300, VWAP +536 (1.79R), 1h upper BB +1,185 (3.95R). The stop is only 0.7x the 1h ATR, ahead of CPI."},
+    {"by": "bull", "round": 3, "claim": "5m MACD histogram turned positive", "status": "verified", "note": "Live 5m histogram is +7.61 (prev +0.54), so the short-term bounce is continuing."},
+    {"by": "bear", "round": 1, "claim": "Price below the SMA200 on 5m/15m/1h; EMA9 below EMA21 on all three", "status": "verified", "note": "True in the snapshot and still true live."},
+    {"by": "bear", "round": 1, "claim": "1h MACD histogram -64.17 vs prev -49.22; 1h window -8.52%", "status": "verified", "note": "Matches snapshot. Live: -56.40 and -8.37%."},
+    {"by": "bear", "round": 1, "claim": "Order book bids/asks 0.17", "status": "stale", "note": "Correct in the snapshot, but subsequent pulls ranged from 0.44 to 2.54 and the live reading is 0.37. The bear withdrew it in Round 3."},
+    {"by": "bear", "round": 1, "claim": "R:R 1:1.6 / 1:2.4 from 74,550", "status": "wrong", "note": "Correct values are 1:2.1 and 1:3.1 (risk 500). The bear self-corrected in Round 2."},
+    {"by": "bear", "round": 1, "claim": "Binance hack about $6.3B including 17,985 BTC", "status": "unverifiable", "note": "Snippets only; the BTC count is disputed and the event is two weeks old."},
+    {"by": "bear", "round": 2, "claim": "CoinDesk: BTC slips as traders price a Fed rate increase; Waller backs December tightening even if inflation cools", "status": "verified", "note": "CoinDesk markets page opened: both headline and summary are confirmed."},
+    {"by": "bear", "round": 2, "claim": "1h close below the 1h lower BB (74,207 vs 74,234)", "status": "stale", "note": "True at 11:07Z. Live, price 74,317 is above the lower band at 74,261."},
+    {"by": "bear", "round": 3, "claim": "24h low rolled from 74,058.7 to 74,091.64 rather than being defended", "status": "verified", "note": "The live 24h low is 74,091.64."},
+    {"by": "bear", "round": 3, "claim": "The bull's long pays 0.84R to its first target", "status": "wrong", "note": "This applies only to the bull's superseded 700-point stop. The bull's Round 3 plan (stop 73,900) pays 1.8R to VWAP."},
+    {"by": "both", "round": 1, "claim": "A US CPI release falls inside the trade window today", "status": "verified", "note": "The BLS schedule lists October 2026 CPI for Nov 10, 2026, 8:30 AM ET (13:30 UTC)."}
+  ],
+  "trade_plan": {
+    "direction": "NONE",
+    "entry": "No position before the 13:30 UTC CPI release. After the print, a long is only valid on a 15m close back above VWAP (about 74,736) and the 1h EMA21 (about 74,744). A short is only valid on a 1h close below 74,091 (24h low) on rising volume, or on a rejection of 74,450-74,650 after the print.",
+    "stop_loss": "n/a. If either post-CPI setup triggers, place the stop beyond the level that triggered it, at least 1x the 15m ATR (about 190) away.",
+    "targets": [],
+    "risk_reward": "n/a. Require at least 1.5R to a real level before acting after the print.",
+    "timeframe": "Re-evaluate from 13:45 UTC, once the CPI candle has closed.",
+    "risk_rule": "Risk no more than 1% of trading capital on this idea."
+  },
+  "invalidation": "This stand-aside is wrong only if BTC trends cleanly before 13:30 UTC (a 1h close above 74,744 or below 74,091) without reversing on the CPI print. Even then, entering into the release is not justified under the rules.",
+  "key_risks": [
+    "US October CPI at 13:30 UTC today, with CoinDesk reporting December-hike pricing; expect a gap move that can skip tight stops (1h ATR about 427).",
+    "Trend is down on every timeframe (price below the SMA200 on 5m/15m/1h; 1h MACD histogram -56.4), so bounces may fail at VWAP and the 1h EMA21 near 74,740.",
+    "Spot ETF outflows of -$1.28B last week (YTD -$914M) could continue in today's US session.",
+    "The order book's top-100 ratio swings between 0.17 and 2.54 within minutes and is not a reliable signal either way."
+  ],
+  "data_freshness": "Snapshot at 11:06:31Z (price 74,195.42); re-checked at 11:11:17Z (price 74,317.19, +0.16%). The last 5m candle is from 11:10Z, so the data is fresh. CPI is due at 13:30Z, about 2h19m after the re-check."
+}
