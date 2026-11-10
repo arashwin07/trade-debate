@@ -1,0 +1,188 @@
+{
+  "symbol": "ETH/USDT",
+  "data_symbol": "ETHUSDT",
+  "market": "crypto",
+  "style": "intraday",
+  "snapshot_utc": "2026-11-10T13:55:26Z",
+  "price": 2069.31,
+  "change_24h_pct": -2.58,
+  "high_24h": 2151.9,
+  "low_24h": 2028.32,
+  "quote_volume_24h_usdt": 497448570,
+  "market_status": "OPEN (crypto trades 24/7)",
+  "data_source": "Binance public API",
+  "timeframes": [
+    {
+      "timeframe": "5m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T13:55:00Z",
+      "close": 2069.31,
+      "ema9": 2076.41,
+      "ema21": 2083.82,
+      "sma20": 2086.71,
+      "sma50": 2091.54,
+      "sma200": 2114.73,
+      "rsi14": 34.4,
+      "macd": {
+        "macd": -6.5839,
+        "signal": -4.0034,
+        "histogram": -2.5804,
+        "prev_histogram": -2.7664
+      },
+      "atr14": 9.7628,
+      "bollinger": {
+        "upper": 2111.25,
+        "lower": 2062.17
+      },
+      "volume_vs_20avg": 0.04,
+      "recent_high_50": 2109.09,
+      "recent_low_50": 2028.32,
+      "change_over_window_pct": -2.65,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ],
+      "session_vwap_utc_day": 2096.32
+    },
+    {
+      "timeframe": "15m",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T13:45:00Z",
+      "close": 2069.31,
+      "ema9": 2086.37,
+      "ema21": 2094.61,
+      "sma20": 2093.77,
+      "sma50": 2109.49,
+      "sma200": 2143.79,
+      "rsi14": 28.5,
+      "macd": {
+        "macd": -8.3244,
+        "signal": -6.7734,
+        "histogram": -1.551,
+        "prev_histogram": -0.614005
+      },
+      "atr14": 13.347,
+      "bollinger": {
+        "upper": 2112.49,
+        "lower": 2075.04
+      },
+      "volume_vs_20avg": 1.0,
+      "recent_high_50": 2132.07,
+      "recent_low_50": 2028.32,
+      "change_over_window_pct": -7.87,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    },
+    {
+      "timeframe": "1h",
+      "candles": 300,
+      "last_candle_utc": "2026-11-10T13:00:00Z",
+      "close": 2069.31,
+      "ema9": 2099.46,
+      "ema21": 2113.46,
+      "sma20": 2116.72,
+      "sma50": 2142.42,
+      "sma200": 2248.46,
+      "rsi14": 26.6,
+      "macd": {
+        "macd": -14.4915,
+        "signal": -11.6285,
+        "histogram": -2.8629,
+        "prev_histogram": -1.219
+      },
+      "atr14": 21.0241,
+      "bollinger": {
+        "upper": 2149.81,
+        "lower": 2083.62
+      },
+      "volume_vs_20avg": 6.93,
+      "recent_high_50": 2246.0,
+      "recent_low_50": 2028.32,
+      "change_over_window_pct": -10.5,
+      "trend_facts": [
+        "EMA9 below EMA21",
+        "price below SMA50",
+        "price below SMA200"
+      ]
+    }
+  ],
+  "order_book_top100": {
+    "bid_value_usdt": 1030839,
+    "ask_value_usdt": 1498989,
+    "bid_ask_ratio": 0.69,
+    "spread": 0.01
+  },
+  "fear_greed_index": {
+    "value": 32,
+    "label": "Fear",
+    "previous": 29,
+    "source": "alternative.me"
+  },
+  "perp_funding_rate_pct": 0.0026,
+  "news": [
+    {
+      "title": "Current price of Ethereum for Nov. 10, 2026 - Fortune",
+      "source": "Fortune",
+      "published": "Tue, 10 Nov 2026 12:30:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE5pdjdsNTdZVnZ6NWU0MkpYeDNJd1U4aUZNbFBOb1diOFh2Sk9NT29ZMjRPcUlHWjQtcm1UZjk5NWU5d2dCQ05Vdmo1S2lySzRNUUx6cnJ4c3NZNjRxVzFGRzY5bFhpWWZz?oc=5"
+    },
+    {
+      "title": "ETH price range on Nov 10, 2026 at 9am EST Crypto Prediction Market - Robinhood",
+      "source": "Robinhood",
+      "published": "Tue, 10 Nov 2026 13:08:05 GMT",
+      "url": "https://news.google.com/rss/articles/CBMitgFBVV95cUxPMlUybHppeDAzQXZQNGtvajhiZ3R6Y0tJN19rVVo5dVZtOURNaXZaZGJ0SHV4TzItbVNkX0M3dEpSQ216Ty1IQldERnNCaXFBZGRxSzJaRGF5cWsyZUtnaVd0c0pIMmtqNUtidzltUnJRanRMNzhvTzQtMHJyeDBWcDVFODZiX21fRjczSDdEck1IR1Z4bGZ0cE04THdPRWI3NTBIMU13amhWZEdzQ3RkVDN0ZWZfZw?oc=5"
+    },
+    {
+      "title": "Ethereum ETH (ETH-USD) Live Price, News, Chart and Price History - Yahoo Finance UK",
+      "source": "Yahoo Finance UK",
+      "published": "Mon, 09 Nov 2026 21:53:56 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiVkFVX3lxTE5TZkNwOEhGSDZJZkNPeVAxUXR3Y3hHNW1DVHd6ZFk1WmcwXzFVamZsc1pjSVVVZEdfdzJrRHFfV21yV1pxdzROV1JvSmRDN243dFlodHZB?oc=5"
+    },
+    {
+      "title": "Ethereum price falls despite BitMine buying another 9,587 ETH - Crypto News",
+      "source": "Crypto News",
+      "published": "Tue, 10 Nov 2026 06:09:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiekFVX3lxTE5oZzZmbUVZQ0J5RG9VWXdpVzRDQmZpeW9xbklMYlNJYl9zS3BlazVacmRYZHpZUTdfQVM2V2NMZHB5dUtadkd1N1Y4bDNYWTFPTkFhZUFwd2ZoRHY4M1BBWFJTQUJPUEZXU2liWTh0eXlKcnhLckY5dEFB?oc=5"
+    },
+    {
+      "title": "Ethereum price prediction for the end of 2026 - Coinpedia",
+      "source": "Coinpedia",
+      "published": "Tue, 10 Nov 2026 02:45:42 GMT",
+      "url": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxOUXZlbTM2dm9hTGIxOVU1eTVoMnd0N1I0ZzV4TlQ1a0ZfSU95QzBxV1VzLWN3QTVNRHY5d1lRTjl2OENxMmJXVnhvclB4R19QbndkMWtabVVGRVhMdk1YcG82ZVBDazYxbHVjY2RNcVVQMXZZZEVPdFMwVFQwLXFlSGlTRXBWTXpZZEx30gGQAUFVX3lxTE5KOUtIVUlvNHNZOE10M0RGSXNydnBPZHFPTlgtU3JvMUxDemJHS19YUERtaUN2NXFXTno0aDRmcVZrc1R0RGQ3NHMzQ3ZiazJoTUUxMVFaWWMxYmVlQUR4X2FJZXJBZXB6MEk4RVNJN0x0a0szckV6QzhYQkZ0cDZBSmlLc21BUlFMR0R1MHNpcQ?oc=5"
+    },
+    {
+      "title": "An 11-year-old Ethereum wallet moved $4.6 million and dodged a scam set up in minutes - CoinDesk",
+      "source": "CoinDesk",
+      "published": "Tue, 10 Nov 2026 07:01:06 GMT",
+      "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPT1BOdWUzakFuRTA1SkFOeW9Ja2s0ZHF6clRXWGp5WFU1a1hzTzJFbDNySlZRdXFMVjJieW9kVXJCLTlmcHZTamdQV3Z6T053eEQydlI1cTZJTXA5WU40Y3hsdHdERXpUX3plUFNYb293bERIR3diUUhXSU5HLW44OGlGNElMY2NCRlNFYWx0UUZpNlF2SjI5OGtOS3doQVE2Nld6UHI1WFRiTWx5WEdUOTcybW02cmRLdjVBd1lJbTkyM1pjOUpF?oc=5"
+    },
+    {
+      "title": "Ethereum Is at Its Weakest Against Bitcoin Since July. Is ETH or BTC the Better Crypto to Hold Through 2027? - 24/7 Wall St.",
+      "source": "24/7 Wall St.",
+      "published": "Mon, 09 Nov 2026 23:37:00 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxPUHBnWTdIQTA5UUVvUHBuLVlSSHFBWkRJNnZGTXRvcXJ6djdXOFlTTmMwWS1Ob3ZMWnV5SmxCMW5PbnRWZVp2ZFR2N3dYV042RHhxcEE4RzFYd1Q1enpQVmgyQmZQc3hiRFJ1cnZZNVVNNlVMUjdpV3NUZGR1b213RzYxNTF6R2NBak9qTDdwdmIzLU9uNWl6TnU0ZzByN0hYV05GcS1JTEpUcG9NVVJKU21fRGFDcEZaQlZzRjB3bEdBanVUSEt1NzJvZ1RRTzBQd3ZDU1NMMFZyQ2FHQ0tXQTFSS1N5WkdrMi1TSlF3bWpKa3JGX1M5Wg?oc=5"
+    },
+    {
+      "title": "Ethereum – Will ETH’s $432M liquidation shock put $2K support at risk? - AMBCrypto",
+      "source": "AMBCrypto",
+      "published": "Tue, 10 Nov 2026 11:00:24 GMT",
+      "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQZE9iX09OTldxQmJ1Q09vbjItSlZmb1FubFBLRkRkbUpmaEVDYm5YOHBmbjY1VVRxYlp0U3lOemFvN2xUV3puR0gxZi1KTUFKd19ILTl6bmk4WjZub19STm9Sd2RIX1VnSmVyaHJTU0JHYkg4ekpYcWVzcDlTNkFVaTRvQl9KMmV0T2FfZHltazc?oc=5"
+    },
+    {
+      "title": "ETH price on Nov 10, 2026 at 8am EST Crypto Prediction Market - Robinhood",
+      "source": "Robinhood",
+      "published": "Tue, 10 Nov 2026 12:07:03 GMT",
+      "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNNDd2c0l0dVJocXRDSEpFeEV4ZDVuSEtEYnExMlNPQ2EyUzJKZDRKSDFseV9KMmxGQnFGd2I1YlZ0dG9pa2NKb2R0ekw4QzNuUTFCRDFZNmhKdEdYQU5Wenl2dngxeUZOd3RlcTBmcFV4RDUwZnV1OXlucDRmMUFrSHZQVzJmS0JfbFhHNHdLdkUzSHlsVmVUUEV5UnhGTVJBQjY0LWFEcEFVaUd1Umc?oc=5"
+    },
+    {
+      "title": "Ethereum Price Forecast: Vitalik Buterin's SoV pitch sparks community debate as ETH slides to $2,100 - www.tmgm.com",
+      "source": "www.tmgm.com",
+      "published": "Mon, 09 Nov 2026 19:10:49 GMT",
+      "url": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxNVFg4ZnlFbEY3NG5VSmVJZUYtMlh6R2hfU1RxV0lTVEtzMHhSYi1xZ29NMG91S2dKOVBmc3Y5U3ViOUtybThPRVN3aENTY1BnWFBMTEdvdEg0RXlkMThtSWg0eEM2LVlnQUo1eHRwRkp0VHVaMmFQZ0JUa01ma1dJNjE2UGtXUzFvbXR6dmt3cUNYSUduenJxaXpZR1psbnVSLUhJNm5FTlJWOEI4RVVfa3ZrN3lNa1Y0UV9RSmNWRzUtWlIwdVMyT0JHdTBWOFIta1V0eGtncFJmZm9yVTJyajB3ZVhvVjBCRi1hejBaTHo?oc=5"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "round": 1,
+  "leader": "bear",
+  "score": {"bull": 5, "bear": 7},
+  "title_plain": "Bear edges Round 1",
+  "summary_plain": "Bull says Ether fell so fast and so far that it is likely to bounce, like a stretched rubber band. Bear says it is still falling below every important line, sellers outnumber buyers, and the first prize is too small for the risk. Bear was more convincing because the numbers show you could lose about as much as you win on the first target.",
+  "best_point_plain": {
+    "bull": "Ether dropped about 10% on a huge burst of trading and is only about 2% above today's low, so a quick bounce is plausible.",
+    "bear": "The first ceiling is only about $27 above the price, but a safe exit is about $41 below, so you risk more than you can win."
+  },
+  "checks": [
+    {"by": "bull", "claim": "1h RSI 26.6, 15m RSI 28.5", "status": "verified", "note_plain": "Matches the live data. Ether really is in 'fell very fast' territory."},
+    {"by": "bull", "claim": "1h volume 6.93x average; 1h change -10.5%", "status": "verified", "note_plain": "Both numbers match the live data."},
+    {"by": "bull", "claim": "Reward is 1.4x to 2.2x the risk (entry 2,060, stop 2,022)", "status": "verified", "note_plain": "The math is right for the far targets, but the first target (2,096) pays only about 0.95x the risk, which Bull did not say."},
+    {"by": "bull", "claim": "Fear & Greed 32, funding 0.0026%", "status": "verified", "note_plain": "Matches. Bull's session VWAP of 2,096.29 is a hair off the real 2,096.32, which does not matter."},
+    {"by": "bear", "claim": "Order book buy/sell ratio 0.69; price below SMA50 and SMA200 on all timeframes", "status": "verified", "note_plain": "Matches the live data."},
+    {"by": "bear", "claim": "VWAP 2,096.32 is about 27 away; 1h ATR 21.02; reward to risk about 0.65:1", "status": "verified", "note_plain": "Numbers match and the math works out from the current price."},
+    {"by": "bear", "claim": "US ETH funds lost about $272M Nov 2-5 after 23 outflow days", "status": "unverifiable", "note_plain": "Not in the live data and it comes from news pages that were not opened. It may be true but is not confirmed."},
+    {"by": "bear", "claim": "ETH weakest against Bitcoin since July", "status": "unverifiable", "note_plain": "Headline only, not confirmed."}
+  ],
+  "watch_next_plain": "Next round should settle whether the price can climb back above about $2,100 with real buyers, or whether the $2,028 floor breaks first."
+}

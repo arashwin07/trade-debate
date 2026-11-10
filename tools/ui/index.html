@@ -1,0 +1,122 @@
+<title>Trade Debate Desk</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a WhatsApp-style chat list. Intro card explains the idea in 4 steps, then filters, then one row per debate
+   (avatar by market, trade title, Judge's plain-language line, decision badge). Same light Claude palette as the debate pages. */
+:root{
+  color-scheme: light;
+  --page:#faf9f5; --paper:#ffffff; --wall:#f1efe7; --ink:#141413; --ink-2:#3d3c37; --muted:#77756c; --line:#e5e2d6;
+  --clay:#d97757; --clay-ink:#b4532f; --clay-soft:#fbeee8;
+  --bull:#55702f; --bull-soft:#eef3e4; --bear:#b0473c; --bear-soft:#fbeceb;
+  --judge:#3b6894; --judge-soft:#eaf1f8; --warn:#9a6a00; --warn-soft:#fbf3dc;
+  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-read:"Lora",Georgia,serif; --f-num:"JetBrains Mono",ui-monospace,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--f-ui);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--clay);outline-offset:2px;border-radius:6px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.shell{max-width:780px;margin:0 auto;min-height:100vh;background:var(--paper);border-left:1px solid var(--line);border-right:1px solid var(--line)}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line);
+  padding-block:14px 12px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.brand{display:flex;align-items:center;gap:10px}
+.mark{width:36px;height:36px;border-radius:11px;background:var(--clay);display:grid;place-items:center;color:#fff}
+.mark svg{width:20px;height:20px}
+.brand h1{margin:0;font-size:1.15rem;font-weight:600;letter-spacing:-.01em}
+.brand p{margin:0;font-size:.78rem;color:var(--muted)}
+.filters{display:flex;gap:6px;margin-top:12px;overflow-x:auto;padding-bottom:2px;scrollbar-width:none}
+.filters::-webkit-scrollbar{display:none}
+.f{border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:5px 12px;font-size:.8rem;cursor:pointer;white-space:nowrap}
+.f[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--page)}
+.wrap{padding-block:14px 32px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:14px}
+.intro{background:var(--wall);border-radius:16px;padding:16px}
+.intro h2{margin:0 0 4px;font-size:1.05rem;font-weight:600;text-wrap:balance}
+.intro>p{margin:0 0 12px;font-family:var(--f-read);color:var(--ink-2)}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.how div{background:var(--paper);border-radius:12px;padding:10px;font-size:.8rem;color:var(--ink-2);display:grid;gap:3px;align-content:start}
+.how b{font-size:.84rem;color:var(--ink);font-weight:600}
+.how i{font-style:normal;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;font-weight:700;font-size:.8rem}
+@media (max-width:620px){.how{grid-template-columns:1fr 1fr}}
+.intro .sched{margin:12px 0 0;font-size:.78rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stats div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid}
+.stats small{font-size:.72rem;color:var(--muted)}
+.stats b{font-size:1.3rem;font-weight:600}
+.list{display:grid}
+.row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 4px;border-bottom:1px solid var(--line);text-decoration:none;color:inherit;border-radius:10px}
+.row:hover{background:var(--page)}
+.av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:.72rem;letter-spacing:.02em;position:relative}
+.av.crypto{background:#fdf0e4;color:#a85a1e} .av.us{background:var(--judge-soft);color:var(--judge)} .av.nse{background:#f3ecf8;color:#6d4a8c} .av.forex{background:var(--bull-soft);color:var(--bull)}
+.av em{position:absolute;right:-2px;bottom:-2px;width:18px;height:18px;border-radius:50%;border:2px solid var(--paper);font-style:normal;font-size:.6rem;display:grid;place-items:center;color:#fff}
+.av em.LONG{background:var(--bull)} .av em.SHORT{background:var(--bear)}
+.mid{min-width:0}
+.mid h3{margin:0;font-size:.98rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mid p{margin:2px 0 0;font-size:.85rem;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mid p b{color:var(--judge);font-weight:500}
+.end{display:grid;justify-items:end;gap:5px}
+.end time{font-size:.72rem;color:var(--muted);white-space:nowrap}
+.badge{font-size:.7rem;font-weight:700;letter-spacing:.05em;padding:3px 9px;border-radius:999px}
+.badge.TAKE{background:var(--bull-soft);color:var(--bull)} .badge.SKIP{background:var(--bear-soft);color:var(--bear)} .badge.LIVE{background:var(--clay-soft);color:var(--clay-ink)}
+.empty{text-align:center;color:var(--muted);padding:30px 10px;font-size:.9rem}
+.disc{font-size:.74rem;color:var(--muted);text-align:center;margin:6px auto 0;max-width:520px}
+</style>
+
+<div class="shell" id="app"></div>
+<script id="index-data" type="application/json">__DATA__</script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("index-data").textContent);
+  var app = document.getElementById("app");
+  var F = "all";
+  try { F = localStorage.getItem("td-filter") || "all"; } catch (e) {}
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
+  function when(iso) {
+    var d = new Date(iso); if (isNaN(d)) return "";
+    var today = new Date(); var same = d.toDateString() === today.toDateString();
+    return same ? d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) : d.toLocaleDateString([], {day: "numeric", month: "short"});
+  }
+  var MK = {crypto: "Crypto", us: "US stocks", nse: "NSE India", forex: "Forex"};
+  var items = D.debates || [];
+  function render() {
+    var list = items.filter(function (x) {
+      if (F === "all") return true;
+      if (F === "TAKE" || F === "SKIP" || F === "LIVE") return x.decision === F;
+      return x.market === F;
+    });
+    var nT = items.filter(function (x) { return x.decision === "TAKE"; }).length, nS = items.filter(function (x) { return x.decision === "SKIP"; }).length;
+    var filters = [["all", "All"], ["TAKE", "Take"], ["SKIP", "Skip"], ["LIVE", "Live now"], ["crypto", "Crypto"], ["us", "US stocks"], ["nse", "NSE"], ["forex", "Forex"]]
+      .map(function (f) { return '<button class="f" data-f="' + f[0] + '" aria-pressed="' + (F === f[0]) + '">' + f[1] + "</button>"; }).join("");
+    var rows = list.map(function (x) {
+      var sym = String(x.symbol || "").split("/")[0];
+      var line = x.decision === "LIVE" ? "<b>Debate in progress:</b> " + esc(x.progress || "") : (x.headline ? "<b>Judge:</b> " + esc(x.headline) : esc(x.preview || ""));
+      return '<a class="row" href="' + esc(x.href) + '"><span class="av ' + esc(x.market) + '">' + esc(sym.slice(0, 5)) + '<em class="' + esc(x.direction) + '" aria-hidden="true">' + (x.direction === "SHORT" ? "↓" : "↑") + "</em></span>" +
+        '<div class="mid"><h3>' + esc(x.direction + " " + x.symbol) + " · " + esc(MK[x.market] || x.market) + "</h3><p>" + line + "</p></div>" +
+        '<div class="end"><time>' + esc(when(x.created_utc)) + '</time><span class="badge ' + esc(x.decision) + '">' + (x.decision === "LIVE" ? "LIVE" : esc(x.decision)) + (x.confidence != null && x.decision !== "LIVE" ? ' <span class="num">' + esc(x.confidence) + "%</span>" : "") + "</span></div></a>";
+    }).join("");
+    app.innerHTML = '<header class="top"><div class="brand"><span class="mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg></span><div><h1>Trade Debate Desk</h1><p>AI analysts argue about trades. A Judge decides. You choose.</p></div></div>' +
+      '<div class="filters" role="toolbar" aria-label="Filter debates">' + filters + "</div></header>" +
+      '<main class="wrap"><section class="intro"><h2>New here? This is how it works</h2><p>Each row below is a group chat about one possible trade. Open one to read the whole conversation.</p>' +
+      '<div class="how"><div><i style="background:var(--clay-soft);color:var(--clay-ink)">1</i><b>A trade idea</b>For example: buy Bitcoin now, sell it higher later.</div>' +
+      '<div><i style="background:var(--bull-soft);color:var(--bull)">2</i><b>Bull vs Bear</b>Bull Claude argues for it. Bear Claude argues against it.</div>' +
+      '<div><i style="background:var(--judge-soft);color:var(--judge)">3</i><b>3 rounds + a Judge</b>The Judge checks the proof after every round.</div>' +
+      '<div><i style="background:var(--warn-soft);color:var(--warn)">4</i><b>TAKE or SKIP</b>The Judge gives a verdict. You make the final call.</div></div>' +
+      (D.schedule ? '<p class="sched">New debates arrive automatically: ' + esc(D.schedule) + ".</p>" : "") + "</section>" +
+      '<section class="stats" aria-label="Totals"><div><small>Debates</small><b class="num">' + items.length + '</b></div><div><small>Judge said TAKE</small><b class="num" style="color:var(--bull)">' + nT + '</b></div><div><small>Judge said SKIP</small><b class="num" style="color:var(--bear)">' + nS + "</b></div></section>" +
+      '<section class="list" aria-label="Debates">' + (rows || '<div class="empty">No debates match this filter yet.</div>') + "</section>" +
+      '<p class="disc">Updated ' + esc(new Date(D.generated_utc).toLocaleString()) + ". Made by AI from free public market data. Not financial advice. This tool never places trades.</p></main>";
+  }
+  render();
+  app.addEventListener("click", function (e) {
+    var b = e.target.closest("[data-f]"); if (!b) return;
+    F = b.dataset.f; try { localStorage.setItem("td-filter", F); } catch (er) {}
+    render();
+  });
+  if (items.some(function (x) { return x.decision === "LIVE"; }) && D.live_reload) setTimeout(function () { location.reload(); }, 60000);
+})();
+</script>

@@ -1,0 +1,22 @@
+{
+  "round": 3,
+  "leader": "bull",
+  "score": {"bull": 7, "bear": 6},
+  "title_plain": "Bull edges Round 3 by fixing the exit, but the reward is still modest",
+  "summary_plain": "Bull listened to the Judge and moved the safety exit from $14 away to $21 away, about one normal hour of price wiggle. That makes the trade fairer, but it pays only about $1.70 for each $1 risked if both targets are reached. Bear made good points: the price is still under every average line, trading is very thin, and the first target is a spot where sellers have shown up. But Bear attacked the old $14 exit, which Bull had already dropped, so part of Bear's closing missed.",
+  "best_point_plain": {
+    "bull": "Bull widened the exit to a sensible size and admitted honestly that the trade only pays well if the bounce keeps going past the first target.",
+    "bear": "Ether is still below all its important average lines, the hourly selling push is still strong, and trading is so thin that a climb to the $2,096 ceiling is shaky."
+  },
+  "checks": [
+    {"by": "bull", "claim": "1h ATR14 19.86, so stop 2047 (21 below 2068) is about 1.06x 1h ATR", "status": "verified", "note_plain": "My fresh check shows a normal one-hour swing of about $20 (19.96). A $21 exit is about one normal swing, so it is a fair size now."},
+    {"by": "bull", "claim": "Next 7 five-minute candles after the flush had lows no lower than about 2061; none went back toward 2028", "status": "verified", "note_plain": "The 24-hour low is still $2,028.32, so nothing has gone back there. The little floor near $2,061 is about 35 minutes old, which is still young."},
+    {"by": "bull", "claim": "T1 2096 = +28 (1.3:1), T2 2113 = +45 (2.1:1), blended about 1.7:1", "status": "verified", "note_plain": "The math is right. But the first target alone pays only 1.3 for 1, so most of the reward depends on reaching the second target."},
+    {"by": "bull", "claim": "Session VWAP 2095.93, 1h EMA21 2109.12, 1h SMA20 2113.68", "status": "verified", "note_plain": "Matches live data: 2095.9, 2109.2 and 2113.72."},
+    {"by": "bear", "claim": "Bull's stop is 14 points, about 0.7x the 1h ATR of 19.86", "status": "stale", "note_plain": "True for the old $2,054 exit, but Bull's final plan uses $2,047 ($21). Bear wrote at the same time and could not see the change."},
+    {"by": "bear", "claim": "Volume 0.12x (5m) and 0.07x (15m) of normal; price under SMA50/SMA200 on all charts", "status": "verified", "note_plain": "My check shows trading even thinner (0.17x on 5 minutes, 0.1x on 15 minutes, 0.05x on the hour), and price is under every long-term average."},
+    {"by": "bear", "claim": "1h MACD histogram -3.78 vs -3.08 before, selling push still growing", "status": "verified", "note_plain": "Matches: now -3.74 vs -3.08. The push is still growing on the hourly chart, though it is easing on the 5-minute chart."},
+    {"by": "bear", "claim": "US Ether funds lost $271.9M Nov 2-5; first target 2096 equals session VWAP", "status": "verified", "note_plain": "The target really is the day's average price (2095.9). Bear says it opened the fund report and the four days add up; the exact size is still debated by other sites, but the direction is outflows."}
+  ],
+  "watch_next_plain": "The Judge now decides: is a trade that risks $21 to win about $28 to $45 on thin trading, against a downtrend, good enough, and has any big news event been missed?"
+}

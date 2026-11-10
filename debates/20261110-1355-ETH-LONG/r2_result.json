@@ -1,0 +1,22 @@
+{
+  "round": 2,
+  "leader": "bull",
+  "score": {"bull": 7, "bear": 6},
+  "title_plain": "Bull edges Round 2, but the safety exit is very tight",
+  "summary_plain": "Bull fixed the problem the Judge pointed out: the new plan risks only $14 to win $28 at the first target. Bear was honest and dropped the 'sellers outnumber buyers' point, but most of Bear's money math was about Bull's old plan. Bull wins the round on the numbers, though a $14 exit is smaller than a normal one-hour swing of about $20, so it could get hit by ordinary wiggles.",
+  "best_point_plain": {
+    "bull": "After a sudden big drop to $2,028, price bounced and the dips since then have stopped around $2,061, so Bull can put the exit just under that little floor and risk only $14.",
+    "bear": "Ether is still under every important average line, the hourly sell pressure is still growing, and the bounce is happening on very thin trading."
+  },
+  "checks": [
+    {"by": "bull", "claim": "13:30 5m candle: high 2109.09, low 2028.32, close 2066.12, volume 35,566; next five candles have lows 2061.16, 2061.11, 2063.32, 2068.09, 2066.66", "status": "verified", "note_plain": "Matches the raw price candles exactly. The big drop and the small floor near $2,061 are real. The newest candle has already dipped to $2,063.72, so the floor is only a few candles old."},
+    {"by": "bull", "claim": "Order book bid/ask ratio 1.19 (was 0.69)", "status": "stale", "note_plain": "It was right when Bull pulled it, but my check a minute later shows 2.07. This number jumps all the time, so neither side should lean on it."},
+    {"by": "bull", "claim": "Stop 2054 is 'outside normal noise' (1.4x the 5m ATR of 10.10); 1h ATR 21.02", "status": "verified", "note_plain": "The numbers match (5m ATR 9.65 to 10.33, 1h ATR 19.6 to 21.0 on my re-runs). But the $14 stop is only about two-thirds of a normal one-hour swing, so it is tight."},
+    {"by": "bull", "claim": "Entry 2068, stop 2054, T1 2096 (2.0:1), T2 2113 (3.2:1)", "status": "verified", "note_plain": "The math is right from $2,068. Price is $2,066-2,073 so the entry is reachable. The first target is the day's average price, a real level."},
+    {"by": "bear", "claim": "Order book flipped to 1.19; withdraws the 0.69 point", "status": "verified", "note_plain": "Bear admitted the mistake. Good and honest. The ratio is now 2.07, which shows how jumpy it is."},
+    {"by": "bear", "claim": "1h RSI 27.1; 1h MACD histogram -2.73 vs -1.22 before; 1h volume 7.07x; 5m volume 0.4x", "status": "verified", "note_plain": "Close to the live data (my re-run: RSI 26.1, histogram -3.95, so the sell pressure is even stronger). Everything is still below its averages."},
+    {"by": "bear", "claim": "From 2071 with stop 2022, risk 49 and the first target pays 0.5:1", "status": "stale", "note_plain": "The math is right, but it is about Bull's old stop. Bull's Round 2 plan uses a $14 stop, so this does not hit the new plan. Bear could not have seen it, since both were written at the same time."},
+    {"by": "bear", "claim": "US Ether funds lost $271.9M Nov 2-5 after a 23-day outflow streak", "status": "unverifiable", "note_plain": "The four daily numbers do add up to $271.9M, but I did not open the page, and Bull says other sites show different totals. The direction (money leaving) looks right; the exact size is not confirmed."}
+  ],
+  "watch_next_plain": "Round 3 should settle whether the little floor at $2,061 really holds, whether a $14 exit is too tight when a normal hourly swing is about $20, and whether price can climb to the $2,096 average line on real trading."
+}
