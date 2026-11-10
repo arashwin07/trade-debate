@@ -1,5 +1,5 @@
 {
-  "computed_utc": "2026-11-10T18:11:13Z",
+  "computed_utc": "2026-11-10T19:08:14Z",
   "currency": "USD",
   "start_capital": 100000,
   "risk_per_trade_pct": 1.0,
@@ -21,9 +21,9 @@
     "trades": 5,
     "wins": 2,
     "losses": 3,
-    "balance": 99798.16,
-    "return_pct": -0.2,
-    "max_drawdown_pct": 2.97,
+    "balance": 98621.07,
+    "return_pct": -1.38,
+    "max_drawdown_pct": 3.87,
     "curve": [
       {
         "t": null,
@@ -31,35 +31,35 @@
       },
       {
         "t": "2026-11-10T13:30:00Z",
-        "balance": 99000.0,
+        "balance": 98354.0,
         "id": "20261110-1106-BTC",
-        "r": -1.0
+        "r": -1.646
       },
       {
         "t": "2026-11-10T13:55:00Z",
-        "balance": 98010.0,
+        "balance": 97264.24,
         "id": "20261110-1222-NZDUSD-LONG",
-        "r": -1.0
+        "r": -1.108
       },
       {
         "t": "2026-11-10T14:30:00Z",
-        "balance": 97029.9,
+        "balance": 96130.14,
         "id": "20261110-1226-ZEC-SHORT",
-        "r": -1.0
+        "r": -1.166
       },
       {
         "t": "2026-11-10T15:00:00Z",
-        "balance": 98323.31,
+        "balance": 97182.76,
         "id": "20261110-1355-ETH-LONG",
-        "r": 1.333
+        "r": 1.095
       },
       {
         "t": "2026-11-10T18:00:00Z",
-        "balance": 99798.16,
+        "balance": 98621.07,
         "id": "20261110-1453-NVDA-LONG",
-        "r": 1.5
+        "r": 1.48
       }
     ]
   },
-  "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -0.20%."
+  "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -1.38%."
 }

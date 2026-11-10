@@ -288,6 +288,42 @@ def size(plan, market, style, data_symbol, cfg, day_volume=None, quote_volume_us
 
 
 # ---------------------------------------------------------------- 4. risk gate (pure-ish)
+REQUIRED = (["snapshot.json", "events.json", "verdict.json"] + [f"r{n}_{s}.json" for n in (1, 2, 3) for s in ("bull", "bear")] +
+            [f"r{n}_result.json" for n in (1, 2, 3)] + [f"desk_r{n}.json" for n in (1, 2, 3)] + [f"claims_r{n}.json" for n in (1, 2, 3)])
+
+
+def pipeline_check(folder):
+    """Every step of the debate must have run and every agent file must pass the guardrails, or nothing is approved."""
+    import validate
+    missing = [f for f in REQUIRED if not os.path.exists(os.path.join(folder, f))]
+    invalid = []
+    for f in REQUIRED:
+        if f not in missing and (f.startswith("r") or f == "verdict.json"):
+            errs = validate.validate(os.path.join(folder, f))
+            if errs:
+                invalid.append(f"{f} ({errs[0]})")
+    return missing, invalid
+
+
+def daily_loss_pct(cfg, exclude=None):
+    """Loss so far today, in % of capital, from today's TAKE calls the journal has resolved (costs included)."""
+    off = cfg["owner"].get("utc_offset_minutes", 0) * 60
+    today = datetime.fromtimestamp(now_utc().timestamp() + off, timezone.utc).date()
+    risk_pct = cfg["risk"]["risk_per_trade_pct"]
+    total = 0.0
+    base = os.path.join(ROOT, "debates")
+    for d in os.listdir(base) if os.path.isdir(base) else []:
+        if d == exclude:
+            continue
+        fin, out = load(os.path.join(base, d, "desk_final.json")), load(os.path.join(base, d, "outcome.json"))
+        if not fin or not out or fin.get("final_call") != "TAKE" or out.get("r") is None:
+            continue
+        t = datetime.fromisoformat(fin["computed_utc"].replace("Z", "+00:00"))
+        if datetime.fromtimestamp(t.timestamp() + off, timezone.utc).date() == today:
+            total += out["r"] * risk_pct
+    return -total if total < 0 else 0.0
+
+
 def risk_gate(plan, facts, plan_issues, sz, snap, ev, tm, market, style, data_symbol, cfg, trades_today, extra=None):
     r = cfg["risk"]
     checks = []
@@ -295,6 +331,21 @@ def risk_gate(plan, facts, plan_issues, sz, snap, ev, tm, market, style, data_sy
 
     def add(cid, level, plain):
         checks.append({"id": cid, "level": level, "plain": plain})
+
+    pc = extra.get("pipeline")
+    if pc:
+        missing, invalid = pc
+        if missing or invalid:
+            add("pipeline", "block", "The debate did not finish every required step, so nothing can be approved: "
+                + "; ".join((["missing " + ", ".join(missing)] if missing else []) + (["failed checks: " + ", ".join(invalid)] if invalid else [])))
+        else:
+            add("pipeline", "pass", "Every step ran and every agent file passed the guardrails.")
+    dl = extra.get("daily_loss_pct")
+    if dl is not None:
+        if dl >= r["daily_loss_limit_pct"]:
+            add("daily_loss", "block", f"Today's losing TAKE calls already cost about {dl:.1f}% of capital; your daily limit is {r['daily_loss_limit_pct']}%. Stop for today.")
+        elif dl > 0:
+            add("daily_loss", "warn", f"Today's losing TAKE calls cost about {dl:.1f}% of capital so far (daily limit {r['daily_loss_limit_pct']}%).")
 
     reg = extra.get("regime")
     if reg:
@@ -591,7 +642,8 @@ def cmd_gate(folder):
             reg = None
     sz = size(plan, market, style, data_symbol, cfg, day_volume=day_vol, quote_volume_usd=fresh.get("quote_volume_24h_usdt"),
               vol_multiplier=(reg or {}).get("size_multiplier", 1.0))
-    extra = {"regime": reg, "claims": load(os.path.join(folder, "claims_r3.json")), "optimizer": load(os.path.join(folder, "optimizer.json"))}
+    extra = {"regime": reg, "claims": load(os.path.join(folder, "claims_r3.json")), "optimizer": load(os.path.join(folder, "optimizer.json")),
+             "pipeline": pipeline_check(folder), "daily_loss_pct": daily_loss_pct(cfg, exclude=os.path.basename(folder.rstrip("/\\")))}
     gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if tm and not tm.get("error") else None,
                              market, style, data_symbol, cfg, trades_today(cfg, exclude=os.path.basename(folder.rstrip("/\\"))), extra)
     clash = exposure_check(market, plan["direction"], data_symbol, os.path.basename(folder.rstrip("/\\")), cfg)
@@ -639,7 +691,7 @@ def cmd_check(a):
     ev = events_mod.guard(market, display, a.style)
     tm = tm_brief(run_tm(plan, market, display, a.style))
     gate, checks = risk_gate(plan, facts, issues, sz, fresh, ev, tm if not tm.get("error") else None, market, a.style, data_symbol, cfg,
-                             trades_today(cfg), {"regime": reg})
+                             trades_today(cfg), {"regime": reg, "daily_loss_pct": daily_loss_pct(cfg)})
     print(json.dumps({"plan_check": facts, "sizing": sz, "gate": gate, "checks": checks,
                       "timemachine": {k: tm.get(k) for k in ("lean", "verdict", "plain")} if tm else None}, indent=2))
 

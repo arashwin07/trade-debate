@@ -185,8 +185,15 @@ def guard(market, symbol, style="intraday", hours=None, now=None):
     t1_just = [e for e in events if e["tier"] == 1 and -LOOKBACK_MIN <= e["minutes_from_now"] < 0]
     t2_ahead = [e for e in ahead if e["tier"] == 2]
     unknown = any(n.startswith("Economic calendar unavailable") for n in notes)
+    earnings_unknown = market == "us" and any(n.startswith("Earnings calendar for") for n in notes)
     blocking = earn_ahead if style == "swing" else t1_ahead
-    if blocking:
+    if unknown:  # never treat "could not check" as "nothing scheduled"
+        status = "BLOCK"
+        plain = "The economic calendar could not be loaded from either source, so big scheduled events cannot be ruled out. Not safe to trade blind."
+    elif earnings_unknown and style == "swing":
+        status = "BLOCK"
+        plain = "The earnings calendar could not be checked, so an earnings report inside this multi-day trade cannot be ruled out."
+    elif blocking:
         e = blocking[0]
         status = "BLOCK"
         plain = (f"A major scheduled event lands inside the trade window: {e['title']} in about "
@@ -195,9 +202,9 @@ def guard(market, symbol, style="intraday", hours=None, now=None):
         e = t1_just[-1]
         status = "CAUTION"
         plain = f"A major event happened {fmt_minutes(-e['minutes_from_now'])} ago ({e['title']}). Prices may still be swinging from it."
-    elif unknown:
+    elif earnings_unknown:
         status = "CAUTION"
-        plain = "The economic calendar could not be loaded, so event risk is unknown."
+        plain = "The earnings calendar could not be checked today. Reports usually come before the open or after the close, so a same-day trade is less exposed, but check the company's report date yourself."
     elif t1_ahead:  # swing trades: major macro inside a multi-day hold is a caution, not a block
         e = t1_ahead[0]
         status = "CAUTION"

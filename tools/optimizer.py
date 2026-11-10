@@ -86,6 +86,7 @@ def optimize(symbol, market, direction, style="intraday", folder=None):
         c_tgt, _ = desk.round_trip_cost(market, style, long, c["entry"], c["target"], 1.0, cfg["costs"], pip)
         r_net = (abs(c["target"] - c["entry"]) - c_tgt) / (abs(c["entry"] - c["stop"]) + c_stop)
         c["r_after_costs"] = round(r_net, 3)
+        c["cost_r"] = round(c_stop / abs(c["entry"] - c["stop"]), 3)  # round-trip costs in units of the risk
         c["stop_in_atr"] = round(abs(c["entry"] - c["stop"]) / atr, 2)
         if r_net >= rmin:
             passing.append(c)
@@ -100,13 +101,15 @@ def optimize(symbol, market, direction, style="intraday", folder=None):
     ctx = tm.prepare(display, market, style)
     for c in passing:
         mc, _, lean, _ = tm.run_plan(ctx, direction, c["entry"], c["stop"], [c["target"]], REPLAYS, 19, with_history=False)
-        c.update({"p_target": mc["p_target"], "p_stop": mc["p_stop"], "p_neither": mc["p_neither"], "avg_R": mc["avg_R"], "lean": lean})
+        c.update({"p_target": mc["p_target"], "p_stop": mc["p_stop"], "p_neither": mc["p_neither"],
+                  "avg_R": round(mc["avg_R"] - c["cost_r"], 3), "avg_R_gross": mc["avg_R"], "lean": lean})
     blocked = set(cfg["risk"]["block_timemachine_lean"]) | set(cfg["risk"]["warn_timemachine_lean"])
     ok = sorted([c for c in passing if c["lean"] not in blocked and c["p_target"] >= MIN_P_TARGET * 0.8],
                 key=lambda c: c["avg_R"], reverse=True)
     for c in ok[:3]:  # full check with real history for the finalists
         mc, hist, lean, line = tm.run_plan(ctx, direction, c["entry"], c["stop"], [c["target"]], 10000, 19)
-        c.update({"p_target": mc["p_target"], "p_stop": mc["p_stop"], "p_neither": mc["p_neither"], "avg_R": mc["avg_R"], "lean": lean,
+        c.update({"p_target": mc["p_target"], "p_stop": mc["p_stop"], "p_neither": mc["p_neither"],
+                  "avg_R": round(mc["avg_R"] - c["cost_r"], 3), "avg_R_gross": mc["avg_R"], "lean": lean,
                   "verdict": line, "history": {k: hist[k] for k in ("samples", "target", "stop", "neither")}})
     ok = sorted(ok[:3], key=lambda c: c["avg_R"], reverse=True)
     good = [c for c in ok if c["avg_R"] > 0 and c["lean"] not in blocked and c["p_target"] >= MIN_P_TARGET]

@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T18:11:13Z",
+  "checked_utc": "2026-11-10T19:08:13Z",
   "call": "SKIP",
   "judge_decision": "SKIP",
   "plan": {
@@ -12,6 +12,7 @@
   },
   "status": "pending",
   "r": null,
-  "plain": "Waiting for the price to reach the entry.",
+  "filled_utc": "2026-11-10T18:30:00Z",
+  "plain": "Entry reached; the trade is still open.",
   "window_end_utc": "2026-11-11T01:58:27Z"
 }

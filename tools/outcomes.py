@@ -92,8 +92,8 @@ def update(folder, now=None):
         return None
     final = load(os.path.join(folder, "desk_final.json"), {})
     prev = load(os.path.join(folder, "outcome.json"), {})
-    if prev.get("status") in ("target", "stop", "expired", "not_filled", "no_plan"):
-        return prev
+    if prev.get("status") in ("target", "stop", "expired", "not_filled", "no_plan") and ("r_gross" in prev or prev.get("r") is None):
+        return prev  # final results are kept; older results recorded before costs were added are re-evaluated once
     snap = load(os.path.join(folder, "snapshot.json"), {})
     market, data_symbol, display = market_data.detect(snap.get("data_symbol") or meta.get("symbol"), snap.get("market") or meta.get("market") or "auto")
     style = snap.get("style") or meta.get("style") or "intraday"
@@ -122,7 +122,20 @@ def update(folder, now=None):
     if style == "swing":
         bars = [b for b in bars if b["t"] >= start - 86400][: SWING_DAYS + 1]
         end = (bars[-1]["t"] + 86400) if len(bars) > SWING_DAYS else end
-    out.update(evaluate(plan, bars, start, end, now))
+    res = evaluate(plan, bars, start, end, now)
+    if res.get("r") is not None:  # results are recorded AFTER costs (fees, taxes, spread, slippage) for one unit
+        try:
+            import desk
+            long = plan["direction"] == "LONG"
+            exit_px = plan["stop"] if res["status"] == "stop" else plan["targets"][0] if res["status"] == "target" else \
+                plan["entry"] + res["r"] * abs(plan["entry"] - plan["stop"]) * (1 if long else -1)
+            cost, _ = desk.round_trip_cost(market, style, long, plan["entry"], exit_px, 1.0, desk.config()["costs"], desk.pip_size(market, data_symbol))
+            res["r_gross"] = res["r"]
+            res["cost_r"] = round(cost / abs(plan["entry"] - plan["stop"]), 3)
+            res["r"] = round(res["r"] - res["cost_r"], 3)
+        except Exception as e:
+            res["cost_note"] = f"costs not applied ({type(e).__name__})"
+    out.update(res)
     out["window_end_utc"] = iso(end)
     save(os.path.join(folder, "outcome.json"), out)
     return out

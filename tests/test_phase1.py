@@ -171,6 +171,52 @@ class Phase2(unittest.TestCase):
         self.assertTrue(validate.validate_verdict(dict(base, retake_numbers={"price_above": 900}), 100, "intraday"))
 
 
+class AuditFixes(unittest.TestCase):
+    """Fixes from the no-mistakes audit (2026-11-11)."""
+
+    def test_calendar_down_blocks(self):
+        import events
+        orig = events.macro_events
+        events.macro_events = lambda *a, **k: ([], ["Economic calendar unavailable (HTTPError); treat event risk as UNKNOWN."])
+        try:
+            self.assertEqual(events.guard("crypto", "BTC", "intraday")["status"], "BLOCK")
+        finally:
+            events.macro_events = orig
+
+    def test_earnings_unknown_blocks_us_swing(self):
+        import events
+        om, oe = events.macro_events, events.earnings_events
+        events.macro_events = lambda *a, **k: ([], [])
+        events.earnings_events = lambda *a, **k: ([], ["Earnings calendar for 2026-11-11 unavailable (HTTPError)."])
+        try:
+            self.assertEqual(events.guard("us", "AAPL", "swing")["status"], "BLOCK")
+            self.assertEqual(events.guard("us", "AAPL", "intraday")["status"], "CAUTION")
+        finally:
+            events.macro_events, events.earnings_events = om, oe
+
+    def gate(self, **extra):
+        plan = {"direction": "LONG", "entry": 100, "stop": 98, "targets": [104]}
+        facts, issues = desk.plan_check(plan, 100, 1.5, "1h", "us", desk.config()["risk"])
+        return desk.risk_gate(plan, facts, issues, {"status": "OK", "r_after_costs_target1": 1.9, "notes": []},
+                              {"market_status": "OPEN", "timeframes": []}, {"status": "CLEAR", "plain": "clear"},
+                              {"lean": "LEANS_TARGET", "verdict": "ok"}, "us", "intraday", "AAPL", desk.config(), 0, extra)
+
+    def test_incomplete_pipeline_blocks(self):
+        self.assertEqual(self.gate(pipeline=([], []))[0], "PASS")
+        self.assertEqual(self.gate(pipeline=(["claims_r3.json"], []))[0], "BLOCK")
+        self.assertEqual(self.gate(pipeline=([], ["r2_bull.json (stance must be 'TAKE')"]))[0], "BLOCK")
+
+    def test_daily_loss_limit_enforced(self):
+        lim = desk.config()["risk"]["daily_loss_limit_pct"]
+        self.assertEqual(self.gate(daily_loss_pct=lim)[0], "BLOCK")
+        self.assertEqual(self.gate(daily_loss_pct=lim / 2)[0], "PASS")
+
+    def test_real_debate_pipeline(self):
+        base = os.path.join(ROOT, "debates", "20261110-1749-USDJPY-LONG")
+        if os.path.isdir(base):
+            self.assertEqual(desk.pipeline_check(base), ([], []))
+
+
 class Phase3(unittest.TestCase):
     def test_tick_rounding_is_cautious(self):
         p = desk.round_plan_to_tick({"direction": "LONG", "entry": 1324.42, "stop": 1290.63, "targets": [1372.07]}, 0.05)
