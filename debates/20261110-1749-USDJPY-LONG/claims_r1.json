@@ -5,21 +5,42 @@
     "events.json",
     "levels.json",
     "optimizer.json",
+    "regime.json",
+    "context.json",
+    "fundamentals.json",
     "desk_r1.json",
-    "fresh pulls: 1"
+    "fresh pulls: 5"
   ],
   "bull": {
-    "checked": 9,
+    "checked": 10,
     "matched": 9,
-    "issues": [],
+    "issues": [
+      {
+        "evidence": 5,
+        "claim": "Optimizer NO_EDGE: best plan 26% target-first, avg -0.09R; regime NORMAL 0.85x; event guard CLEAR",
+        "number": 0.09,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "0.09x is in the recorded data, but not in the file cited (events.json, optimizer.json, regime.json)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 1
   },
   "bear": {
-    "checked": 6,
-    "matched": 6,
-    "issues": [],
+    "checked": 11,
+    "matched": 10,
+    "issues": [
+      {
+        "evidence": 2,
+        "claim": "Dollar index +0.7% today, US 10-year yield 5.015% (+3.1%); context verdict NEUTRAL",
+        "number": 10.0,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "10 is in the recorded data, but not in the file cited (context.json)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 1
   }
 }

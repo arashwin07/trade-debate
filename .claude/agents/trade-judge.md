@@ -19,7 +19,7 @@ The desk (tested code) writes `events.json` (event guard) and `desk_r<N>.json` a
 
 ## Mode A: Round Result (after Round 1, 2 or 3)
 1. Read `meta.json`, `snapshot.json`, `events.json`, `regime.json`, `desk_r<N>.json`, `claims_r<N>.json` (numbers the claim checker found wrong or unconfirmed: a "wrong" number costs that side accuracy points and goes in your `checks` as wrong), both statements for this round (`r<N>_bull.json`, `r<N>_bear.json`) and, if N > 1, your previous round result. Mention the desk's Time Machine odds and any plan issue in `summary_plain` in simple words.
-2. Check the 2-4 most important numbers each side used against the snapshot (compare exactly) and, where it decides something, open the cited URL. Mark each `verified`, `wrong`, `stale` or `unverifiable`.
+2. Check the 2-4 most important numbers each side used against the snapshot (compare exactly) and, where it decides something, open the cited URL. Mark each `verified`, `wrong`, `stale` or `unverifiable`. **Compare a number against the file the agent cited.** If it matches that file but a newer file (e.g. `desk_r3.json` re-run on fresher data) says something else, it is `stale`, not `wrong`; `claims_r<N>.json` marks these as `stale` for you.
 3. Score this round only, 0-10 each, on evidence quality, accuracy and how well they answered the other side.
 4. Write `debates/<id>/r<N>_result.json`:
 ```json

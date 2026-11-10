@@ -28,3 +28,9 @@
 2026-11-10T17:58:11Z  validate   verdict.json: OK
 2026-11-10T17:58:27Z  validate   verdict.json: OK
 2026-11-10T17:58:29Z  gate       judge=SKIP gate=BLOCK final=SKIP | blocks: 1
+2026-11-10T18:07:30Z  claims     round 1: bull: 9/10 confirmed, 0 wrong, 1 unconfirmed; bear: 10/11 confirmed, 0 wrong, 1 unconfirmed
+2026-11-10T18:07:30Z  claims     round 2: bull: 8/12 confirmed, 4 wrong, 0 unconfirmed; bear: 17/18 confirmed, 0 wrong, 1 unconfirmed
+2026-11-10T18:07:30Z  claims     round 3: bull: 13/14 confirmed, 0 wrong, 1 unconfirmed; bear: 14/15 confirmed, 0 wrong, 1 unconfirmed
+2026-11-10T18:08:04Z  claims     round 1: bull: 9/10 confirmed, 0 wrong, 1 unconfirmed; bear: 10/11 confirmed, 0 wrong, 1 unconfirmed
+2026-11-10T18:08:04Z  claims     round 2: bull: 8/11 confirmed, 0 wrong, 3 unconfirmed; bear: 17/18 confirmed, 0 wrong, 1 unconfirmed
+2026-11-10T18:08:05Z  claims     round 3: bull: 13/14 confirmed, 0 wrong, 1 unconfirmed; bear: 14/15 confirmed, 0 wrong, 1 unconfirmed

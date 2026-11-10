@@ -174,6 +174,9 @@ def simulate(pool, slots, round_clock, start_slot, steps, entry, stop, targets, 
         "p_each_target_before_stop": [round(x / replays, 4) for x in tgt_first],
         "median_end": round(pc(0.5), 6), "p5_end": round(pc(0.05), 6), "p95_end": round(pc(0.95), 6),
         "avg_R": round(statistics.mean(Rs), 3), "r_at_target": round(r_target, 3),
+        # share of the replays that hit a side in which the target must come first to break even, and the actual share
+        "break_even_pct": round(100 / (1 + r_target), 1),
+        "target_share_of_hits_pct": round(100 * outcome_count["target"] / max(1, outcome_count["target"] + outcome_count["stop"]), 1),
     }
 
 

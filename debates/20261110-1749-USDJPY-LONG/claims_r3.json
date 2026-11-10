@@ -5,23 +5,44 @@
     "events.json",
     "levels.json",
     "optimizer.json",
+    "regime.json",
+    "context.json",
+    "fundamentals.json",
     "desk_r1.json",
     "desk_r2.json",
     "desk_r3.json",
     "fresh pulls: 5"
   ],
   "bull": {
-    "checked": 9,
-    "matched": 9,
-    "issues": [],
+    "checked": 14,
+    "matched": 13,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Desk on my plan 158.76/158.61/159.00: 1.6R gross, stop 0.94 ATR; replays 35.8% target first, 62.5% stop first, avg -0.047R; break-even 38%; history 13 target vs 33 stop of 59",
+        "number": 38.0,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "38% is in the recorded data, but not in the file cited (desk_r2.json)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 1
   },
   "bear": {
-    "checked": 9,
-    "matched": 9,
-    "issues": [],
+    "checked": 15,
+    "matched": 14,
+    "issues": [
+      {
+        "evidence": 1,
+        "claim": "Desk on Bull's final plan 158.76/158.61/159.00: 1.6R gross, stop 0.94x 1h ATR (warn stop_tight); 10,000 replays target first 35.87%, stop first 62.49%, avg -0.047R; break-even 38%; history 13 target, 31 stop, 15 neither of 59; lean COIN_FLIP",
+        "number": 38.0,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "38% is in the recorded data, but not in the file cited (desk_r3.json)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 1
   }
 }

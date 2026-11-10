@@ -22,3 +22,9 @@
 2026-11-10T16:57:07Z  news       25 fresh items, 0 stale dropped, feed errors: []
 2026-11-10T16:57:09Z  optimizer  NO_EDGE: tried 18, 10 passed costs
 2026-11-10T17:00:41Z  validate   verdict.json: OK
+2026-11-10T18:07:31Z  claims     round 1: bull: 8/15 confirmed, 0 wrong, 7 unconfirmed; bear: 7/11 confirmed, 0 wrong, 4 unconfirmed
+2026-11-10T18:07:31Z  claims     round 2: bull: 6/17 confirmed, 1 wrong, 10 unconfirmed; bear: 12/14 confirmed, 0 wrong, 2 unconfirmed
+2026-11-10T18:07:31Z  claims     round 3: bull: 9/13 confirmed, 0 wrong, 4 unconfirmed; bear: 10/14 confirmed, 0 wrong, 4 unconfirmed
+2026-11-10T18:08:05Z  claims     round 1: bull: 8/15 confirmed, 0 wrong, 7 unconfirmed; bear: 7/11 confirmed, 0 wrong, 4 unconfirmed
+2026-11-10T18:08:06Z  claims     round 2: bull: 6/17 confirmed, 0 wrong, 11 unconfirmed; bear: 12/14 confirmed, 0 wrong, 2 unconfirmed
+2026-11-10T18:08:06Z  claims     round 3: bull: 9/13 confirmed, 0 wrong, 4 unconfirmed; bear: 10/14 confirmed, 0 wrong, 4 unconfirmed

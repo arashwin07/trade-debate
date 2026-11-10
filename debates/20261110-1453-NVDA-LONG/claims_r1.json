@@ -8,7 +8,7 @@
   ],
   "bull": {
     "checked": 15,
-    "matched": 10,
+    "matched": 8,
     "issues": [
       {
         "evidence": 0,
@@ -49,10 +49,26 @@
         "problem": "unconfirmed",
         "level": "unconfirmed",
         "plain": "432% was cited as data but is not in any recorded pull for this debate (unconfirmed, may be a fresh pull that was not saved)."
+      },
+      {
+        "evidence": 6,
+        "claim": "Event guard CLEAR; earnings about 7 days away; bounce targets: 5m EMA9 173.00, session VWAP 171.75, day high 174.65, 5m ATR14 1.2559",
+        "number": 173.0,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "173 is in the recorded data, but not in the file cited (events.json)."
+      },
+      {
+        "evidence": 6,
+        "claim": "Event guard CLEAR; earnings about 7 days away; bounce targets: 5m EMA9 173.00, session VWAP 171.75, day high 174.65, 5m ATR14 1.2559",
+        "number": 174.65,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "174.65 is in the recorded data, but not in the file cited (events.json)."
       }
     ],
     "wrong": 0,
-    "unconfirmed": 5
+    "unconfirmed": 7
   },
   "bear": {
     "checked": 11,

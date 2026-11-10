@@ -69,6 +69,33 @@ class ClaimChecker(unittest.TestCase):
                             {"claim": "chip index up", "value": "6.8%", "source": "CNBC article"}])
         self.assertEqual(r["issues"], [])
 
+    DESK_R2 = {"timemachine": {"mc": {"p_target": 0.358, "p_stop": 0.625, "break_even_pct": 38.5}, "history": {"samples": 59, "target": 13, "stop": 33, "neither": 13}}}
+    DESK_R3 = {"timemachine": {"mc": {"p_target": 0.359, "p_stop": 0.625}, "history": {"samples": 59, "target": 13, "stop": 31, "neither": 15}}}
+
+    def check_files(self, ev):
+        files = {"snapshot.json": self.SNAP, "desk_r2.json": self.DESK_R2, "desk_r3.json": self.DESK_R3}
+        return claims.check_statement({"evidence": ev}, claims.leaves(list(files.values()), []), claims.tf_values([self.SNAP]), True, files)
+
+    def test_counts_in_claim_text_checked_against_cited_file(self):
+        ok = self.check_files([{"claim": "history 13 target vs 33 stop of 59", "value": "35.8% vs 38%", "source": "desk_r2.json"}])
+        self.assertEqual((ok["wrong"], ok["unconfirmed"]), (0, 0))
+        self.assertGreaterEqual(ok["matched"], 3)
+
+    def test_older_file_number_is_stale_not_wrong(self):
+        r = self.check_files([{"claim": "history 13 target vs 33 stop of 59", "value": "33 stops", "source": "desk_r3.json"}])
+        probs = {x["problem"] for x in r["issues"]}
+        self.assertIn("stale", probs)
+        self.assertEqual(r["wrong"], 0)
+
+    def test_invented_count_is_wrong(self):
+        r = self.check_files([{"claim": "history 13 target vs 40 stop of 59", "value": "40 stops", "source": "desk_r3.json"}])
+        self.assertEqual(r["wrong"], 1)
+        self.assertIn("31", r["issues"][0]["plain"])
+
+    def test_odds_in_words(self):
+        r = self.check_files([{"claim": "replays 35.9% target first, 70% stop first", "value": "see claim", "source": "desk_r3.json"}])
+        self.assertEqual(r["wrong"], 1)  # 70% stop first is not 62.5%
+
     def test_mismatch_without_fresh_pull_is_only_unconfirmed(self):
         r = self.run_check([{"claim": "5m RSI 27.3", "value": "27.3", "source": "snapshot"}], fresh=False)
         self.assertEqual((r["wrong"], r["unconfirmed"]), (0, 1))

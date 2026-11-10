@@ -5,22 +5,59 @@
     "events.json",
     "levels.json",
     "optimizer.json",
+    "regime.json",
+    "context.json",
+    "fundamentals.json",
     "desk_r1.json",
     "desk_r2.json",
-    "fresh pulls: 3"
+    "fresh pulls: 5"
   ],
   "bull": {
-    "checked": 9,
-    "matched": 9,
-    "issues": [],
+    "checked": 11,
+    "matched": 8,
+    "issues": [
+      {
+        "evidence": 3,
+        "claim": "Time Machine, my new plan (entry 158.76, stop 158.61, target 159.00): about 35-38% target first, 60-64% stop first, average about -0.04R",
+        "number": 38.0,
+        "problem": "unconfirmed_count",
+        "level": "unconfirmed",
+        "plain": "38 (p_target) could not be confirmed: the agent did not cite a saved file for it (it says these are its own unsaved runs)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Time Machine, my new plan (entry 158.76, stop 158.61, target 159.00): about 35-38% target first, 60-64% stop first, average about -0.04R",
+        "number": 37.0,
+        "problem": "unconfirmed_count",
+        "level": "unconfirmed",
+        "plain": "37 (p_target) could not be confirmed: the agent did not cite a saved file for it (it says these are its own unsaved runs)."
+      },
+      {
+        "evidence": 3,
+        "claim": "Time Machine, my new plan (entry 158.76, stop 158.61, target 159.00): about 35-38% target first, 60-64% stop first, average about -0.04R",
+        "number": 64.0,
+        "problem": "unconfirmed_count",
+        "level": "unconfirmed",
+        "plain": "64 (p_stop) could not be confirmed: the agent did not cite a saved file for it (it says these are its own unsaved runs)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 3
   },
   "bear": {
-    "checked": 15,
-    "matched": 15,
-    "issues": [],
+    "checked": 18,
+    "matched": 17,
+    "issues": [
+      {
+        "evidence": 6,
+        "claim": "Event guard CLEAR but 10-year US note auction (Medium impact, tier 3) at 18:00 UTC, about 10 minutes after the snapshot; US 10-year yield 5.015% (+3.1%) and dollar index +0.7% today; context verdict NEUTRAL",
+        "number": 10.0,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "10 is in the recorded data, but not in the file cited (context.json, events.json)."
+      }
+    ],
     "wrong": 0,
-    "unconfirmed": 0
+    "unconfirmed": 1
   }
 }

@@ -8,9 +8,25 @@
     "fresh pulls: 0"
   ],
   "bull": {
-    "checked": 14,
+    "checked": 17,
     "matched": 6,
     "issues": [
+      {
+        "evidence": 0,
+        "claim": "1h ATR14 3.8514; 5m ATR14 1.2591; plan stop distance 3.80 from entry 171.00",
+        "number": 3.8,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "3.8 is in the recorded data, but not in the file cited (desk_r1.json)."
+      },
+      {
+        "evidence": 0,
+        "claim": "1h ATR14 3.8514; 5m ATR14 1.2591; plan stop distance 3.80 from entry 171.00",
+        "number": 0.99,
+        "problem": "other_file",
+        "level": "unconfirmed",
+        "plain": "0.99x is in the recorded data, but not in the file cited (desk_r1.json)."
+      },
       {
         "evidence": 1,
         "claim": "Time Machine on new plan (entry 171.00, stop 167.20, target 174.80): stop first 26.1%, target first 4.7%, neither 69.2%, avg R -0.33; history 59 starts: 0 target, 8 stop",
@@ -70,6 +86,14 @@
       {
         "evidence": 6,
         "claim": "Analysts quiet: Citi gave no opinion; JPMorgan, Evercore ISI, Jefferies had not published since the scandal; stock down 22.07% over the past month",
+        "number": 12.0,
+        "problem": "unconfirmed_count",
+        "level": "unconfirmed",
+        "plain": "12 (samples) could not be confirmed: the agent did not cite a saved file for it."
+      },
+      {
+        "evidence": 6,
+        "claim": "Analysts quiet: Citi gave no opinion; JPMorgan, Evercore ISI, Jefferies had not published since the scandal; stock down 22.07% over the past month",
         "number": 22.07,
         "problem": "unconfirmed",
         "level": "unconfirmed",
@@ -77,11 +101,11 @@
       }
     ],
     "wrong": 0,
-    "unconfirmed": 8
+    "unconfirmed": 11
   },
   "bear": {
-    "checked": 10,
-    "matched": 8,
+    "checked": 14,
+    "matched": 12,
     "issues": [
       {
         "evidence": 1,

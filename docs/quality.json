@@ -1,38 +1,38 @@
 {
-  "computed_utc": "2026-11-10T17:58:32Z",
+  "computed_utc": "2026-11-10T18:08:04Z",
   "agents": {
     "bull": {
       "debates": 6,
-      "numbers_checked": 95,
-      "numbers_confirmed": 70,
-      "numbers_wrong": 0,
-      "numbers_unconfirmed": 25,
+      "numbers_checked": 112,
+      "numbers_confirmed": 76,
+      "numbers_wrong": 5,
+      "numbers_unconfirmed": 31,
       "judge_verified": 63,
       "judge_wrong": 11,
       "judge_stale": 3,
       "judge_unverifiable": 3,
       "guardrail_failures": 0,
       "accuracy_pct": 81.8,
-      "code_confirmed_pct": 73.7
+      "code_confirmed_pct": 67.9
     },
     "bear": {
       "debates": 6,
-      "numbers_checked": 99,
-      "numbers_confirmed": 71,
+      "numbers_checked": 120,
+      "numbers_confirmed": 89,
       "numbers_wrong": 0,
-      "numbers_unconfirmed": 28,
+      "numbers_unconfirmed": 31,
       "judge_verified": 49,
       "judge_wrong": 3,
       "judge_stale": 11,
       "judge_unverifiable": 14,
       "guardrail_failures": 0,
       "accuracy_pct": 77.8,
-      "code_confirmed_pct": 71.7
+      "code_confirmed_pct": 74.2
     }
   },
   "judge": {
     "resolved": 4,
     "accuracy": 0.75
   },
-  "plain": "Bull Claude: 81.8% of checked claims correct, 0 wrong numbers caught by code; Bear Claude: 77.8% of checked claims correct, 0 wrong numbers caught by code"
+  "plain": "Bull Claude: 81.8% of checked claims correct, 5 wrong numbers caught by code; Bear Claude: 77.8% of checked claims correct, 0 wrong numbers caught by code"
 }
