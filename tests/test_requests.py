@@ -33,6 +33,12 @@ class Parse(unittest.TestCase):
                     {"symbol": "AAPL", "entry": -1, "stop": 1, "target": 2}, {"symbol": "AAPL", "direction": "up"}, []):
             self.assertIsNotNone(tr.parse(bad)[1], bad)
 
+    def test_gold_and_silver_are_refused_with_a_way_out(self):
+        for sym in ("XAUUSD", "XAU/USD", "XAGUSD", "GOLD"):
+            err = tr.parse({"symbol": sym})[1]
+            self.assertIn("GOLDBEES", err, sym)
+        self.assertIsNone(tr.parse({"symbol": "GOLDBEES", "market": "nse"})[1])
+
     def test_note_is_capped(self):
         r, _ = tr.parse({"symbol": "AAPL", "note": "x" * 900})
         self.assertEqual(len(r["user_note"]), 500)

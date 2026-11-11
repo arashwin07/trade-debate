@@ -323,6 +323,7 @@ textarea.inp{min-height:84px;resize:vertical;font-family:var(--f-read)}
   function checkA() {
     var sym = A.symbol.trim().toUpperCase();
     if (!/^[A-Z0-9][A-Z0-9.\-\/=&]{0,19}$/.test(sym)) return "Type the stock or coin symbol, for example RELIANCE, AAPL, BTC or USDINR.";
+    if (/^(XAU|XAG|XPT|XPD)/.test(sym.replace("/", "")) || sym === "GOLD" || sym === "SILVER") return "Gold and silver against the dollar (XAU/USD, XAG/USD) are not covered: Indian residents may not trade them with forex brokers, and the desk has no MCX data. To trade gold, add GOLDBEES (a gold ETF) with market NSE; for silver, SILVERBEES.";
     var nums = ["entry", "stop", "target"].map(function (k) { var v = String(A[k]).replace(/,/g, "").trim(); return v === "" ? null : +v; });
     var given = nums.filter(function (x) { return x !== null; });
     if (given.length && given.length < 3) return "Give all three prices (entry, stop and target), or leave all three empty and let the desk find them.";

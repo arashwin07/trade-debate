@@ -28,6 +28,7 @@ DONE = os.path.join(REQ, "done")
 sys.path.insert(0, HERE)
 
 EXPIRE_HOURS = 48
+METAL_MSG = 'Gold and silver against the dollar (XAU/USD, XAG/USD) are not covered: Indian residents may not trade them with forex brokers, and the desk has no MCX data. To trade gold, add GOLDBEES (a gold ETF) with market NSE; for silver, SILVERBEES.'
 MARKETS = ("crypto", "us", "nse", "forex", "auto")
 
 
@@ -71,6 +72,8 @@ def parse(raw):
     sym = str(raw.get("symbol") or "").strip().upper()
     if not re.fullmatch(r"[A-Z0-9][A-Z0-9.\-/=&]{0,19}", sym):
         return None, "The symbol is missing or has characters a ticker cannot have."
+    if re.match(r"(XAU|XAG|XPT|XPD)", sym.replace("/", "")) or sym in ("GOLD", "SILVER"):
+        return None, METAL_MSG
     market = str(raw.get("market") or "auto").strip().lower()
     if market not in MARKETS:
         return None, f"Market must be crypto, us, nse or forex (got '{market}')."
