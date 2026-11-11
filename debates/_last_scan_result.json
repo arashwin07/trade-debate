@@ -1,60 +1,60 @@
 {
- "scanned_utc": "2026-11-11T05:12:00Z",
+ "scanned_utc": "2026-11-11T08:12:00Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "ZEC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is switched off in your settings."
+   "reason": "Shorting crypto is not allowed by your settings."
   },
   {
    "symbol": "SOL",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is switched off in your settings."
+   "reason": "Shorting crypto is not allowed by your settings."
   },
   {
-   "symbol": "ETH",
+   "symbol": "XRP",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is switched off in your settings."
+   "reason": "Shorting crypto is not allowed by your settings."
   },
   {
    "symbol": "USDCHF",
    "market": "forex",
    "direction": "LONG",
-   "reason": "The plan optimizer found no plan that passes your rules (NO_PLAN)."
+   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
   },
   {
    "symbol": "GBPUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no plan that passes your rules (NO_PLAN)."
+   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
   },
   {
    "symbol": "AUDUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no plan that passes your rules (NO_PLAN)."
+   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
   },
   {
    "symbol": "M&M",
    "market": "nse",
    "direction": "LONG",
-   "reason": "The plan optimizer found no statistical edge (NO_EDGE)."
+   "reason": "Optimizer: no plan passes the odds test (best average -0.16R)."
   },
   {
    "symbol": "TRENT",
    "market": "nse",
    "direction": "LONG",
-   "reason": "The plan optimizer found no statistical edge (NO_EDGE)."
+   "reason": "Optimizer: no plan passes the odds test."
   },
   {
-   "symbol": "SBIN",
+   "symbol": "EICHERMOT",
    "market": "nse",
    "direction": "LONG",
-   "reason": "The plan optimizer found no statistical edge (NO_EDGE)."
+   "reason": "Optimizer: no plan passes the odds test (best average -0.11R)."
   }
  ],
  "markets_open": [
