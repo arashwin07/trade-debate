@@ -34,3 +34,4 @@
 2026-11-10T18:08:04Z  claims     round 1: bull: 9/10 confirmed, 0 wrong, 1 unconfirmed; bear: 10/11 confirmed, 0 wrong, 1 unconfirmed
 2026-11-10T18:08:04Z  claims     round 2: bull: 8/11 confirmed, 0 wrong, 3 unconfirmed; bear: 17/18 confirmed, 0 wrong, 1 unconfirmed
 2026-11-10T18:08:05Z  claims     round 3: bull: 13/14 confirmed, 0 wrong, 1 unconfirmed; bear: 14/15 confirmed, 0 wrong, 1 unconfirmed
+2026-11-11T14:09:08Z  retake     FIRED at 159.5570068359375: {'price_above': 158.85, 'price_below': None, 'hold_minutes': 60, 'expires_hours': 24}

@@ -1,1 +1,11 @@
-[]
+[
+  {
+    "from_debate": "20261110-1749-USDJPY-LONG",
+    "symbol": "USD/JPY",
+    "market": "forex",
+    "direction": "LONG",
+    "style": "intraday",
+    "reason": "retake condition met: Take another look if the price climbs above today's high of 158.85 and stays there for a whole hour, with the stretch cooling off, and the desk finds a plan whose replays win more often than it needs ",
+    "queued_utc": "2026-11-11T14:09:07Z"
+  }
+]

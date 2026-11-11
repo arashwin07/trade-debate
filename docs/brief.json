@@ -1,7 +1,7 @@
 {
-  "computed_utc": "2026-11-11T03:15:56Z",
-  "title": "Before NSE opens",
-  "which": "nse",
+  "computed_utc": "2026-11-11T14:09:18Z",
+  "title": "Before Wall Street opens",
+  "which": "us",
   "health": {
     "status": "DEGRADED",
     "critical_down": [],
@@ -9,43 +9,52 @@
   },
   "mood": [
     {
-      "market": "nse",
+      "market": "us",
       "indexes": [
         {
-          "symbol": "^NSEI",
-          "name": "NIFTY 50",
-          "price": 25044.65,
-          "change_today_pct": 0.06,
-          "vs_sma20_pct": 7.75,
-          "vs_sma50_pct": 7.65,
-          "trend": "MIXED"
-        },
-        {
-          "symbol": "^NSEBANK",
-          "name": "Bank NIFTY",
-          "price": 59741.25,
-          "change_today_pct": 1.11,
-          "vs_sma20_pct": 7.42,
-          "vs_sma50_pct": 6.87,
-          "trend": "MIXED"
-        },
-        {
-          "symbol": "^INDIAVIX",
-          "name": "India VIX fear gauge",
-          "price": 17.42,
-          "change_today_pct": -0.29,
-          "vs_sma20_pct": 11.57,
-          "vs_sma50_pct": 27.45,
-          "trend": "UP"
-        },
-        {
-          "symbol": "USDINR=X",
-          "name": "USD/INR",
-          "price": 93.918,
-          "change_today_pct": -0.03,
-          "vs_sma20_pct": -0.83,
-          "vs_sma50_pct": -1.48,
+          "symbol": "^GSPC",
+          "name": "S&P 500",
+          "price": 7520.93,
+          "change_today_pct": -0.38,
+          "vs_sma20_pct": -1.44,
+          "vs_sma50_pct": -1.98,
           "trend": "DOWN"
+        },
+        {
+          "symbol": "^IXIC",
+          "name": "Nasdaq",
+          "price": 25065.875,
+          "change_today_pct": -0.74,
+          "vs_sma20_pct": -3.1,
+          "vs_sma50_pct": -5.08,
+          "trend": "DOWN"
+        },
+        {
+          "symbol": "^VIX",
+          "name": "VIX fear gauge",
+          "price": 18.3,
+          "change_today_pct": -5.96,
+          "vs_sma20_pct": -5.4,
+          "vs_sma50_pct": 6.73,
+          "trend": "MIXED"
+        },
+        {
+          "symbol": "^TNX",
+          "name": "US 10-year yield",
+          "price": 4.998,
+          "change_today_pct": 0.3,
+          "vs_sma20_pct": 0.21,
+          "vs_sma50_pct": -0.93,
+          "trend": "MIXED"
+        },
+        {
+          "symbol": "DX-Y.NYB",
+          "name": "Dollar index",
+          "price": 102.783,
+          "change_today_pct": 0.54,
+          "vs_sma20_pct": 0.83,
+          "vs_sma50_pct": 1.51,
+          "trend": "UP"
         }
       ],
       "crypto_market": null,
@@ -57,66 +66,109 @@
         {
           "symbol": "BTC-USD",
           "name": "Bitcoin",
-          "price": 73733.11,
-          "change_today_pct": -1.98,
-          "vs_sma20_pct": -5.55,
-          "vs_sma50_pct": -9.38,
+          "price": 73704.15,
+          "change_today_pct": -0.02,
+          "vs_sma20_pct": -5.13,
+          "vs_sma50_pct": -9.13,
           "trend": "DOWN"
         },
         {
           "symbol": "^VIX",
           "name": "VIX fear gauge",
-          "price": 19.46,
-          "change_today_pct": -2.31,
-          "vs_sma20_pct": 0.97,
-          "vs_sma50_pct": 13.91,
-          "trend": "UP"
+          "price": 18.3,
+          "change_today_pct": -5.96,
+          "vs_sma20_pct": -5.4,
+          "vs_sma50_pct": 6.73,
+          "trend": "MIXED"
         }
       ],
       "crypto_market": {
         "btc_dominance_pct": 59.72,
-        "total_mcap_change_24h_pct": -4.08
+        "total_mcap_change_24h_pct": -2.67
       },
       "error": null
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "kind": "macro",
+      "title": "GDP Growth Rate QoQ Prel",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-12T07:00:00Z",
+      "minutes_from_now": 1011,
+      "forecast": 0.7,
+      "previous": 0.4,
+      "actual": null,
+      "tier": 1
+    },
+    {
+      "kind": "macro",
+      "title": "GDP Growth Rate YoY Prel",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-12T07:00:00Z",
+      "minutes_from_now": 1011,
+      "forecast": 1.9,
+      "previous": 1.2,
+      "actual": null,
+      "tier": 1
+    },
+    {
+      "kind": "macro",
+      "title": "GDP MoM",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-12T07:00:00Z",
+      "minutes_from_now": 1011,
+      "forecast": 0,
+      "previous": 0.1,
+      "actual": null,
+      "tier": 2
+    },
+    {
+      "kind": "macro",
+      "title": "Inflation Rate YoY",
+      "currency": "INR",
+      "impact": "Medium",
+      "time_utc": "2026-11-12T10:30:00Z",
+      "minutes_from_now": 1221,
+      "forecast": 5.93,
+      "previous": 5.54,
+      "actual": null,
+      "tier": 1
+    }
+  ],
   "event_notes": [],
   "overnight": [
     {
       "symbol": "BTC/USDT",
-      "price": 73832.85,
-      "change_pct": -1.24
+      "price": 73794.0,
+      "change_pct": -0.19
     },
     {
       "symbol": "ETH/USDT",
-      "price": 2066.8,
-      "change_pct": -2.49
+      "price": 2057.01,
+      "change_pct": -0.71
     },
     {
       "symbol": "EUR/USD",
-      "price": 1.1172,
-      "change_pct": -0.45
+      "price": 1.11,
+      "change_pct": -1.09
     },
     {
       "symbol": "USD/INR",
-      "price": 93.918,
-      "change_pct": -0.03
+      "price": 93.68,
+      "change_pct": -0.28
     },
     {
       "symbol": "USD/JPY",
-      "price": 158.84,
-      "change_pct": 0.54
+      "price": 159.56,
+      "change_pct": 1.0
     }
   ],
   "watchlist": [],
-  "retakes": [
-    {
-      "debate": "20261110-1749-USDJPY-LONG",
-      "condition": "Take another look if the price climbs above today's high of 158.85 and stays there for a whole hour, with the stretch cooling off, and the desk finds a plan whose replays win more often than it needs to break even.",
-      "last_price": 158.81399536132812
-    }
-  ],
+  "retakes": [],
   "track": {
     "take": {
       "resolved": 0,
@@ -127,22 +179,22 @@
       "pending": 0
     },
     "skip": {
-      "resolved": 5,
+      "resolved": 6,
       "wins": 2,
-      "losses": 3,
-      "avg_r": -0.588,
+      "losses": 4,
+      "avg_r": -0.501,
       "not_filled": 0,
-      "pending": 1
+      "pending": 0
     },
     "debates": 6
   },
   "calibration": {
-    "plain": "The Judge has been right in 3 of 5 resolved debates.",
+    "plain": "The Judge has been right in 4 of 6 resolved debates.",
     "advice": [
-      "Only 5 resolved debates: too few to change any rule. Keep collecting."
+      "Only 6 resolved debates: too few to change any rule. Keep collecting."
     ]
   },
   "paper": {
-    "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -2.95%."
+    "plain": "Practice account following the desk: 0 trades, balance USD 100,000 (+0.00%). If it had taken every debated trade instead: -3.01%."
   }
 }
