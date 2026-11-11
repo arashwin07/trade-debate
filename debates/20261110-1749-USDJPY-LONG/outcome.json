@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-10T20:04:06Z",
+  "checked_utc": "2026-11-11T05:09:47Z",
   "call": "SKIP",
   "judge_decision": "SKIP",
   "plan": {
@@ -10,9 +10,11 @@
       159.0
     ]
   },
-  "status": "pending",
-  "r": null,
+  "status": "expired",
+  "r": -0.064,
   "filled_utc": "2026-11-10T18:30:00Z",
-  "plain": "Entry reached; the trade is still open.",
+  "plain": "Neither the target nor the stop was hit in time; closing at the end would give +0.63x the risk.",
+  "r_gross": 0.633,
+  "cost_r": 0.697,
   "window_end_utc": "2026-11-11T01:58:27Z"
 }

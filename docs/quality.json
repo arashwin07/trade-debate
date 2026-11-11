@@ -1,5 +1,5 @@
 {
-  "computed_utc": "2026-11-10T20:27:57Z",
+  "computed_utc": "2026-11-11T05:09:47Z",
   "agents": {
     "bull": {
       "debates": 6,
@@ -31,8 +31,8 @@
     }
   },
   "judge": {
-    "resolved": 5,
-    "accuracy": 0.6
+    "resolved": 6,
+    "accuracy": 0.667
   },
   "plain": "Bull Claude: 81.8% of checked claims correct, 0 wrong numbers caught by code; Bear Claude: 77.8% of checked claims correct, 0 wrong numbers caught by code"
 }
