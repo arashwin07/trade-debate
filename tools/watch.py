@@ -48,14 +48,48 @@ def market_open(market):
         return False
 
 
+def norm(symbol, market):
+    """One key per instrument, whatever way it was written (BTC, BTCUSDT, BTC/USDT; RELIANCE, RELIANCE.NS)."""
+    try:
+        _, data_sym, _ = md.detect(str(symbol), market or "auto")
+    except Exception:
+        data_sym = str(symbol)
+    return "".join(ch for ch in data_sym.upper() if ch.isalnum())
+
+
+def recently_debated(symbol, market, direction, hours=20, debates_dir=None):
+    """The id of a debate of this same trade in the last `hours`, or None."""
+    debates_dir = debates_dir or os.path.join(ROOT, "debates")
+    key, cut = norm(symbol, market), datetime.now(timezone.utc).timestamp() - hours * 3600
+    if not os.path.isdir(debates_dir):
+        return None
+    for name in sorted(os.listdir(debates_dir), reverse=True):
+        meta = load(os.path.join(debates_dir, name, "meta.json"))
+        if not meta:
+            continue
+        try:
+            made = datetime.fromisoformat(meta["created_utc"].replace("Z", "+00:00")).timestamp()
+        except Exception:
+            continue
+        if made < cut:
+            continue
+        if norm(meta.get("symbol", ""), meta.get("market")) == key and str(meta.get("direction") or "LONG").upper() == direction.upper():
+            return meta.get("id") or name
+    return None
+
+
 def watchlist():
+    """Active entries whose time is right, minus any already debated in the last 20 hours (once a day is enough)."""
     wl = load(os.path.join(ROOT, "config", "watchlist.json"), {"items": []})
     out = []
     for it in wl.get("items", []):
         if not it.get("active", True):
             continue
-        if market_open(it["market"]) or it.get("style") == "swing":
-            out.append(it)
+        if not (market_open(it["market"]) or it.get("style") == "swing"):
+            continue
+        if recently_debated(it["symbol"], it["market"], it.get("direction", "LONG")):
+            continue
+        out.append(it)
     return out
 
 

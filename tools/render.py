@@ -202,7 +202,8 @@ def render_index():
             "scan": load(os.path.join(DEBATES, "_last_scan.json")), "scan_result": load(os.path.join(DEBATES, "_last_scan_result.json")),
             "brief": load(os.path.join(DOCS, "brief.json")), "calibration": load(os.path.join(DOCS, "calibration.json")),
             "quality": load(os.path.join(DOCS, "quality.json")), "schedule_utc": cfg.get("schedule_utc"),
-            "budget": budget_today(cfg), "costs": costs_plain()}
+            "budget": budget_today(cfg), "costs": costs_plain(),
+            "requests": load(os.path.join(DOCS, "requests.json")), "repo": cfg.get("repo"), "branch": cfg.get("branch", "main")}
     write(os.path.join(DOCS, "index.html"), full_doc(inject("index.html", data, "Trade Debate Desk")))
     print("wrote", os.path.join(DOCS, "index.html"))
 

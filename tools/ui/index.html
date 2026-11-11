@@ -121,6 +121,26 @@ details summary::-webkit-details-marker{display:none}
 .note{font-size:12px;color:var(--muted);margin:0}
 .btn{display:inline-flex;align-items:center;gap:6px;border:0;background:var(--soft);border-radius:999px;padding:8px 14px;font-size:13px;font-weight:500;cursor:pointer}
 .btn:hover{background:var(--line)}
+/* add my trade */
+.cta{display:flex;align-items:center;justify-content:center;gap:8px;border:0;background:var(--clay);color:#fff;border-radius:999px;padding:11px 18px;font-size:14px;font-weight:600;cursor:pointer}
+.cta:hover{background:var(--clay-ink)}
+.cta svg{width:18px;height:18px}
+.form{display:grid;gap:16px}
+.field{display:grid;gap:6px}
+.field > span{font-size:13px;font-weight:500;color:var(--ink-2)}
+.field small{font-size:12px;color:var(--muted)}
+.inp{width:100%;font:15px/1.4 var(--f-ui);color:var(--ink);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.inp:focus{outline:2px solid var(--clay);outline-offset:0;border-color:transparent}
+textarea.inp{min-height:84px;resize:vertical;font-family:var(--f-read)}
+.seg{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;background:var(--soft);border-radius:12px;padding:3px;gap:3px}
+.seg button{border:0;background:transparent;border-radius:9px;padding:9px 4px;font-size:14px;font-weight:500;cursor:pointer;color:var(--ink-2);min-width:0}
+.seg button[aria-pressed="true"]{background:var(--card);color:var(--ink);box-shadow:0 0 0 1px var(--line)}
+.seg button small{display:block;font-size:11px;font-weight:400;color:var(--muted)}
+.err{background:var(--bad-soft);color:var(--bad);border-radius:12px;padding:10px 12px;font-size:14px;margin:0}
+.steps{margin:0;padding-left:20px;display:grid;gap:6px;font-size:14px;color:var(--ink-2)}
+.cmd{display:flex;gap:8px;align-items:center;background:var(--ink);color:var(--page);border-radius:12px;padding:10px 12px;font:13px/1.5 var(--f-num);overflow-x:auto}
+.cmd code{flex:1;white-space:nowrap}
+.cmd button{flex:none;border:0;background:#3d3c37;color:var(--page);border-radius:8px;padding:5px 10px;font:12px var(--f-ui);cursor:pointer}
 @media (prefers-reduced-motion:no-preference){.view{animation:fade .25s ease both}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
 </style>
 
@@ -148,6 +168,7 @@ details summary::-webkit-details-marker{display:none}
     markets: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg>',
     journal: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h11a1 1 0 011 1v16a1 1 0 01-1 1H6zM6 3a2 2 0 00-2 2v14a2 2 0 002 2M9 8h6M9 12h6"/></svg>',
     settings: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 00.3 1.8l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-1.8-.3 1.7 1.7 0 00-1 1.5V21a2 2 0 11-4 0v-.1a1.7 1.7 0 00-1.1-1.5 1.7 1.7 0 00-1.8.3l-.1.1a2 2 0 11-2.8-2.8l.1-.1a1.7 1.7 0 00.3-1.8 1.7 1.7 0 00-1.5-1H3a2 2 0 110-4h.1a1.7 1.7 0 001.5-1.1 1.7 1.7 0 00-.3-1.8l-.1-.1a2 2 0 112.8-2.8l.1.1a1.7 1.7 0 001.8.3H9a1.7 1.7 0 001-1.5V3a2 2 0 114 0v.1a1.7 1.7 0 001 1.5 1.7 1.7 0 001.8-.3l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 00-.3 1.8V9a1.7 1.7 0 001.5 1H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>',
+    plus: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>',
     mark: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg>'
   };
   var VIEWS = [["now", "Now"], ["debates", "Debates"], ["markets", "Markets"], ["journal", "Journal"], ["settings", "Settings"]];
@@ -246,11 +267,119 @@ details summary::-webkit-details-marker{display:none}
     return '<section class="grid2"><a class="tile" href="#journal"><small>Judge has been right</small><b class="num">' + (cal.resolved ? (Math.round((cal.accuracy || 0) * cal.resolved)) + " of " + cal.resolved : "–") + "</b></a>" +
       '<a class="tile" href="#journal"><small>Practice account</small><b class="num">' + (pap.return_pct != null ? (pap.return_pct >= 0 ? "+" : "") + pap.return_pct.toFixed(2) + "%" : "–") + "</b></a></section>";
   }
+  /* ---------- your trade requests ---------- */
+  var REPO = D.repo || "", BRANCH = D.branch || "main";
+  var LIVEQ = null;  /* request files read live from GitHub, so a just-committed request shows before the next scan */
+  function loadLiveQueue() {
+    if (!REPO || !window.fetch) return;
+    fetch("https://api.github.com/repos/" + REPO + "/contents/requests?ref=" + BRANCH, {headers: {Accept: "application/vnd.github+json"}})
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (list) {
+        if (!Array.isArray(list)) return;
+        LIVEQ = list.filter(function (f) { return f.type === "file" && /\.json$/i.test(f.name); }).map(function (f) { return f.name; });
+        if (route() === "now") render();
+      }).catch(function () {});
+  }
+  function reqLabel(name) {  /* 20261111-091500-RELIANCE-LONG.json -> "LONG RELIANCE" */
+    var p = name.replace(/\.json$/i, "").split("-");
+    return p.length >= 4 ? p[3] + " " + p[2] : name;
+  }
+  function requestsCard() {
+    var R = D.requests || {}, pend = R.pending || [], done = (R.done || []).slice(0, 4);
+    var known = {}; pend.forEach(function (p) { known[p.file] = 1; });
+    var fresh = (LIVEQ || []).filter(function (f) { return !known[f] && !done.some(function (d) { return d.file === f; }); });
+    if (LIVEQ) pend = pend.filter(function (p) { return LIVEQ.indexOf(p.file) >= 0; });
+    var nr = nextRun(), nrTxt = nr ? nr.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) : "the next scan";
+    var rows = pend.map(function (p) {
+      return '<div class="item"><span class="av m-' + esc(p.market) + '">' + esc(String(p.symbol || "").split("/")[0].slice(0, 5)) + "</span><div><h3>" + esc((p.direction || "") + " " + (p.symbol || "")) + "</h3><p>" +
+        esc(p.problem ? "Problem: " + p.problem : (p.style === "swing" ? "A few days · debated at " + nrTxt : "Today only · debated once its market is open")) + '</p></div><span class="pill ' + (p.problem ? "p-down" : "p-live") + '">' + (p.problem ? "Fix it" : "Queued") + "</span></div>";
+    }).concat(fresh.map(function (f) {
+      return '<div class="item" style="grid-template-columns:minmax(0,1fr) auto"><div><h3>' + esc(reqLabel(f)) + "</h3><p>Received. Debated at " + esc(nrTxt) + " (a today-only trade waits for its market to open).</p></div><span class=\"pill p-live\">Queued</span></div>";
+    })).concat(done.map(function (d) {
+      var ok = d.status === "debated";
+      var inner = '<div><h3>' + esc((d.direction || "") + " " + (d.symbol || "")) + "</h3><p>" + esc(ok ? "Debated " + ago(d.closed_utc) + ". Tap to see the result." : (d.reason || d.status)) + "</p></div>" +
+        '<span class="pill ' + (ok ? "p-ok" : "p-warn") + '">' + (ok ? "Done" : d.status === "expired" ? "Expired" : "Not debated") + "</span>";
+      return ok && d.debate_id ? '<a class="item" style="grid-template-columns:minmax(0,1fr) auto" href="d/' + esc(d.debate_id) + '.html">' + inner + "</a>"
+        : '<div class="item" style="grid-template-columns:minmax(0,1fr) auto">' + inner + "</div>";
+    }));
+    return '<section class="card"><div class="between"><h2>Your trades</h2><a class="cta" href="#add" style="padding:8px 14px;font-size:13px">' + IC.plus + "Add my trade</a></div>" +
+      (rows.length ? '<div class="list" style="margin-top:6px">' + rows.join("") + "</div>"
+        : '<p class="empty" style="margin-top:8px">Have a trade in mind? Add it and Bull, Bear and the Judge will debate it at the next scan.</p>') + "</section>";
+  }
+
+  var A = {symbol: "", market: "auto", direction: "LONG", style: "intraday", entry: "", stop: "", target: "", note: ""}, AERR = null, ASENT = null;
+  function segBtns(key, opts) {
+    return '<div class="seg" role="group">' + opts.map(function (o) {
+      return '<button type="button" data-a="' + key + '" data-v="' + o[0] + '" aria-pressed="' + (A[key] === o[0]) + '">' + o[1] + (o[2] ? "<small>" + o[2] + "</small>" : "") + "</button>";
+    }).join("") + "</div>";
+  }
+  function guessMarket(s) {
+    s = s.toUpperCase();
+    if (/\.(NS|BO)$/.test(s)) return "nse";
+    if (/=X$/.test(s) || /^(USD|EUR|GBP|JPY|AUD|NZD|CAD|CHF|INR){2}$/.test(s.replace("/", ""))) return "forex";
+    if (/USDT$/.test(s) || /^(BTC|ETH|SOL|XRP|BNB|DOGE|ADA|AVAX|LINK|DOT|TRX|LTC|ZEC|SUI|TON|PEPE|SHIB)$/.test(s)) return "crypto";
+    return "us";
+  }
+  function checkA() {
+    var sym = A.symbol.trim().toUpperCase();
+    if (!/^[A-Z0-9][A-Z0-9.\-\/=&]{0,19}$/.test(sym)) return "Type the stock or coin symbol, for example RELIANCE, AAPL, BTC or USDINR.";
+    var nums = ["entry", "stop", "target"].map(function (k) { var v = String(A[k]).replace(/,/g, "").trim(); return v === "" ? null : +v; });
+    var given = nums.filter(function (x) { return x !== null; });
+    if (given.length && given.length < 3) return "Give all three prices (entry, stop and target), or leave all three empty and let the desk find them.";
+    if (given.some(function (x) { return !(x > 0); })) return "Prices must be positive numbers.";
+    if (given.length === 3) {
+      var e = nums[0], st = nums[1], t = nums[2];
+      if (A.direction === "LONG" && !(st < e && e < t)) return "For a buy, the stop goes below the entry and the target above it.";
+      if (A.direction === "SHORT" && !(t < e && e < st)) return "For a sell, the stop goes above the entry and the target below it.";
+    }
+    return null;
+  }
+  function pad(x) { return (x < 10 ? "0" : "") + x; }
+  function buildRequest() {
+    var sym = A.symbol.trim().toUpperCase(), d = new Date();
+    var stamp = d.getUTCFullYear() + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) + "-" + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds());
+    var body = {symbol: sym, market: A.market === "auto" ? guessMarket(sym) : A.market, direction: A.direction, style: A.style};
+    ["entry", "stop", "target"].forEach(function (k) { var v = String(A[k]).replace(/,/g, "").trim(); if (v !== "") body[k] = +v; });
+    if (A.note.trim()) body.note = A.note.trim().slice(0, 500);
+    body.asked_utc = d.toISOString().replace(/\.\d+Z$/, "Z");
+    var file = "requests/" + stamp + "-" + sym.replace(/[^A-Z0-9]/g, "") + "-" + A.direction + ".json";
+    var url = "https://github.com/" + REPO + "/new/" + BRANCH + "?filename=" + encodeURIComponent(file) +
+      "&value=" + encodeURIComponent(JSON.stringify(body, null, 2) + "\n") + "&message=" + encodeURIComponent("Trade request: " + A.direction + " " + sym);
+    var cmd = "/trade-debate " + sym + " " + A.direction.toLowerCase() + " " + A.style + " " + body.market +
+      (body.entry ? ": entry " + body.entry + ", stop " + body.stop + ", target " + body.target : "") + (body.note ? (body.entry ? ". " : ": ") + body.note : "");
+    return {url: url, cmd: cmd, body: body};
+  }
+  function viewAdd() {
+    var nr = nextRun(), nrTxt = nr ? nr.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}) + (nr.toDateString() !== new Date().toDateString() ? " " + nr.toLocaleDateString([], {weekday: "short"}) : "") : "the next scan";
+    if (ASENT) {
+      return '<header><h1>Almost done</h1><p class="lead">GitHub opened in a new tab with your trade filled in.</p></header>' +
+        '<section class="card"><h2>Finish on GitHub</h2><ol class="steps" style="margin-top:10px"><li>Check the trade looks right.</li><li>Tap the green <b>Commit changes</b> button, then confirm.</li><li>That is it. Bull, Bear and the Judge debate it at <b>' + esc(nrTxt) + "</b>" + (ASENT.body.style === "intraday" ? " (or as soon as its market opens)" : "") + ". It shows under “Your trades” on the Now page.</li></ol>" +
+        '<p class="note" style="margin-top:10px">GitHub didn’t open? <a href="' + esc(ASENT.url) + '" target="_blank" rel="noopener" style="color:var(--clay-ink)">Open it here</a>. You must be signed in to GitHub as the owner of this desk.</p></section>' +
+        '<section class="card"><h2>Want it debated right now?</h2><p class="note" style="margin:4px 0 10px">Open Claude Code (on your PC, or claude.ai/code on your phone with this repository) and send this:</p>' +
+        '<div class="cmd"><code>' + esc(ASENT.cmd) + '</code><button type="button" data-copy="1">Copy</button></div>' +
+        '<p class="note" style="margin-top:8px">If you do this, skip the GitHub step (or delete the file) so it is not debated twice.</p></section>' +
+        '<div class="row"><button class="btn" type="button" data-again="1">Add another trade</button><a class="btn" href="#now">Back to Now</a></div>';
+    }
+    return '<header><h1>Add my trade</h1><p class="lead">Name a trade you are thinking about. Bull Claude argues for it, Bear Claude against, and the Judge decides TAKE or SKIP.</p></header>' +
+      '<section class="card"><form class="form" id="addform" novalidate>' +
+      '<label class="field"><span>Symbol</span><input class="inp" id="a-symbol" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="RELIANCE, AAPL, BTC, USDINR" value="' + esc(A.symbol) + '"><small>The ticker you see in your broker app.</small></label>' +
+      '<div class="field"><span>Market</span>' + segBtns("market", [["auto", "Auto"], ["nse", "NSE"], ["us", "US"], ["crypto", "Crypto"], ["forex", "Forex"]]) + "<small>Auto guesses from the symbol. Pick NSE for Indian shares like TATAMOTORS.</small></div>" +
+      '<div class="field"><span>What do you want to do?</span>' + segBtns("direction", [["LONG", "Buy", "price goes up"], ["SHORT", "Sell", "price goes down"]]) + "</div>" +
+      '<div class="field"><span>How long will you hold it?</span>' + segBtns("style", [["intraday", "Today only", "intraday"], ["swing", "A few days", "swing"]]) + "</div>" +
+      '<details' + (A.entry || A.stop || A.target ? " open" : "") + '><summary>I have my own prices (optional)</summary><div class="grid3" style="margin-top:10px">' +
+      ["entry", "stop", "target"].map(function (k) { return '<label class="field"><span>' + {entry: "Entry", stop: "Stop-loss", target: "Target"}[k] + '</span><input class="inp num" inputmode="decimal" id="a-' + k + '" value="' + esc(A[k]) + '"></label>'; }).join("") +
+      '</div><p class="note" style="margin-top:6px">Leave empty and the desk finds the levels from real price history.</p></details>' +
+      '<label class="field"><span>Why do you like it? (optional)</span><textarea class="inp" id="a-note" maxlength="500" placeholder="For example: results were strong and it is bouncing off 1,300.">' + esc(A.note) + "</textarea><small>Both sides must answer your view. It counts as your opinion, not as fact.</small></label>" +
+      (AERR ? '<p class="err" role="alert">' + esc(AERR) + "</p>" : "") +
+      '<button class="cta" type="submit">' + IC.plus + "Send to the desk</button>" +
+      '<p class="note" style="text-align:center">This opens GitHub with your trade filled in; you tap Commit. Next scan: ' + esc(nrTxt) + ". Nothing is ever bought or sold.</p></form></section>";
+  }
+
   function viewNow() {
     var live = items.filter(function (x) { return x.decision === "LIVE"; });
     var recent = items.filter(function (x) { return x.decision !== "LIVE"; }).slice(0, 4);
     return '<header><h1>Right now</h1><p class="lead">' + esc(new Date().toLocaleDateString([], {weekday: "long", day: "numeric", month: "long"})) + "</p></header>" +
-      statusStrip() + heroCard() + watching() +
+      statusStrip() + heroCard() + requestsCard() + watching() +
       (live.length ? '<section class="card"><h2>Debating now</h2><div class="list" style="margin-top:6px">' + live.map(debateRow).join("") + "</div></section>" : "") +
       '<section class="card"><div class="between"><h2>Recent debates</h2><a class="btn" href="#debates">All</a></div><div class="list" style="margin-top:6px">' +
       (recent.length ? recent.map(debateRow).join("") : '<p class="empty">No debates yet.</p>') + "</div></section>" + miniStats();
@@ -333,26 +462,46 @@ details summary::-webkit-details-marker{display:none}
   }
 
   /* ---------- shell ---------- */
-  function route() { var h = (location.hash || "#now").slice(1); return VIEWS.some(function (v) { return v[0] === h; }) ? h : "now"; }
+  function route() { var h = (location.hash || "#now").slice(1); return h === "add" || VIEWS.some(function (v) { return v[0] === h; }) ? h : "now"; }
   function render() {
     var r = route();
-    document.getElementById("view").innerHTML = '<div class="view">' + ({now: viewNow, debates: viewDebates, markets: viewMarkets, journal: viewJournal, settings: viewSettings}[r])() + "</div>";
+    document.getElementById("view").innerHTML = '<div class="view">' + ({now: viewNow, add: viewAdd, debates: viewDebates, markets: viewMarkets, journal: viewJournal, settings: viewSettings}[r])() + "</div>";
     var nav = VIEWS.map(function (v) { return '<a class="nav" href="#' + v[0] + '"' + (v[0] === r ? ' aria-current="page"' : "") + ">" + IC[v[0]] + v[1] + "</a>"; }).join("");
     document.getElementById("sidenav").innerHTML = nav;
     document.getElementById("tabs").innerHTML = VIEWS.map(function (v) { return '<a href="#' + v[0] + '"' + (v[0] === r ? ' aria-current="page"' : "") + ">" + IC[v[0]] + v[1] + "</a>"; }).join("");
     var hp = healthPill();
     document.getElementById("topdot").innerHTML = '<span class="pill ' + hp[0] + '">' + hp[1] + "</span>";
     document.getElementById("sidefoot").innerHTML = "Updated " + esc(ago(D.generated_utc)) + "<br>" + '<span class="pill ' + hp[0] + '" style="margin-top:6px">' + hp[1] + "</span>";
-    document.title = (r === "now" ? "" : VIEWS.find(function (v) { return v[0] === r; })[1] + " · ") + "Trade Debate Desk";
+    var tv = VIEWS.find(function (v) { return v[0] === r; });
+    document.title = (r === "now" ? "" : (tv ? tv[1] : "Add my trade") + " · ") + "Trade Debate Desk";
   }
   document.getElementById("m1").innerHTML = IC.mark;
   document.getElementById("m2").innerHTML = IC.mark;
   window.addEventListener("hashchange", function () { render(); window.scrollTo(0, 0); });
+  function readForm() {
+    ["symbol", "entry", "stop", "target", "note"].forEach(function (k) { var el = document.getElementById("a-" + k); if (el) A[k] = el.value; });
+  }
   document.addEventListener("click", function (e) {
+    var s = e.target.closest("[data-a]");
+    if (s) { readForm(); A[s.dataset.a] = s.dataset.v; render(); return; }
+    if (e.target.closest("[data-again]")) { ASENT = null; AERR = null; A.symbol = A.entry = A.stop = A.target = A.note = ""; render(); return; }
+    var c = e.target.closest("[data-copy]");
+    if (c && ASENT) { try { navigator.clipboard.writeText(ASENT.cmd); c.textContent = "Copied"; } catch (x) {} return; }
     var b = e.target.closest("[data-f]"); if (!b) return;
     F = b.dataset.f; render();
   });
+  document.addEventListener("submit", function (e) {
+    if (e.target.id !== "addform") return;
+    e.preventDefault(); readForm();
+    AERR = checkA();
+    if (AERR) { render(); var el = document.querySelector(".err"); if (el) el.scrollIntoView({block: "center"}); return; }
+    if (!REPO) { AERR = "The desk does not know its GitHub repository (tools/config.json: repo)."; render(); return; }
+    ASENT = buildRequest();
+    window.open(ASENT.url, "_blank", "noopener");
+    render(); window.scrollTo(0, 0);
+  });
   render();
+  loadLiveQueue();
   if (items.some(function (x) { return x.decision === "LIVE"; }) && D.live_reload) setTimeout(function () { location.reload(); }, 60000);
 })();
 </script>

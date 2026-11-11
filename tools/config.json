@@ -1,6 +1,24 @@
 {
   "site_url": "https://arashwin07.github.io/trade-debate",
   "schedule_plain": "weekdays at 10:30, 13:30, 20:30 and 23:30 IST, and every 6 hours on weekends (crypto)",
-  "schedule_utc": {"weekdays": ["05:00", "08:00", "15:00", "18:00"], "weekends": ["00:00", "06:00", "12:00", "18:00"],
-                   "briefs_weekdays": ["03:15", "14:00"]}
+  "schedule_utc": {
+    "weekdays": [
+      "05:00",
+      "08:00",
+      "15:00",
+      "18:00"
+    ],
+    "weekends": [
+      "00:00",
+      "06:00",
+      "12:00",
+      "18:00"
+    ],
+    "briefs_weekdays": [
+      "03:15",
+      "14:00"
+    ]
+  },
+  "repo": "arashwin07/trade-debate",
+  "branch": "main"
 }

@@ -24,7 +24,7 @@ Models (from `config/desk.json` → `budget.models`): debaters `sonnet`, round r
 4. `python tools/levels.py <SYMBOL> --market <m> --style <s> --out debates/<ID>/levels.json`
 5. `python tools/news.py <SYMBOL> --market <m> --style <s> [--name "<company name from the snapshot>"] --out debates/<ID>/news.json`
 6. `python tools/context.py <SYMBOL> --market <m> --direction <d> --out debates/<ID>/context.json` (is the wider market a tailwind or headwind?) and `python tools/fundamentals.py <SYMBOL> --market <m> --out debates/<ID>/fundamentals.json` (the business or coin behind the price). Crypto only: `python tools/derivatives.py <SYMBOL> --market crypto --out debates/<ID>/derivatives.json` (open interest, funding, crowd positioning).
-6b. Write `meta.json`: `{"id", "symbol", "market", "style", "direction", "trade", "user_plan" or null, "user_note": "<the user's own view, from the command or config/watchlist.json>" or null, "mode": "named" | "scan" | "watchlist" | "retake", "scan_reason"?, "created_utc"}`
+6b. Write `meta.json`: `{"id", "symbol", "market", "style", "direction", "trade", "user_plan" or null, "user_note": "<the user's own view, from the command or config/watchlist.json>" or null, "mode": "named" | "scan" | "watchlist" | "retake" | "request", "scan_reason"?, "created_utc"}`
 7. `python tools/optimizer.py debates/<ID>` → `optimizer.json`: the best plans built from real levels that pass your rules and the Time Machine, or NO_PLAN / NO_EDGE.
 8. Render (`python tools/render.py debates/<ID>`); publish `debates/<ID>/debate.html` with the Artifact tool if available (first time `icon: "chat"`, later republish the same path).
 Facts every agent prompt carries: market status, holiday/half-day, event guard, volatility level, optimizer status.
