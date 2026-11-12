@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-12T15:12:32Z",
+  "scanned_utc": "2026-11-12T18:10:20Z",
   "open_markets": [
     "crypto",
     "us",
@@ -10,141 +10,141 @@
   ],
   "candidates": [
     {
-      "symbol": "NBIS",
+      "symbol": "PLBL",
       "market": "us",
-      "change_pct": -20.05,
-      "score": 28.285,
-      "why": "-20.05% today, volume 1.6x 3-month average (day losers)",
-      "direction": "SHORT"
+      "change_pct": 19.75,
+      "score": 33.692,
+      "why": "+19.75% today, volume 4.1x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 1.09,
-      "score": 11.368,
-      "why": "+1.09% today",
+      "change_pct": 1.33,
+      "score": 13.856,
+      "why": "+1.33% today",
       "direction": "LONG"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -6.9,
-      "score": 9.224,
-      "why": "-6.90% in 24h on $235M Binance volume",
+      "change_pct": -6.34,
+      "score": 8.705,
+      "why": "-6.34% in 24h on $271M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BZ",
       "market": "us",
-      "change_pct": -20.72,
-      "score": 26.109,
-      "why": "-20.72% today, volume 0.8x 3-month average (day losers)",
+      "change_pct": -22.28,
+      "score": 32.24,
+      "why": "-22.28% today, volume 1.8x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
-      "symbol": "CTVA",
+      "symbol": "NBIS",
       "market": "us",
-      "change_pct": -22.78,
-      "score": 25.754,
-      "why": "-22.78% today, volume 0.4x 3-month average (day losers)",
+      "change_pct": -16.38,
+      "score": 25.46,
+      "why": "-16.38% today, volume 2.6x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -1.02,
-      "score": 10.576,
-      "why": "-1.02% today",
+      "change_pct": -1.06,
+      "score": 11.032,
+      "why": "-1.06% today",
       "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.86,
-      "score": 8.944,
-      "why": "-0.86% today",
+      "change_pct": -1.02,
+      "score": 10.656,
+      "why": "-1.02% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "BTC",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -3.12,
-      "score": 5.733,
-      "why": "-3.12% in 24h on $1,185M Binance volume",
+      "change_pct": -6.42,
+      "score": 8.165,
+      "why": "-6.42% in 24h on $175M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "NBIS",
+      "symbol": "PLBL",
       "market": "us",
-      "change_pct": -20.05,
-      "score": 28.285,
-      "why": "-20.05% today, volume 1.6x 3-month average (day losers)",
-      "direction": "SHORT"
+      "change_pct": 19.75,
+      "score": 33.692,
+      "why": "+19.75% today, volume 4.1x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
       "symbol": "BZ",
       "market": "us",
-      "change_pct": -20.72,
-      "score": 26.109,
-      "why": "-20.72% today, volume 0.8x 3-month average (day losers)",
+      "change_pct": -22.28,
+      "score": 32.24,
+      "why": "-22.28% today, volume 1.8x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
-      "symbol": "CTVA",
+      "symbol": "NBIS",
       "market": "us",
-      "change_pct": -22.78,
-      "score": 25.754,
-      "why": "-22.78% today, volume 0.4x 3-month average (day losers)",
+      "change_pct": -16.38,
+      "score": 25.46,
+      "why": "-16.38% today, volume 2.6x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 1.09,
-      "score": 11.368,
-      "why": "+1.09% today",
+      "change_pct": 1.33,
+      "score": 13.856,
+      "why": "+1.33% today",
       "direction": "LONG"
     },
     {
       "symbol": "NZDUSD",
       "market": "forex",
+      "change_pct": -1.06,
+      "score": 11.032,
+      "why": "-1.06% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EURUSD",
+      "market": "forex",
       "change_pct": -1.02,
-      "score": 10.576,
+      "score": 10.656,
       "why": "-1.02% today",
       "direction": "SHORT"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -6.9,
-      "score": 9.224,
-      "why": "-6.90% in 24h on $235M Binance volume",
+      "change_pct": -6.34,
+      "score": 8.705,
+      "why": "-6.34% in 24h on $271M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "EURUSD",
-      "market": "forex",
-      "change_pct": -0.86,
-      "score": 8.944,
-      "why": "-0.86% today",
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -6.42,
+      "score": 8.165,
+      "why": "-6.42% in 24h on $175M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -3.12,
-      "score": 5.733,
-      "why": "-3.12% in 24h on $1,185M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": -3.93,
-      "score": 4.956,
-      "why": "-3.93% in 24h on $164M Binance volume",
+      "change_pct": -3.29,
+      "score": 6.112,
+      "why": "-3.29% in 24h on $1,247M Binance volume",
       "direction": "SHORT"
     }
   ]

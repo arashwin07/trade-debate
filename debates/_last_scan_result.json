@@ -1,66 +1,66 @@
 {
- "scanned_utc": "2026-11-12T15:15:00Z",
+ "scanned_utc": "2026-11-12T18:10:55Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "USD/JPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake condition met, but the optimizer found no plan paying 1.5x risk after costs."
+   "reason": "Retake queue: the optimizer found no plan paying 1.5x the risk after costs, so the retake waits."
   },
   {
-   "symbol": "EUR/USD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no plan paying 1.5x risk after costs."
-  },
-  {
-   "symbol": "USD/CHF",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Pair not allowed for India-resident forex rules."
-  },
-  {
-   "symbol": "NZD/USD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Pair not allowed for India-resident forex rules."
-  },
-  {
-   "symbol": "NBIS",
+   "symbol": "PLBL",
    "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is not allowed by your settings."
+   "direction": "LONG",
+   "reason": "The optimizer found no edge in the replays, so a debate would only confirm SKIP."
   },
   {
    "symbol": "BZ",
    "market": "us",
    "direction": "SHORT",
-   "reason": "Shorting US stocks is not allowed by your settings."
+   "reason": "Shorting US stocks is turned off in your settings."
   },
   {
-   "symbol": "CTVA",
+   "symbol": "NBIS",
    "market": "us",
    "direction": "SHORT",
-   "reason": "Shorting US stocks is not allowed by your settings."
+   "reason": "Shorting US stocks is turned off in your settings."
+  },
+  {
+   "symbol": "USDCHF",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "USDCHF is not on your India-allowed forex list (and the optimizer found no edge)."
+  },
+  {
+   "symbol": "NZDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "NZDUSD is not on your India-allowed forex list."
+  },
+  {
+   "symbol": "EURUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The optimizer found no workable plan after costs."
   },
   {
    "symbol": "NVDAB",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
+   "reason": "Shorting crypto is turned off in your settings."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is turned off in your settings."
   },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
+   "reason": "Shorting crypto is turned off in your settings."
   }
  ],
  "markets_open": [
