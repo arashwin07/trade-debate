@@ -1,150 +1,150 @@
 {
-  "scanned_utc": "2026-11-12T08:10:51Z",
+  "scanned_utc": "2026-11-12T15:12:32Z",
   "open_markets": [
     "crypto",
-    "nse",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "NZDUSD",
-      "market": "forex",
-      "change_pct": -0.94,
-      "score": 9.776,
-      "why": "-0.94% today",
+      "symbol": "NBIS",
+      "market": "us",
+      "change_pct": -20.05,
+      "score": 28.285,
+      "why": "-20.05% today, volume 1.6x 3-month average (day losers)",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "NVDAB",
-      "market": "crypto",
-      "change_pct": -6.68,
-      "score": 8.162,
-      "why": "-6.68% in 24h on $134M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "HDFCLIFE",
-      "market": "nse",
-      "change_pct": 3.91,
-      "score": 5.747,
-      "why": "+3.91% today, volume 2.0x 20-day average",
-      "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.84,
-      "score": 8.704,
-      "why": "+0.84% today",
+      "change_pct": 1.09,
+      "score": 11.368,
+      "why": "+1.09% today",
       "direction": "LONG"
+    },
+    {
+      "symbol": "NVDAB",
+      "market": "crypto",
+      "change_pct": -6.9,
+      "score": 9.224,
+      "why": "-6.90% in 24h on $235M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BZ",
+      "market": "us",
+      "change_pct": -20.72,
+      "score": 26.109,
+      "why": "-20.72% today, volume 0.8x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "CTVA",
+      "market": "us",
+      "change_pct": -22.78,
+      "score": 25.754,
+      "why": "-22.78% today, volume 0.4x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -1.02,
+      "score": 10.576,
+      "why": "-1.02% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.69,
-      "score": 7.224,
-      "why": "-0.69% today",
+      "change_pct": -0.86,
+      "score": 8.944,
+      "why": "-0.86% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "ONGC",
-      "market": "nse",
-      "change_pct": -4.11,
-      "score": 5.686,
-      "why": "-4.11% today, volume 1.4x 20-day average",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BAJFINANCE",
-      "market": "nse",
-      "change_pct": 4.37,
-      "score": 5.61,
-      "why": "+4.37% today, volume 0.9x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.29,
-      "score": 1.646,
-      "why": "-1.29% in 24h on $180M Binance volume",
+      "change_pct": -3.12,
+      "score": 5.733,
+      "why": "-3.12% in 24h on $1,185M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "NZDUSD",
-      "market": "forex",
-      "change_pct": -0.94,
-      "score": 9.776,
-      "why": "-0.94% today",
+      "symbol": "NBIS",
+      "market": "us",
+      "change_pct": -20.05,
+      "score": 28.285,
+      "why": "-20.05% today, volume 1.6x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BZ",
+      "market": "us",
+      "change_pct": -20.72,
+      "score": 26.109,
+      "why": "-20.72% today, volume 0.8x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "CTVA",
+      "market": "us",
+      "change_pct": -22.78,
+      "score": 25.754,
+      "why": "-22.78% today, volume 0.4x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.84,
-      "score": 8.704,
-      "why": "+0.84% today",
+      "change_pct": 1.09,
+      "score": 11.368,
+      "why": "+1.09% today",
       "direction": "LONG"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -1.02,
+      "score": 10.576,
+      "why": "-1.02% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -6.68,
-      "score": 8.162,
-      "why": "-6.68% in 24h on $134M Binance volume",
+      "change_pct": -6.9,
+      "score": 9.224,
+      "why": "-6.90% in 24h on $235M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.69,
-      "score": 7.224,
-      "why": "-0.69% today",
+      "change_pct": -0.86,
+      "score": 8.944,
+      "why": "-0.86% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "HDFCLIFE",
-      "market": "nse",
-      "change_pct": 3.91,
-      "score": 5.747,
-      "why": "+3.91% today, volume 2.0x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ONGC",
-      "market": "nse",
-      "change_pct": -4.11,
-      "score": 5.686,
-      "why": "-4.11% today, volume 1.4x 20-day average",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BAJFINANCE",
-      "market": "nse",
-      "change_pct": 4.37,
-      "score": 5.61,
-      "why": "+4.37% today, volume 0.9x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.29,
-      "score": 1.646,
-      "why": "-1.29% in 24h on $180M Binance volume",
+      "change_pct": -3.12,
+      "score": 5.733,
+      "why": "-3.12% in 24h on $1,185M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "ETH",
+      "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -0.82,
-      "score": 1.178,
-      "why": "-0.82% in 24h on $355M Binance volume",
+      "change_pct": -3.93,
+      "score": 4.956,
+      "why": "-3.93% in 24h on $164M Binance volume",
       "direction": "SHORT"
     }
   ]
