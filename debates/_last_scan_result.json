@@ -1,73 +1,12 @@
-{
- "scanned_utc": "2026-11-12T05:10:35Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake condition fired, but the plan optimizer found no workable plan, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "EURUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "USDCHF",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Pair is not in your allowed India forex list."
-  },
-  {
-   "symbol": "NZDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Pair is not in your allowed India forex list."
-  },
-  {
-   "symbol": "NVDAB",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your risk settings."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your risk settings."
-  },
-  {
-   "symbol": "XRP",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your risk settings."
-  },
-  {
-   "symbol": "BAJFINANCE",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Event guard says BLOCK (a scheduled event is too close)."
-  },
-  {
-   "symbol": "HDFCLIFE",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Event guard says BLOCK (a scheduled event is too close)."
-  },
-  {
-   "symbol": "ONGC",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "Event guard says BLOCK (a scheduled event is too close)."
-  }
- ],
- "markets_open": [
-  "crypto",
-  "nse",
-  "forex"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-12T08:11:38Z","debated":[],"skipped":[
+{"symbol":"USDJPY","market":"forex","direction":"LONG","reason":"Retake: the optimizer found no workable plan that passes your rules."},
+{"symbol":"NZDUSD","market":"forex","direction":"SHORT","reason":"Not an allowed pair for India forex rules."},
+{"symbol":"USDCHF","market":"forex","direction":"LONG","reason":"Not an allowed pair for India forex rules."},
+{"symbol":"EURUSD","market":"forex","direction":"SHORT","reason":"The optimizer found no workable plan."},
+{"symbol":"NVDAB","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."},
+{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."},
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."},
+{"symbol":"HDFCLIFE","market":"nse","direction":"LONG","reason":"Event guard BLOCK and no edge found."},
+{"symbol":"ONGC","market":"nse","direction":"SHORT","reason":"Event guard BLOCK and no edge found."},
+{"symbol":"BAJFINANCE","market":"nse","direction":"LONG","reason":"Event guard BLOCK and no edge found."}],
+"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}

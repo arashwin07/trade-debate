@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-12T05:09:46Z",
+  "scanned_utc": "2026-11-12T08:10:51Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -10,141 +10,141 @@
   ],
   "candidates": [
     {
-      "symbol": "USDCHF",
+      "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": 0.98,
-      "score": 10.224,
-      "why": "+0.98% today",
-      "direction": "LONG"
+      "change_pct": -0.94,
+      "score": 9.776,
+      "why": "-0.94% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -7.16,
-      "score": 8.725,
-      "why": "-7.16% in 24h on $131M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BAJFINANCE",
-      "market": "nse",
-      "change_pct": 4.7,
-      "score": 5.566,
-      "why": "+4.70% today, volume 0.5x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "NZDUSD",
-      "market": "forex",
-      "change_pct": -0.87,
-      "score": 9.088,
-      "why": "-0.87% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "EURUSD",
-      "market": "forex",
-      "change_pct": -0.78,
-      "score": 8.144,
-      "why": "-0.78% today",
+      "change_pct": -6.68,
+      "score": 8.162,
+      "why": "-6.68% in 24h on $134M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "HDFCLIFE",
       "market": "nse",
-      "change_pct": 3.28,
-      "score": 4.303,
-      "why": "+3.28% today, volume 1.1x 20-day average",
+      "change_pct": 3.91,
+      "score": 5.747,
+      "why": "+3.91% today, volume 2.0x 20-day average",
       "direction": "LONG"
+    },
+    {
+      "symbol": "USDCHF",
+      "market": "forex",
+      "change_pct": 0.84,
+      "score": 8.704,
+      "why": "+0.84% today",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "EURUSD",
+      "market": "forex",
+      "change_pct": -0.69,
+      "score": 7.224,
+      "why": "-0.69% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "ONGC",
       "market": "nse",
-      "change_pct": -3.36,
-      "score": 4.106,
-      "why": "-3.36% today, volume 0.7x 20-day average",
+      "change_pct": -4.11,
+      "score": 5.686,
+      "why": "-4.11% today, volume 1.4x 20-day average",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "market": "nse",
+      "change_pct": 4.37,
+      "score": 5.61,
+      "why": "+4.37% today, volume 0.9x 20-day average",
+      "direction": "LONG"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -2.83,
-      "score": 3.695,
-      "why": "-2.83% in 24h on $204M Binance volume",
+      "change_pct": -1.29,
+      "score": 1.646,
+      "why": "-1.29% in 24h on $180M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "USDCHF",
-      "market": "forex",
-      "change_pct": 0.98,
-      "score": 10.224,
-      "why": "+0.98% today",
-      "direction": "LONG"
-    },
-    {
       "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -0.87,
-      "score": 9.088,
-      "why": "-0.87% today",
+      "change_pct": -0.94,
+      "score": 9.776,
+      "why": "-0.94% today",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "USDCHF",
+      "market": "forex",
+      "change_pct": 0.84,
+      "score": 8.704,
+      "why": "+0.84% today",
+      "direction": "LONG"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -7.16,
-      "score": 8.725,
-      "why": "-7.16% in 24h on $131M Binance volume",
+      "change_pct": -6.68,
+      "score": 8.162,
+      "why": "-6.68% in 24h on $134M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.78,
-      "score": 8.144,
-      "why": "-0.78% today",
+      "change_pct": -0.69,
+      "score": 7.224,
+      "why": "-0.69% today",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "BAJFINANCE",
-      "market": "nse",
-      "change_pct": 4.7,
-      "score": 5.566,
-      "why": "+4.70% today, volume 0.5x 20-day average",
-      "direction": "LONG"
     },
     {
       "symbol": "HDFCLIFE",
       "market": "nse",
-      "change_pct": 3.28,
-      "score": 4.303,
-      "why": "+3.28% today, volume 1.1x 20-day average",
+      "change_pct": 3.91,
+      "score": 5.747,
+      "why": "+3.91% today, volume 2.0x 20-day average",
       "direction": "LONG"
     },
     {
       "symbol": "ONGC",
       "market": "nse",
-      "change_pct": -3.36,
-      "score": 4.106,
-      "why": "-3.36% today, volume 0.7x 20-day average",
+      "change_pct": -4.11,
+      "score": 5.686,
+      "why": "-4.11% today, volume 1.4x 20-day average",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "market": "nse",
+      "change_pct": 4.37,
+      "score": 5.61,
+      "why": "+4.37% today, volume 0.9x 20-day average",
+      "direction": "LONG"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -2.83,
-      "score": 3.695,
-      "why": "-2.83% in 24h on $204M Binance volume",
+      "change_pct": -1.29,
+      "score": 1.646,
+      "why": "-1.29% in 24h on $180M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "XRP",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -1.12,
-      "score": 1.32,
-      "why": "-1.12% in 24h on $103M Binance volume",
+      "change_pct": -0.82,
+      "score": 1.178,
+      "why": "-0.82% in 24h on $355M Binance volume",
       "direction": "SHORT"
     }
   ]
