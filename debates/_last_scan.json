@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-11T08:11:24Z",
+  "scanned_utc": "2026-11-12T05:09:46Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -10,142 +10,142 @@
   ],
   "candidates": [
     {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -12.97,
-      "score": 17.953,
-      "why": "-12.97% in 24h on $284M Binance volume",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 1.0,
-      "score": 10.456,
-      "why": "+1.00% today",
+      "change_pct": 0.98,
+      "score": 10.224,
+      "why": "+0.98% today",
       "direction": "LONG"
     },
     {
-      "symbol": "M&M",
-      "market": "nse",
-      "change_pct": 4.39,
-      "score": 5.98,
-      "why": "+4.39% today, volume 1.3x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "GBPUSD",
-      "market": "forex",
-      "change_pct": -0.83,
-      "score": 8.616,
-      "why": "-0.83% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.69,
-      "score": 7.136,
-      "why": "-0.69% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "TRENT",
-      "market": "nse",
-      "change_pct": 3.35,
-      "score": 4.467,
-      "why": "+3.35% today, volume 1.2x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "SOL",
+      "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -3.14,
-      "score": 4.152,
-      "why": "-3.14% in 24h on $221M Binance volume",
+      "change_pct": -7.16,
+      "score": 8.725,
+      "why": "-7.16% in 24h on $131M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "XRP",
+      "symbol": "BAJFINANCE",
+      "market": "nse",
+      "change_pct": 4.7,
+      "score": 5.566,
+      "why": "+4.70% today, volume 0.5x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -0.87,
+      "score": 9.088,
+      "why": "-0.87% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EURUSD",
+      "market": "forex",
+      "change_pct": -0.78,
+      "score": 8.144,
+      "why": "-0.78% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "HDFCLIFE",
+      "market": "nse",
+      "change_pct": 3.28,
+      "score": 4.303,
+      "why": "+3.28% today, volume 1.1x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ONGC",
+      "market": "nse",
+      "change_pct": -3.36,
+      "score": 4.106,
+      "why": "-3.36% today, volume 0.7x 20-day average",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -3.02,
-      "score": 3.811,
-      "why": "-3.02% in 24h on $165M Binance volume",
+      "change_pct": -2.83,
+      "score": 3.695,
+      "why": "-2.83% in 24h on $204M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -12.97,
-      "score": 17.953,
-      "why": "-12.97% in 24h on $284M Binance volume",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 1.0,
-      "score": 10.456,
-      "why": "+1.00% today",
+      "change_pct": 0.98,
+      "score": 10.224,
+      "why": "+0.98% today",
       "direction": "LONG"
     },
     {
-      "symbol": "GBPUSD",
+      "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -0.83,
-      "score": 8.616,
-      "why": "-0.83% today",
+      "change_pct": -0.87,
+      "score": 9.088,
+      "why": "-0.87% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.69,
-      "score": 7.136,
-      "why": "-0.69% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "M&M",
-      "market": "nse",
-      "change_pct": 4.39,
-      "score": 5.98,
-      "why": "+4.39% today, volume 1.3x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "TRENT",
-      "market": "nse",
-      "change_pct": 3.35,
-      "score": 4.467,
-      "why": "+3.35% today, volume 1.2x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "SOL",
+      "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -3.14,
-      "score": 4.152,
-      "why": "-3.14% in 24h on $221M Binance volume",
+      "change_pct": -7.16,
+      "score": 8.725,
+      "why": "-7.16% in 24h on $131M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EURUSD",
+      "market": "forex",
+      "change_pct": -0.78,
+      "score": 8.144,
+      "why": "-0.78% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BAJFINANCE",
+      "market": "nse",
+      "change_pct": 4.7,
+      "score": 5.566,
+      "why": "+4.70% today, volume 0.5x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "HDFCLIFE",
+      "market": "nse",
+      "change_pct": 3.28,
+      "score": 4.303,
+      "why": "+3.28% today, volume 1.1x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ONGC",
+      "market": "nse",
+      "change_pct": -3.36,
+      "score": 4.106,
+      "why": "-3.36% today, volume 0.7x 20-day average",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -2.83,
+      "score": 3.695,
+      "why": "-2.83% in 24h on $204M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "XRP",
       "market": "crypto",
-      "change_pct": -3.02,
-      "score": 3.811,
-      "why": "-3.02% in 24h on $165M Binance volume",
+      "change_pct": -1.12,
+      "score": 1.32,
+      "why": "-1.12% in 24h on $103M Binance volume",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "EICHERMOT",
-      "market": "nse",
-      "change_pct": 2.27,
-      "score": 3.001,
-      "why": "+2.27% today, volume 1.1x 20-day average",
-      "direction": "LONG"
     }
   ]
 }

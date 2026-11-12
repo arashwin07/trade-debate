@@ -1,60 +1,66 @@
 {
- "scanned_utc": "2026-11-11T08:12:00Z",
+ "scanned_utc": "2026-11-12T05:10:35Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
+   "symbol": "USD/JPY",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "Retake condition fired, but the plan optimizer found no workable plan, so a debate would only confirm SKIP."
   },
   {
-   "symbol": "SOL",
-   "market": "crypto",
+   "symbol": "EURUSD",
+   "market": "forex",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
-  },
-  {
-   "symbol": "XRP",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your settings."
+   "reason": "The plan optimizer found no workable plan that passes your rules."
   },
   {
    "symbol": "USDCHF",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
+   "reason": "Pair is not in your allowed India forex list."
   },
   {
-   "symbol": "GBPUSD",
+   "symbol": "NZDUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
+   "reason": "Pair is not in your allowed India forex list."
   },
   {
-   "symbol": "AUDUSD",
-   "market": "forex",
+   "symbol": "NVDAB",
+   "market": "crypto",
    "direction": "SHORT",
-   "reason": "Not an India-allowed forex pair; optimizer also found no plan."
+   "reason": "Shorting crypto is not allowed by your risk settings."
   },
   {
-   "symbol": "M&M",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test (best average -0.16R)."
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed by your risk settings."
   },
   {
-   "symbol": "TRENT",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test."
+   "symbol": "XRP",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed by your risk settings."
   },
   {
-   "symbol": "EICHERMOT",
+   "symbol": "BAJFINANCE",
    "market": "nse",
    "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test (best average -0.11R)."
+   "reason": "Event guard says BLOCK (a scheduled event is too close)."
+  },
+  {
+   "symbol": "HDFCLIFE",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "Event guard says BLOCK (a scheduled event is too close)."
+  },
+  {
+   "symbol": "ONGC",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "Event guard says BLOCK (a scheduled event is too close)."
   }
  ],
  "markets_open": [
