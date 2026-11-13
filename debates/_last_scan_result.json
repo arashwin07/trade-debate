@@ -1,60 +1,66 @@
 {
- "scanned_utc": "2026-11-13T05:10:30Z",
+ "scanned_utc": "2026-11-13T08:15:00Z",
  "debated": [],
  "skipped": [
-  {
-   "symbol": "USDJPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no edge, so a debate would only confirm SKIP; it stays in the retake queue."
-  },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings."
+   "reason": "Crypto shorting is switched off in your settings."
   },
   {
    "symbol": "ETH",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings."
+   "reason": "Crypto shorting is switched off in your settings."
+  },
+  {
+   "symbol": "BNB",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Crypto shorting is switched off in your settings."
   },
   {
    "symbol": "AUDUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Not on the India-allowed forex pair list."
+   "reason": "The code found no plan that pays at least 1.5x the risk after costs."
   },
   {
    "symbol": "USDINR",
    "market": "forex",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan."
+   "reason": "The code found no plan that pays at least 1.5x the risk after costs."
   },
   {
-   "symbol": "NZDUSD",
+   "symbol": "USDCHF",
    "market": "forex",
-   "direction": "SHORT",
-   "reason": "Not on the India-allowed forex pair list."
+   "direction": "LONG",
+   "reason": "USDCHF is not on the India-allowed forex list (and the optimizer found no edge)."
   },
   {
    "symbol": "SHRIRAMFIN",
    "market": "nse",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no edge."
+   "reason": "The optimizer found no plan with a real edge."
   },
   {
    "symbol": "MARUTI",
    "market": "nse",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no edge."
+   "reason": "The optimizer found no plan with a real edge."
+  },
+  {
+   "symbol": "GRASIM",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "Quarterly results due in about 3.8 hours (event guard BLOCK)."
+  },
+  {
+   "symbol": "USD/JPY",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "Retake condition not met yet; still waiting in the retake queue."
   }
  ],
  "markets_open": [

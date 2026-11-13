@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-13T05:09:51Z",
+  "scanned_utc": "2026-11-13T08:11:22Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -12,65 +12,65 @@
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -6.99,
-      "score": 13.859,
-      "why": "-6.99% in 24h on $1,718M Binance volume",
+      "change_pct": -6.64,
+      "score": 13.583,
+      "why": "-6.64% in 24h on $2,017M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.59,
-      "score": 6.096,
-      "why": "-0.59% today",
+      "change_pct": -0.66,
+      "score": 6.872,
+      "why": "-0.66% today",
       "direction": "SHORT"
     },
     {
       "symbol": "SHRIRAMFIN",
       "market": "nse",
-      "change_pct": -2.54,
-      "score": 2.906,
-      "why": "-2.54% today, volume 0.4x 20-day average",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -8.99,
-      "score": 11.626,
-      "why": "-8.99% in 24h on $193M Binance volume",
+      "change_pct": -3.24,
+      "score": 3.996,
+      "why": "-3.24% today, volume 0.7x 20-day average",
       "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -6.21,
-      "score": 10.189,
-      "why": "-6.21% in 24h on $675M Binance volume",
+      "change_pct": -5.55,
+      "score": 9.418,
+      "why": "-5.55% in 24h on $793M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BNB",
+      "market": "crypto",
+      "change_pct": -6.64,
+      "score": 8.181,
+      "why": "-6.64% in 24h on $141M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.48,
-      "score": 5.016,
-      "why": "+0.48% today",
+      "change_pct": 0.59,
+      "score": 6.096,
+      "why": "+0.59% today",
       "direction": "LONG"
     },
     {
-      "symbol": "NZDUSD",
+      "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": -0.37,
-      "score": 3.84,
-      "why": "-0.37% today",
-      "direction": "SHORT"
+      "change_pct": 0.44,
+      "score": 4.536,
+      "why": "+0.44% today",
+      "direction": "LONG"
     },
     {
       "symbol": "MARUTI",
       "market": "nse",
-      "change_pct": -1.99,
-      "score": 2.132,
-      "why": "-1.99% today, volume 0.2x 20-day average",
+      "change_pct": -2.24,
+      "score": 2.687,
+      "why": "-2.24% today, volume 0.6x 20-day average",
       "direction": "SHORT"
     }
   ],
@@ -78,73 +78,73 @@
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -6.99,
-      "score": 13.859,
-      "why": "-6.99% in 24h on $1,718M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -8.99,
-      "score": 11.626,
-      "why": "-8.99% in 24h on $193M Binance volume",
+      "change_pct": -6.64,
+      "score": 13.583,
+      "why": "-6.64% in 24h on $2,017M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -6.21,
-      "score": 10.189,
-      "why": "-6.21% in 24h on $675M Binance volume",
+      "change_pct": -5.55,
+      "score": 9.418,
+      "why": "-5.55% in 24h on $793M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BNB",
+      "market": "crypto",
+      "change_pct": -6.64,
+      "score": 8.181,
+      "why": "-6.64% in 24h on $141M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.59,
-      "score": 6.096,
-      "why": "-0.59% today",
+      "change_pct": -0.66,
+      "score": 6.872,
+      "why": "-0.66% today",
       "direction": "SHORT"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.48,
-      "score": 5.016,
-      "why": "+0.48% today",
+      "change_pct": 0.59,
+      "score": 6.096,
+      "why": "+0.59% today",
       "direction": "LONG"
     },
     {
-      "symbol": "NZDUSD",
+      "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": -0.37,
-      "score": 3.84,
-      "why": "-0.37% today",
-      "direction": "SHORT"
+      "change_pct": 0.44,
+      "score": 4.536,
+      "why": "+0.44% today",
+      "direction": "LONG"
     },
     {
       "symbol": "SHRIRAMFIN",
       "market": "nse",
-      "change_pct": -2.54,
-      "score": 2.906,
-      "why": "-2.54% today, volume 0.4x 20-day average",
+      "change_pct": -3.24,
+      "score": 3.996,
+      "why": "-3.24% today, volume 0.7x 20-day average",
       "direction": "SHORT"
     },
     {
       "symbol": "MARUTI",
       "market": "nse",
-      "change_pct": -1.99,
-      "score": 2.132,
-      "why": "-1.99% today, volume 0.2x 20-day average",
+      "change_pct": -2.24,
+      "score": 2.687,
+      "why": "-2.24% today, volume 0.6x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "NESTLEIND",
+      "symbol": "GRASIM",
       "market": "nse",
-      "change_pct": -1.79,
-      "score": 1.868,
-      "why": "-1.79% today, volume 0.1x 20-day average",
+      "change_pct": -2.06,
+      "score": 2.63,
+      "why": "-2.06% today, volume 0.9x 20-day average",
       "direction": "SHORT"
     }
   ]
