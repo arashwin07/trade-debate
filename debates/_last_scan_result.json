@@ -1,71 +1,65 @@
 {
- "scanned_utc": "2026-11-12T18:10:55Z",
+ "scanned_utc": "2026-11-13T05:10:30Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "USD/JPY",
+   "symbol": "USDJPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake queue: the optimizer found no plan paying 1.5x the risk after costs, so the retake waits."
-  },
-  {
-   "symbol": "PLBL",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "The optimizer found no edge in the replays, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "BZ",
-   "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is turned off in your settings."
-  },
-  {
-   "symbol": "NBIS",
-   "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is turned off in your settings."
-  },
-  {
-   "symbol": "USDCHF",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "USDCHF is not on your India-allowed forex list (and the optimizer found no edge)."
-  },
-  {
-   "symbol": "NZDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "NZDUSD is not on your India-allowed forex list."
-  },
-  {
-   "symbol": "EURUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The optimizer found no workable plan after costs."
-  },
-  {
-   "symbol": "NVDAB",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
+   "reason": "The plan optimizer found no edge, so a debate would only confirm SKIP; it stays in the retake queue."
   },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
+   "reason": "Shorting crypto is not allowed in your settings."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed in your settings."
+  },
+  {
+   "symbol": "ETH",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed in your settings."
+  },
+  {
+   "symbol": "AUDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Not on the India-allowed forex pair list."
+  },
+  {
+   "symbol": "USDINR",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan."
+  },
+  {
+   "symbol": "NZDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Not on the India-allowed forex pair list."
+  },
+  {
+   "symbol": "SHRIRAMFIN",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found no edge."
+  },
+  {
+   "symbol": "MARUTI",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found no edge."
   }
  ],
  "markets_open": [
   "crypto",
-  "us",
+  "nse",
   "forex"
  ],
  "health": "DEGRADED",
