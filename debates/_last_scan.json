@@ -1,150 +1,150 @@
 {
-  "scanned_utc": "2026-11-13T08:11:22Z",
+  "scanned_utc": "2026-11-13T15:33:30Z",
   "open_markets": [
     "crypto",
-    "nse",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -6.64,
-      "score": 13.583,
-      "why": "-6.64% in 24h on $2,017M Binance volume",
-      "direction": "SHORT"
+      "symbol": "MOD",
+      "market": "us",
+      "change_pct": 27.46,
+      "score": 41.625,
+      "why": "+27.46% today, volume 2.3x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.66,
-      "score": 6.872,
-      "why": "-0.66% today",
+      "change_pct": -0.84,
+      "score": 8.768,
+      "why": "-0.84% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "SHRIRAMFIN",
-      "market": "nse",
-      "change_pct": -3.24,
-      "score": 3.996,
-      "why": "-3.24% today, volume 0.7x 20-day average",
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": -4.19,
+      "score": 8.606,
+      "why": "-4.19% in 24h on $2,059M Binance volume",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "LFTO",
+      "market": "us",
+      "change_pct": 23.35,
+      "score": 39.353,
+      "why": "+23.35% today, volume 3.8x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "STN",
+      "market": "us",
+      "change_pct": 15.56,
+      "score": 19.917,
+      "why": "+15.56% today, volume 0.9x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -5.55,
-      "score": 9.418,
-      "why": "-5.55% in 24h on $793M Binance volume",
+      "change_pct": -3.79,
+      "score": 6.321,
+      "why": "-3.79% in 24h on $732M Binance volume",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "BNB",
-      "market": "crypto",
-      "change_pct": -6.64,
-      "score": 8.181,
-      "why": "-6.64% in 24h on $141M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "USDINR",
-      "market": "forex",
-      "change_pct": 0.59,
-      "score": 6.096,
-      "why": "+0.59% today",
-      "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.44,
-      "score": 4.536,
-      "why": "+0.44% today",
+      "change_pct": 0.61,
+      "score": 6.304,
+      "why": "+0.61% today",
       "direction": "LONG"
     },
     {
-      "symbol": "MARUTI",
-      "market": "nse",
-      "change_pct": -2.24,
-      "score": 2.687,
-      "why": "-2.24% today, volume 0.6x 20-day average",
-      "direction": "SHORT"
+      "symbol": "USDINR",
+      "market": "forex",
+      "change_pct": 0.57,
+      "score": 5.904,
+      "why": "+0.57% today",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
+      "symbol": "MOD",
+      "market": "us",
+      "change_pct": 27.46,
+      "score": 41.625,
+      "why": "+27.46% today, volume 2.3x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "LFTO",
+      "market": "us",
+      "change_pct": 23.35,
+      "score": 39.353,
+      "why": "+23.35% today, volume 3.8x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "STN",
+      "market": "us",
+      "change_pct": 15.56,
+      "score": 19.917,
+      "why": "+15.56% today, volume 0.9x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.84,
+      "score": 8.768,
+      "why": "-0.84% today",
+      "direction": "SHORT"
+    },
+    {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -6.64,
-      "score": 13.583,
-      "why": "-6.64% in 24h on $2,017M Binance volume",
+      "change_pct": -4.19,
+      "score": 8.606,
+      "why": "-4.19% in 24h on $2,059M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -5.55,
-      "score": 9.418,
-      "why": "-5.55% in 24h on $793M Binance volume",
+      "change_pct": -3.79,
+      "score": 6.321,
+      "why": "-3.79% in 24h on $732M Binance volume",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "BNB",
-      "market": "crypto",
-      "change_pct": -6.64,
-      "score": 8.181,
-      "why": "-6.64% in 24h on $141M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.66,
-      "score": 6.872,
-      "why": "-0.66% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "USDINR",
-      "market": "forex",
-      "change_pct": 0.59,
-      "score": 6.096,
-      "why": "+0.59% today",
-      "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.44,
-      "score": 4.536,
-      "why": "+0.44% today",
+      "change_pct": 0.61,
+      "score": 6.304,
+      "why": "+0.61% today",
       "direction": "LONG"
     },
     {
-      "symbol": "SHRIRAMFIN",
-      "market": "nse",
-      "change_pct": -3.24,
-      "score": 3.996,
-      "why": "-3.24% today, volume 0.7x 20-day average",
-      "direction": "SHORT"
+      "symbol": "USDINR",
+      "market": "forex",
+      "change_pct": 0.57,
+      "score": 5.904,
+      "why": "+0.57% today",
+      "direction": "LONG"
     },
     {
-      "symbol": "MARUTI",
-      "market": "nse",
-      "change_pct": -2.24,
-      "score": 2.687,
-      "why": "-2.24% today, volume 0.6x 20-day average",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "GRASIM",
-      "market": "nse",
-      "change_pct": -2.06,
-      "score": 2.63,
-      "why": "-2.06% today, volume 0.9x 20-day average",
+      "symbol": "BNB",
+      "market": "crypto",
+      "change_pct": -3.14,
+      "score": 3.816,
+      "why": "-3.14% in 24h on $128M Binance volume",
       "direction": "SHORT"
     }
   ]

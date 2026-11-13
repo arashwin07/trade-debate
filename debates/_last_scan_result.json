@@ -1,73 +1,12 @@
-{
- "scanned_utc": "2026-11-13T08:15:00Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings."
-  },
-  {
-   "symbol": "BNB",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings."
-  },
-  {
-   "symbol": "AUDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The code found no plan that pays at least 1.5x the risk after costs."
-  },
-  {
-   "symbol": "USDINR",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "The code found no plan that pays at least 1.5x the risk after costs."
-  },
-  {
-   "symbol": "USDCHF",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "USDCHF is not on the India-allowed forex list (and the optimizer found no edge)."
-  },
-  {
-   "symbol": "SHRIRAMFIN",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "The optimizer found no plan with a real edge."
-  },
-  {
-   "symbol": "MARUTI",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "The optimizer found no plan with a real edge."
-  },
-  {
-   "symbol": "GRASIM",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "Quarterly results due in about 3.8 hours (event guard BLOCK)."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake condition not met yet; still waiting in the retake queue."
-  }
- ],
- "markets_open": [
-  "crypto",
-  "nse",
-  "forex"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-13T15:40:00Z","debated":[],"skipped":[
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake condition met but the plan optimizer found no workable plan."},
+{"symbol":"MOD","market":"us","direction":"LONG","reason":"Optimizer found no edge in replays."},
+{"symbol":"LFTO","market":"us","direction":"LONG","reason":"Optimizer found no edge in replays."},
+{"symbol":"STN","market":"us","direction":"LONG","reason":"Optimizer found no edge in replays."},
+{"symbol":"AUDUSD","market":"forex","direction":"SHORT","reason":"Pair not in the India-allowed forex list."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Crypto shorting is not allowed."},
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Crypto shorting is not allowed."},
+{"symbol":"BNB","market":"crypto","direction":"SHORT","reason":"Crypto shorting is not allowed."},
+{"symbol":"USDCHF","market":"forex","direction":"LONG","reason":"Pair not in the India-allowed forex list."},
+{"symbol":"USDINR","market":"forex","direction":"LONG","reason":"Optimizer found no workable plan."}],
+"markets_open":["crypto","us","forex"],"health":"DEGRADED","budget_left":8}
