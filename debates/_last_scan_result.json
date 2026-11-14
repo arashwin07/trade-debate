@@ -1,6 +1,6 @@
-{"scanned_utc":"2026-11-14T00:05:00Z","debated":[],"skipped":[
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings (and the optimizer found no workable plan)."},
-{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings (and the optimizer found no workable plan)."},
-{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings (and the optimizer found no workable plan)."},
-{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake is queued but forex is closed for the weekend and this scan covers crypto only; it stays queued."}],
+{"scanned_utc":"2026-11-14T06:06:10Z","debated":[],"skipped":[
+{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and the optimizer found no workable plan)."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and the optimizer found no workable plan)."},
+{"symbol":"XRP","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and the optimizer found no workable plan)."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake is queued but the forex market is closed for the weekend; it stays in the queue."}],
 "markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
