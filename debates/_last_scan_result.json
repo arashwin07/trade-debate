@@ -1,5 +1,6 @@
-{"scanned_utc":"2026-11-14T12:06:55Z","debated":[],"skipped":[
-{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings (also: optimizer found no edge)."},
-{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings (also: optimizer found no plan)."},
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings (also: optimizer found no plan)."}],
+{"scanned_utc":"2026-11-14T18:07:00Z","debated":[],"skipped":[
+{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings."},
+{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed in your settings."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake is waiting: forex is closed for the weekend."}],
 "markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
