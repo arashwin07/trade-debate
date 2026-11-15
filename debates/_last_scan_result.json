@@ -1,35 +1,5 @@
-{
- "scanned_utc": "2026-11-15T00:07:00Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "NEAR",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is not allowed by your risk settings (allow_short.crypto is false)."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is not allowed by your risk settings (allow_short.crypto is false)."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is not allowed by your risk settings (allow_short.crypto is false)."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake is queued but the forex market is closed for the weekend, so it waits."
-  }
- ],
- "markets_open": [
-  "crypto"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-15T06:06:00Z","debated":[],"skipped":[
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto=false)."},
+{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto=false)."},
+{"symbol":"NEAR","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto=false)."}],
+"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
