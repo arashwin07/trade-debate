@@ -1,58 +1,58 @@
 {
-  "scanned_utc": "2026-11-14T18:05:23Z",
+  "scanned_utc": "2026-11-15T00:05:48Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
+      "symbol": "NEAR",
+      "market": "crypto",
+      "change_pct": -12.47,
+      "score": 15.005,
+      "why": "-12.47% in 24h on $120M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -8.6,
+      "score": 14.895,
+      "why": "-8.60% in 24h on $877M Binance volume",
+      "direction": "SHORT"
+    },
+    {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -9.18,
-      "score": 12.728,
-      "why": "-9.18% in 24h on $287M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -8.66,
-      "score": 10.808,
-      "why": "-8.66% in 24h on $154M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -4.43,
-      "score": 8.728,
-      "why": "-4.43% in 24h on $1,667M Binance volume",
+      "change_pct": -10.32,
+      "score": 14.796,
+      "why": "-10.32% in 24h on $342M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
+      "symbol": "NEAR",
+      "market": "crypto",
+      "change_pct": -12.47,
+      "score": 15.005,
+      "why": "-12.47% in 24h on $120M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -8.6,
+      "score": 14.895,
+      "why": "-8.60% in 24h on $877M Binance volume",
+      "direction": "SHORT"
+    },
+    {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -9.18,
-      "score": 12.728,
-      "why": "-9.18% in 24h on $287M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -8.66,
-      "score": 10.808,
-      "why": "-8.66% in 24h on $154M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -4.43,
-      "score": 8.728,
-      "why": "-4.43% in 24h on $1,667M Binance volume",
+      "change_pct": -10.32,
+      "score": 14.796,
+      "why": "-10.32% in 24h on $342M Binance volume",
       "direction": "SHORT"
     }
   ]
