@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-15T06:05:41Z",
+  "scanned_utc": "2026-11-15T12:05:33Z",
   "open_markets": [
     "crypto"
   ],
@@ -8,25 +8,25 @@
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -6.06,
-      "score": 10.824,
-      "why": "-6.06% in 24h on $1,019M Binance volume",
+      "change_pct": -4.72,
+      "score": 8.586,
+      "why": "-4.72% in 24h on $1,114M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -7.28,
-      "score": 10.716,
-      "why": "-7.28% in 24h on $393M Binance volume",
+      "change_pct": -5.06,
+      "score": 7.545,
+      "why": "-5.06% in 24h on $421M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "NEAR",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -7.91,
-      "score": 9.637,
-      "why": "-7.91% in 24h on $130M Binance volume",
+      "change_pct": -2.93,
+      "score": 6.324,
+      "why": "-2.93% in 24h on $2,695M Binance volume",
       "direction": "SHORT"
     }
   ],
@@ -34,25 +34,25 @@
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -6.06,
-      "score": 10.824,
-      "why": "-6.06% in 24h on $1,019M Binance volume",
+      "change_pct": -4.72,
+      "score": 8.586,
+      "why": "-4.72% in 24h on $1,114M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -7.28,
-      "score": 10.716,
-      "why": "-7.28% in 24h on $393M Binance volume",
+      "change_pct": -5.06,
+      "score": 7.545,
+      "why": "-5.06% in 24h on $421M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "NEAR",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -7.91,
-      "score": 9.637,
-      "why": "-7.91% in 24h on $130M Binance volume",
+      "change_pct": -2.93,
+      "score": 6.324,
+      "why": "-2.93% in 24h on $2,695M Binance volume",
       "direction": "SHORT"
     }
   ]
