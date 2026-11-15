@@ -1,35 +1,5 @@
-{
- "scanned_utc": "2026-11-15T12:05:40Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings, and the market is down today."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings, and the market is down today."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed in your settings, and the market is down today."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake is queued but the forex market is closed for the weekend; it waits for the open."
-  }
- ],
- "markets_open": [
-  "crypto"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-15T18:06:00Z","debated":[],"skipped":[
+{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan paying at least 1.5x the risk after costs, so a debate would only confirm SKIP."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings."},
+{"symbol":"SOL","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings."}],
+"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
