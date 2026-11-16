@@ -1,73 +1,12 @@
-{
- "scanned_utc": "2026-11-16T05:12:00Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "AUDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no plan paying 1.5x risk after costs."
-  },
-  {
-   "symbol": "EURJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no plan paying 1.5x risk after costs."
-  },
-  {
-   "symbol": "NZDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no plan paying 1.5x risk after costs."
-  },
-  {
-   "symbol": "ITC",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test (best target-first chance 11%)."
-  },
-  {
-   "symbol": "BHARTIARTL",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test (best target-first chance 9%)."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is off in your settings (and no workable plan)."
-  },
-  {
-   "symbol": "ASIANPAINT",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer: no plan passes the odds test (best target-first chance 6%)."
-  },
-  {
-   "symbol": "XRP",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is off in your settings."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "Optimizer found no plan paying 1.5x risk after costs."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake condition (hold above 158.85 for an hour) not met yet; still queued."
-  }
- ],
- "markets_open": [
-  "crypto",
-  "nse",
-  "forex"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-16T08:20:00Z","debated":[],"skipped":[
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake condition met, but the optimizer found no workable plan."},
+{"symbol":"AUDUSD","market":"forex","direction":"SHORT","reason":"Not in the India-allowed forex pairs (and no workable plan)."},
+{"symbol":"EURJPY","market":"forex","direction":"SHORT","reason":"Not in the India-allowed forex pairs (and no workable plan)."},
+{"symbol":"NZDUSD","market":"forex","direction":"SHORT","reason":"Not in the India-allowed forex pairs."},
+{"symbol":"ITC","market":"nse","direction":"LONG","reason":"Optimizer found no edge for any plan."},
+{"symbol":"APOLLOHOSP","market":"nse","direction":"LONG","reason":"Optimizer found no edge for any plan."},
+{"symbol":"TATACONSUM","market":"nse","direction":"LONG","reason":"Optimizer found no edge for any plan."},
+{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"Optimizer found no workable plan."},
+{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"Optimizer found no workable plan."},
+{"symbol":"SOL","market":"crypto","direction":"LONG","reason":"Optimizer found no workable plan."}],
+"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}
