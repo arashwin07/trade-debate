@@ -1,7 +1,7 @@
 {
-  "computed_utc": "2026-11-16T03:16:09Z",
-  "title": "Before NSE opens",
-  "which": "nse",
+  "computed_utc": "2026-11-16T14:17:06Z",
+  "title": "Before Wall Street opens",
+  "which": "us",
   "health": {
     "status": "DEGRADED",
     "critical_down": [],
@@ -9,43 +9,52 @@
   },
   "mood": [
     {
-      "market": "nse",
+      "market": "us",
       "indexes": [
         {
-          "symbol": "^NSEI",
-          "name": "NIFTY 50",
-          "price": 25144.3,
-          "change_today_pct": -0.61,
-          "vs_sma20_pct": 6.35,
-          "vs_sma50_pct": 7.77,
+          "symbol": "^GSPC",
+          "name": "S&P 500",
+          "price": 7561.67,
+          "change_today_pct": -0.4,
+          "vs_sma20_pct": -0.68,
+          "vs_sma50_pct": -1.38,
+          "trend": "DOWN"
+        },
+        {
+          "symbol": "^IXIC",
+          "name": "Nasdaq",
+          "price": 25136.273,
+          "change_today_pct": -0.91,
+          "vs_sma20_pct": -2.15,
+          "vs_sma50_pct": -4.61,
+          "trend": "DOWN"
+        },
+        {
+          "symbol": "^VIX",
+          "name": "VIX fear gauge",
+          "price": 20.59,
+          "change_today_pct": 6.68,
+          "vs_sma20_pct": 5.65,
+          "vs_sma50_pct": 18.2,
           "trend": "UP"
         },
         {
-          "symbol": "^NSEBANK",
-          "name": "Bank NIFTY",
-          "price": 61034.1,
-          "change_today_pct": -0.79,
-          "vs_sma20_pct": 8.03,
-          "vs_sma50_pct": 8.78,
-          "trend": "UP"
-        },
-        {
-          "symbol": "^INDIAVIX",
-          "name": "India VIX fear gauge",
-          "price": 15.495,
-          "change_today_pct": -6.77,
-          "vs_sma20_pct": -2.53,
-          "vs_sma50_pct": 10.66,
+          "symbol": "^TNX",
+          "name": "US 10-year yield",
+          "price": 5.139,
+          "change_today_pct": -0.29,
+          "vs_sma20_pct": 2.96,
+          "vs_sma50_pct": 1.45,
           "trend": "MIXED"
         },
         {
-          "symbol": "USDINR=X",
-          "name": "USD/INR",
-          "price": 94.23,
-          "change_today_pct": 0.21,
-          "vs_sma20_pct": -0.36,
-          "vs_sma50_pct": -1.12,
-          "trend": "DOWN"
+          "symbol": "DX-Y.NYB",
+          "name": "Dollar index",
+          "price": 103.48,
+          "change_today_pct": 0.07,
+          "vs_sma20_pct": 1.29,
+          "vs_sma50_pct": 1.95,
+          "trend": "UP"
         }
       ],
       "crypto_market": null,
@@ -57,56 +66,105 @@
         {
           "symbol": "BTC-USD",
           "name": "Bitcoin",
-          "price": 65063.17,
-          "change_today_pct": 1.46,
-          "vs_sma20_pct": -13.3,
-          "vs_sma50_pct": -18.42,
+          "price": 64443.33,
+          "change_today_pct": -1.32,
+          "vs_sma20_pct": -13.19,
+          "vs_sma50_pct": -18.79,
           "trend": "DOWN"
         },
         {
           "symbol": "^VIX",
           "name": "VIX fear gauge",
-          "price": 19.3,
-          "change_today_pct": 3.21,
-          "vs_sma20_pct": -0.42,
-          "vs_sma50_pct": 11.48,
-          "trend": "MIXED"
+          "price": 20.59,
+          "change_today_pct": 6.68,
+          "vs_sma20_pct": 5.65,
+          "vs_sma50_pct": 18.2,
+          "trend": "UP"
         }
       ],
       "crypto_market": {
-        "btc_dominance_pct": 59.41,
-        "total_mcap_change_24h_pct": -3.64
+        "btc_dominance_pct": 58.45,
+        "total_mcap_change_24h_pct": -4.31
       },
       "error": null
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "kind": "macro",
+      "title": "Unemployment Rate",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-17T07:00:00Z",
+      "minutes_from_now": 1003,
+      "forecast": 4.7,
+      "previous": 4.7,
+      "actual": null,
+      "tier": 1
+    },
+    {
+      "kind": "macro",
+      "title": "HMRC Payrolls Change",
+      "currency": "GBP",
+      "impact": "Medium",
+      "time_utc": "2026-11-17T07:00:00Z",
+      "minutes_from_now": 1003,
+      "forecast": null,
+      "previous": 13,
+      "actual": null,
+      "tier": 1
+    },
+    {
+      "kind": "macro",
+      "title": "Retail Sales Ex Autos MoM",
+      "currency": "USD",
+      "impact": "Medium",
+      "time_utc": "2026-11-17T13:30:00Z",
+      "minutes_from_now": 1393,
+      "forecast": 0.4,
+      "previous": 0.9,
+      "actual": null,
+      "tier": 1
+    },
+    {
+      "kind": "macro",
+      "title": "Retail Sales MoM",
+      "currency": "USD",
+      "impact": "High",
+      "time_utc": "2026-11-17T13:30:00Z",
+      "minutes_from_now": 1393,
+      "forecast": 0.2,
+      "previous": 0.8,
+      "actual": null,
+      "tier": 1
+    }
+  ],
   "event_notes": [],
   "overnight": [
     {
       "symbol": "BTC/USDT",
-      "price": 65105.24,
-      "change_pct": -0.19
+      "price": 64479.94,
+      "change_pct": -1.26
     },
     {
       "symbol": "ETH/USDT",
-      "price": 1822.78,
-      "change_pct": -0.1
+      "price": 1819.2,
+      "change_pct": -0.18
     },
     {
       "symbol": "EUR/USD",
-      "price": 1.102,
-      "change_pct": -0.27
+      "price": 1.1014,
+      "change_pct": -0.33
     },
     {
       "symbol": "USD/INR",
-      "price": 94.23,
-      "change_pct": 0.21
+      "price": 93.9225,
+      "change_pct": -0.12
     },
     {
       "symbol": "USD/JPY",
-      "price": 159.69,
-      "change_pct": -0.12
+      "price": 159.6,
+      "change_pct": -0.17
     }
   ],
   "watchlist": [],
