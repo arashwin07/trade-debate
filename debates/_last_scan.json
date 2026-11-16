@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-16T15:14:17Z",
+  "scanned_utc": "2026-11-16T18:10:15Z",
   "open_markets": [
     "crypto",
     "us",
@@ -10,142 +10,142 @@
   ],
   "candidates": [
     {
-      "symbol": "TU",
+      "symbol": "CGON",
       "market": "us",
-      "change_pct": 12.02,
-      "score": 18.29,
-      "why": "+12.02% today, volume 2.3x 3-month average (day gainers)",
+      "change_pct": 18.35,
+      "score": 33.728,
+      "why": "+18.35% today, volume 5.9x 3-month average (day gainers)",
       "direction": "LONG"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.87,
-      "score": 9.064,
-      "why": "-0.87% today",
+      "change_pct": -0.9,
+      "score": 9.408,
+      "why": "-0.90% today",
       "direction": "SHORT"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -3.92,
-      "score": 4.722,
-      "why": "-3.92% in 24h on $120M Binance volume",
+      "change_pct": -1.56,
+      "score": 1.907,
+      "why": "-1.56% in 24h on $131M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "SMMT",
       "market": "us",
-      "change_pct": -13.6,
-      "score": 18.129,
-      "why": "-13.60% today, volume 1.2x 3-month average (day losers)",
+      "change_pct": -14.95,
+      "score": 23.176,
+      "why": "-14.95% today, volume 2.6x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "GDS",
       "market": "us",
-      "change_pct": -11.86,
-      "score": 15.846,
-      "why": "-11.86% today, volume 1.2x 3-month average (day losers)",
+      "change_pct": -13.96,
+      "score": 22.843,
+      "why": "-13.96% today, volume 3.3x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -0.72,
-      "score": 7.456,
-      "why": "-0.72% today",
+      "change_pct": -0.73,
+      "score": 7.568,
+      "why": "-0.73% today",
       "direction": "SHORT"
     },
     {
       "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.58,
-      "score": 6.032,
-      "why": "-0.58% today",
+      "change_pct": -0.66,
+      "score": 6.912,
+      "why": "-0.66% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "SOL",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.14,
-      "score": 1.502,
-      "why": "-1.14% in 24h on $219M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 0.59,
+      "score": 1.114,
+      "why": "+0.59% in 24h on $1,345M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "TU",
+      "symbol": "CGON",
       "market": "us",
-      "change_pct": 12.02,
-      "score": 18.29,
-      "why": "+12.02% today, volume 2.3x 3-month average (day gainers)",
+      "change_pct": 18.35,
+      "score": 33.728,
+      "why": "+18.35% today, volume 5.9x 3-month average (day gainers)",
       "direction": "LONG"
     },
     {
       "symbol": "SMMT",
       "market": "us",
-      "change_pct": -13.6,
-      "score": 18.129,
-      "why": "-13.60% today, volume 1.2x 3-month average (day losers)",
+      "change_pct": -14.95,
+      "score": 23.176,
+      "why": "-14.95% today, volume 2.6x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "GDS",
       "market": "us",
-      "change_pct": -11.86,
-      "score": 15.846,
-      "why": "-11.86% today, volume 1.2x 3-month average (day losers)",
+      "change_pct": -13.96,
+      "score": 22.843,
+      "why": "-13.96% today, volume 3.3x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.87,
-      "score": 9.064,
-      "why": "-0.87% today",
+      "change_pct": -0.9,
+      "score": 9.408,
+      "why": "-0.90% today",
       "direction": "SHORT"
     },
     {
       "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -0.72,
-      "score": 7.456,
-      "why": "-0.72% today",
+      "change_pct": -0.73,
+      "score": 7.568,
+      "why": "-0.73% today",
       "direction": "SHORT"
     },
     {
       "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.58,
-      "score": 6.032,
-      "why": "-0.58% today",
+      "change_pct": -0.66,
+      "score": 6.912,
+      "why": "-0.66% today",
       "direction": "SHORT"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -3.92,
-      "score": 4.722,
-      "why": "-3.92% in 24h on $120M Binance volume",
+      "change_pct": -1.56,
+      "score": 1.907,
+      "why": "-1.56% in 24h on $131M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "SOL",
+      "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.14,
-      "score": 1.502,
-      "why": "-1.14% in 24h on $219M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 0.59,
+      "score": 1.114,
+      "why": "+0.59% in 24h on $1,345M Binance volume",
+      "direction": "LONG"
     },
     {
       "symbol": "XRP",
       "market": "crypto",
-      "change_pct": -0.76,
-      "score": 0.915,
-      "why": "-0.76% in 24h on $115M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 0.47,
+      "score": 0.566,
+      "why": "+0.47% in 24h on $113M Binance volume",
+      "direction": "LONG"
     }
   ]
 }
