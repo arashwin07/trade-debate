@@ -1,66 +1,60 @@
 {
- "scanned_utc": "2026-11-17T05:10:34Z",
+ "scanned_utc": "2026-11-17T08:10:00Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "USDINR",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "Event guard blocks it and the optimizer found no workable plan."
+  },
+  {
+   "symbol": "AUDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Not on your India-allowed forex pair list."
   },
   {
    "symbol": "NZDUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "EURJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "Not on your India-allowed forex pair list."
   },
   {
    "symbol": "ASIANPAINT",
    "market": "nse",
    "direction": "LONG",
-   "reason": "The code found no statistical edge in any plan."
+   "reason": "Optimizer found no edge in the replays."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "Optimizer found no workable plan."
   },
   {
    "symbol": "SOL",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "Optimizer found no workable plan."
   },
   {
-   "symbol": "HINDALCO",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "The code found no statistical edge in any plan."
-  },
-  {
-   "symbol": "SBIN",
+   "symbol": "AXISBANK",
    "market": "nse",
    "direction": "LONG",
-   "reason": "The code found no statistical edge in any plan."
+   "reason": "Optimizer found no edge in the replays."
+  },
+  {
+   "symbol": "COALINDIA",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "Event guard blocks it and the optimizer found no edge."
   },
   {
    "symbol": "ETH",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake condition (hourly close above 158.85) not met yet; still waiting in queue."
+   "reason": "Event guard blocks it and the optimizer found no workable plan."
   }
  ],
  "markets_open": [
