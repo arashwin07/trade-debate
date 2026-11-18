@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-18T05:09:36Z",
+  "scanned_utc": "2026-11-18T08:10:28Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -10,141 +10,141 @@
   ],
   "candidates": [
     {
-      "symbol": "USDINR",
-      "market": "forex",
-      "change_pct": -0.59,
-      "score": 6.096,
-      "why": "-0.59% today",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "TITAN",
       "market": "nse",
-      "change_pct": -3.42,
-      "score": 3.884,
-      "why": "-3.42% today, volume 0.4x 20-day average",
+      "change_pct": -4.26,
+      "score": 5.447,
+      "why": "-4.26% today, volume 0.9x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "ZEC",
+      "symbol": "XRP",
       "market": "crypto",
-      "change_pct": 2.93,
-      "score": 3.679,
-      "why": "+2.93% in 24h on $161M Binance volume",
+      "change_pct": 4.14,
+      "score": 4.885,
+      "why": "+4.14% in 24h on $103M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "USDINR",
+      "market": "forex",
+      "change_pct": -0.46,
+      "score": 4.768,
+      "why": "-0.46% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "CIPLA",
+      "market": "nse",
+      "change_pct": 2.91,
+      "score": 4.067,
+      "why": "+2.91% today, volume 1.5x 20-day average",
       "direction": "LONG"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 2.69,
-      "score": 3.561,
-      "why": "+2.69% in 24h on $221M Binance volume",
+      "change_pct": 2.94,
+      "score": 3.878,
+      "why": "+2.94% in 24h on $217M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.31,
-      "score": 3.192,
-      "why": "-0.31% today",
+      "change_pct": -0.36,
+      "score": 3.744,
+      "why": "-0.36% today",
       "direction": "SHORT"
     },
     {
       "symbol": "HDFCLIFE",
       "market": "nse",
-      "change_pct": -2.5,
-      "score": 2.743,
-      "why": "-2.50% today, volume 0.3x 20-day average",
+      "change_pct": -3.11,
+      "score": 3.69,
+      "why": "-3.11% today, volume 0.5x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.25,
-      "score": 2.608,
-      "why": "-0.25% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -1.57,
-      "score": 2.536,
-      "why": "-1.57% in 24h on $633M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 2.68,
+      "score": 3.361,
+      "why": "+2.68% in 24h on $158M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "USDINR",
-      "market": "forex",
-      "change_pct": -0.59,
-      "score": 6.096,
-      "why": "-0.59% today",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "TITAN",
       "market": "nse",
-      "change_pct": -3.42,
-      "score": 3.884,
-      "why": "-3.42% today, volume 0.4x 20-day average",
+      "change_pct": -4.26,
+      "score": 5.447,
+      "why": "-4.26% today, volume 0.9x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "ZEC",
+      "symbol": "XRP",
       "market": "crypto",
-      "change_pct": 2.93,
-      "score": 3.679,
-      "why": "+2.93% in 24h on $161M Binance volume",
+      "change_pct": 4.14,
+      "score": 4.885,
+      "why": "+4.14% in 24h on $103M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "USDINR",
+      "market": "forex",
+      "change_pct": -0.46,
+      "score": 4.768,
+      "why": "-0.46% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "CIPLA",
+      "market": "nse",
+      "change_pct": 2.91,
+      "score": 4.067,
+      "why": "+2.91% today, volume 1.5x 20-day average",
       "direction": "LONG"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 2.69,
-      "score": 3.561,
-      "why": "+2.69% in 24h on $221M Binance volume",
+      "change_pct": 2.94,
+      "score": 3.878,
+      "why": "+2.94% in 24h on $217M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.31,
-      "score": 3.192,
-      "why": "-0.31% today",
+      "change_pct": -0.36,
+      "score": 3.744,
+      "why": "-0.36% today",
       "direction": "SHORT"
     },
     {
       "symbol": "HDFCLIFE",
       "market": "nse",
-      "change_pct": -2.5,
-      "score": 2.743,
-      "why": "-2.50% today, volume 0.3x 20-day average",
+      "change_pct": -3.11,
+      "score": 3.69,
+      "why": "-3.11% today, volume 0.5x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.25,
-      "score": 2.608,
-      "why": "-0.25% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -1.57,
-      "score": 2.536,
-      "why": "-1.57% in 24h on $633M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 2.68,
+      "score": 3.361,
+      "why": "+2.68% in 24h on $158M Binance volume",
+      "direction": "LONG"
     },
     {
-      "symbol": "ADANIENT",
-      "market": "nse",
-      "change_pct": -2.01,
-      "score": 2.323,
-      "why": "-2.01% today, volume 0.4x 20-day average",
+      "symbol": "GBPJPY",
+      "market": "forex",
+      "change_pct": -0.24,
+      "score": 2.464,
+      "why": "-0.24% today",
       "direction": "SHORT"
     }
   ]

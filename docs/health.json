@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-18T05:09:23Z",
+  "checked_utc": "2026-11-18T08:10:19Z",
   "status": "DEGRADED",
   "critical_down": [],
   "markets_down": [],
@@ -9,7 +9,7 @@
       "critical": true,
       "market": "crypto",
       "ok": true,
-      "ms": 1192,
+      "ms": 1220,
       "note": "45 bytes"
     },
     {
@@ -17,7 +17,7 @@
       "critical": false,
       "market": "crypto",
       "ok": false,
-      "ms": 533,
+      "ms": 468,
       "note": "HTTPError: HTTP Error 451: "
     },
     {
@@ -25,7 +25,7 @@
       "critical": true,
       "market": "us",
       "ok": true,
-      "ms": 626,
+      "ms": 670,
       "note": "1731 bytes"
     },
     {
@@ -33,15 +33,15 @@
       "critical": true,
       "market": "nse",
       "ok": true,
-      "ms": 629,
-      "note": "1655 bytes"
+      "ms": 641,
+      "note": "1657 bytes"
     },
     {
       "name": "Yahoo forex",
       "critical": true,
       "market": "forex",
       "ok": true,
-      "ms": 1189,
+      "ms": 658,
       "note": "1697 bytes"
     },
     {
@@ -49,23 +49,23 @@
       "critical": true,
       "market": "all",
       "ok": true,
-      "ms": 673,
+      "ms": 672,
       "note": "28360 bytes"
     },
     {
       "name": "ForexFactory calendar (backup)",
       "critical": false,
       "market": "all",
-      "ok": true,
-      "ms": 488,
-      "note": "16848 bytes"
+      "ok": false,
+      "ms": 542,
+      "note": "HTTPError: HTTP Error 429: Too Many Requests"
     },
     {
       "name": "TradingView scanner (earnings + 2nd price)",
       "critical": false,
       "market": "us,nse",
       "ok": true,
-      "ms": 588,
+      "ms": 677,
       "note": "70 bytes"
     },
     {
@@ -73,7 +73,7 @@
       "critical": false,
       "market": "us",
       "ok": false,
-      "ms": 183,
+      "ms": 154,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
@@ -81,7 +81,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 155,
+      "ms": 161,
       "note": "216 bytes"
     },
     {
@@ -89,7 +89,7 @@
       "critical": false,
       "market": "crypto",
       "ok": false,
-      "ms": 171,
+      "ms": 165,
       "note": "HTTPError: HTTP Error 451: "
     },
     {
@@ -97,15 +97,15 @@
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 694,
-      "note": "135620 bytes"
+      "ms": 603,
+      "note": "133592 bytes"
     },
     {
       "name": "CNBC news",
       "critical": false,
       "market": "us",
       "ok": false,
-      "ms": 245,
+      "ms": 307,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
@@ -113,23 +113,23 @@
       "critical": false,
       "market": "nse",
       "ok": true,
-      "ms": 388,
-      "note": "38689 bytes"
+      "ms": 329,
+      "note": "34972 bytes"
     },
     {
       "name": "Cointelegraph news",
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 239,
-      "note": "53410 bytes"
+      "ms": 267,
+      "note": "53406 bytes"
     },
     {
       "name": "FXStreet news",
       "critical": false,
       "market": "forex",
       "ok": false,
-      "ms": 222,
+      "ms": 220,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     }
   ]
