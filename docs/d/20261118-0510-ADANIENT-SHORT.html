@@ -1,0 +1,819 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Short ADANIENT Debate</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one WhatsApp-style group chat column (max 780px) on a soft "wallpaper", sticky chat header + round stepper,
+   Judge cards centred between rounds, bottom sheets for every "tell me more". Light, Claude-style palette, by choice single-theme. */
+:root{
+  color-scheme: light;
+  --page:#faf9f5; --paper:#ffffff; --wall:#f1efe7; --ink:#141413; --ink-2:#3d3c37; --muted:#77756c; --line:#e5e2d6;
+  --clay:#d97757; --clay-ink:#b4532f; --clay-soft:#fbeee8;
+  --bull:#55702f; --bull-soft:#eef3e4; --bull-line:#c9d8b1;
+  --bear:#b0473c; --bear-soft:#fbeceb; --bear-line:#efc4bd;
+  --judge:#3b6894; --judge-soft:#eaf1f8; --judge-line:#c3d6ea;
+  --warn:#9a6a00; --warn-soft:#fbf3dc;
+  --shadow:0 1px 1.5px rgba(20,20,19,.08),0 1px 0 rgba(20,20,19,.03);
+  --f-ui:"Poppins",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-read:"Lora",Georgia,"Times New Roman",serif;
+  --f-num:"JetBrains Mono",ui-monospace,Consolas,monospace;
+  --r:14px;
+}
+*{box-sizing:border-box}
+html{background:var(--page)}
+body{margin:0;background:var(--page);color:var(--ink);font:15px/1.5 var(--f-ui);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--paper)}
+button{font:inherit;color:inherit}
+a{color:var(--clay-ink)}
+:focus-visible{outline:2px solid var(--clay);outline-offset:2px;border-radius:6px}
+.num{font-family:var(--f-num);font-variant-numeric:tabular-nums}
+.shell{max-width:780px;margin:0 auto;min-height:100vh;display:flex;flex-direction:column;background:var(--wall);
+  background-image:radial-gradient(rgba(20,20,19,.035) 1px,transparent 1.2px);background-size:22px 22px;
+  border-left:1px solid var(--line);border-right:1px solid var(--line)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--paper);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;gap:12px;padding-block:10px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.back{display:grid;place-items:center;width:36px;height:36px;border-radius:50%;text-decoration:none;color:var(--ink);flex:none}
+.back:hover{background:var(--page)}
+.stack{display:flex;flex:none}
+.stack .av{width:34px;height:34px;font-size:.8rem;border:2px solid var(--paper)}
+.stack .av+.av{margin-left:-12px}
+.ttl{min-width:0;flex:1}
+.ttl h1{margin:0;font-size:1rem;font-weight:600;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl p{margin:0;font-size:.78rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ttl p.typing{color:var(--bull)}
+.ibtn{flex:none;display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 12px;font-size:.8rem;font-weight:500;cursor:pointer}
+.ibtn:hover{border-color:var(--clay);color:var(--clay-ink)}
+.ibtn svg{width:16px;height:16px}
+@media (max-width:520px){.ibtn span{display:none}.ibtn{padding:8px}}
+
+/* stepper */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding-block:0 10px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.step{border:0;background:none;cursor:pointer;display:grid;gap:5px;text-align:left;padding:0}
+.step i{height:4px;border-radius:9px;background:var(--line);display:block}
+.step b{font-size:.7rem;font-weight:500;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.step.done i{background:var(--clay)} .step.done b{color:var(--ink-2)}
+.step.now i{background:linear-gradient(90deg,var(--clay) 40%,var(--line) 40%);animation:pulse 1.6s ease-in-out infinite}
+.step.now b{color:var(--clay-ink);font-weight:600}
+@keyframes pulse{50%{opacity:.55}}
+.step .sm{display:none}
+@media (max-width:560px){.step .lg{display:none}.step .sm{display:inline}}
+
+/* chat */
+.chat{flex:1;display:flex;flex-direction:column;gap:6px;padding-block:16px 24px;padding-left:max(12px,env(safe-area-inset-left,0px));padding-right:max(12px,env(safe-area-inset-right,0px))}
+.sys{align-self:center;max-width:92%;text-align:center;background:var(--paper);border:1px solid var(--line);color:var(--ink-2);font-size:.8rem;border-radius:10px;padding:6px 12px;box-shadow:var(--shadow);margin-block:6px}
+.divider{align-self:center;display:grid;justify-items:center;gap:2px;margin-block:18px 8px;scroll-margin-top:130px}
+.divider span{background:#e9ecef00;background:var(--ink);color:var(--page);font-size:.68rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+.divider small{font-size:.78rem;color:var(--muted);background:var(--wall);padding:0 6px}
+
+.welcome{background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:16px 16px 12px;margin-bottom:6px}
+.welcome h2{margin:0 0 4px;font-size:1.02rem;font-weight:600}
+.welcome>p{margin:0 0 12px;color:var(--ink-2);font-size:.88rem}
+.how{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.how div{display:grid;gap:4px;align-content:start;font-size:.8rem;color:var(--ink-2)}
+.how b{display:block;font-size:.84rem;color:var(--ink);font-weight:600}
+.how .ic{width:34px;height:34px;border-radius:10px;display:grid;place-items:center}
+.how .ic svg{width:18px;height:18px}
+.tips{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:.78rem;color:var(--muted)}
+.tips span{display:inline-flex;align-items:center;gap:6px}
+.demo-term{border-bottom:2px dotted var(--clay);color:var(--ink)}
+.demo-chip{font-size:.7rem;border:1px solid var(--line);border-radius:999px;padding:1px 7px;background:var(--page)}
+.welcome details summary{list-style:none;cursor:pointer}
+.welcome details summary::-webkit-details-marker{display:none}
+.wtoggle{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.wtoggle em{font-style:normal;font-size:.75rem;color:var(--muted)}
+@media (max-width:600px){.how{grid-template-columns:1fr 1fr}}
+
+.qcard{align-self:center;width:min(100%,560px);background:var(--paper);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;margin-block:6px}
+.qcard .qh{padding:14px 16px 10px}
+.qcard .eyebrow{font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-ink)}
+.qcard h2{margin:4px 0 6px;font-size:1.12rem;line-height:1.3;font-weight:600;text-wrap:balance}
+.qcard p{margin:0;font-family:var(--f-read);font-size:.95rem;color:var(--ink-2)}
+.qstats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}
+.qstats div{padding:10px 14px;display:grid;gap:1px}
+.qstats div+div{border-left:1px solid var(--line)}
+.qstats small{font-size:.7rem;color:var(--muted)}
+.qstats b{font-size:.95rem;font-weight:600}
+.up{color:var(--bull)} .down{color:var(--bear)}
+
+.row{display:flex;gap:8px;align-items:flex-end;max-width:88%;animation:rise .35s ease both}
+.row.bear{align-self:flex-end;flex-direction:row-reverse}
+.row.cont{margin-top:-2px}
+.row.cont .av{visibility:hidden}
+@keyframes rise{from{transform:translateY(6px);opacity:.4}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.row,.step.now i,.dots i{animation:none!important}}
+.av{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font-weight:600;font-size:.78rem;color:#fff;flex:none}
+.av.bull{background:var(--bull)} .av.bear{background:var(--bear)} .av.judge{background:var(--judge)}
+.bub{position:relative;min-width:0;background:var(--paper);border-radius:4px 14px 14px 14px;padding:8px 12px 6px;box-shadow:var(--shadow);border:1px solid transparent}
+.row.bull .bub{border-color:var(--bull-line)}
+.row.bear .bub{border-radius:14px 4px 14px 14px;background:#fffaf9;border-color:var(--bear-line)}
+.row.cont .bub{border-radius:14px}
+.who{display:flex;align-items:baseline;gap:6px;margin-bottom:2px;font-size:.78rem;font-weight:600}
+.row.bull .who{color:var(--bull)} .row.bear .who{color:var(--bear)}
+.who em{font-style:normal;font-weight:400;color:var(--muted);font-size:.72rem}
+.txt{font-family:var(--f-read);font-size:.98rem;line-height:1.5;color:var(--ink);overflow-wrap:anywhere}
+.quote{border-left:3px solid currentColor;background:rgba(20,20,19,.04);border-radius:6px;padding:4px 8px;margin:2px 0 6px;font-size:.78rem;color:var(--muted)}
+.row.bull .quote{border-left-color:var(--bear)} .row.bear .quote{border-left-color:var(--bull)}
+.quote b{display:block;font-size:.72rem;font-weight:600}
+.row.bull .quote b{color:var(--bear)} .row.bear .quote b{color:var(--bull)}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}
+.chip{display:inline-flex;align-items:center;gap:5px;max-width:100%;border:1px solid var(--line);background:var(--page);border-radius:999px;padding:3px 9px 3px 7px;font-size:.74rem;cursor:pointer;color:var(--ink-2)}
+.chip:hover{border-color:var(--clay);color:var(--clay-ink)}
+.chip svg{width:13px;height:13px;flex:none}
+.chip span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.meta{display:flex;justify-content:flex-end;gap:6px;font-size:.68rem;color:var(--muted);margin-top:3px}
+.term{border:0;background:none;padding:0;font:inherit;color:inherit;border-bottom:2px dotted var(--clay);cursor:help}
+.term:hover{background:var(--clay-soft)}
+.more{align-self:center;border:1px dashed var(--line);background:var(--paper);border-radius:999px;padding:6px 14px;font-size:.78rem;color:var(--ink-2);cursor:pointer;margin-top:6px}
+.more:hover{border-color:var(--clay);color:var(--clay-ink)}
+
+.typing{display:flex;gap:8px;align-items:center;font-size:.8rem;color:var(--muted)}
+.typing.bear{align-self:flex-end;flex-direction:row-reverse}
+.dots{display:inline-flex;gap:4px;background:var(--paper);border-radius:14px;padding:10px 12px;box-shadow:var(--shadow)}
+.dots i{width:7px;height:7px;border-radius:50%;background:var(--muted);animation:blink 1.2s infinite}
+.dots i:nth-child(2){animation-delay:.2s}.dots i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+
+/* judge cards */
+.jcard{align-self:center;width:min(100%,620px);background:var(--paper);border:1px solid var(--judge-line);border-radius:var(--r);box-shadow:0 2px 10px rgba(59,104,148,.08);overflow:hidden;margin-block:10px 4px;scroll-margin-top:130px}
+.jh{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--judge-soft);border-bottom:1px solid var(--judge-line)}
+.jh .av{width:30px;height:30px}
+.jh div{min-width:0;flex:1}
+.jh b{display:block;font-size:.9rem;font-weight:600;color:var(--judge)}
+.jh small{font-size:.74rem;color:var(--muted)}
+.jb{padding:14px 16px;display:grid;gap:12px}
+.jb .lead{margin:0;font-weight:600;font-size:1.02rem;line-height:1.35;text-wrap:balance}
+.jb .read{margin:0;font-family:var(--f-read);font-size:.96rem;color:var(--ink-2)}
+.score{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.score .nm{font-size:.78rem;font-weight:600}
+.score .nm.bull{color:var(--bull)} .score .nm.bear{color:var(--bear)}
+.tug{height:12px;border-radius:99px;background:var(--bear);overflow:hidden;position:relative}
+.tug span{position:absolute;inset:0 auto 0 0;background:var(--bull);border-right:2px solid var(--paper)}
+.score .n{font:600 .95rem var(--f-num)}
+.best{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.best div{border-radius:10px;padding:8px 10px;font-size:.84rem}
+.best div b{display:block;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:2px}
+.best .b{background:var(--bull-soft)} .best .b b{color:var(--bull)}
+.best .r{background:var(--bear-soft)} .best .r b{color:var(--bear)}
+@media (max-width:520px){.best{grid-template-columns:1fr}}
+.checks{display:grid;gap:6px;margin:0;padding:0;list-style:none}
+.checks li{display:grid;grid-template-columns:auto 1fr;gap:8px;align-items:start;font-size:.82rem}
+.pill{font-size:.66rem;font-weight:600;letter-spacing:.03em;padding:2px 8px;border-radius:999px;white-space:nowrap}
+.pill.verified{background:var(--bull-soft);color:var(--bull)} .pill.wrong{background:var(--bear-soft);color:var(--bear)}
+.pill.stale,.pill.unverifiable{background:var(--warn-soft);color:var(--warn)}
+.checks small{color:var(--muted)}
+.sec-t{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.watch{font-size:.84rem;background:var(--page);border-radius:10px;padding:8px 10px}
+
+.final{width:min(100%,680px);border:2px solid var(--judge-line)}
+.verdict{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center}
+.stamp{border:3px solid currentColor;border-radius:12px;padding:10px 16px;text-align:center;font-weight:700;font-size:1.6rem;letter-spacing:.04em;line-height:1;transform:rotate(-3deg)}
+.stamp small{display:block;font-size:.62rem;letter-spacing:.06em;font-weight:600;margin-top:5px}
+.stamp.TAKE{color:var(--bull);background:var(--bull-soft)} .stamp.SKIP{color:var(--bear);background:var(--bear-soft)}
+.conf{display:grid;gap:4px}
+.conf .track{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.conf .track span{display:block;height:100%;background:var(--judge)}
+.conf small{font-size:.74rem;color:var(--muted)}
+@media (max-width:460px){.verdict{grid-template-columns:1fr}.stamp{justify-self:start}}
+.box{border-radius:12px;padding:10px 12px;font-size:.9rem}
+.box h4{margin:0 0 4px;font-size:.78rem;font-weight:600}
+.box p{margin:0;font-family:var(--f-read);font-size:.94rem}
+.box.plan{background:var(--page);border:1px solid var(--line)}
+.box.change{background:var(--warn-soft)} .box.change h4{color:var(--warn)}
+.rounds{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.rounds button{border:1px solid var(--line);background:var(--page);border-radius:10px;padding:8px;text-align:left;cursor:pointer;display:grid;gap:2px}
+.rounds button:hover{border-color:var(--judge)}
+.rounds small{font-size:.68rem;color:var(--muted)}
+.rounds b{font-size:.8rem}
+.bars{display:grid;gap:8px}
+.bars .l{display:grid;grid-template-columns:minmax(0,1fr) 70px 70px;gap:8px;align-items:center;font-size:.8rem}
+.bars .h{font-size:.68rem;font-weight:600;color:var(--muted)}
+.mini{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.mini span{display:block;height:100%}
+.mini.b span{background:var(--bull)} .mini.r span{background:var(--bear)}
+ul.plain{margin:0;padding-left:18px;font-size:.88rem;display:grid;gap:3px}
+.you{background:var(--clay-soft);border-radius:12px;padding:10px 12px;font-size:.84rem;color:var(--ink-2)}
+.you b{color:var(--clay-ink)}
+.tech{border:0;background:none;padding:0;color:var(--judge);font-size:.82rem;font-weight:500;cursor:pointer;text-align:left;text-decoration:underline;text-underline-offset:3px}
+
+/* composer */
+.composer{position:sticky;bottom:0;background:var(--paper);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:center;gap:8px;font-size:.8rem;color:var(--muted);
+  padding-block:10px calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.composer svg{width:15px;height:15px}
+
+/* sheet */
+.scrim{position:fixed;inset:0;background:rgba(20,20,19,.35);z-index:40;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--paper);width:min(100%,680px);max-height:86vh;overflow:auto;border-radius:18px 18px 0 0;box-shadow:0 -10px 30px rgba(20,20,19,.15);
+  padding-block:8px calc(20px + env(safe-area-inset-bottom,0px));padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+@media (min-width:700px){.scrim{align-items:center}.sheet{border-radius:18px;max-height:80vh}}
+.grab{width:40px;height:4px;border-radius:9px;background:var(--line);margin:4px auto 10px}
+.sh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px}
+.sh h3{margin:0;font-size:1.05rem;font-weight:600;text-wrap:balance}
+.sh .x{border:0;background:var(--page);border-radius:50%;width:32px;height:32px;cursor:pointer;flex:none;font-size:1.1rem;line-height:1}
+.sheet .kicker{font-size:.7rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--clay-ink)}
+.sheet p{margin:0 0 10px;font-family:var(--f-read);font-size:.97rem}
+.kv{display:grid;grid-template-columns:max-content 1fr;gap:8px 14px;margin:6px 0 12px;font-size:.88rem}
+.kv dt{color:var(--muted)} .kv dd{margin:0;overflow-wrap:anywhere}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-bottom:12px}
+table{border-collapse:collapse;width:100%;font-size:.82rem}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{font-size:.68rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+td small{display:block;color:var(--muted);font-size:.72rem}
+.prose p{font-size:.92rem}
+.reb{border-left:3px solid var(--line);padding-left:10px;margin:0 0 10px;font-size:.88rem}
+.reb em{display:block;font-style:normal;color:var(--muted);font-size:.8rem}
+.disc{font-size:.74rem;color:var(--muted);text-align:center;margin:14px auto 0;max-width:520px}
+details.rnd{display:flex;flex-direction:column}
+details.rnd>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:4px 10px;align-items:center;
+  background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-block:8px 2px;box-shadow:var(--shadow)}
+details.rnd>summary::-webkit-details-marker{display:none}
+details.rnd>summary:hover{border-color:var(--clay)}
+details.rnd>summary .rn{font-size:.72rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--clay-ink)}
+details.rnd>summary .rt{font-size:.9rem;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+details.rnd>summary .rs{font-size:.78rem;color:var(--muted)}
+details.rnd>summary::after{content:"Open";grid-column:3;font-size:.72rem;color:var(--muted)}
+details.rnd[open]>summary::after{content:"Close"}
+details.rnd[open]{display:flex;flex-direction:column;gap:6px}
+@media (max-width:520px){details.rnd>summary{grid-template-columns:minmax(0,1fr) auto}details.rnd>summary .rt{grid-column:1/-1;white-space:normal}details.rnd>summary .rs{display:none}}
+
+/* desk (code) cards */
+.evstrip{display:flex;align-items:flex-start;gap:10px;padding:10px 14px;border-top:1px solid var(--line);font-size:.84rem;cursor:pointer;background:none;border-left:0;border-right:0;border-bottom:0;width:100%;text-align:left}
+.evstrip:hover{background:var(--page)}
+.gp{font-size:.66rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.gp.CLEAR,.gp.PASS,.gp.pass,.gp.TAKE{background:var(--bull-soft);color:var(--bull)}
+.gp.CAUTION,.gp.warn{background:var(--warn-soft);color:var(--warn)}
+.gp.BLOCK,.gp.block,.gp.SKIP{background:var(--bear-soft);color:var(--bear)}
+.dcard{align-self:center;width:min(100%,620px);background:var(--paper);border:1px dashed #d8c7b8;border-radius:var(--r);overflow:hidden;margin-block:8px 2px}
+.dh{display:flex;align-items:center;gap:10px;padding:10px 16px;background:var(--clay-soft);border-bottom:1px dashed #e8d3c6}
+.dh .ic{width:30px;height:30px;border-radius:9px;background:var(--clay);color:#fff;display:grid;place-items:center;flex:none}
+.dh .ic svg{width:17px;height:17px}
+.dh div{min-width:0;flex:1}
+.dh b{display:block;font-size:.88rem;font-weight:600;color:var(--clay-ink)}
+.dh small{font-size:.72rem;color:var(--muted)}
+.db{padding:12px 16px;display:grid;gap:10px}
+.tm{display:grid;gap:6px}
+.tmbar{display:flex;height:14px;border-radius:99px;overflow:hidden;background:var(--line)}
+.tmbar span{display:block;height:100%}
+.tmbar .t{background:var(--bull)} .tmbar .s{background:var(--bear)} .tmbar .n{background:#cfccc0}
+.tmleg{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:.76rem;color:var(--ink-2)}
+.tmleg i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.facts div{background:var(--page);border-radius:10px;padding:8px 10px;display:grid;gap:1px}
+.facts small{font-size:.68rem;color:var(--muted)}
+.facts b{font-size:.92rem}
+@media (max-width:520px){.facts{grid-template-columns:1fr 1fr}}
+.issue{display:flex;gap:8px;align-items:flex-start;font-size:.84rem}
+.ticket{background:var(--ink);color:var(--page);border-radius:12px;padding:12px 14px;font:400 .86rem/1.55 var(--f-num);display:grid;gap:4px}
+.ticket b{color:#f2b49b;font-family:var(--f-ui);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+.bigcall{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bigcall .stamp{font-size:1.25rem;transform:none}
+</style></head><body>
+
+<div class="shell" id="app"></div>
+<script id="debate-data" type="application/json">{"id": "20261118-0510-ADANIENT-SHORT", "mode": "scan", "scan_reason": "Top NSE mover: -2.01% today (low volume 0.4x), optimizer found a workable plan", "created_utc": "2026-11-18T05:10:35Z", "trade": {"direction": "SHORT", "symbol": "ADANIENT", "name": "Adani Enterprises Limited", "market": "nse", "style": "intraday", "user_plan": null}, "snapshot": {"symbol": "ADANIENT", "data_symbol": "ADANIENT.NS", "market": "nse", "style": "intraday", "snapshot_utc": "2026-11-18T05:10:23Z", "name": "Adani Enterprises Limited", "currency": "INR", "price": 2686.6, "previous_close": 2745.1, "change_today_pct": -2.13, "day_high": 2748.0, "day_low": 2684.1, "day_volume": 587632, "week52_high": 3245.0, "week52_low": 1753.0, "last_trade_utc": "2026-11-18T05:10:21Z", "market_status": "OPEN (NSI, regular session 2026-11-18T03:45:00Z to 2026-11-18T10:00:00Z)", "data_source": "Yahoo Finance chart API (NSE India)", "note": "Yahoo data for some exchanges can be delayed up to 15 min; see price_check.data_delay_minutes.", "price_check": {"data_delay_minutes": 0.0, "delay_note": null, "second_source": {"source": "TradingView scanner", "ticker": "NSE:ADANIENT", "price": 2692.8, "feed": "delayed_streaming_900", "feed_delay_minutes": 15, "last_update_utc": "2026-11-18T05:10:16Z"}, "second_source_diff_pct": 0.23}, "timeframes": [{"timeframe": "5m", "candles": 311, "last_candle_utc": "2026-11-18T05:10:21Z", "close": 2686.6, "ema9": 2693.09, "ema21": 2702.27, "sma20": 2704.94, "sma50": 2709.82, "sma200": 2684.46, "rsi14": 32.1, "macd": {"macd": -8.231, "signal": -5.852, "histogram": -2.3789, "prev_histogram": -2.6812}, "atr14": 8.8233, "bollinger": {"upper": 2737.43, "lower": 2672.45}, "volume_vs_20avg": 0.0, "recent_high_50": 2755.9, "recent_low_50": 2679.1, "change_over_window_pct": -2.05, "trend_facts": ["EMA9 below EMA21", "price below SMA50", "price above SMA200"], "session_vwap_utc_day": 2705.56}, {"timeframe": "15m", "candles": 507, "last_candle_utc": "2026-11-18T05:10:21Z", "close": 2686.6, "ema9": 2700.04, "ema21": 2702.5, "sma20": 2706.73, "sma50": 2687.2, "sma200": 2710.76, "rsi14": 42.3, "macd": {"macd": 1.0839, "signal": 6.5512, "histogram": -5.4673, "prev_histogram": -5.1488}, "atr14": 13.3689, "bollinger": {"upper": 2750.35, "lower": 2663.12}, "volume_vs_20avg": 0.0, "recent_high_50": 2755.9, "recent_low_50": 2642.2, "change_over_window_pct": 0.78, "trend_facts": ["EMA9 below EMA21", "price below SMA50", "price below SMA200"]}, {"timeframe": "1h", "candles": 425, "last_candle_utc": "2026-11-18T05:10:21Z", "close": 2686.6, "ema9": 2699.37, "ema21": 2697.61, "sma20": 2686.43, "sma50": 2707.7, "sma200": 2641.59, "rsi14": 46.7, "macd": {"macd": 0.382022, "signal": -1.8062, "histogram": 2.1882, "prev_histogram": 3.956}, "atr14": 21.0729, "bollinger": {"upper": 2736.06, "lower": 2636.8}, "volume_vs_20avg": 0.0, "recent_high_50": 2774.9, "recent_low_50": 2641.0, "change_over_window_pct": -11.16, "trend_facts": ["EMA9 above EMA21", "price below SMA50", "price above SMA200"]}], "news": [{"title": "ADANIENT Share Price Today - Adani Enterprises on NSE/BSE - scanx.trade", "source": "scanx.trade", "published": "Tue, 17 Nov 2026 02:52:57 GMT", "url": "https://news.google.com/rss/articles/CBMiXkFVX3lxTE9sQloycS1ianVMREd3VnNkQUpKZlNUQUdodkE3dk43R3VRMUFRWVFyRXo4TkJkRmFJVVNzZjVUdHVtQW82WmhQT1U2R21ucC1JUjhJVkdBRXQyVDlvemc?oc=5"}, {"title": "Jefferies bullish on Adani Group; initiates coverage with ‘Buy’ ratings on 6 stocks, sees 23% EBITDA... - Moneycontrol.com", "source": "Moneycontrol.com", "published": "Mon, 16 Nov 2026 06:43:56 GMT", "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOckstWFg0dlZpRVJWNXhvdnhrTnBKWXdiRUs5VFdaOUhXS2lkRTdXQnh2YWFGU3RjNlhXTVZucHZ4TFJoSnhSVDk0WFpvOTV5QmRBSWRsSGs0SEVHeVZyaDlaNDNVQjJxN2xYMXFLMjFIWVpJdVlIOHVuMnJicmJwSzN1bmNBV2VrTE1wRXVVVFA2UXFvdEthRVU1NXF1Y00wMjdxSlRBUUFDMmdzVDhFeFFaVDVsZTQtc0VOV0NrSUtSNHoweGFkZWxiSUVFUzFXRGZBRmE3akRpNEh3SUJGS0xWOFRRYWl0cGY1TlBR0gHzAUFVX3lxTE9aUEZnRTVSTzNNYkYtOVBoRkc4X1pxZmhWaHFXam1WaHBvcVdHYWRUVVJ3NFJ1NUc4R0x2Q0IyZVZLdjNDZVlmSml2SXBWWW9nUUhIY2YzeUxtOFB0VkM2eVJzTlVlTG1sQUxJbFVMN3RPX2lVTXNRbnFTdlNBOGRKcXpRaEZDQ2NwODREV1B2ck1ldzJlQU1TTmlrT3JOOVZzaTJpWGR5RFJidUwxUmhvdUJzUzZTSEt2aUdSMUtJV2s4SjRCRXFxcllrMFpWYjdBZWpxcy1wcXlJWkVvalMxNVRia00zczRqaEY2Q0h6dFdFTQ?oc=5"}, {"title": "Closing Bell: Nifty Gains to 25,387 as Bank Nifty Hits Record High; Crude Eases Near $92 - India Infoline", "source": "India Infoline", "published": "Tue, 17 Nov 2026 12:37:54 GMT", "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOaFBZcFhabjZvbkc4QkJadkRpRGFySkh1UDF6QVIwX1FCV2dMUjd4ZWVtNjF6VTF2YlpNazdxdERwRjRVLUlCUGNrTy1hOGZjNzZzNnFvanBjLXhvMXVuX3ZuV1BubFR0VDZ5VE1idktDUGRHdlNOUjFBSEwzUG5aWW45VTBlR2dzbWJnTlpkRlRTUlY5UE0wM0k4Yi15Q1h4bGFGUlAzeEhRaUx6T05rOF9wUkw1a0ltUlRWTVlvOVFlTHMyNUE?oc=5"}, {"title": "India shares higher at close of trade; Nifty 50 up 0.38% By Investing.com - Investing.com India", "source": "Investing.com India", "published": "Tue, 17 Nov 2026 10:32:56 GMT", "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNcjg2NlVJRWNXMGpuemdCMmItbHhDSkFUdVpsMUtPcHA2MmFLQ1ZwWG9VdWI3dWZUYV9RV2VWeGhfWU9MNEdxR1ZYdFZ2M0lLX2lUclIxM1YtaG5mOU4yMHVHMmxjenVobDA3Y0txOEx1QnVsSVpadTh3TzhZR1RfV1JrQ0JqM0hrakI5S1c5bWdyVExkTjlZYUo2SE1qVDNZNkZUeVhDaExyOHZLbGc?oc=5"}, {"title": "Adani Group stocks: Jefferies sees $51 billion capex over FY27–FY29; check how shares are faring on Nov 16 - Upstox", "source": "Upstox", "published": "Mon, 16 Nov 2026 08:03:14 GMT", "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxPTnh2YVRsZHFMNzNpcWFnQVkwdE1RYkVxTzk4V3VBaGs2SzhOeGl4NVc0cUZnM0FJaXlCNUdqOXd0WUwtODI0MzZhZzNLbUU0VU45aEE2aElvMG5QQ1pqNTVtQ0FBd1ZnbTMxSEtULTZTUVlKNFllMVdqMXBrSWJJV25xanYzTkMzcmNUUWJ4YmVRRktoTmVqTFN5YnlyWHVnOTB3TU9LVVJnY3hDWjRGUUk2UFoxNG9ybDYzdWVKM1NZUTFYcW5MMGlpSkpCZzlxcHJaWUFuSHhSWXFJMmhVYVdINEhsNnM4a0gyR1NYVQ?oc=5"}, {"title": "Adani Wind begins production of India's longest 91.2-metre turbine blades - Business Standard", "source": "Business Standard", "published": "Mon, 16 Nov 2026 11:15:00 GMT", "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNUTAwclVzSS1ndmlpTzlDYnJsTWxhdk5BTHFNNjhEUDlwV0NtMS00aUNCLUsyZEVLSG5ra2NyTHpjWldMTHF1VzhhSFh6bGNfWlQ0Vmw3SC00UXAtbU4zcE42b3pIMlBYTXZXaDNPM3FsMjRQUEx0VjdKWHlSUllZUlR3MlV0VWcxUzVQbmRXVi1TOWtwWXpja1RFSTFjVWRObnFweW5obW1XSVdtYTR2NVRUMktBaU5sM2dIZzE2amJtQUQxakJOYmIwTzNEN2Ywa1N1eWg0eHp0d9IB3wFBVV95cUxQM1Btd3B0MXY3SlhvR2RNdDBHdjY4UkZ1TDlBU1NtVzZrS3NHVkdvazhKOFJ0QjFVYUM1cDRKWlBFZEM3bDJVZkFfUndBa2tDS3I2c3h3N1FITXdEWERHR3lqSW5neWdzci1nUVQwT2dMWkhwTGNYb0ZOUEhDbEptOFRxODVrWDF2bVZaODJrVWVjNEZ4M0h5Q2lsYlI4MzZneW9ZbnVCSkw2T1h5RklRQW9wVm1SVUlRRlllOGgtMHA4UXZ0azFydWMwUE5kYmFwNnQ5U01SN2NfNlRZTmFJ?oc=5"}, {"title": "Tega Industries secures listing approval for 4.78 lakh preferential shares - scanx.trade", "source": "scanx.trade", "published": "Tue, 17 Nov 2026 12:28:52 GMT", "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSHhRR3JvY3lhSFEtYVh3dmlpWTNVSlRyY0NranExZUNaYlpEM2tZZ1dIQXhDeG5wb0pmRzk5cGRpUGFBbGhIOVBLbW5ITkh2di1Rajc2ejFQX0hzQlR5UlhsaFE2aW1ETEM5UGlWeU53ZWNRY0dZMmZKRFFuNGtWZ0NHSDZXd0YtY3VJdFByV19hLWMtX0RoYVVOaXNtU19QY1MwUUxhYjl5RzBPYUhoOUtDVnNvMHI1cEE5UHJ3UERwaV95bGc?oc=5"}, {"title": "India stocks higher at close of trade; Nifty 50 up 0.38% - Investing.com", "source": "Investing.com", "published": "Tue, 17 Nov 2026 10:40:04 GMT", "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNVgyaU81bmRlVVViSWFnaGFsV25Xc25yVU1mQ1RnN2dyM3hXTy1HSW14b0xWMGhKRjMzYnJVTDNBOGg5cjAyY193ZHBxQ2NGYU9hbWV1MWc5RmxUbkZMdE1ENG5LTEpsUVBhUU5DZ2wtNDlGMGl5RFhCZjlERWpzeFctQjFmRlBHLXBDUVJVemNoaXdsUTFwTFNtR19LQklOSUhEQVBQdmhmM1Z3ZXFZ?oc=5"}, {"title": "Top 10 Adani Shares List To Watch Out For In November 2026 - Samco", "source": "Samco", "published": "Mon, 16 Nov 2026 06:51:03 GMT", "url": "https://news.google.com/rss/articles/CBMihAFBVV95cUxOX0Q3dWt1S3V1MkNyMU9rZlJoWU5uY053WXNyb2JTQi0yTTAxTnJiYmFOb2RYcEF5NFFYMzFjS0RSVjBWYmxfTFJHNUFOc2MybXl2cXR3dXJZbDdodUZiTUdXTmw4VGJSMDl6VHM1QXp0QUNCZmdJNldGLW5CWWRJVWNnSFk?oc=5"}, {"title": "Satia Industries (NSE:SATIA) Q2 FY27 Unaudited Financial Results: Key Insights and Investor Impact - Kalkine Media", "source": "Kalkine Media", "published": "Tue, 17 Nov 2026 11:14:00 GMT", "url": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxOVnZOZFgwWlQtUnhPYUozMHAwOXNCbzlkU0N3VW1mejI0eTI5clNsZEU5dmg5bjNOZDNFN2Z1M3lFYnUtZEtHZXA0Qnd1MDhZUzhEUkcwNVcwYnpQZEdJSGJCTUt6N20tMFV5dXBWMkw5Umx1a0ZrRHVhOVZrSTlGdmFiWGZ6Ul85MW1mbXpreXNDaHJFaFRkOFo2RGxjcE1OLVZndDdoUGpBYmhtUzRqbWk3S3dkcnlSS183Z0hIVmd4WjVkR3pKdENuUmN3VEQwSGNHR0lFSGM?oc=5"}], "_written": "2026-11-18T05:10:24Z"}, "rounds": [{"n": 1, "bull": null, "bear": null, "result": null, "desk": null, "claims": null}, {"n": 2, "bull": null, "bear": null, "result": null, "desk": null, "claims": null}, {"n": 3, "bull": null, "bear": null, "result": null, "desk": null, "claims": null}], "verdict": null, "events": {"checked_utc": "2026-11-18T05:10:24Z", "market": "nse", "symbol": "ADANIENT", "style": "intraday", "window_utc": ["2026-11-18T04:10:24Z", "2026-11-18T13:10:24Z"], "currencies": ["INR", "USD"], "status": "CLEAR", "plain": "No major scheduled events inside the trade window.", "events": [{"kind": "macro", "title": "MBA 5/1 ARM Contract Rate", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 6.28, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 5/1 ARM Effective Rate", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 6.7, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 15-Year Mortgage Contract Rate", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 6.64, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 15-Year Mortgage Effective Rate", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 6.88, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 15-Year Mortgage Points", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 0.97, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 30-Year Mortgage Rate", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 7.21, "actual": null, "tier": 3}, {"kind": "macro", "title": "MBA 5/1 ARM Points", "currency": "USD", "impact": "Medium", "time_utc": "2026-11-18T12:00:00Z", "minutes_from_now": 410, "forecast": null, "previous": 1.14, "actual": null, "tier": 3}], "notes": [], "sources": ["TradingView economic calendar (ForexFactory as backup)", "TradingView NSE results dates"], "_written": "2026-11-18T05:10:25Z"}, "regime": {"computed_utc": "2026-11-18T05:10:26Z", "symbol": "ADANIENT", "market": "nse", "style": "intraday", "atr_pct_now": 0.786, "atr_pct_typical": 0.869, "ratio": 0.9, "level": "NORMAL", "size_multiplier": 1.0, "fear_gauges": {"India VIX": 15.743}, "fear_high": [], "calendar": {"status": "OPEN", "plain": "The market is open.", "session_hours": 6.25, "half_day": false}, "plain": "Normal movement (0.9x its usual range).", "_written": "2026-11-18T05:10:26Z"}, "optimizer": {"computed_utc": "2026-11-18T05:10:35Z", "symbol": "ADANIENT", "market": "nse", "style": "intraday", "direction": "SHORT", "price": 2685.2, "atr": 21.1586, "candidates_tried": 60, "passed_cost_rule": 25, "replays_each": 1500, "status": "NO_EDGE", "plain": "25 plans pay enough on paper, but none passes the odds test: reach the target first at least 20% of the time, not lean toward the stop, and make money on average in the replays (best target-first chance 22%, best average +0.04R). The odds do not favour this trade right now.", "best": [{"entry": 2685.2, "stop": 2706.3586, "target": 2636.715958, "why": {"entry": "live price", "stop": "1x ATR", "target": "just before Swing high (price turned down here 1x)"}, "r_after_costs": 1.831, "cost_r": 0.163, "stop_in_atr": 1.0, "p_target": 0.1619, "p_stop": 0.4137, "p_neither": 0.4244, "avg_R": 0.027, "avg_R_gross": 0.19, "lean": "COIN_FLIP", "verdict": "Close to break-even: at 2.29R the target must come first in 30% of the replays that hit a side; it did in 28% (target first 16.2% vs stop first 41.4%).", "history": {"samples": 59, "target": 10, "stop": 22, "neither": 27}}, {"entry": 2690.841972, "stop": 2712.17379, "target": 2643.11586, "why": {"entry": "limit just below Swing high (price turned down here 1x)", "stop": "just beyond Opening range low (first 15 min)", "target": "just before Swing low (price turned up here 1x)"}, "r_after_costs": 1.786, "cost_r": 0.162, "stop_in_atr": 1.01, "p_target": 0.1696, "p_stop": 0.4117, "p_neither": 0.4187, "avg_R": 0.026, "avg_R_gross": 0.188, "lean": "COIN_FLIP", "verdict": "Close to break-even: at 2.24R the target must come first in 31% of the replays that hit a side; it did in 29% (target first 17.0% vs stop first 41.2%).", "history": {"samples": 59, "target": 10, "stop": 22, "neither": 27}}, {"entry": 2690.841972, "stop": 2712.000572, "target": 2643.11586, "why": {"entry": "limit just below Swing high (price turned down here 1x)", "stop": "1x ATR", "target": "just before Swing low (price turned up here 1x)"}, "r_after_costs": 1.799, "cost_r": 0.164, "stop_in_atr": 1.0, "p_target": 0.1694, "p_stop": 0.4141, "p_neither": 0.4165, "avg_R": 0.026, "avg_R_gross": 0.19, "lean": "COIN_FLIP", "verdict": "Close to break-even: at 2.26R the target must come first in 31% of the replays that hit a side; it did in 29% (target first 16.9% vs stop first 41.4%).", "history": {"samples": 59, "target": 10, "stop": 22, "neither": 27}}], "notes": ["Only 275 minutes of the session are left, so the window ends at the close."], "_written": "2026-11-18T05:10:37Z"}, "news": {"computed_utc": "2026-11-18T05:10:32Z", "symbol": "ADANIENT", "market": "nse", "window_hours": 72, "keywords": ["ADANIENT", "Adani", "Adani Enterprises"], "items": [{"title": "Auto stocks today, November 18: Ashok Leyland falls 2.18%, Ola Electric declines 1.35%, Eicher Motors down 1.31%", "source": "Business Upturn", "sources": ["Business Upturn"], "tier": 3, "published_utc": "2026-11-18T04:59:46Z", "age_hours": 0.2, "url": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPRFdhYWhXSGRyUFdyak1tcmVFWkllUC0yc01Td1hlblN1aUdER3Z2c0FvOGM0TEJkVzdZdkE4NEVObVBWMTlVUWxpOWlsNXdLNWwxbkFMcm1IdTZQS3RzY2xlZ25PbXZvRXJrcW01QndPVDFZaG5KbHF3elBCdlZhNHpfUjYtUkpMdG1iWXhMMjY5UGJ3NTI5ZkpkQkxzblV2UzNKaHhvT1pES1p6QUM3RUgtbFNEdjJEUHJLX0F6YnBUWkNYRXI2b0RnOVV6MnNwamR6dUR1SUNDRlRUSGlEMmNBOTRUemF4WWc?oc=5", "summary": "Auto stocks today, November 18: Ashok Leyland falls 2.18%, Ola Electric declines 1.35%, Eicher Motors down 1.31%&nbsp;&nbsp;Business Upturn"}, {"title": "Adani Group stocks today, November 18: Adani Enterprises falls 1.65%, Adani Total Gas down 1.18%, Adani Ports declines 0.91%", "source": "Business Upturn", "sources": ["Business Upturn"], "tier": 3, "published_utc": "2026-11-18T04:54:36Z", "age_hours": 0.3, "url": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxQbnJKRWFqRkN6b1ZLdlViRTBLSUFxc3RkZHpOLWNZWk1peTVSVEVISTdhYUVrMTFuUFdDaWU3YTBUQTV6TmptcHpqTHREU3pvTVZuWEtGZWE5Q1VvdE1rQmlqMkNiSmI4dmpZb1JLaEN4MkY5SDI1c2tHLVgxYVhEc2NlVG1aNGRTMGxhVFVRQUxBR1ZFaVlhdWxGdkxIUUZNdldnWE5mcDZ3U1RkMEF0YTBTTUJiUTJsYTEtWEVRS3FOS1Fqc2xnNTRuY1BSVjB6YkxzT1JnNmJqc1NuZDgzcjZiajhKblN6RnBOSGs1ekZXSXo4WUlYT2Jn?oc=5", "summary": "Adani Group stocks today, November 18: Adani Enterprises falls 1.65%, Adani Total Gas down 1.18%, Adani Ports declines 0.91%&nbsp;&nbsp;Business Upturn"}, {"title": "Advait Energy shares jump over 5% after securing Rs 130.49 crore GETCO transmission line order", "source": "Business Upturn", "sources": ["Business Upturn"], "tier": 3, "published_utc": "2026-11-18T03:59:53Z", "age_hours": 1.2, "url": "https://news.google.com/rss/articles/CBMi3wFBVV95cUxQbFBUOC1QTEV0aUJ5Mmk1c3ZJZ0ZBaTZjQ0d5emw0QW5MUzU4LWdGZ3o3UHEwWVYwZ0dZV2trTW9ZZWtWWE1HWjhFT0RjMkNpYkt5ank5SHhUWmJEdm9wVVFXcnhzaHY2eUpRR3czN0s2Q3ZwX3lvTEp2X0lFbXk0MFNwUUM3SGdUZW1RY3Fzc0YwemZtYW5IYnM5UUQxVlFka0N5NnIya2JOQ3FFT0lRejRydFkyOG5zTnp5cUdrNkd1ZWtOeG9LY2NOZlcyMFVtVlR5bjNjWWQtRmxBUG9j?oc=5", "summary": "Advait Energy shares jump over 5% after securing Rs 130.49 crore GETCO transmission line order&nbsp;&nbsp;Business Upturn"}, {"title": "Augmont Enterprises Ltd (AUGMONT) Share Price", "source": "Business Today", "sources": ["Business Today"], "tier": 2, "published_utc": "2026-11-18T03:42:46Z", "age_hours": 1.5, "url": "https://news.google.com/rss/articles/CBMijwFBVV95cUxPYkNrUmFTU0pEbE1VWHFBSFJSX0k3TXpBVVYzRGtzaVlqclFEMVNEbExyWG1MUDdaWEZRVzhJYmZlWk4tank5dUJTcTVoM2ZTQ2p3OUhpV1lzMEotM0V5NUNVMktWUkM5M3JXb2t2OGdIZ2tMU2M5dHJ6NUtta0ZHWmdram1pbnJQdlhoQkdSNA?oc=5", "summary": "Augmont Enterprises Ltd (AUGMONT) Share Price&nbsp;&nbsp;Business Today"}, {"title": "Adon Agro Commodities Ltd Share Price", "source": "Business Today", "sources": ["Business Today"], "tier": 2, "published_utc": "2026-11-18T03:42:46Z", "age_hours": 1.5, "url": "https://news.google.com/rss/articles/CBMihwFBVV95cUxOVmV2UDh5TEtodk1PZGJhNWtNS2xPRllpNVJMRzFiZnpablFXSWpIMVllTHpUUUEza2x3ZUdsaFdDR2RGUUNfRnduNFhJRXNzWWxUX3M2a0plVS03N0JXRFhnT3ZQM2FzNHFvcGt4MWZ3OWN5ZW91b01yeXAzanJ3TVd6cUwtY2s?oc=5", "summary": "Adon Agro Commodities Ltd Share Price&nbsp;&nbsp;Business Today"}, {"title": "Variman Global Enterprises approves preferential share and warrant allotment", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T18:30:28Z", "age_hours": 10.7, "url": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQbVFuZThPS2JPWmg2NUJaZE9UTFl0dERBQ0ktdXlZb3pYVUdSYnlrWGdiQ19HMDVZUU1xRThBUHV3ZDJWS0hhMDZZaVZReFVvbkJUR3RvVU1LNHlwVFk0VUlOX2RzWkVrTGx0eDAtTGFpU3Z4R0ZxTG5YM3dFT0V0SnBydmU1anlyMThDcFdRR3hrWDhvRXpIMjYzWDRvZ3hJcGRhd2lFUmV0emtIUzZ5S3RxZkI2UUZRU2gw?oc=5", "summary": "Variman Global Enterprises approves preferential share and warrant allotment&nbsp;&nbsp;scanx.trade"}, {"title": "Ballarpur Industries shareholders approve borrowing and mortgage resolutions", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T15:03:39Z", "age_hours": 14.1, "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQbEJHaXZjcG5TanhFUVhmX1l3dU1DMlZVT3RSM0xxdjAyYl9TSEdXRFVoREhuZUY0RUExUEhlbFRIRmtXOFlWVU5XU09aX2VCem5XMU1XZzg2LXNJOVk3NHlSNGJhdmVWMGpOSnNRSUJsLVFKTHZUdTFYVlNCUl9UbkRiWHFvelhsQ3QzZUpONFZCSkxuXzFfTjlRSU01R3AtZmptRzJtcml4R0puY2hHeDNWdy1jWm42?oc=5", "summary": "Ballarpur Industries shareholders approve borrowing and mortgage resolutions&nbsp;&nbsp;scanx.trade"}, {"title": "Adani Enterprises Starts Wind Blade Production at Mundra", "source": "Kalkine India", "sources": ["Kalkine India"], "tier": 3, "published_utc": "2026-11-17T13:52:00Z", "age_hours": 15.3, "url": "https://news.google.com/rss/articles/CBMiygFBVV95cUxNLUVJNXIwQkhxQjhzSV9Senl3Z2I5QWRHeEo5OFB2azZtZEtPeUo5aEZobHA3MFZJR1RncEZxSjVSZU5jZERIQ1JEYTc3Nl9EdG1mMHpaS3RyYjdxTHNuaDdTTnlac2NJYWZ1aXhDX3NkSFU4Q29ZbTctUi05dnh4Ml9jbG5mTl9qQlhicDFITUFtSmNXLXF5ZW1HNFpfNkFzZXZ1em15T0kwZkl0OGlmMkZkclhHTzd5b3plX0JGTThjZ052c1ZLanh3?oc=5", "summary": "Adani Enterprises Starts Wind Blade Production at Mundra&nbsp;&nbsp;Kalkine India"}, {"title": "Venlon Enterprises sets EGM to appoint Santhosh Kumar Shet as independent director", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T13:20:30Z", "age_hours": 15.8, "url": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxOcDVaZzdqUW44TGpBSGJXMUtnWk5rMGRNSzR1ODc5RXFOOUpreWpOc1NlQnRpY3Z3dTd6cW0tNUZISE5ad0RYQ0NGamF3X00wNnAtZzlVQWFtTl94SHg2ZU1rbURfYy1PT0VISlpLVnhHUG42Z3R5WURhZENLcVRramJwMEVYTFlwTDZWaV85d3pjODBvdHk2V1FFZ3licXN3eTJNQ0JjenppTFR2ejg5cTltRUFRZXNFQzNPNkpMcmJCdw?oc=5", "summary": "Venlon Enterprises sets EGM to appoint Santhosh Kumar Shet as independent director&nbsp;&nbsp;scanx.trade"}, {"title": "Closing Bell: Nifty Gains to 25,387 as Bank Nifty Hits Record High; Crude Eases Near $92", "source": "India Infoline", "sources": ["India Infoline"], "tier": 3, "published_utc": "2026-11-17T12:37:54Z", "age_hours": 16.5, "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOaFBZcFhabjZvbkc4QkJadkRpRGFySkh1UDF6QVIwX1FCV2dMUjd4ZWVtNjF6VTF2YlpNazdxdERwRjRVLUlCUGNrTy1hOGZjNzZzNnFvanBjLXhvMXVuX3ZuV1BubFR0VDZ5VE1idktDUGRHdlNOUjFBSEwzUG5aWW45VTBlR2dzbWJnTlpkRlRTUlY5UE0wM0k4Yi15Q1h4bGFGUlAzeEhRaUx6T05rOF9wUkw1a0ltUlRWTVlvOVFlTHMyNUE?oc=5", "summary": "Closing Bell: Nifty Gains to 25,387 as Bank Nifty Hits Record High; Crude Eases Near $92&nbsp;&nbsp;India Infoline"}, {"title": "Adani Enterprises ICRA Rating Upgrade to AA Stable", "source": "Kalkine India", "sources": ["Kalkine India"], "tier": 3, "published_utc": "2026-11-17T12:27:00Z", "age_hours": 16.7, "url": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOUUJGbnlvU1hDWVBqVTBwb29GcTRPN0dheVJUSXJVZmY0ZzFaTUhqU1V2Tmw0ZnpOM0xKTWptdTVkT3lYbFRuVjBQTHFDRE5NdDBCb0drUkUwbk94VGlCdmRyc1lFNEZNUkFERE9NNFBCd1pTTk5CMm03XzZRNlk2Nk8wX2tMY0hNOXZObVc5QXk0bVd5aFY3S0l2OHNYQW5DYTZRYkY4R1pZR3JmMHhMR1dSQWZQY1J3?oc=5", "summary": "Adani Enterprises ICRA Rating Upgrade to AA Stable&nbsp;&nbsp;Kalkine India"}, {"title": "Tega Industries secures listing approval for 4.78 lakh preferential shares", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T12:28:52Z", "age_hours": 16.7, "url": "https://news.google.com/rss/articles/CBMixgFBVV95cUxPSHhRR3JvY3lhSFEtYVh3dmlpWTNVSlRyY0NranExZUNaYlpEM2tZZ1dIQXhDeG5wb0pmRzk5cGRpUGFBbGhIOVBLbW5ITkh2di1Rajc2ejFQX0hzQlR5UlhsaFE2aW1ETEM5UGlWeU53ZWNRY0dZMmZKRFFuNGtWZ0NHSDZXd0YtY3VJdFByV19hLWMtX0RoYVVOaXNtU19QY1MwUUxhYjl5RzBPYUhoOUtDVnNvMHI1cEE5UHJ3UERwaV95bGc?oc=5", "summary": "Tega Industries secures listing approval for 4.78 lakh preferential shares&nbsp;&nbsp;scanx.trade"}, {"title": "Gallantt Ispat promoter acquires 3.57% stake in inter-se transfer", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T12:30:53Z", "age_hours": 16.7, "url": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNdHpaTFM4MDNmM3NIbVl4b0E1TkFaNHVCaUUtVDlSUVhJVjhEY1h4MHFHcFJ1dGV2SURBMFdfUlhvRW1NWE1iV2Fuanl0eW5aQVhfRG1qOU1POXlXOTlTQll1dzVfTzE3Z1YyN3BpcjFZN0d3V1lRNDJJSHk1Y3l4TUx5UTFYMy1IWUViOU5CNzBjUzVrNFdWTmdUSDQtNk9Db2loekktaDg0eVRKMjR0M1NMUFBSYlQzblE?oc=5", "summary": "Gallantt Ispat promoter acquires 3.57% stake in inter-se transfer&nbsp;&nbsp;scanx.trade"}, {"title": "CLC Industries seeks ₹667 crore RPT cap hike and ₹200 crore borrowing limit", "source": "scanx.trade", "sources": ["scanx.trade"], "tier": 3, "published_utc": "2026-11-17T11:54:42Z", "age_hours": 17.3, "url": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPcHplWHI4NnRQSFlURTlXa1F4alctY1puTGtkTGFtU3VDMjNpRHVBU1BtdDRNcVZtaXhjV3dUT2REUWhlc1BqbWI5MTRuNnRJTUpPcVUwcl9BV2VQcXRnT3ZRMDZlUnA5TXBhNWxsblo3cVdFNW9SNENzNzVqaTNaMzM2dk1QLWlHS2p4UjJLYlc0NXRZTHAySFMzenY1QVNRLXlpQndvNVJPZ2xQZ3VqTTFyY01ZSWdiRm5SdEJLR093RmlH?oc=5", "summary": "CLC Industries seeks ₹667 crore RPT cap hike and ₹200 crore borrowing limit&nbsp;&nbsp;scanx.trade"}, {"title": "India stocks higher at close of trade; Nifty 50 up 0.38%", "source": "Investing.com", "sources": ["Investing.com"], "tier": 2, "published_utc": "2026-11-17T10:40:04Z", "age_hours": 18.5, "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxPNVgyaU81bmRlVVViSWFnaGFsV25Xc25yVU1mQ1RnN2dyM3hXTy1HSW14b0xWMGhKRjMzYnJVTDNBOGg5cjAyY193ZHBxQ2NGYU9hbWV1MWc5RmxUbkZMdE1ENG5LTEpsUVBhUU5DZ2wtNDlGMGl5RFhCZjlERWpzeFctQjFmRlBHLXBDUVJVemNoaXdsUTFwTFNtR19LQklOSUhEQVBQdmhmM1Z3ZXFZ?oc=5", "summary": "India stocks higher at close of trade; Nifty 50 up 0.38%&nbsp;&nbsp;Investing.com"}, {"title": "India shares higher at close of trade; Nifty 50 up 0.38% By Investing.com", "source": "Investing.com India", "sources": ["Investing.com India"], "tier": 2, "published_utc": "2026-11-17T10:32:56Z", "age_hours": 18.6, "url": "https://news.google.com/rss/articles/CBMirgFBVV95cUxNcjg2NlVJRWNXMGpuemdCMmItbHhDSkFUdVpsMUtPcHA2MmFLQ1ZwWG9VdWI3dWZUYV9RV2VWeGhfWU9MNEdxR1ZYdFZ2M0lLX2lUclIxM1YtaG5mOU4yMHVHMmxjenVobDA3Y0txOEx1QnVsSVpadTh3TzhZR1RfV1JrQ0JqM0hrakI5S1c5bWdyVExkTjlZYUo2SE1qVDNZNkZUeVhDaExyOHZLbGc?oc=5", "summary": "India shares higher at close of trade; Nifty 50 up 0.38% By Investing.com&nbsp;&nbsp;Investing.com India"}, {"title": "Top Gainers & Losers Today, 17 November 2026 at 3:30 PM IST: Adani Enterprises Ltd Leads Gainers", "source": "HDFC Sky", "sources": ["HDFC Sky"], "tier": 3, "published_utc": "2026-11-17T10:35:07Z", "age_hours": 18.6, "url": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNUWk1NHZ6dXUtcDlDdjdrWU4wRWVZejZyVGVoeGx3QTI5eTdldkMzWUFodXZlbHgyUEw1Ri0xckx5WF9kbjliRWtGcUhnRmV5VFJEUGZYNHEyTXpzRGV1QXZ2dFdxdzlodkd6VWc1cUdtcWVJSVJfVkUySG1aS1VCWmhFZw?oc=5", "summary": "Top Gainers & Losers Today, 17 November 2026 at 3:30 PM IST: Adani Enterprises Ltd Leads Gainers&nbsp;&nbsp;HDFC Sky"}, {"title": "NIFTY briefly crosses 25,500, SENSEX gains over 400 pts; Senco Gold, InduInd, TCS among buzzing stocks", "source": "Upstox", "sources": ["Upstox"], "tier": 3, "published_utc": "2026-11-17T08:07:20Z", "age_hours": 21.1, "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxQZW8wZ2FsRElBOXlMYUhFTlRUcUFyWmh4bFl5SEMydEQyS1NzYmhjaUw2cUtNcmhUQUJucGdQVlQydUZEb1UySHlBRzZoTVJnclNKVzZWS09RVVRxRllMQ0x4dkkwcW9CaUFJekxiYml5aUt4MWdjc3hWWGU5dW5DNTBfTGVRd20xSmlZUUhMOGl4MUFTYkNwV2lfaW85MWlLVXRNcWZXUUN6cGcyS0QyWU5PQ2Q2TkQ1TnlXVk40b3ZmYVhqLTFsRUc1TmFiMGZCcHZXSDdFQ0hyWWpqNkY0YTM5Qzh4UWJiVVZJcUlRcw?oc=5", "summary": "NIFTY briefly crosses 25,500, SENSEX gains over 400 pts; Senco Gold, InduInd, TCS among buzzing stocks&nbsp;&nbsp;Upstox"}, {"title": "Top stocks to watch today: Senco Gold, Adani Enterprises, BSE, Cipla shares in focus on Tuesday, 17 November | Full list", "source": "Livemint", "sources": ["Livemint"], "tier": 1, "published_utc": "2026-11-17T02:13:03Z", "age_hours": 27.0, "url": "https://news.google.com/rss/articles/CBMikAJBVV95cUxOOFVmbE9WX251MTNlM01WRmxNNFhFbm45enk0WDAyNVMwdjVJb2tERFRnSWotRmI0V1ZCMl8xSWRCRDZpVU1BT1VpUlZnNWVWQlFxQlpDaFhEM1FxRnRKZi1Kcl91V184YjB6VFlBeG1FRldRTzNDRVFFMDhEeVpqRVREdDlKUWhRQ2RvRXpyVlJSX3F3RnJXNWRBOVZhXzluVldWWmxRMzRWVFJLNkJxZjJnMW01aDJyZHIxM1Q4RTVwOGw2d1VaYmVadjQyLXRiOE5GSkh5X1AxalBjdmkxRDNnWDBDc2V0MWxTMTIzbV9CU1c4ckNCVFVWZ0JPYkdSTS1IVUluWmpxSGxoYVhqMdIBlgJBVV95cUxPZzRrbGVvaERwZ2RNMDFPc2FPTVBsWkltSVB0aVBhZDZwTEFRWkk3cEhzTXMxWEctU2NWY0VZQlAzU2hMZG1EU28zaElqb1dGTVc5NS1MVFFjbEI5cTBMTlptRFhPNGc2d2diUHQ4RGtJcTRvQktPY2lhXzRaREQ3cGFhTDExUlQwT2VDNENpMkxMUE82QXpsV2lwTnhEbWlxdUlFbHpQLWhNWXI4d2NDRVhTQUlkSkRCUUNYMlVUZ2tVaGlQU0xVRTk2c05ILWF3VmdSWEw0a2syY3o3NlJSNmZETzAtWFN0S251bDVjVWxtRXBxU0lWZ0tGbzh3dnRfeURyNXphQmhCbVVRTWJZb3c4bHYwQQ?oc=5", "summary": "Top stocks to watch today: Senco Gold, Adani Enterprises, BSE, Cipla shares in focus on Tuesday, 17 November | Full list&nbsp;&nbsp;Livemint"}, {"title": "Stocks in news: Adani Enterprises, BSE, Senco Gold, Hero Motors, HDFC Life, Anand Rathi Wealth and Urban C", "source": "The Economic Times", "sources": ["The Economic Times"], "tier": 1, "published_utc": "2026-11-17T00:30:00Z", "age_hours": 28.7, "url": "https://news.google.com/rss/articles/CBMijAJBVV95cUxNNXAtcmkwTXN6TV8xaUdtZi00VmhtWVdVT2g0UGJ5THNGWmRZM0sxaUZPNHRDVXQ4SW5XdDBkZHJpeEpYRnRLd3FaMmREbVFQUDZ4TGJXQmNmSk92TWctellURFUzcF9lVldCaXM2N1pSTUZQdVZGYi14SUd0cDJJUlFsYlNXTW9GckZrZlBRUFJremtsUS1xNEExeHlMVEpWM1BUSkxvb3cxa1NMTl9hLXJFSkFCUF85dHFCNWlZaWtXQlN4RzdCU3otSWFtNV9DNlQ0dHg2MFdrOHBUa1NCcFk1OWIxRUQ0Zi1UWjZXeXVvMDBGSGJhSXFkczZkZWw3OVY3bXY1YjlMRWhm0gGSAkFVX3lxTE45d0NQdFV6VGdPZ0dyZzJLSEQ1QUE5UC1YajlXd0dCQmpZYklJRjFMc3BDSUdTTU9BZ1BEZ2k2SG9OQ0lWTlhJLXYxXzNMUXAxQnhodkFfcGJYTGZzbVBTek5EYWlibkhHNHJOQjF4SjlzdDlwbEV3NEIwZk03UEhFMWVnODBZeXBWdWQ5bDAtc1pKYUtOV08xTVRjRzhablVWT2NHMlA5NUk1eTlTX19ZcHY1LXNseE5EclpaZzZnb2tERTZ1WnpGeDJteURsUzRTb2xnUlBWLUppRGkyQ0MtWlAzcEs1blhQMDNrTU9aZFAwOEdiWnNjanhlYXpSQmV2djRaUTNyemZIVVo1RE14YWc?oc=5", "summary": "Stocks in news: Adani Enterprises, BSE, Senco Gold, Hero Motors, HDFC Life, Anand Rathi Wealth and Urban C&nbsp;&nbsp;The Economic Times"}, {"title": "Stocks to Watch for November 17: Adani Enterprises, HDFC Life Insurance, Capri Global Capital and more", "source": "CNBC TV18", "sources": ["CNBC TV18"], "tier": 1, "published_utc": "2026-11-16T14:17:57Z", "age_hours": 38.9, "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxOMnV0UUF6OGhOTmN6RjBWc05GdXRwQmxQLTRXUlR1Q1NHVXVkeVNNM04tNTA2SlpodlZ1NXFPOW5BcDNJSGUyRlkyMnBjUVNJMC0yTDg4NkszSmE3elJrdWtBV2hGYl9VM2dWa09DcmlHR3pQRi1mT3JMM2wtaDRSX1ZRUl91Qk1mNWw2REJURXFxSmoxZWRsM3BnSXpsT0lTdUJZb01sekgtdkhEeVh3MWlURTI4cWdHRS1qWW9xbWtSNVljUFJXTlNpUzNfdm1oSm5pbTFnYVpmT1duSEthdlJ4d0R2M25zWXRN0gHwAUFVX3lxTE1Vc3VkYmpnSVR5X0wtcXo0bnpCb2VROVBtNWlrazYwbEFKMEdnenIxbnZNdTZGYTJkVmhZMzc3cGZVbURDREszQ1RjWXVobjJfZ0paR3FFTlgxODBmQUlYUTBBcXVWUlgyZWkzLWUtNmF0ak43N2ZtMGN4OVpBY05POU9zdnFGYkFHVGxlRFYzNWV3SXYwNkFlT3hMb25nMExGaHE0VmtlMWtVaW5ySkFLZmZOZW1pWE1uQi1fU0djSWc0ZzlHTFZnNGthbXdMeFZKWmJaSGNIU0ZYN2FKSG9Meno0b1pZclA1alhRZWZXRw?oc=5", "summary": "Stocks to Watch for November 17: Adani Enterprises, HDFC Life Insurance, Capri Global Capital and more&nbsp;&nbsp;CNBC TV18"}, {"title": "Sebi sets up sub-group under PMAC to review key IPO norms; NSE's Chauhan to head panel", "source": "The Economic Times", "sources": ["The Economic Times"], "tier": 1, "published_utc": "2026-11-16T13:07:52Z", "age_hours": 40.0, "url": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxOYlY2RHNwVU52VmJkRnhWZk0zN0pQTEJGblRVcFlUOVNkTHNOV3ZROTJHcDI3MWFlbGdkbXY4d2FVLWpoUlpjd05YRmkxbjJiOGRBYVZsVVhvOGRSWDh1RTIzWDRzTHFtekc4RUpUTzFEV3BRdjJVRF93U1E4SHJqMk84TXlvRG5HYTBHV3dxRElNelBjUG9kQWozOW9yS0ExOWgyOVlXQ2IzT1ZIU2dtQk5ZUFo3bW1nc3djVkRxZ2NuV2R6MUwzZjQxUVducUtTaVJCNGdrbmlsaW02ekFNMWRqTlotSXphSDZxNURGTdIB9AFBVV95cUxQV29Vb2twS3dwbHBsNktkeEtJVEE4T0ttOFViV1NBWTJnYlQtUm5laHpTRmFSNXJUYzZwVUg1WWlKdFVwZk9sQUxZdUpfNHhTYjFLRFZGbzVVQnUzdmdOWEFXMDNMOGJ4cWZIWDhyaEw2VXhyS3hjSHFJRGNYZHJNbmtORFdkSlB6bldRMkhGWXNhR0NMcENXZ1FSQnJhNTRRSE9XN2RyMGRDcUJ3RkZhWHNGZ2JfVHdSYk9MZWI1UXhQUnVYc2hISkdPLTlwa18wV0hqZmhuVUhMMEZ4UDVRaDg3a1RKalp6VkJvNmVMVWp2ZzMt?oc=5", "summary": "Sebi sets up sub-group under PMAC to review key IPO norms; NSE's Chauhan to head panel&nbsp;&nbsp;The Economic Times"}, {"title": "Adani Wind begins production of India's longest 91.2-metre turbine blades", "source": "Business Standard", "sources": ["Business Standard"], "tier": 1, "published_utc": "2026-11-16T11:15:00Z", "age_hours": 41.9, "url": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNUTAwclVzSS1ndmlpTzlDYnJsTWxhdk5BTHFNNjhEUDlwV0NtMS00aUNCLUsyZEVLSG5ra2NyTHpjWldMTHF1VzhhSFh6bGNfWlQ0Vmw3SC00UXAtbU4zcE42b3pIMlBYTXZXaDNPM3FsMjRQUEx0VjdKWHlSUllZUlR3MlV0VWcxUzVQbmRXVi1TOWtwWXpja1RFSTFjVWRObnFweW5obW1XSVdtYTR2NVRUMktBaU5sM2dIZzE2amJtQUQxakJOYmIwTzNEN2Ywa1N1eWg0eHp0d9IB3wFBVV95cUxQM1Btd3B0MXY3SlhvR2RNdDBHdjY4UkZ1TDlBU1NtVzZrS3NHVkdvazhKOFJ0QjFVYUM1cDRKWlBFZEM3bDJVZkFfUndBa2tDS3I2c3h3N1FITXdEWERHR3lqSW5neWdzci1nUVQwT2dMWkhwTGNYb0ZOUEhDbEptOFRxODVrWDF2bVZaODJrVWVjNEZ4M0h5Q2lsYlI4MzZneW9ZbnVCSkw2T1h5RklRQW9wVm1SVUlRRlllOGgtMHA4UXZ0azFydWMwUE5kYmFwNnQ5U01SN2NfNlRZTmFJ?oc=5", "summary": "Adani Wind begins production of India's longest 91.2-metre turbine blades&nbsp;&nbsp;Business Standard"}, {"title": "Jefferies bullish on Adani Group; initiates coverage with ‘Buy’ ratings on 6 stocks, sees 23% EBITDA...", "source": "Moneycontrol.com", "sources": ["Moneycontrol.com"], "tier": 1, "published_utc": "2026-11-16T06:43:56Z", "age_hours": 46.4, "url": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxOckstWFg0dlZpRVJWNXhvdnhrTnBKWXdiRUs5VFdaOUhXS2lkRTdXQnh2YWFGU3RjNlhXTVZucHZ4TFJoSnhSVDk0WFpvOTV5QmRBSWRsSGs0SEVHeVZyaDlaNDNVQjJxN2xYMXFLMjFIWVpJdVlIOHVuMnJicmJwSzN1bmNBV2VrTE1wRXVVVFA2UXFvdEthRVU1NXF1Y00wMjdxSlRBUUFDMmdzVDhFeFFaVDVsZTQtc0VOV0NrSUtSNHoweGFkZWxiSUVFUzFXRGZBRmE3akRpNEh3SUJGS0xWOFRRYWl0cGY1TlBR0gHzAUFVX3lxTE9aUEZnRTVSTzNNYkYtOVBoRkc4X1pxZmhWaHFXam1WaHBvcVdHYWRUVVJ3NFJ1NUc4R0x2Q0IyZVZLdjNDZVlmSml2SXBWWW9nUUhIY2YzeUxtOFB0VkM2eVJzTlVlTG1sQUxJbFVMN3RPX2lVTXNRbnFTdlNBOGRKcXpRaEZDQ2NwODREV1B2ck1ldzJlQU1TTmlrT3JOOVZzaTJpWGR5RFJidUwxUmhvdUJzUzZTSEt2aUdSMUtJV2s4SjRCRXFxcllrMFpWYjdBZWpxcy1wcXlJWkVvalMxNVRia00zczRqaEY2Q0h6dFdFTQ?oc=5", "summary": "Jefferies bullish on Adani Group; initiates coverage with ‘Buy’ ratings on 6 stocks, sees 23% EBITDA...&nbsp;&nbsp;Moneycontrol.com"}, {"title": "Adani Power, AEL shares among six Adani stocks with 'Buy' ratings from Jefferies; here's why", "source": "Business Today", "sources": ["Business Today"], "tier": 2, "published_utc": "2026-11-16T04:47:35Z", "age_hours": 48.4, "url": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPQlMwUnd4Y1FmZG9FRjBpMVRXcG5Tc2xUWU5OSGF3LXFoVzNYb0I0bENXMF8tQzZGOHFWUU9MbE1oNk1yekM2eFEtSjEyNGRoeXZmb1FqSkhKS3lmNHF0dWxvaVU5bnVzM3dyVkZ3Vkxwb09lYWV6M3FCVHFhTFlZR0NmcUpKWHZITi16OEVVT1NJS1VDUzFVM21ieGFlM04xNkRfczlBdndhNDg0dV83NmVIQXFrSVk4Z0VKTXZqUm5QQ3haZzBLdzVxTi0zcEI4QjVYaTdpX0NQVV90RFJwU0N2MzNMREpBZFNj0gHwAUFVX3lxTFBzWGJTdFl6SWhfMGRWVEg2MEVzcVd4Sy13YlVBNEh1cEpsZEhhT0JLSFkyV3lTdVpJT19ZekYxeVhuWmdQLUVyRFNVY0xiY19sT0d6Vk41eFZ2OVNUdVNLWm54R2M4U3pqcnU5OGFwYjdRN2NSSGZUTVRzV3pGM2ZQQ2h0b3d4OTFFbGRwRE55V0RCbllsQWZqTmQ2UnNUYWR5Z0NGcW9zWXNmWkhuQUxCbldqU2h4OEZPUVA2VTZGRTdOT3c4Qks3aXBRWHdMNjJyb1RVb2FKajQ1aUNrNFp4cGlDbjNlcU0weFdFbldnNw?oc=5", "summary": "Adani Power, AEL shares among six Adani stocks with 'Buy' ratings from Jefferies; here's why&nbsp;&nbsp;Business Today"}], "count": 25, "dropped_stale": 0, "feed_errors": [], "rules": "Only items from the last 72 hours that mention the asset; same story from several outlets merged; tier 1 = major newsroom, 2 = specialist or aggregator, 3 = other.", "_written": "2026-11-18T05:10:32Z"}, "context": {"computed_utc": "2026-11-18T05:10:32Z", "symbol": "ADANIENT", "market": "nse", "direction": "SHORT", "indexes": [{"symbol": "^NSEI", "name": "NIFTY 50", "price": 25242.9, "change_today_pct": -0.57, "vs_sma20_pct": 5.24, "vs_sma50_pct": 7.81, "trend": "UP"}, {"symbol": "^NSEBANK", "name": "Bank NIFTY", "price": 62076.4, "change_today_pct": -0.32, "vs_sma20_pct": 8.08, "vs_sma50_pct": 10.09, "trend": "UP"}, {"symbol": "^INDIAVIX", "name": "India VIX fear gauge", "price": 15.725, "change_today_pct": 1.32, "vs_sma20_pct": -2.33, "vs_sma50_pct": 10.33, "trend": "MIXED"}, {"symbol": "USDINR=X", "name": "USD/INR", "price": 93.43, "change_today_pct": -0.57, "vs_sma20_pct": -1.09, "vs_sma50_pct": -1.92, "trend": "DOWN"}], "notes": [], "asset_change_pct": -2.16, "relative_strength_pct": -1.59, "score": 0, "verdict": "NEUTRAL", "plain": "The wider market is mixed for this trade: NIFTY 50 is in an uptrend; ADANIENT is weaker than NIFTY 50 today by 1.6 points.", "_written": "2026-11-18T05:10:34Z"}, "fundamentals": {"computed_utc": "2026-11-18T05:10:34Z", "symbol": "ADANIENT", "market": "nse", "facts": {"currency": "INR", "fiscal_year_end": "2026-03-31", "revenue": 1002670200000.0, "revenue_growth_pct": 2.6, "net_income": 93394700000.0, "net_margin_pct": 9.3, "eps_diluted": 73.59, "eps_growth_pct": 25.2, "operating_cash_flow": 23569100000.0, "free_cash_flow": -310122100000.0, "total_debt": 1066217900000.0, "cash": 62666700000.0, "equity": 809259500000.0, "debt_to_equity": 1.32, "latest_quarter": {"date": "2026-09-30", "revenue": 372156200000.0, "revenue_vs_prior_quarter_pct": 13.0, "net_income": 14920400000.0, "eps": 11.05}, "valuation": {"pe_trailing": 43.259208, "pe_forward": null, "price_to_book": 3.674797, "market_cap": 3600902116000.0, "peg": null}}, "source": "Yahoo Finance fundamentals", "plain": "ADANIENT: Revenue grew 2.6% last year; keeps 9.3% of sales as profit; debt is 1.32x its equity; burning cash (negative free cash flow); priced at 43x its yearly profit (P/E).", "_written": "2026-11-18T05:10:35Z"}, "derivatives": null, "user_note": null, "desk_final": null, "outcome": null, "generated_utc": "2026-11-18T05:10:37Z", "links": {"dashboard": "../index.html"}, "live_reload": true}</script>
+<script>
+(function () {
+  "use strict";
+  var D = JSON.parse(document.getElementById("debate-data").textContent);
+  var app = document.getElementById("app");
+
+  /* ---------- glossary: every word a beginner might trip on ---------- */
+  var G = {
+    long: {t: "Going LONG", d: "Buying now and hoping to sell later at a higher price. You make money if the price goes up.", m: ["LONG", "going long"]},
+    short: {t: "Going SHORT", d: "Selling first and buying back later, hoping the price falls. You make money if the price goes down.", m: ["SHORT", "going short", "short trade", "shorting"]},
+    take: {t: "TAKE", d: "The Judge thinks the trade is worth doing right now, based on the evidence.", m: ["TAKE"]},
+    skip: {t: "SKIP", d: "The Judge thinks the trade is not worth doing right now. Skipping is often the safest choice.", m: ["SKIP"]},
+    rsi: {t: "RSI (Relative Strength Index)", d: "A score from 0 to 100 showing how hard the price has been pushed. Above 70: pushed up a lot, may pause. Below 30: pushed down a lot, may bounce.", m: ["RSI"]},
+    macd: {t: "MACD", d: "A momentum meter. When its bars (histogram) turn from negative to positive, the push is switching from sellers to buyers.", m: ["MACD", "histogram"]},
+    ema: {t: "EMA (moving average)", d: "The average price over the last few candles, updated as new prices come in. Price above it: buyers in control. Below it: sellers in control.", m: ["EMA", "EMA9", "EMA21", "EMAs", "moving average", "moving averages"]},
+    sma: {t: "SMA (simple moving average)", d: "The plain average price over the last N candles. The 200 one shows the long-term direction.", m: ["SMA", "SMA20", "SMA50", "SMA200"]},
+    vwap: {t: "VWAP", d: "The average price everyone paid today, weighted by how much they traded. Big traders often use it as a fair-price line.", m: ["VWAP"]},
+    atr: {t: "ATR (Average True Range)", d: "How far the price normally moves in one candle. A stop-loss closer than this can be hit by normal wiggles.", m: ["ATR"]},
+    bollinger: {t: "Bollinger Bands", d: "Two lines above and below the average price that mark the usual range. Price outside them is unusually stretched.", m: ["Bollinger", "Bollinger band", "Bollinger bands"]},
+    support: {t: "Support (a floor)", d: "A price where buyers have stepped in before, stopping falls. Like a floor the price bounces on.", m: ["support", "floor"]},
+    resistance: {t: "Resistance (a ceiling)", d: "A price where sellers have shown up before, stopping rises. Like a ceiling the price bumps into.", m: ["resistance", "ceiling"]},
+    stop: {t: "Stop-loss", d: "A price you decide in advance where you sell to stop losing more if the trade goes wrong. A safety exit.", m: ["stop-loss", "stop loss", "stop"]},
+    target: {t: "Target", d: "The price where you plan to take your profit.", m: ["target", "targets"]},
+    rr: {t: "Reward-to-risk", d: "How much you could win for each 1 you risk. 1:2 means you risk 1 to try to win 2. The Judge wants at least 1:1.5.", m: ["reward-to-risk", "risk-reward", "R:R", "risk/reward"]},
+    entry: {t: "Entry", d: "The price where you get into the trade.", m: ["entry"]},
+    volume: {t: "Volume", d: "How much was traded. A move with lots of volume is more believable than one with little.", m: ["volume"]},
+    orderbook: {t: "Order book", d: "The live list of people waiting to buy (bids) and sell (asks) at different prices.", m: ["order book"]},
+    funding: {t: "Funding rate", d: "A small fee traders of crypto futures pay each other. Positive: more people are betting on a rise.", m: ["funding rate", "funding"]},
+    fng: {t: "Fear & Greed Index", d: "A 0-100 mood score for crypto. Low = people are scared, high = people are greedy.", m: ["Fear &amp; Greed", "Fear and Greed"]},
+    cpi: {t: "CPI (inflation report)", d: "A monthly US report on how fast prices are rising. A surprise can move markets sharply within minutes.", m: ["CPI", "inflation report"]},
+    fed: {t: "The Fed", d: "The US central bank. It sets interest rates, which affect almost every market.", m: ["Fed", "Federal Reserve", "rate hike", "rate cut"]},
+    etf: {t: "ETF", d: "A fund you can buy like a stock. Money flowing out of Bitcoin ETFs means big investors are selling.", m: ["ETF", "ETFs"]},
+    intraday: {t: "Intraday", d: "A trade you open and close on the same day, usually over a few hours.", m: ["intraday"]},
+    swing: {t: "Swing trade", d: "A trade held for a few days to a few weeks.", m: ["swing"]},
+    trend: {t: "Trend", d: "The general direction the price has been moving: up (uptrend) or down (downtrend).", m: ["trend", "uptrend", "downtrend"]},
+    momentum: {t: "Momentum", d: "How strongly the price is moving in one direction right now.", m: ["momentum"]},
+    oversold: {t: "Oversold / overbought", d: "Oversold: pushed down so hard it may bounce. Overbought: pushed up so hard it may pause.", m: ["oversold", "overbought"]},
+    breakout: {t: "Breakout", d: "When price pushes through a floor or ceiling it had been stuck at.", m: ["breakout", "breakdown"]},
+    liquidation: {t: "Liquidation", d: "When a trader using borrowed money is forced to close because they lost too much. Many at once can cause sharp moves.", m: ["liquidation", "liquidations"]},
+    candle: {t: "Candle", d: "One bar on a price chart showing the open, high, low and close for a time period, like 5 minutes or 1 hour.", m: ["candle", "candles"]},
+    timeframe: {t: "Timeframe", d: "The time each candle covers: 5m = 5 minutes, 1h = 1 hour, 1d = 1 day.", m: ["timeframe", "timeframes"]},
+    timemachine: {t: "Time Machine", d: "A simulation: it replays the next few hours (or days) 10,000 times using this market's own recent price moves, and counts how often the profit target came before the safety exit. It also checks real past days. It shows the odds, not the future.", m: ["Time Machine", "replays"]},
+    r: {t: "R (multiples of the risk)", d: "R measures results in units of what you risked. -1R means you lost exactly what you planned to risk; +2R means you won twice that.", m: ["1R", "2R", "-1R"]},
+    gate: {t: "Risk manager / risk gate", d: "A set of fixed rules, run by code, that can block a trade even when the Judge likes it: costs, position size, your loss limits, big events, market hours.", m: ["risk manager", "risk gate"]}
+  };
+  var LOOK = {}, pats = [];
+  Object.keys(G).forEach(function (k) { G[k].m.forEach(function (w) { LOOK[w.toLowerCase()] = k; pats.push(w); }); });
+  pats.sort(function (a, b) { return b.length - a.length; });
+  var RE = new RegExp("\\b(" + pats.map(function (p) { return p.replace(/[.*+?^${}()|[\]\\\/&;:-]/g, "\\$&"); }).join("|") + ")\\b", "gi");
+  var CASE = {LONG: 1, SHORT: 1, TAKE: 1, SKIP: 1};
+
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[c]; }); }
+  function rich(s, used) {
+    used = used || {};
+    return esc(s).replace(RE, function (m) {
+      if (CASE[m.toUpperCase()] && m !== m.toUpperCase()) return m; // "long time" stays plain; "LONG" is a term
+      var k = LOOK[m.toLowerCase()];
+      if (!k || used[k]) return m;
+      used[k] = 1;
+      return '<button class="term" data-term="' + k + '">' + m + "</button>";
+    });
+  }
+  function paras(s) { return String(s || "").split(/\n\n+/).filter(Boolean).map(function (p) { return "<p>" + rich(p) + "</p>"; }).join(""); }
+  function hhmm(iso) { if (!iso) return ""; var d = new Date(iso); return isNaN(d) ? "" : d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"}); }
+  function when(iso) { if (!iso) return ""; var d = new Date(iso); return isNaN(d) ? iso : d.toLocaleString([], {day: "numeric", month: "short", hour: "2-digit", minute: "2-digit"}); }
+  function money(x) { if (typeof x !== "number") return esc(x); var a = Math.abs(x); return x.toLocaleString(undefined, {maximumFractionDigits: a >= 100 ? 2 : a >= 1 ? 4 : 6}); }
+
+  var I = {
+    back: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>',
+    help: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 .5c0 1.5-2.5 2-2.5 3.5M12 17h.01"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg>',
+    proof: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><rect x="4" y="4" width="16" height="16" rx="4"/></svg>',
+    idea: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18h6M10 21h4M12 3a6 6 0 00-3.5 10.9V16h7v-2.1A6 6 0 0012 3z"/></svg>',
+    talk: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 5h11v8H8l-4 3zM15 9h5v8l-3-2h-6v-2"/></svg>',
+    scale: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18M5 21h14M6 7h12M6 7l-3 6h6zM18 7l-3 6h6z"/></svg>',
+    you: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>',
+    lock: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/></svg>'
+  };
+
+  var T = D.trade || {}, S = D.snapshot || {}, V = D.verdict, R = D.rounds || [];
+  var dir = String(T.direction || "LONG").toUpperCase();
+  var sym = T.symbol || "this asset";
+  var base = T.market === "forex" ? String(sym) : String(sym).split("/")[0];
+  var ROUND = {1: ["First look", "Each side gives its first reasons."], 2: ["Challenge", "They question each other's points and bring more proof."], 3: ["Final word", "Last arguments and answers before the Judge decides."]};
+  var STATUS = {verified: "Checked, correct", wrong: "Wrong", stale: "Out of date", unverifiable: "Couldn't confirm"};
+  var EV = {}; // evidence registry for the sheet
+  var evN = 0;
+
+  function question() {
+    var s = T.style === "swing" ? "over the next few days" : "later today";
+    return dir === "SHORT" ? "Should we bet that " + base + " will go DOWN " + s + "?" : "Should we buy " + base + " now and sell it higher " + s + "?";
+  }
+  function dirPlain() {
+    return dir === "SHORT"
+      ? "The idea is to go SHORT: sell " + base + " now and buy it back cheaper later. It only makes money if the price falls."
+      : "The idea is to go LONG: buy " + base + " now and sell it later at a higher price. It only makes money if the price rises.";
+  }
+  function status() {
+    if (V) return {k: "done"};
+    for (var n = 1; n <= 3; n++) {
+      var r = R[n - 1] || {};
+      if (!r.bull || !r.bear) return {k: "round", n: n, who: !r.bull && !r.bear ? "both" : !r.bull ? "bull" : "bear"};
+      if (!r.result) return {k: "result", n: n};
+    }
+    return {k: "final"};
+  }
+  var ST = status();
+
+  /* ---------- header ---------- */
+  function header() {
+    var sub;
+    if (ST.k === "done") sub = '<p>Bull Claude, Bear Claude, The Judge · finished ' + esc(when(V._written || D.generated_utc)) + "</p>";
+    else if (ST.k === "round") sub = '<p class="typing">' + (ST.who === "both" ? "Bull Claude and Bear Claude are typing…" : (ST.who === "bull" ? "Bull" : "Bear") + " Claude is typing…") + "</p>";
+    else sub = '<p class="typing">The Judge is reviewing ' + (ST.k === "final" ? "the whole debate…" : "Round " + ST.n + "…") + "</p>";
+    var steps = [1, 2, 3].map(function (n) {
+      var r = R[n - 1] || {}, cls = r.result ? "done" : (ST.n === n || (ST.k === "result" && ST.n === n)) ? "now" : "";
+      return '<button class="step ' + cls + '" data-go="round-' + n + '"><i></i><b><span class="lg">Round ' + n + " · " + ROUND[n][0] + '</span><span class="sm">Round ' + n + "</span></b></button>";
+    }).join("") + '<button class="step ' + (V ? "done" : ST.k === "final" ? "now" : "") + '" data-go="final"><i></i><b><span class="lg">Judge\'s decision</span><span class="sm">Verdict</span></b></button>';
+    return '<header class="top"><div class="bar">' +
+      (D.links && D.links.dashboard ? '<a class="back" href="' + esc(D.links.dashboard) + '" aria-label="All debates">' + I.back + "</a>" : "") +
+      '<div class="stack" aria-hidden="true"><span class="av bull">B</span><span class="av bear">B</span><span class="av judge">J</span></div>' +
+      '<div class="ttl"><h1>' + esc(dir + " " + base) + " · debate</h1>" + sub + "</div>" +
+      '<button class="ibtn" data-sheet="market">' + I.chart + "<span>Live data</span></button>" +
+      '<button class="ibtn" data-sheet="guide">' + I.help + "<span>How it works</span></button>" +
+      '</div><nav class="steps" aria-label="Debate progress">' + steps + "</nav></header>";
+  }
+
+  /* ---------- welcome + question ---------- */
+  function welcome() {
+    var open = true;
+    try { open = localStorage.getItem("td-welcome") === "open"; } catch (e) { open = false; }
+    var how = [
+      [I.idea, "var(--clay-soft)", "var(--clay-ink)", "1. A trade idea", "A possible trade: " + dir + " " + base + "."],
+      [I.talk, "var(--bull-soft)", "var(--bull)", "2. Two sides argue", "Bull Claude argues FOR it. Bear Claude argues AGAINST it."],
+      [I.scale, "var(--judge-soft)", "var(--judge)", "3. A Judge checks", "After each round the Judge checks the proof and says who argued better."],
+      [I.you, "var(--warn-soft)", "var(--warn)", "4. You decide", "The Judge says TAKE or SKIP. You read it all and make your own call."]
+    ].map(function (h) { return '<div><span class="ic" style="background:' + h[1] + ";color:" + h[2] + '">' + h[0] + "</span><b>" + h[3] + "</b>" + esc(h[4]) + "</div>"; }).join("");
+    return '<section class="welcome"><details id="welcome"' + (open ? " open" : "") + '><summary class="wtoggle"><h2>Welcome to the debate group</h2><em>' + (open ? "Hide" : "Show") + ' guide</em></summary>' +
+      "<p>Two AI analysts argue about one trade, like friends in a group chat. Everything they say is backed by live market data you can check.</p>" +
+      '<div class="how">' + how + "</div>" +
+      '<div class="tips"><span>Tap <span class="demo-term">underlined words</span> to learn what they mean</span><span>Tap <span class="demo-chip">' + "proof" + "</span> chips to see the data behind a claim</span></div></details></section>";
+  }
+  function qcard() {
+    var chg = typeof S.change_24h_pct === "number" ? S.change_24h_pct : S.change_today_pct;
+    var lbl = typeof S.change_24h_pct === "number" ? "in 24 hours" : "today";
+    var open = String(S.market_status || "").indexOf("OPEN") === 0;
+    var cur = S.market === "crypto" ? "$" : "";
+    return '<section class="qcard"><div class="qh"><div class="eyebrow">Today\'s question' + (D.scan_reason ? " · picked by the scanner" : "") + "</div><h2>" + esc(question()) + "</h2><p>" + rich(dirPlain()) +
+      (D.scan_reason ? " The scanner picked it because: " + esc(D.scan_reason) + "." : "") + "</p></div>" +
+      '<div class="qstats"><div><small>' + esc(base) + " price now</small><b class=\"num\">" + cur + money(S.price) + "</b></div>" +
+      "<div><small>Change " + lbl + '</small><b class="num ' + ((chg || 0) >= 0 ? "up" : "down") + '">' + (typeof chg === "number" ? (chg >= 0 ? "+" : "") + chg.toFixed(2) + "%" : "–") + "</b></div>" +
+      "<div><small>Market</small><b>" + (open ? "Open now" : "Closed") + "</b></div></div>" + eventStrip() + regimeStrip() + contextStrip() + fundStrip() + derivStrip() + noteStrip() + "</section>" +
+      optimizerCard() +
+      '<div class="sys">Prices from ' + esc(S.data_source || "public data") + " at " + esc(hhmm(S.snapshot_utc)) + ". Tap “Live data” at the top for every number both sides can use.</div>";
+  }
+
+  /* ---------- messages ---------- */
+  function msgsFor(side, d) {
+    if (!d) return [];
+    if (d.messages && d.messages.length) return d.messages;
+    // older debates: turn the headline + argument into chat-sized messages
+    var out = [{text: d.headline, evidence: []}];
+    String(d.argument || "").split(/\n\n+/).slice(0, 3).forEach(function (p) { out.push({text: p, evidence: []}); });
+    if (d.evidence && d.evidence.length) out[out.length - 1].evidence = d.evidence.map(function (_, i) { return i; }).slice(0, 4);
+    return out;
+  }
+  function bubble(side, d, m, cont, roundN) {
+    var used = {};
+    var chips = (m.evidence || []).map(function (i) {
+      var e = (d.evidence || [])[i]; if (!e) return "";
+      var id = "e" + (evN++); EV[id] = {e: e, side: side, round: roundN};
+      var label = "Proof: " + (e.plain || e.claim || "see the data");
+      return '<button class="chip" data-ev="' + id + '" title="' + esc(e.claim) + '">' + I.proof + "<span>" + esc(label.length > 52 ? label.slice(0, 50) + "…" : label) + "</span></button>";
+    }).join("");
+    var name = side === "bull" ? "Bull Claude" : "Bear Claude";
+    var role = side === "bull" ? "for the trade" : "against the trade";
+    return '<div class="row ' + side + (cont ? " cont" : "") + '"><span class="av ' + side + '" aria-hidden="true">B</span><div class="bub">' +
+      (cont ? "" : '<div class="who">' + name + " <em>" + role + "</em></div>") +
+      (m.reply_to ? '<div class="quote"><b>' + (side === "bull" ? "Replying to Bear Claude" : "Replying to Bull Claude") + "</b>" + esc(String(m.reply_to).replace(/^(Bull|Bear)( Claude)?:\s*/i, "")) + "</div>" : "") +
+      '<div class="txt">' + rich(m.text, used) + "</div>" +
+      (chips ? '<div class="chips">' + chips + "</div>" : "") +
+      '<div class="meta">' + esc(hhmm(d._written)) + "</div></div></div>";
+  }
+  function roundBlock(n) {
+    var r = R[n - 1] || {}, b = r.bull, s = r.bear;
+    if (!b && !s && !(ST.k === "round" && ST.n === n)) return "";
+    var h = '<div class="divider" id="round-' + n + '"><span>Round ' + n + " · " + ROUND[n][0] + "</span><small>" + ROUND[n][1] + "</small></div>";
+    var A = msgsFor("bull", b), B = msgsFor("bear", s), last = null, max = Math.max(A.length, B.length);
+    for (var i = 0; i < max; i++) {
+      if (A[i]) { h += bubble("bull", b, A[i], last === "bull", n); last = "bull"; }
+      if (B[i]) { h += bubble("bear", s, B[i], last === "bear", n); last = "bear"; }
+    }
+    if (ST.k === "round" && ST.n === n) {
+      if (!b) h += '<div class="typing"><span class="av bull">B</span><span class="dots"><i></i><i></i><i></i></span>Bull Claude is researching live data…</div>';
+      if (!s) h += '<div class="typing bear"><span class="av bear">B</span><span class="dots"><i></i><i></i><i></i></span>Bear Claude is researching live data…</div>';
+    }
+    if (b || s) h += '<button class="more" data-sheet="tech-' + n + '">Show the technical version of Round ' + n + "</button>";
+    if (r.desk) h += deskCard(n, r.desk, r.claims);
+    else if (b && s) h += '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The desk calculator is checking Bull\'s plan…</div>';
+    if (r.result) h += resultCard(n, r.result);
+    else if (b && s) h += '<div class="typing" style="align-self:center"><span class="av judge">J</span><span class="dots"><i></i><i></i><i></i></span>The Judge is checking Round ' + n + "…</div>";
+    return h;
+  }
+  function checksList(list, plainKey) {
+    if (!list || !list.length) return "";
+    return '<ul class="checks">' + list.map(function (c) {
+      var st = String(c.status || "").toLowerCase();
+      return '<li><span class="pill ' + esc(st) + '">' + esc(STATUS[st] || st) + "</span><span><b>" + (c.by === "bull" ? "Bull" : "Bear") + ":</b> " + rich(c.claim) +
+        (c[plainKey] || c.note ? "<br><small>" + esc(c[plainKey] || c.note) + "</small>" : "") + "</span></li>";
+    }).join("") + "</ul>";
+  }
+  function tug(b, r) { var t = (b || 0) + (r || 0); return t ? Math.round((b || 0) / t * 100) : 50; }
+  function resultCard(n, x) {
+    var sc = x.score || {}, lead = x.leader === "bull" ? "Bull Claude" : x.leader === "bear" ? "Bear Claude" : "Nobody";
+    var bp = x.best_point_plain || {};
+    return '<section class="jcard" id="result-' + n + '"><div class="jh"><span class="av judge">J</span><div><b>Round ' + n + " result</b><small>The Judge · " + esc(lead) + (x.leader === "even" ? " is ahead, it's even" : " argued better this round") + "</small></div></div>" +
+      '<div class="jb"><p class="lead">' + rich(x.title_plain || "") + "</p>" +
+      '<div class="score"><span class="nm bull">Bull <span class="num">' + esc(sc.bull) + '</span></span><div class="tug" role="img" aria-label="Bull ' + esc(sc.bull) + " out of 10, Bear " + esc(sc.bear) + ' out of 10"><span style="width:' + tug(sc.bull, sc.bear) + '%"></span></div><span class="nm bear"><span class="num">' + esc(sc.bear) + "</span> Bear</span></div>" +
+      '<p class="read">' + rich(x.summary_plain || "") + "</p>" +
+      (bp.bull || bp.bear ? '<div class="best"><div class="b"><b>Bull\'s best point</b>' + rich(bp.bull) + '</div><div class="r"><b>Bear\'s best point</b>' + rich(bp.bear) + "</div></div>" : "") +
+      (x.checks && x.checks.length ? '<div><p class="sec-t">Fact check</p>' + checksList(x.checks, "note_plain") + "</div>" : "") +
+      (x.watch_next_plain ? '<div class="watch"><b>Next up:</b> ' + rich(x.watch_next_plain) + "</div>" : "") +
+      "</div></section>";
+  }
+
+  /* ---------- final ---------- */
+  function decisionOf(v) { var d = String(v.decision || "").toUpperCase(); return d === "TAKE" || d === "BUY" ? "TAKE" : "SKIP"; }
+  /* ---------- final call first (summary on top), rounds folded ---------- */
+  function topCard() {
+    var call, cls, head, sub = "";
+    if (DF) { call = DF.final_call; head = (V && V.headline_plain) || DF.summary_plain; }
+    else if (V) { call = decisionOf(V); head = V.headline_plain || V.summary; sub = "Risk checks still running…"; }
+    else { call = "LIVE"; head = ST.k === "round" ? "Round " + ST.n + " is being argued." : "The Judge is reviewing."; }
+    cls = call === "TAKE" ? "TAKE" : call === "SKIP" ? "SKIP" : "PENDING";
+    var tm = (DF && DF.timemachine && DF.timemachine.mc) || ((R[2] || {}).desk && R[2].desk.timemachine && R[2].desk.timemachine.mc) || null;
+    var rr = DF && DF.sizing ? (DF.sizing.r_after_costs_target1 != null ? DF.sizing.r_after_costs_target1 :
+      (DF.sizing.per_unit_loss_at_stop ? DF.sizing.per_unit_gain_at_target1 / DF.sizing.per_unit_loss_at_stop : null)) : null;
+    var block = DF && (DF.checks || []).filter(function (c) { return c.level === "block"; })[0];
+    var facts = [];
+    if (V && V.confidence != null) facts.push(["Judge is sure", V.confidence + "%"]);
+    if (tm) facts.push(["Target first / stop first", Math.round(tm.p_target * 100) + "% / " + Math.round(tm.p_stop * 100) + "%"]);
+    if (rr != null) facts.push(["Pays vs risk, after costs", rr.toFixed(2) + "x"]);
+    return '<section class="jcard final" id="top" style="margin-top:4px"><div class="jb">' +
+      '<div class="verdict"><div class="stamp ' + cls + '">' + esc(call === "LIVE" ? "LIVE" : call) + "<small>" + (call === "TAKE" ? "Take the trade" : call === "SKIP" ? "Skip the trade" : "Debate running") + "</small></div>" +
+      '<div><p class="lead">' + rich(head || "") + "</p>" + (sub ? '<small style="color:var(--muted)">' + esc(sub) + "</small>" : "") + "</div></div>" +
+      (facts.length ? '<div class="facts">' + facts.map(function (f) { return "<div><small>" + f[0] + '</small><b class="num">' + esc(f[1]) + "</b></div>"; }).join("") + "</div>" : "") +
+      (block ? '<div class="issue"><span class="gp block">Main reason</span><span>' + rich(block.plain) + "</span></div>" : "") +
+      (DF && DF.ticket_plain ? '<div class="ticket"><b>Your ticket · place it yourself</b>' + DF.ticket_plain.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "") +
+      (V && call === "SKIP" && (V.retake_plain) ? '<div class="box change"><h4>What would change the Judge’s mind</h4><p>' + rich(V.retake_plain) + "</p></div>" : "") +
+      '<p style="margin:0;font-size:.82rem;color:var(--muted)">The full debate is below: three rounds, then the Judge’s reasoning and every risk check. Tap a round to open it.</p>' +
+      "</div></section>";
+  }
+  function roundFold(n) {
+    var inner = roundBlock(n); if (!inner) return "";
+    var r = R[n - 1] || {}, x = r.result, live = ST.k !== "done" && (ST.n === n);
+    var sc = x && x.score ? " · Bull " + x.score.bull + " – " + x.score.bear + " Bear" : "";
+    var title = x ? (x.title_plain || "") : live ? "In progress…" : "";
+    return '<details class="rnd" ' + (live || !x ? "open" : "") + '><summary><span class="rn">Round ' + n + " · " + ROUND[n][0] + '</span><span class="rt">' + esc(title) + '</span><span class="rs num">' + esc(sc) + "</span></summary>" + inner + "</details>";
+  }
+
+  function finalCard() {
+    var h = '<div class="divider" id="final"><span>The Judge\'s final decision</span><small>After checking all three rounds against live data.</small></div>';
+    if (!V) {
+      if (ST.k === "final") h += '<div class="typing" style="align-self:center"><span class="av judge">J</span><span class="dots"><i></i><i></i><i></i></span>The Judge is re-checking live prices and every claim…</div>';
+      else h += '<div class="sys">The Judge decides after Round 3.</div>';
+      return h;
+    }
+    var dec = decisionOf(V), sc = V.scorecard || {}, b = sc.bull || {}, r = sc.bear || {};
+    var lab = [["evidence_quality", "Used real proof"], ["data_accuracy", "Got the numbers right"], ["rebuttal_strength", "Answered the other side"], ["plan_reasoning", dec === "TAKE" ? "Made a sensible plan" : "Judged the plan well"]];
+    var bars = lab.map(function (l) {
+      var bv = b[l[0]] != null ? b[l[0]] : (l[0] === "plan_reasoning" ? b.plan_quality : 0) || 0;
+      var rv = r[l[0]] != null ? r[l[0]] : (l[0] === "plan_reasoning" ? r.plan_quality : 0) || 0;
+      return '<div class="l"><span>' + l[1] + '</span><div class="mini b" title="Bull ' + bv + '/10"><span style="width:' + bv * 10 + '%"></span></div><div class="mini r" title="Bear ' + rv + '/10"><span style="width:' + rv * 10 + '%"></span></div></div>';
+    }).join("");
+    var rounds = [1, 2, 3].map(function (n) {
+      var x = (R[n - 1] || {}).result; if (!x) return "";
+      var who = x.leader === "bull" ? '<b class="up">Bull ahead</b>' : x.leader === "bear" ? '<b class="down">Bear ahead</b>' : "<b>Even</b>";
+      return '<button data-go="result-' + n + '"><small>Round ' + n + " · " + ROUND[n][0] + "</small>" + who + '<small class="num">' + esc((x.score || {}).bull) + " – " + esc((x.score || {}).bear) + "</small></button>";
+    }).join("");
+    var risks = (V.key_risks_plain && V.key_risks_plain.length ? V.key_risks_plain : V.key_risks || []).map(function (x) { return "<li>" + rich(x) + "</li>"; }).join("");
+    var headline = V.headline_plain || V.summary || "";
+    var explain = V.explain_plain || V.reasoning || "";
+    var plan = V.plan_plain || planText(V.trade_plan);
+    var change = V.retake_plain || V.retake_conditions || V.invalidation || "";
+    h += '<section class="jcard final"><div class="jh"><span class="av judge">J</span><div><b>Final conclusion</b><small>The Judge · ' + esc(when(V._written)) + "</small></div></div>" +
+      '<div class="jb"><div class="conf"><div class="track"><span style="width:' + (+V.confidence || 0) + '%"></span></div><small>Ruling: <b>' + dec + '</b> · how sure the Judge is: <b class="num">' + esc(V.confidence) + "%</b>" + (V.winner ? " · " + (V.winner === "bull" ? "Bull Claude won the debate" : V.winner === "bear" ? "Bear Claude won the debate" : "the debate was close to a draw") : "") + "</small></div>" +
+      '<div><p class="sec-t">What happened, in simple words</p><div class="read" style="font-family:var(--f-read)">' + paras(explain) + "</div></div>" +
+      (rounds ? '<div><p class="sec-t">Round by round</p><div class="rounds">' + rounds + "</div></div>" : "") +
+      '<div class="box plan"><h4>' + (dec === "TAKE" ? "The plan, in simple words" : "The trade that was suggested") + "</h4><p>" + rich(plan) + "</p></div>" +
+      (change ? '<div class="box change"><h4>' + (dec === "TAKE" ? "What would prove it wrong" : "What would change the Judge's mind") + "</h4><p>" + rich(change) + "</p></div>" : "") +
+      '<div><p class="sec-t">Final scorecard</p><div class="bars"><div class="l h"><span></span><span class="up">Bull ' + esc(b.total) + '/40</span><span class="down">Bear ' + esc(r.total) + "/40</span></div>" + bars + "</div></div>" +
+      (risks ? '<div><p class="sec-t">Things that could go wrong</p><ul class="plain">' + risks + "</ul></div>" : "") +
+      '<button class="tech" data-sheet="judge-tech">Show the Judge\'s technical reasoning and full fact check</button>' +
+      '<div class="you"><b>Your turn.</b> The Judge has given its view. Read the rounds, tap the proof, and make your own decision. Nothing has been bought or sold.</div>' +
+      "</div></section>";
+    return h;
+  }
+  /* ---------- desk (code) ---------- */
+  var EVN = D.events || null, DF = D.desk_final || null, OUT = D.outcome || null;
+  var GLV = {pass: "OK", warn: "Careful", block: "Blocked"};
+  function eventStrip() {
+    if (!EVN) return "";
+    var label = {CLEAR: "No big events", CAUTION: "Caution", BLOCK: "Big event ahead"}[EVN.status] || EVN.status;
+    return '<button class="evstrip" data-sheet="events"><span class="gp ' + esc(EVN.status) + '">' + esc(label) + "</span><span>" +
+      "<b>Calendar check:</b> " + rich(EVN.plain) + "</span></button>";
+  }
+  function regimeStrip() {
+    var R0 = D.regime; if (!R0) return "";
+    var lv = {NORMAL: ["CLEAR", "Normal movement"], LOW: ["CLEAR", "Quiet market"], HIGH: ["CAUTION", "Extra jumpy"], EXTREME: ["BLOCK", "Very jumpy"]}[R0.level] || ["CAUTION", R0.level];
+    var cal = R0.calendar && R0.calendar.status !== "OPEN" && R0.calendar.status !== "CLOSED" ? " " + R0.calendar.plain : "";
+    return '<button class="evstrip" data-term="atr"><span class="gp ' + lv[0] + '">' + lv[1] + "</span><span><b>Volatility check:</b> " + rich(R0.plain + cal) + "</span></button>";
+  }
+  function contextStrip() {
+    var C = D.context; if (!C || !C.plain) return "";
+    var lv = {TAILWIND: ["CLEAR", "Market helps"], NEUTRAL: ["CAUTION", "Market mixed"], HEADWIND: ["BLOCK", "Market against"]}[C.verdict] || ["CAUTION", C.verdict];
+    return '<div class="evstrip" style="cursor:default"><span class="gp ' + lv[0] + '">' + lv[1] + "</span><span><b>Market mood:</b> " + rich(C.plain) + "</span></div>";
+  }
+  function fundStrip() {
+    var F = D.fundamentals; if (!F || !F.plain || F.error) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CLEAR" style="background:var(--judge-soft);color:var(--judge)">Fundamentals</span><span>' + rich(F.plain) + "</span></div>";
+  }
+  function derivStrip() {
+    var X = D.derivatives; if (!X || !X.facts) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CAUTION">Futures crowd</span><span>' + rich(X.plain) + "</span></div>";
+  }
+  function noteStrip() {
+    if (!D.user_note) return "";
+    return '<div class="evstrip" style="cursor:default"><span class="gp CAUTION" style="background:var(--clay-soft);color:var(--clay-ink)">Your note</span><span>' + esc(D.user_note) + "</span></div>";
+  }
+  function optimizerCard() {
+    var O = D.optimizer; if (!O) return "";
+    var b = (O.best || [])[0];
+    var label = {PLAN_FOUND: ["pass", "Plan found"], NO_EDGE: ["block", "No edge"], NO_PLAN: ["block", "No plan"]}[O.status] || ["warn", O.status];
+    var rows = (O.best || []).map(function (c, i) {
+      return "<tr><td>" + (i + 1) + '</td><td class="num">' + money(c.entry) + "<small>" + esc(c.why.entry) + '</small></td><td class="num">' + money(c.stop) + "<small>" + esc(c.why.stop) + '</small></td><td class="num">' + money(c.target) + "<small>" + esc(c.why.target) + '</small></td><td class="num">' + esc(c.r_after_costs) + 'x</td><td class="num">' + Math.round(c.p_target * 100) + "% / " + Math.round(c.p_stop * 100) + "%</td></tr>";
+    }).join("");
+    return '<section class="dcard"><div class="dh"><span class="ic">' + I.idea + '</span><div><b>Plan optimizer · before the debate</b><small>Code tried ' + esc(O.candidates_tried) + " plans built from real price levels</small></div></div>" +
+      '<div class="db"><div class="issue"><span class="gp ' + label[0] + '">' + label[1] + "</span><span>" + rich(O.plain) + "</span></div>" +
+      (rows ? '<details><summary>See the best plans the code found</summary><div class="tbl" style="margin-top:8px"><table><thead><tr><th>#</th><th>Entry</th><th>Stop</th><th>Target</th><th>Win vs risk</th><th>Target / stop first</th></tr></thead><tbody>' + rows + "</tbody></table></div></details>" : "") +
+      "</div></section>";
+  }
+  function claimsLine(c) {
+    if (!c) return "";
+    function one(side) {
+      var x = c[side] || {}; if (!x.checked) return "";
+      var name = side === "bull" ? "Bull" : "Bear";
+      return '<div class="issue"><span class="gp ' + (x.wrong ? "block" : x.unconfirmed ? "warn" : "pass") + '">' + (x.wrong ? x.wrong + " wrong" : x.unconfirmed ? "Some unconfirmed" : "All checked") + "</span><span><b>" + name + "'s numbers:</b> " + esc(x.matched) + " of " + esc(x.checked) + " confirmed against the recorded data." +
+        (x.issues || []).filter(function (i) { return i.level === "wrong"; }).map(function (i) { return " " + esc(i.plain); }).join("") + "</span></div>";
+    }
+    return one("bull") + one("bear");
+  }
+  function tmBlock(tm) {
+    if (!tm) return "";
+    if (tm.error) return '<div class="issue"><span class="gp warn">Note</span><span>The Time Machine could not run: ' + esc(tm.error) + "</span></div>";
+    var m = tm.mc || {}, h = tm.history || {};
+    var t = Math.round((m.p_target || 0) * 100), s = Math.round((m.p_stop || 0) * 100), n = Math.max(0, 100 - t - s);
+    var leanTxt = {COIN_FLIP: "about a coin flip", LEANS_TARGET: "leans in favour", STRONG_TARGET: "clearly in favour", LEANS_STOP: "leans against", STRONG_STOP: "clearly against", NEUTRAL: "undecided"}[tm.lean] || "";
+    return '<div class="tm"><p class="sec-t" style="margin:0">Time Machine · ' + esc((m.replays || 0).toLocaleString()) + " replays · " + esc(leanTxt) + "</p>" +
+      '<div class="tmbar" role="img" aria-label="Target first ' + t + "%, stop first " + s + "%, neither " + n + '%"><span class="t" style="width:' + t + '%"></span><span class="s" style="width:' + s + '%"></span><span class="n" style="width:' + n + '%"></span></div>' +
+      '<div class="tmleg"><span><i style="background:var(--bull)"></i>Profit target first ' + t + '%</span><span><i style="background:var(--bear)"></i>Safety exit first ' + s + '%</span><span><i style="background:#cfccc0"></i>Neither in time ' + n + "%</span></div>" +
+      (h.samples ? '<small style="color:var(--muted);font-size:.76rem">Real history: from ' + esc(h.samples) + " past starting points, the same distances hit the target first " + esc(h.target) + " times and the stop first " + esc(h.stop) + " times.</small>" : "") +
+      "</div>";
+  }
+  function deskCard(n, d, claims) {
+    if (d.error) return '<section class="dcard"><div class="dh"><span class="ic">' + I.chart + "</span><div><b>Desk calculator · Round " + n + "</b><small>Code, not AI</small></div></div><div class=\"db\">" + esc(d.error) + "</div></section>";
+    var f = d.plan_check || {}, p = d.plan || {};
+    var rr = (f.r_multiple_gross || []).map(function (x) { return x.toFixed(2) + "x"; }).join(" / ");
+    var issues = (d.plan_issues || []).map(function (i) { return '<div class="issue"><span class="gp ' + esc(i.level) + '">' + esc(GLV[i.level] || i.level) + "</span><span>" + rich(i.plain) + "</span></div>"; }).join("");
+    return '<section class="dcard" id="desk-' + n + '"><div class="dh"><span class="ic">' + I.chart + '</span><div><b>Desk calculator · Bull\'s plan after Round ' + n + "</b><small>Checked by tested code, not by an AI</small></div></div>" +
+      '<div class="db"><div class="facts">' +
+      "<div><small>Buy / sell at</small><b class=\"num\">" + money(p.entry) + "</b></div>" +
+      "<div><small>Safety exit (stop)</small><b class=\"num\">" + money(p.stop) + "</b></div>" +
+      "<div><small>Profit targets</small><b class=\"num\">" + (p.targets || []).map(money).join(", ") + "</b></div>" +
+      "<div><small>Win vs risk per target</small><b class=\"num\">" + esc(rr) + "</b></div>" +
+      "<div><small>Stop vs normal move (ATR)</small><b class=\"num\">" + esc(f.stop_in_atr) + "x</b></div>" +
+      "<div><small>Entry vs price now</small><b class=\"num\">" + (f.entry_distance_pct != null ? (f.entry_distance_pct > 0 ? "+" : "") + f.entry_distance_pct + "%" : "–") + "</b></div></div>" +
+      issues + tmBlock(d.timemachine) + claimsLine(claims) + "</div></section>";
+  }
+  function riskCard() {
+    if (!DF) return V ? '<div class="typing" style="align-self:center"><span class="dots"><i></i><i></i><i></i></span>The risk manager is checking costs, size and your limits…</div>' : "";
+    var sz = DF.sizing || {}, checks = DF.checks || [];
+    var order = {block: 0, warn: 1, pass: 2};
+    var rows = checks.slice().sort(function (a, b) { return order[a.level] - order[b.level]; }).map(function (c) {
+      return '<div class="issue"><span class="gp ' + esc(c.level) + '">' + esc(GLV[c.level] || c.level) + "</span><span>" + rich(c.plain) + "</span></div>";
+    }).join("");
+    var sizeTxt = sz.status === "NO_CAPITAL" ? "Your capital is not set yet, so no position size was calculated. Per unit: lose about " + esc(sz.account_currency) + " " + money(sz.per_unit_loss_at_stop) + " at the stop, make about " + money(sz.per_unit_gain_at_target1) + " at the first target (after costs)."
+      : sz.qty ? "Size: " + esc(sz.qty) + " units (limited by " + esc(sz.limited_by) + "). Worst case at the stop: " + esc(sz.account_currency) + " " + money(sz.loss_at_stop_incl_costs) + " including " + money(sz.costs_round_trip_at_stop) + " of costs. At the first target: +" + money(sz.gain_at_target1_after_costs) + "." : "";
+    var tk = DF.ticket_plain ? '<div class="ticket"><b>Your ticket · place it yourself</b>' + DF.ticket_plain.map(function (l) { return "<span>" + esc(l) + "</span>"; }).join("") + "</div>" : "";
+    if (DF.management && DF.management.length) tk += '<div><p class="sec-t">After you enter: the plan for managing it</p><ul class="plain">' +
+      DF.management.map(function (m) { return "<li><b>When " + esc(m.when) + ":</b> " + rich(m.do) + "</li>"; }).join("") + "</ul></div>";
+    return '<div class="divider" id="risk"><span>Risk manager</span><small>Costs, position size and your limits, checked by code.</small></div>' +
+      '<section class="dcard" style="width:min(100%,680px)"><div class="dh"><span class="ic">' + I.lock + '</span><div><b>Final call</b><small>Judge: ' + esc(DF.judge_decision) + " · Risk gate: " + esc(DF.gate) + "</small></div></div>" +
+      '<div class="db"><div class="bigcall"><p class="lead" style="margin:0;flex:1;min-width:200px">' + rich(DF.summary_plain) + "</p></div>" +
+      tk + (sizeTxt ? '<p class="read" style="margin:0;font-size:.9rem">' + sizeTxt + "</p>" : "") +
+      '<div><p class="sec-t">Every check</p><div style="display:grid;gap:6px">' + rows + "</div></div></div></section>";
+  }
+  function outcomeCard() {
+    if (!OUT) return "";
+    var label = {target: "Target reached", stop: "Stop hit", expired: "Time ran out", not_filled: "Never started", pending: "Still running", no_plan: "No plan"}[OUT.status] || OUT.status;
+    var good = OUT.call === "SKIP" ? OUT.status === "stop" || (OUT.status === "expired" && OUT.r < 0) : OUT.status === "target" || (OUT.status === "expired" && OUT.r > 0);
+    var verdictLine = OUT.status === "pending" || OUT.status === "not_filled" || OUT.status === "no_plan" ? "" :
+      (OUT.call === "SKIP" ? (good ? "Skipping was the right call: the trade would have lost." : "Skipping missed a winner this time.") : (good ? "The TAKE call worked." : "The TAKE call lost this time; the stop limited the damage."));
+    return '<div class="divider" id="outcome"><span>What happened next</span><small>Checked automatically against real prices.</small></div>' +
+      '<section class="dcard"><div class="db"><div class="issue"><span class="gp ' + (OUT.status === "pending" ? "warn" : good ? "pass" : "block") + '">' + esc(label) + "</span><span>" + rich(OUT.plain) +
+      (OUT.r != null ? ' <b class="num">(' + (OUT.r > 0 ? "+" : "") + esc(OUT.r) + "R)</b>" : "") + "</span></div>" +
+      (verdictLine ? '<p class="lead" style="margin:0;font-size:.95rem">' + esc(verdictLine) + "</p>" : "") + "</div></section>";
+  }
+  function eventsSheet() {
+    if (!EVN) return;
+    var rows = (EVN.events || []).map(function (e) { return "<tr><td>" + esc(when(e.time_utc)) + "<small>" + esc(e.minutes_from_now >= 0 ? "in " + Math.round(e.minutes_from_now / 60 * 10) / 10 + " h" : Math.round(-e.minutes_from_now) + " min ago") + "</small></td><td>" + esc(e.title) + "<small>" + esc(e.currency) + " · " + (e.tier === 1 ? "major" : esc(e.impact)) + "</small></td><td>" + esc(e.forecast || "") + "<small>prev " + esc(e.previous || "–") + "</small></td></tr>"; }).join("");
+    sheet("Calendar check", "Scheduled events in the trade window", "<p>" + esc(EVN.plain) + "</p>" + (rows ? '<div class="tbl"><table><thead><tr><th>When</th><th>Event</th><th>Forecast</th></tr></thead><tbody>' + rows + "</tbody></table></div>" : "") +
+      (EVN.notes || []).map(function (n) { return '<p style="font-size:.84rem;color:var(--muted);font-family:var(--f-ui)">' + esc(n) + "</p>"; }).join("") +
+      '<p style="font-size:.8rem;color:var(--muted);font-family:var(--f-ui)">Source: ' + esc((EVN.sources || []).join(", ")) + ". Big reports like inflation (CPI), jobs and interest-rate decisions can move prices past any stop-loss.</p>");
+  }
+
+  function planText(p) {
+    if (!p) return "";
+    var s = (p.direction === "SHORT" ? "Sell" : "Buy") + " around " + (p.entry || "?") + ". Safety exit (stop-loss) at " + (p.stop_loss || "?") + ".";
+    if (p.targets && p.targets.length) s += " Take profit at " + p.targets.join(", then ") + ".";
+    if (p.risk_reward) s += " Reward-to-risk " + p.risk_reward + ".";
+    return s;
+  }
+
+  /* ---------- sheets ---------- */
+  function sheet(title, kicker, body) {
+    closeSheet();
+    var el = document.createElement("div");
+    el.className = "scrim"; el.id = "scrim";
+    el.innerHTML = '<div class="sheet" role="dialog" aria-modal="true" aria-label="' + esc(title) + '"><div class="grab"></div><div class="sh"><div>' + (kicker ? '<div class="kicker">' + esc(kicker) + "</div>" : "") + "<h3>" + esc(title) + '</h3></div><button class="x" aria-label="Close">×</button></div>' + body + "</div>";
+    document.body.appendChild(el);
+    el.querySelector(".x").focus();
+  }
+  function closeSheet() { var s = document.getElementById("scrim"); if (s) s.remove(); }
+
+  function evSheet(id) {
+    var x = EV[id]; if (!x) return; var e = x.e;
+    var check = null, pool = [];
+    var rr = (R[x.round - 1] || {}).result; if (rr && rr.checks) pool = pool.concat(rr.checks);
+    if (V && V.claim_checks) pool = pool.concat(V.claim_checks);
+    var key = String(e.value || "").toLowerCase();
+    pool.forEach(function (c) { if (!check && c.by === x.side && key && String(c.claim || "").toLowerCase().indexOf(key) >= 0) check = c; });
+    var body = (e.plain ? "<p>" + rich(e.plain) + "</p>" : "") +
+      '<dl class="kv"><dt>The claim</dt><dd>' + rich(e.claim) + "</dd><dt>The number</dt><dd class=\"num\">" + esc(e.value) + "</dd><dt>Where it came from</dt><dd>" +
+      (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.source) + "</a>" : esc(e.source)) + "</dd><dt>When</dt><dd>" + esc(e.time) + "</dd>" +
+      (check ? "<dt>Judge's check</dt><dd><span class=\"pill " + esc(String(check.status).toLowerCase()) + '">' + esc(STATUS[String(check.status).toLowerCase()] || check.status) + "</span> " + esc(check.note_plain || check.note || "") + "</dd>" : "") + "</dl>" +
+      '<p style="font-size:.82rem;color:var(--muted);font-family:var(--f-ui)">“snapshot” means the live market data collected when the debate started. Both sides see the same numbers.</p>';
+    sheet("The proof behind this point", (x.side === "bull" ? "Bull Claude" : "Bear Claude") + " · Round " + x.round, body);
+  }
+  function termSheet(k) {
+    var g = G[k]; if (!g) return;
+    sheet(g.t, "Word explained", "<p>" + esc(g.d) + "</p>");
+  }
+  function marketSheet() {
+    var rows = (S.timeframes || []).filter(function (t) { return !t.error; }).map(function (t) {
+      var m = t.macd || {};
+      return "<tr><td><b>" + esc(t.timeframe) + "</b><small>each candle</small></td><td class=\"num\">" + money(t.close) + "</td><td class=\"num\">" + esc(t.rsi14) + "<small>" + (t.rsi14 >= 70 ? "pushed up a lot" : t.rsi14 <= 30 ? "pushed down a lot" : "in between") + "</small></td>" +
+        '<td class="num">' + money(m.histogram) + "<small>" + ((m.histogram || 0) >= 0 ? "buyers pushing" : "sellers pushing") + '</small></td><td class="num">' + money(t.ema9) + " / " + money(t.ema21) + "</td><td class=\"num\">" + money(t.atr14) + "</td><td class=\"num\">" + esc(t.volume_vs_20avg) + "x</td><td>" + esc((t.trend_facts || []).join("; ")) + "</td></tr>";
+    }).join("");
+    var extra = "";
+    if (S.fear_greed_index && S.fear_greed_index.value != null) extra += "<dt>Fear &amp; Greed</dt><dd>" + esc(S.fear_greed_index.value) + " (" + esc(S.fear_greed_index.label) + ")</dd>";
+    if (S.order_book_top100 && S.order_book_top100.bid_ask_ratio != null) extra += "<dt>Buyers vs sellers waiting</dt><dd>" + esc(S.order_book_top100.bid_ask_ratio) + "x</dd>";
+    if (typeof S.perp_funding_rate_pct === "number") extra += "<dt>Funding rate</dt><dd>" + esc(S.perp_funding_rate_pct) + "%</dd>";
+    var NW = D.news && D.news.items ? D.news.items.map(function (n) { return {title: n.title, url: n.url, source: n.source + " · " + n.age_hours + " h ago" + (n.tier === 1 ? " · major newsroom" : "")}; }) : (S.news || []);
+    var news = NW.filter(function (n) { return n.title; }).slice(0, 10).map(function (n) { return '<li><a href="' + esc(n.url) + '" target="_blank" rel="noopener">' + esc(n.title) + "</a> <small>" + esc(n.source) + "</small></li>"; }).join("");
+    sheet("Live market data", "What both sides could see", "<p>These numbers were collected live when the debate started (" + esc(when(S.snapshot_utc)) + "). Every claim in the chat should match them.</p>" +
+      '<dl class="kv"><dt>Price</dt><dd class="num">' + money(S.price) + "</dd><dt>Market</dt><dd>" + esc(S.market_status) + "</dd><dt>Source</dt><dd>" + esc(S.data_source) + "</dd>" + extra + "</dl>" +
+      '<div class="tbl"><table><thead><tr><th>Candle</th><th>Close</th><th>RSI</th><th>MACD</th><th>EMA 9 / 21</th><th>ATR</th><th>Volume</th><th>Trend</th></tr></thead><tbody>' + rows + "</tbody></table></div>" +
+      '<p style="font-size:.82rem;font-family:var(--f-ui);color:var(--muted)">Tap “How it works” for what RSI, MACD, EMA and ATR mean, or tap the words when they appear in the chat.</p>' +
+      (news ? '<p class="sec-t">Headlines both sides could read</p><ul class="plain">' + news + "</ul>" : ""));
+  }
+  function guideSheet() {
+    var words = Object.keys(G).map(function (k) { return "<tr><td><b>" + esc(G[k].t) + "</b></td><td>" + esc(G[k].d) + "</td></tr>"; }).join("");
+    sheet("How this debate works", "Guide", "<p><b>The question:</b> is this trade worth doing right now?</p>" +
+      "<p><b>Bull Claude</b> (green, on the left) always argues FOR the trade. <b>Bear Claude</b> (red, on the right) always argues AGAINST it. They never switch sides, so how loud they are doesn't matter. Only proof matters.</p>" +
+      "<p><b>Three rounds:</b> 1. First look, their first reasons. 2. Challenge, they question each other and bring more proof. 3. Final word, last arguments.</p>" +
+      "<p><b>The Judge</b> (blue) checks the proof after every round and says who argued better. At the end it re-checks the live prices and decides <b>TAKE</b> (worth doing) or <b>SKIP</b> (not now). It starts from SKIP: Bull has to prove the trade is worth it.</p>" +
+      "<p><b>You decide.</b> Nothing is ever bought or sold for you. This is a learning tool, not financial advice.</p>" +
+      '<p class="sec-t">Words you might see</p><div class="tbl"><table><tbody>' + words + "</tbody></table></div>");
+  }
+  function techSheet(n) {
+    var r = R[n - 1] || {};
+    function side(d, name) {
+      if (!d) return "";
+      var reb = (d.rebuttals || []).map(function (x) { return '<div class="reb"><em>' + esc(x.opponent_point) + "</em>" + esc(x.response) + "</div>"; }).join("");
+      var ev = (d.evidence || []).map(function (e) { return "<tr><td>" + esc(e.claim) + "<small>" + esc(e.plain || "") + '</small></td><td class="num">' + esc(e.value) + "</td><td>" + (e.url ? '<a href="' + esc(e.url) + '" target="_blank" rel="noopener">' + esc(e.source) + "</a>" : esc(e.source)) + "<small>" + esc(e.time) + "</small></td></tr>"; }).join("");
+      var p = d.plan || {}, plan = Object.keys(p).filter(function (k) { return p[k]; }).map(function (k) { return "<dt>" + esc(k.replace(/_/g, " ")) + "</dt><dd>" + esc(Array.isArray(p[k]) ? p[k].join(", ") : p[k]) + "</dd>"; }).join("");
+      var flaws = (d.plan_flaws || []).map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("");
+      return "<h3 style=\"margin:14px 0 6px;font-size:.95rem\">" + name + '</h3><div class="prose">' + paras(d.argument) + "</div>" + reb +
+        (plan ? '<dl class="kv">' + plan + "</dl>" : "") + (flaws ? '<p class="sec-t">Flaws found in the plan</p><ul class="plain">' + flaws + "</ul>" : "") +
+        (d.conditions_to_reconsider ? "<p><b>Would reconsider if:</b> " + esc(d.conditions_to_reconsider) + "</p>" : "") +
+        (ev ? '<div class="tbl"><table><thead><tr><th>Claim</th><th>Value</th><th>Source</th></tr></thead><tbody>' + ev + "</tbody></table></div>" : "");
+    }
+    sheet("Round " + n + ", technical version", "For experienced traders", side(r.bull, "Bull Claude") + side(r.bear, "Bear Claude"));
+  }
+  function judgeTech() {
+    if (!V) return;
+    var tp = V.trade_plan || {}, plan = Object.keys(tp).filter(function (k) { return tp[k] && (tp[k].length || typeof tp[k] !== "object"); }).map(function (k) { return "<dt>" + esc(k.replace(/_/g, " ")) + "</dt><dd>" + esc(Array.isArray(tp[k]) ? tp[k].join(", ") : tp[k]) + "</dd>"; }).join("");
+    sheet("The Judge's technical reasoning", "For experienced traders", (V.summary ? "<p><b>" + esc(V.summary) + "</b></p>" : "") + '<div class="prose">' + paras(V.reasoning) + "</div>" +
+      (plan ? '<dl class="kv">' + plan + "</dl>" : "") + (V.data_freshness ? '<p style="font-size:.82rem;color:var(--muted)">' + esc(V.data_freshness) + "</p>" : "") +
+      '<p class="sec-t">Full fact check</p>' + checksList(V.claim_checks, "note_plain"));
+  }
+
+  /* ---------- render ---------- */
+  function render() {
+    EV = {}; evN = 0;
+    var chat = topCard() + qcard() + roundFold(1) + roundFold(2) + roundFold(3) + finalCard() + riskCard() + outcomeCard() + welcome() +
+      '<p class="disc">Made by AI from free public market data, which can be up to 15 minutes late for some markets. Not financial advice. This tool never places trades.</p>';
+    app.innerHTML = header() + '<main class="chat">' + chat + "</main>" +
+      '<footer class="composer">' + I.lock + "Only Bull Claude, Bear Claude and the Judge can send messages. You're here to watch and decide.</footer>";
+  }
+  render();
+
+  app.addEventListener("click", function (ev) {
+    var t = ev.target.closest("[data-term],[data-ev],[data-sheet],[data-go]");
+    if (!t) return;
+    if (t.dataset.term) termSheet(t.dataset.term);
+    else if (t.dataset.ev) evSheet(t.dataset.ev);
+    else if (t.dataset.go) {
+      var el = document.getElementById(t.dataset.go);
+      if (el) { var fold = el.closest("details"); if (fold) fold.open = true; el.scrollIntoView({behavior: "smooth", block: "start"}); }
+    }
+    else {
+      var s = t.dataset.sheet;
+      if (s === "market") marketSheet(); else if (s === "guide") guideSheet(); else if (s === "judge-tech") judgeTech(); else if (s === "events") eventsSheet();
+      else if (s.indexOf("tech-") === 0) techSheet(+s.slice(5));
+    }
+  });
+  document.addEventListener("click", function (ev) {
+    var sc = document.getElementById("scrim");
+    if (sc && (ev.target === sc || ev.target.closest(".x"))) closeSheet();
+    else if (sc && ev.target.closest(".sheet [data-term]")) termSheet(ev.target.closest("[data-term]").dataset.term);
+  });
+  document.addEventListener("keydown", function (ev) { if (ev.key === "Escape") closeSheet(); });
+  app.addEventListener("toggle", function (ev) {
+    if (ev.target.id !== "welcome") return;
+    try { localStorage.setItem("td-welcome", ev.target.open ? "open" : "closed"); } catch (e) {}
+    var em = ev.target.querySelector(".wtoggle em"); if (em) em.textContent = ev.target.open ? "Hide guide" : "Show guide";
+  }, true);
+
+  // live pages on the website refresh while the debate is still running
+  if (ST.k !== "done" && D.live_reload) setTimeout(function () { if (!document.getElementById("scrim")) location.reload(); }, 45000);
+})();
+</script>
+</body></html>
