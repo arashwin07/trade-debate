@@ -1,151 +1,151 @@
 {
-  "scanned_utc": "2026-11-19T08:11:15Z",
+  "scanned_utc": "2026-11-19T15:12:00Z",
   "open_markets": [
     "crypto",
-    "nse",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "MARUTI",
-      "market": "nse",
-      "change_pct": 6.22,
-      "score": 8.871,
-      "why": "+6.22% today, volume 1.7x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.56,
-      "score": 5.84,
-      "why": "-0.56% today",
+      "symbol": "SA",
+      "market": "us",
+      "change_pct": -23.66,
+      "score": 35.056,
+      "why": "-23.66% today, volume 2.0x 3-month average (day losers)",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "NVDAB",
-      "market": "crypto",
-      "change_pct": -3.71,
-      "score": 4.432,
-      "why": "-3.71% in 24h on $114M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BRITANNIA",
-      "market": "nse",
-      "change_pct": 4.21,
-      "score": 5.645,
-      "why": "+4.21% today, volume 1.2x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "M&M",
-      "market": "nse",
-      "change_pct": 3.96,
-      "score": 5.274,
-      "why": "+3.96% today, volume 1.2x 20-day average",
-      "direction": "LONG"
     },
     {
       "symbol": "GBPUSD",
       "market": "forex",
-      "change_pct": -0.39,
-      "score": 4.096,
-      "why": "-0.39% today",
+      "change_pct": -0.56,
+      "score": 5.784,
+      "why": "-0.56% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": 1.45,
+      "score": 2.254,
+      "why": "+1.45% in 24h on $523M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SNEX",
+      "market": "us",
+      "change_pct": -21.22,
+      "score": 26.392,
+      "why": "-21.22% today, volume 0.8x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "SLS",
+      "market": "us",
+      "change_pct": -12.66,
+      "score": 18.369,
+      "why": "-12.66% today, volume 1.8x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.55,
+      "score": 5.696,
+      "why": "-0.55% today",
       "direction": "SHORT"
     },
     {
       "symbol": "EURGBP",
       "market": "forex",
-      "change_pct": 0.29,
-      "score": 3.04,
-      "why": "+0.29% today",
+      "change_pct": 0.53,
+      "score": 5.528,
+      "why": "+0.53% today",
       "direction": "LONG"
     },
     {
-      "symbol": "BTC",
+      "symbol": "SOL",
       "market": "crypto",
-      "change_pct": -1.45,
-      "score": 2.679,
-      "why": "-1.45% in 24h on $1,216M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 1.27,
+      "score": 1.569,
+      "why": "+1.27% in 24h on $146M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "MARUTI",
-      "market": "nse",
-      "change_pct": 6.22,
-      "score": 8.871,
-      "why": "+6.22% today, volume 1.7x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.56,
-      "score": 5.84,
-      "why": "-0.56% today",
+      "symbol": "SA",
+      "market": "us",
+      "change_pct": -23.66,
+      "score": 35.056,
+      "why": "-23.66% today, volume 2.0x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
-      "symbol": "BRITANNIA",
-      "market": "nse",
-      "change_pct": 4.21,
-      "score": 5.645,
-      "why": "+4.21% today, volume 1.2x 20-day average",
-      "direction": "LONG"
+      "symbol": "SNEX",
+      "market": "us",
+      "change_pct": -21.22,
+      "score": 26.392,
+      "why": "-21.22% today, volume 0.8x 3-month average (day losers)",
+      "direction": "SHORT"
     },
     {
-      "symbol": "M&M",
-      "market": "nse",
-      "change_pct": 3.96,
-      "score": 5.274,
-      "why": "+3.96% today, volume 1.2x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "NVDAB",
-      "market": "crypto",
-      "change_pct": -3.71,
-      "score": 4.432,
-      "why": "-3.71% in 24h on $114M Binance volume",
+      "symbol": "SLS",
+      "market": "us",
+      "change_pct": -12.66,
+      "score": 18.369,
+      "why": "-12.66% today, volume 1.8x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
       "symbol": "GBPUSD",
       "market": "forex",
-      "change_pct": -0.39,
-      "score": 4.096,
-      "why": "-0.39% today",
+      "change_pct": -0.56,
+      "score": 5.784,
+      "why": "-0.56% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.55,
+      "score": 5.696,
+      "why": "-0.55% today",
       "direction": "SHORT"
     },
     {
       "symbol": "EURGBP",
       "market": "forex",
-      "change_pct": 0.29,
-      "score": 3.04,
-      "why": "+0.29% today",
+      "change_pct": 0.53,
+      "score": 5.528,
+      "why": "+0.53% today",
       "direction": "LONG"
     },
     {
-      "symbol": "BTC",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -1.45,
-      "score": 2.679,
-      "why": "-1.45% in 24h on $1,216M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 1.45,
+      "score": 2.254,
+      "why": "+1.45% in 24h on $523M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOL",
+      "market": "crypto",
+      "change_pct": 1.27,
+      "score": 1.569,
+      "why": "+1.27% in 24h on $146M Binance volume",
+      "direction": "LONG"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -0.82,
-      "score": 0.999,
-      "why": "-0.82% in 24h on $125M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 0.91,
+      "score": 1.085,
+      "why": "+0.91% in 24h on $113M Binance volume",
+      "direction": "LONG"
     }
   ]
 }

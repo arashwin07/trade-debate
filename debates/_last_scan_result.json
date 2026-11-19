@@ -1,11 +1,73 @@
-{"scanned_utc":"2026-11-19T08:12:00Z","debated":[],"skipped":[
-{"symbol":"MARUTI","market":"nse","direction":"LONG","reason":"The plan optimizer found no plan with a real edge (NO_EDGE), so a debate would only confirm SKIP."},
-{"symbol":"BRITANNIA","market":"nse","direction":"LONG","reason":"The plan optimizer found no plan with a real edge (NO_EDGE)."},
-{"symbol":"M&M","market":"nse","direction":"LONG","reason":"The plan optimizer found no plan with a real edge (NO_EDGE)."},
-{"symbol":"AUDUSD","market":"forex","direction":"SHORT","reason":"Not an India-allowed forex pair, and the optimizer found no edge."},
-{"symbol":"EURGBP","market":"forex","direction":"LONG","reason":"Not an India-allowed forex pair, and the optimizer found no workable plan."},
-{"symbol":"GBPUSD","market":"forex","direction":"SHORT","reason":"The optimizer found no workable plan (NO_PLAN)."},
-{"symbol":"NVDAB","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."},
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."},
-{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings."}],
-"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}
+{
+ "scanned_utc": "2026-11-19T15:15:00Z",
+ "debated": [],
+ "skipped": [
+  {
+   "symbol": "USD/JPY",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "Retake candidate: The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "SA",
+   "market": "us",
+   "direction": "SHORT",
+   "reason": "Shorting US stocks is not allowed by your settings (optimizer also found no edge)."
+  },
+  {
+   "symbol": "SNEX",
+   "market": "us",
+   "direction": "SHORT",
+   "reason": "Shorting US stocks is not allowed by your settings."
+  },
+  {
+   "symbol": "SLS",
+   "market": "us",
+   "direction": "SHORT",
+   "reason": "Shorting US stocks is not allowed by your settings."
+  },
+  {
+   "symbol": "GBPUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "AUDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "EURGBP",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "ETH",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "SOL",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  }
+ ],
+ "markets_open": [
+  "crypto",
+  "us",
+  "forex"
+ ],
+ "health": "DEGRADED",
+ "budget_left": 8
+}
