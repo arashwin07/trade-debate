@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-19T05:09:39Z",
+  "scanned_utc": "2026-11-19T08:11:15Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -10,141 +10,141 @@
   ],
   "candidates": [
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.82,
-      "score": 8.536,
-      "why": "-0.82% today",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "MARUTI",
       "market": "nse",
-      "change_pct": 5.87,
-      "score": 7.41,
-      "why": "+5.87% today, volume 0.8x 20-day average",
+      "change_pct": 6.22,
+      "score": 8.871,
+      "why": "+6.22% today, volume 1.7x 20-day average",
       "direction": "LONG"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.56,
+      "score": 5.84,
+      "why": "-0.56% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -3.26,
-      "score": 3.902,
-      "why": "-3.26% in 24h on $115M Binance volume",
+      "change_pct": -3.71,
+      "score": 4.432,
+      "why": "-3.71% in 24h on $114M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "GBPUSD",
-      "market": "forex",
-      "change_pct": -0.53,
-      "score": 5.52,
-      "why": "-0.53% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "GBPJPY",
-      "market": "forex",
-      "change_pct": -0.48,
-      "score": 4.96,
-      "why": "-0.48% today",
-      "direction": "SHORT"
+      "symbol": "BRITANNIA",
+      "market": "nse",
+      "change_pct": 4.21,
+      "score": 5.645,
+      "why": "+4.21% today, volume 1.2x 20-day average",
+      "direction": "LONG"
     },
     {
       "symbol": "M&M",
       "market": "nse",
-      "change_pct": 3.93,
-      "score": 4.613,
-      "why": "+3.93% today, volume 0.5x 20-day average",
+      "change_pct": 3.96,
+      "score": 5.274,
+      "why": "+3.96% today, volume 1.2x 20-day average",
       "direction": "LONG"
     },
     {
-      "symbol": "HEROMOTOCO",
-      "market": "nse",
-      "change_pct": 2.67,
-      "score": 3.463,
-      "why": "+2.67% today, volume 1.0x 20-day average",
+      "symbol": "GBPUSD",
+      "market": "forex",
+      "change_pct": -0.39,
+      "score": 4.096,
+      "why": "-0.39% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EURGBP",
+      "market": "forex",
+      "change_pct": 0.29,
+      "score": 3.04,
+      "why": "+0.29% today",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.31,
-      "score": 2.414,
-      "why": "-1.31% in 24h on $1,206M Binance volume",
+      "change_pct": -1.45,
+      "score": 2.679,
+      "why": "-1.45% in 24h on $1,216M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.82,
-      "score": 8.536,
-      "why": "-0.82% today",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "MARUTI",
       "market": "nse",
-      "change_pct": 5.87,
-      "score": 7.41,
-      "why": "+5.87% today, volume 0.8x 20-day average",
+      "change_pct": 6.22,
+      "score": 8.871,
+      "why": "+6.22% today, volume 1.7x 20-day average",
       "direction": "LONG"
     },
     {
-      "symbol": "GBPUSD",
+      "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": -0.53,
-      "score": 5.52,
-      "why": "-0.53% today",
+      "change_pct": -0.56,
+      "score": 5.84,
+      "why": "-0.56% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "GBPJPY",
-      "market": "forex",
-      "change_pct": -0.48,
-      "score": 4.96,
-      "why": "-0.48% today",
-      "direction": "SHORT"
+      "symbol": "BRITANNIA",
+      "market": "nse",
+      "change_pct": 4.21,
+      "score": 5.645,
+      "why": "+4.21% today, volume 1.2x 20-day average",
+      "direction": "LONG"
     },
     {
       "symbol": "M&M",
       "market": "nse",
-      "change_pct": 3.93,
-      "score": 4.613,
-      "why": "+3.93% today, volume 0.5x 20-day average",
+      "change_pct": 3.96,
+      "score": 5.274,
+      "why": "+3.96% today, volume 1.2x 20-day average",
       "direction": "LONG"
     },
     {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": -3.26,
-      "score": 3.902,
-      "why": "-3.26% in 24h on $115M Binance volume",
+      "change_pct": -3.71,
+      "score": 4.432,
+      "why": "-3.71% in 24h on $114M Binance volume",
       "direction": "SHORT"
     },
     {
-      "symbol": "HEROMOTOCO",
-      "market": "nse",
-      "change_pct": 2.67,
-      "score": 3.463,
-      "why": "+2.67% today, volume 1.0x 20-day average",
+      "symbol": "GBPUSD",
+      "market": "forex",
+      "change_pct": -0.39,
+      "score": 4.096,
+      "why": "-0.39% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "EURGBP",
+      "market": "forex",
+      "change_pct": 0.29,
+      "score": 3.04,
+      "why": "+0.29% today",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.31,
-      "score": 2.414,
-      "why": "-1.31% in 24h on $1,206M Binance volume",
+      "change_pct": -1.45,
+      "score": 2.679,
+      "why": "-1.45% in 24h on $1,216M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -1.6,
-      "score": 1.944,
-      "why": "-1.60% in 24h on $129M Binance volume",
+      "change_pct": -0.82,
+      "score": 0.999,
+      "why": "-0.82% in 24h on $125M Binance volume",
       "direction": "SHORT"
     }
   ]
