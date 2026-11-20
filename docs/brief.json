@@ -1,7 +1,7 @@
 {
-  "computed_utc": "2026-11-19T14:15:23Z",
-  "title": "Before Wall Street opens",
-  "which": "us",
+  "computed_utc": "2026-11-20T03:15:57Z",
+  "title": "Before NSE opens",
+  "which": "nse",
   "health": {
     "status": "DEGRADED",
     "critical_down": [],
@@ -9,52 +9,43 @@
   },
   "mood": [
     {
-      "market": "us",
+      "market": "nse",
       "indexes": [
         {
-          "symbol": "^GSPC",
-          "name": "S&P 500",
-          "price": 7323.63,
-          "change_today_pct": -0.23,
-          "vs_sma20_pct": -3.12,
-          "vs_sma50_pct": -4.25,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^IXIC",
-          "name": "Nasdaq",
-          "price": 24429.885,
-          "change_today_pct": 0.42,
-          "vs_sma20_pct": -3.73,
-          "vs_sma50_pct": -6.87,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^VIX",
-          "name": "VIX fear gauge",
-          "price": 22.54,
-          "change_today_pct": -8.22,
-          "vs_sma20_pct": 9.51,
-          "vs_sma50_pct": 25.81,
+          "symbol": "^NSEI",
+          "name": "NIFTY 50",
+          "price": 25514.3,
+          "change_today_pct": 1.14,
+          "vs_sma20_pct": 5.78,
+          "vs_sma50_pct": 8.82,
           "trend": "UP"
         },
         {
-          "symbol": "^TNX",
-          "name": "US 10-year yield",
-          "price": 5.076,
-          "change_today_pct": 0.2,
-          "vs_sma20_pct": 1.69,
-          "vs_sma50_pct": -0.05,
-          "trend": "MIXED"
+          "symbol": "^NSEBANK",
+          "name": "Bank NIFTY",
+          "price": 63063.0,
+          "change_today_pct": 1.65,
+          "vs_sma20_pct": 9.03,
+          "vs_sma50_pct": 11.61,
+          "trend": "UP"
         },
         {
-          "symbol": "DX-Y.NYB",
-          "name": "Dollar index",
-          "price": 103.649,
+          "symbol": "^INDIAVIX",
+          "name": "India VIX fear gauge",
+          "price": 16.11,
+          "change_today_pct": 3.8,
+          "vs_sma20_pct": 0.11,
+          "vs_sma50_pct": 13.06,
+          "trend": "UP"
+        },
+        {
+          "symbol": "USDINR=X",
+          "name": "USD/INR",
+          "price": 93.28,
           "change_today_pct": -0.2,
-          "vs_sma20_pct": 1.17,
-          "vs_sma50_pct": 1.83,
-          "trend": "UP"
+          "vs_sma20_pct": -1.13,
+          "vs_sma50_pct": -1.99,
+          "trend": "DOWN"
         }
       ],
       "crypto_market": null,
@@ -66,25 +57,25 @@
         {
           "symbol": "BTC-USD",
           "name": "Bitcoin",
-          "price": 63874.27,
-          "change_today_pct": 1.41,
-          "vs_sma20_pct": -11.33,
-          "vs_sma50_pct": -18.3,
+          "price": 61933.83,
+          "change_today_pct": -1.67,
+          "vs_sma20_pct": -13.91,
+          "vs_sma50_pct": -20.75,
           "trend": "DOWN"
         },
         {
           "symbol": "^VIX",
           "name": "VIX fear gauge",
-          "price": 22.54,
-          "change_today_pct": -8.22,
-          "vs_sma20_pct": 9.51,
-          "vs_sma50_pct": 25.81,
+          "price": 28.44,
+          "change_today_pct": 15.8,
+          "vs_sma20_pct": 36.23,
+          "vs_sma50_pct": 57.7,
           "trend": "UP"
         }
       ],
       "crypto_market": {
-        "btc_dominance_pct": 58.17,
-        "total_mcap_change_24h_pct": -2.39
+        "btc_dominance_pct": 58.08,
+        "total_mcap_change_24h_pct": -3.64
       },
       "error": null
     }
@@ -92,95 +83,11 @@
   "events": [
     {
       "kind": "macro",
-      "title": "CPI Index ex All Food and Energy",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": 102.8,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "CPI Index ex Fresh Food",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": null,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "Core Inflation Rate YoY",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": 2.3,
-      "previous": 2.1,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "Inflation Rate YoY",
-      "currency": "JPY",
-      "impact": "High",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": 2.1,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "CPI Index",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": 102.2,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "Inflation Rate ex All Food and Energy MoM",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": 0.2,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
-      "title": "Inflation Rate ex All Food and Energy YoY",
-      "currency": "JPY",
-      "impact": "Medium",
-      "time_utc": "2026-11-19T23:30:00Z",
-      "minutes_from_now": 555,
-      "forecast": null,
-      "previous": 2.1,
-      "actual": null,
-      "tier": 1
-    },
-    {
-      "kind": "macro",
       "title": "Retail Sales MoM",
       "currency": "GBP",
       "impact": "High",
       "time_utc": "2026-11-20T07:00:00Z",
-      "minutes_from_now": 1005,
+      "minutes_from_now": 224,
       "forecast": 0,
       "previous": -0.4,
       "actual": null,
@@ -192,7 +99,7 @@
       "currency": "GBP",
       "impact": "Medium",
       "time_utc": "2026-11-20T07:00:00Z",
-      "minutes_from_now": 1005,
+      "minutes_from_now": 224,
       "forecast": 1.7,
       "previous": 0.8,
       "actual": null,
@@ -203,28 +110,28 @@
   "overnight": [
     {
       "symbol": "BTC/USDT",
-      "price": 63935.29,
-      "change_pct": -0.03
+      "price": 62020.0,
+      "change_pct": -0.67
     },
     {
       "symbol": "ETH/USDT",
-      "price": 1810.96,
-      "change_pct": 1.11
+      "price": 1739.79,
+      "change_pct": -1.43
     },
     {
       "symbol": "EUR/USD",
-      "price": 1.1006,
-      "change_pct": 0.12
+      "price": 1.0976,
+      "change_pct": 0.04
     },
     {
       "symbol": "USD/INR",
-      "price": 93.29,
+      "price": 93.28,
       "change_pct": -0.2
     },
     {
       "symbol": "USD/JPY",
-      "price": 159.9,
-      "change_pct": 0.25
+      "price": 159.15,
+      "change_pct": -0.14
     }
   ],
   "watchlist": [],
