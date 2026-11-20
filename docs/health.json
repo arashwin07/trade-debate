@@ -1,5 +1,5 @@
 {
-  "checked_utc": "2026-11-20T14:14:51Z",
+  "checked_utc": "2026-11-20T15:12:26Z",
   "status": "DEGRADED",
   "critical_down": [],
   "markets_down": [],
@@ -9,7 +9,7 @@
       "critical": true,
       "market": "crypto",
       "ok": true,
-      "ms": 856,
+      "ms": 1115,
       "note": "45 bytes"
     },
     {
@@ -17,7 +17,7 @@
       "critical": false,
       "market": "crypto",
       "ok": false,
-      "ms": 351,
+      "ms": 562,
       "note": "HTTPError: HTTP Error 451: "
     },
     {
@@ -25,8 +25,8 @@
       "critical": true,
       "market": "us",
       "ok": true,
-      "ms": 691,
-      "note": "1732 bytes"
+      "ms": 500,
+      "note": "1739 bytes"
     },
     {
       "name": "Yahoo NSE stocks",
@@ -41,23 +41,23 @@
       "critical": true,
       "market": "forex",
       "ok": true,
-      "ms": 410,
-      "note": "1695 bytes"
+      "ms": 587,
+      "note": "1693 bytes"
     },
     {
       "name": "TradingView calendar",
       "critical": true,
       "market": "all",
       "ok": true,
-      "ms": 662,
-      "note": "10611 bytes"
+      "ms": 588,
+      "note": "10607 bytes"
     },
     {
       "name": "ForexFactory calendar (backup)",
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 342,
+      "ms": 590,
       "note": "16968 bytes"
     },
     {
@@ -65,7 +65,7 @@
       "critical": false,
       "market": "us,nse",
       "ok": true,
-      "ms": 671,
+      "ms": 601,
       "note": "70 bytes"
     },
     {
@@ -73,7 +73,7 @@
       "critical": false,
       "market": "us",
       "ok": false,
-      "ms": 214,
+      "ms": 254,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
@@ -81,7 +81,7 @@
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 180,
+      "ms": 178,
       "note": "216 bytes"
     },
     {
@@ -89,7 +89,7 @@
       "critical": false,
       "market": "crypto",
       "ok": false,
-      "ms": 176,
+      "ms": 331,
       "note": "HTTPError: HTTP Error 451: "
     },
     {
@@ -97,15 +97,15 @@
       "critical": false,
       "market": "all",
       "ok": true,
-      "ms": 652,
-      "note": "132864 bytes"
+      "ms": 850,
+      "note": "136341 bytes"
     },
     {
       "name": "CNBC news",
       "critical": false,
       "market": "us",
       "ok": false,
-      "ms": 163,
+      "ms": 246,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     },
     {
@@ -113,15 +113,15 @@
       "critical": false,
       "market": "nse",
       "ok": true,
-      "ms": 484,
-      "note": "36075 bytes"
+      "ms": 379,
+      "note": "36292 bytes"
     },
     {
       "name": "Cointelegraph news",
       "critical": false,
       "market": "crypto",
       "ok": true,
-      "ms": 170,
+      "ms": 278,
       "note": "52420 bytes"
     },
     {
@@ -129,7 +129,7 @@
       "critical": false,
       "market": "forex",
       "ok": false,
-      "ms": 153,
+      "ms": 179,
       "note": "HTTPError: HTTP Error 403: Forbidden"
     }
   ]
