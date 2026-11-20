@@ -1,71 +1,71 @@
 {
- "scanned_utc": "2026-11-19T18:10:50Z",
+ "scanned_utc": "2026-11-20T05:12:00Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "USD/JPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake queued, but the event guard blocks it right now and the optimizer finds no workable plan."
-  },
-  {
-   "symbol": "ANT",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "No usable price history for this ticker, so no plan can be built."
-  },
-  {
-   "symbol": "SNEX",
-   "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is not allowed by your rules."
-  },
-  {
-   "symbol": "INSM",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "Optimizer found no plan with a real edge."
-  },
-  {
-   "symbol": "AUDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no workable plan."
-  },
-  {
-   "symbol": "GBPUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no edge."
-  },
-  {
-   "symbol": "EURGBP",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Optimizer found no workable plan."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your rules."
-  },
-  {
-   "symbol": "XRP",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your rules."
+   "reason": "Retake condition met, but optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
   },
   {
    "symbol": "ZEC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Shorting crypto is not allowed by your rules."
+   "reason": "Shorting crypto is not allowed by your settings."
+  },
+  {
+   "symbol": "ETH",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed by your settings."
+  },
+  {
+   "symbol": "BTC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed by your settings."
+  },
+  {
+   "symbol": "AUDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "USDINR",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "GBPJPY",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "APOLLOHOSP",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "The optimizer found no statistical edge, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "INDUSINDBK",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "The optimizer found no statistical edge, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "TITAN",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "The optimizer found no statistical edge, so a debate would only confirm SKIP."
   }
  ],
  "markets_open": [
   "crypto",
-  "us",
+  "nse",
   "forex"
  ],
  "health": "DEGRADED",
