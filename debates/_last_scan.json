@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-20T15:12:39Z",
+  "scanned_utc": "2026-11-20T18:10:15Z",
   "open_markets": [
     "crypto",
     "us",
@@ -10,19 +10,59 @@
   ],
   "candidates": [
     {
-      "symbol": "GAP",
+      "symbol": "SOXLB",
+      "market": "crypto",
+      "change_pct": -29.1,
+      "score": 34.493,
+      "why": "-29.10% in 24h on $107M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "BLTE",
       "market": "us",
-      "change_pct": 17.32,
-      "score": 22.368,
-      "why": "+17.32% today, volume 1.0x 3-month average (day gainers)",
-      "direction": "LONG"
+      "change_pct": -15.06,
+      "score": 24.183,
+      "why": "-15.06% today, volume 3.0x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -1.23,
+      "score": 12.776,
+      "why": "-1.23% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -14.22,
-      "score": 18.866,
-      "why": "-14.22% in 24h on $224M Binance volume",
+      "change_pct": -17.05,
+      "score": 23.037,
+      "why": "-17.05% in 24h on $249M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "APLD",
+      "market": "us",
+      "change_pct": -16.67,
+      "score": 22.112,
+      "why": "-16.67% today, volume 1.1x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AAOI",
+      "market": "us",
+      "change_pct": -15.66,
+      "score": 20.07,
+      "why": "-15.66% today, volume 0.9x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NEAR",
+      "market": "crypto",
+      "change_pct": -14.13,
+      "score": 16.728,
+      "why": "-14.13% in 24h on $105M Binance volume",
       "direction": "SHORT"
     },
     {
@@ -31,80 +71,64 @@
       "change_pct": -0.86,
       "score": 8.968,
       "why": "-0.86% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BLTE",
-      "market": "us",
-      "change_pct": -12.99,
-      "score": 18.142,
-      "why": "-12.99% today, volume 1.5x 3-month average (day losers)",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ABVX",
-      "market": "us",
-      "change_pct": -9.1,
-      "score": 15.414,
-      "why": "-9.10% today, volume 3.9x 3-month average (day losers)",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": -6.53,
-      "score": 8.503,
-      "why": "-6.53% in 24h on $202M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.76,
-      "score": 7.912,
-      "why": "-0.76% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -3.78,
-      "score": 7.28,
-      "why": "-3.78% in 24h on $1,495M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "GAP",
-      "market": "us",
-      "change_pct": 17.32,
-      "score": 22.368,
-      "why": "+17.32% today, volume 1.0x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
+      "symbol": "SOXLB",
       "market": "crypto",
-      "change_pct": -14.22,
-      "score": 18.866,
-      "why": "-14.22% in 24h on $224M Binance volume",
+      "change_pct": -29.1,
+      "score": 34.493,
+      "why": "-29.10% in 24h on $107M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BLTE",
       "market": "us",
-      "change_pct": -12.99,
-      "score": 18.142,
-      "why": "-12.99% today, volume 1.5x 3-month average (day losers)",
+      "change_pct": -15.06,
+      "score": 24.183,
+      "why": "-15.06% today, volume 3.0x 3-month average (day losers)",
       "direction": "SHORT"
     },
     {
-      "symbol": "ABVX",
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -17.05,
+      "score": 23.037,
+      "why": "-17.05% in 24h on $249M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "APLD",
       "market": "us",
-      "change_pct": -9.1,
-      "score": 15.414,
-      "why": "-9.10% today, volume 3.9x 3-month average (day losers)",
+      "change_pct": -16.67,
+      "score": 22.112,
+      "why": "-16.67% today, volume 1.1x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AAOI",
+      "market": "us",
+      "change_pct": -15.66,
+      "score": 20.07,
+      "why": "-15.66% today, volume 0.9x 3-month average (day losers)",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NEAR",
+      "market": "crypto",
+      "change_pct": -14.13,
+      "score": 16.728,
+      "why": "-14.13% in 24h on $105M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -1.23,
+      "score": 12.776,
+      "why": "-1.23% today",
       "direction": "SHORT"
     },
     {
@@ -116,35 +140,11 @@
       "direction": "SHORT"
     },
     {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": -6.53,
-      "score": 8.503,
-      "why": "-6.53% in 24h on $202M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.76,
-      "score": 7.912,
-      "why": "-0.76% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -3.78,
-      "score": 7.28,
-      "why": "-3.78% in 24h on $1,495M Binance volume",
-      "direction": "SHORT"
-    },
-    {
       "symbol": "GBPJPY",
       "market": "forex",
-      "change_pct": -0.6,
-      "score": 6.256,
-      "why": "-0.60% today",
+      "change_pct": -0.74,
+      "score": 7.664,
+      "why": "-0.74% today",
       "direction": "SHORT"
     }
   ]
