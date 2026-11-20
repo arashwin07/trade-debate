@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-20T05:10:22Z",
+  "scanned_utc": "2026-11-20T08:11:19Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -10,141 +10,141 @@
   ],
   "candidates": [
     {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": -9.66,
-      "score": 12.412,
-      "why": "-9.66% in 24h on $186M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.7,
-      "score": 7.288,
-      "why": "-0.70% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "APOLLOHOSP",
+      "symbol": "INDUSINDBK",
       "market": "nse",
-      "change_pct": 4.42,
-      "score": 5.866,
-      "why": "+4.42% today, volume 1.1x 20-day average",
+      "change_pct": 7.72,
+      "score": 13.543,
+      "why": "+7.72% today, volume 4.7x 20-day average",
       "direction": "LONG"
     },
     {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -4.39,
-      "score": 7.078,
-      "why": "-4.39% in 24h on $620M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -3.33,
-      "score": 6.313,
-      "why": "-3.33% in 24h on $1,375M Binance volume",
+      "change_pct": -9.02,
+      "score": 11.588,
+      "why": "-9.02% in 24h on $185M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": -0.55,
-      "score": 5.736,
-      "why": "-0.55% today",
+      "change_pct": -0.71,
+      "score": 7.352,
+      "why": "-0.71% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "APOLLOHOSP",
+      "market": "nse",
+      "change_pct": 6.12,
+      "score": 9.116,
+      "why": "+6.12% today, volume 2.1x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.59,
+      "score": 6.184,
+      "why": "-0.59% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AXISBANK",
+      "market": "nse",
+      "change_pct": 3.96,
+      "score": 5.862,
+      "why": "+3.96% today, volume 2.0x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": -2.68,
+      "score": 5.123,
+      "why": "-2.68% in 24h on $1,440M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "GBPJPY",
       "market": "forex",
-      "change_pct": -0.49,
-      "score": 5.152,
-      "why": "-0.49% today",
+      "change_pct": -0.41,
+      "score": 4.224,
+      "why": "-0.41% today",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "INDUSINDBK",
-      "market": "nse",
-      "change_pct": 3.18,
-      "score": 4.109,
-      "why": "+3.18% today, volume 1.0x 20-day average",
-      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
+      "symbol": "INDUSINDBK",
+      "market": "nse",
+      "change_pct": 7.72,
+      "score": 13.543,
+      "why": "+7.72% today, volume 4.7x 20-day average",
+      "direction": "LONG"
+    },
+    {
       "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": -9.66,
-      "score": 12.412,
-      "why": "-9.66% in 24h on $186M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": -0.7,
-      "score": 7.288,
-      "why": "-0.70% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": -4.39,
-      "score": 7.078,
-      "why": "-4.39% in 24h on $620M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": -3.33,
-      "score": 6.313,
-      "why": "-3.33% in 24h on $1,375M Binance volume",
+      "change_pct": -9.02,
+      "score": 11.588,
+      "why": "-9.02% in 24h on $185M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "APOLLOHOSP",
       "market": "nse",
-      "change_pct": 4.42,
-      "score": 5.866,
-      "why": "+4.42% today, volume 1.1x 20-day average",
+      "change_pct": 6.12,
+      "score": 9.116,
+      "why": "+6.12% today, volume 2.1x 20-day average",
       "direction": "LONG"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": -0.55,
-      "score": 5.736,
-      "why": "-0.55% today",
+      "change_pct": -0.71,
+      "score": 7.352,
+      "why": "-0.71% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AUDUSD",
+      "market": "forex",
+      "change_pct": -0.59,
+      "score": 6.184,
+      "why": "-0.59% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "AXISBANK",
+      "market": "nse",
+      "change_pct": 3.96,
+      "score": 5.862,
+      "why": "+3.96% today, volume 2.0x 20-day average",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": -2.68,
+      "score": 5.123,
+      "why": "-2.68% in 24h on $1,440M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "GBPJPY",
       "market": "forex",
-      "change_pct": -0.49,
-      "score": 5.152,
-      "why": "-0.49% today",
+      "change_pct": -0.41,
+      "score": 4.224,
+      "why": "-0.41% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "INDUSINDBK",
-      "market": "nse",
-      "change_pct": 3.18,
-      "score": 4.109,
-      "why": "+3.18% today, volume 1.0x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "TITAN",
-      "market": "nse",
-      "change_pct": -2.78,
-      "score": 3.479,
-      "why": "-2.78% today, volume 0.8x 20-day average",
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -2.46,
+      "score": 3.994,
+      "why": "-2.46% in 24h on $646M Binance volume",
       "direction": "SHORT"
     }
   ]
