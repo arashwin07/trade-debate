@@ -1,5 +1,29 @@
-{"scanned_utc":"2026-11-21T00:05:47Z","debated":[],"skipped":[
-{"symbol":"SOXLB","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto = false)."},
-{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto = false)."},
-{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (allow_short.crypto = false)."}],
-"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
+{
+ "scanned_utc": "2026-11-21T06:06:00Z",
+ "debated": [],
+ "skipped": [
+  {
+   "symbol": "SOXLB",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
+  },
+  {
+   "symbol": "BTC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
+  }
+ ],
+ "markets_open": [
+  "crypto"
+ ],
+ "health": "DEGRADED",
+ "budget_left": 8
+}
