@@ -1,29 +1,6 @@
-{
- "scanned_utc": "2026-11-21T06:06:00Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "SOXLB",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings (risk.allow_short.crypto=false), and the mover was down today."
-  }
- ],
- "markets_open": [
-  "crypto"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-21T12:06:00Z","debated":[],"skipped":[
+{"symbol":"SOXLB","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
+{"symbol":"NVDAB","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake condition met but forex is closed for the weekend; it stays queued for Monday."}],
+"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
