@@ -1,59 +1,59 @@
 {
-  "scanned_utc": "2026-11-21T12:05:23Z",
+  "scanned_utc": "2026-11-21T18:05:53Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
-      "symbol": "SOXLB",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -22.64,
-      "score": 28.812,
-      "why": "-22.64% in 24h on $175M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 3.42,
+      "score": 6.394,
+      "why": "+3.42% in 24h on $1,274M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 4.51,
+      "score": 6.362,
+      "why": "+4.51% in 24h on $314M Binance volume",
+      "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -5.58,
-      "score": 12.718,
-      "why": "-5.58% in 24h on $3,590M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "NVDAB",
-      "market": "crypto",
-      "change_pct": -10.0,
-      "score": 11.827,
-      "why": "-10.00% in 24h on $104M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 1.9,
+      "score": 4.266,
+      "why": "+1.90% in 24h on $3,356M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "SOXLB",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -22.64,
-      "score": 28.812,
-      "why": "-22.64% in 24h on $175M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 3.42,
+      "score": 6.394,
+      "why": "+3.42% in 24h on $1,274M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 4.51,
+      "score": 6.362,
+      "why": "+4.51% in 24h on $314M Binance volume",
+      "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -5.58,
-      "score": 12.718,
-      "why": "-5.58% in 24h on $3,590M Binance volume",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "NVDAB",
-      "market": "crypto",
-      "change_pct": -10.0,
-      "score": 11.827,
-      "why": "-10.00% in 24h on $104M Binance volume",
-      "direction": "SHORT"
+      "change_pct": 1.9,
+      "score": 4.266,
+      "why": "+1.90% in 24h on $3,356M Binance volume",
+      "direction": "LONG"
     }
   ]
 }

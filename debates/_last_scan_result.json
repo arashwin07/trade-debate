@@ -1,6 +1,5 @@
-{"scanned_utc":"2026-11-21T12:06:00Z","debated":[],"skipped":[
-{"symbol":"SOXLB","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
-{"symbol":"NVDAB","market":"crypto","direction":"SHORT","reason":"Shorting crypto is turned off in your settings."},
-{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake condition met but forex is closed for the weekend; it stays queued for Monday."}],
+{"scanned_utc":"2026-11-21T18:07:06Z","debated":[],"skipped":[
+{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The code found no trade plan that passes your rules (NO_PLAN), so a debate would only confirm SKIP."},
+{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The code found no statistical edge for any plan (NO_EDGE), so a debate would only confirm SKIP."},
+{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The code found no trade plan that passes your rules (NO_PLAN), so a debate would only confirm SKIP."}],
 "markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
