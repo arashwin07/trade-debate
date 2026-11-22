@@ -1,59 +1,59 @@
 {
-  "scanned_utc": "2026-11-22T12:05:28Z",
+  "scanned_utc": "2026-11-22T18:05:25Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": 5.18,
-      "score": 10.057,
-      "why": "+5.18% in 24h on $1,548M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": 4.61,
-      "score": 5.602,
-      "why": "+4.61% in 24h on $129M Binance volume",
-      "direction": "LONG"
-    },
-    {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.61,
-      "score": 5.577,
-      "why": "+3.61% in 24h on $503M Binance volume",
+      "change_pct": 1.82,
+      "score": 2.682,
+      "why": "+1.82% in 24h on $395M Binance volume",
       "direction": "LONG"
+    },
+    {
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": 1.15,
+      "score": 2.12,
+      "why": "+1.15% in 24h on $1,205M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOL",
+      "market": "crypto",
+      "change_pct": -0.54,
+      "score": 0.654,
+      "why": "-0.54% in 24h on $132M Binance volume",
+      "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": 5.18,
-      "score": 10.057,
-      "why": "+5.18% in 24h on $1,548M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": 4.61,
-      "score": 5.602,
-      "why": "+4.61% in 24h on $129M Binance volume",
-      "direction": "LONG"
-    },
-    {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.61,
-      "score": 5.577,
-      "why": "+3.61% in 24h on $503M Binance volume",
+      "change_pct": 1.82,
+      "score": 2.682,
+      "why": "+1.82% in 24h on $395M Binance volume",
       "direction": "LONG"
+    },
+    {
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": 1.15,
+      "score": 2.12,
+      "why": "+1.15% in 24h on $1,205M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOL",
+      "market": "crypto",
+      "change_pct": -0.54,
+      "score": 0.654,
+      "why": "-0.54% in 24h on $132M Binance volume",
+      "direction": "SHORT"
     }
   ]
 }
