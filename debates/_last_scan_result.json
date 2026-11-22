@@ -1,30 +1,24 @@
 {
- "scanned_utc": "2026-11-22T00:07:24Z",
+ "scanned_utc": "2026-11-22T06:06:45Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "ETH",
+   "symbol": "ZEC",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
+   "reason": "The plan optimizer found no plan with a proven edge (NO_EDGE), so a debate would only confirm SKIP."
   },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
+   "reason": "The plan optimizer found no workable plan that passes your rules (NO_PLAN)."
   },
   {
-   "symbol": "ZEC",
+   "symbol": "ETH",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Queued retake waits: forex is closed for the weekend."
+   "reason": "The plan optimizer found no workable plan that passes your rules (NO_PLAN)."
   }
  ],
  "markets_open": [

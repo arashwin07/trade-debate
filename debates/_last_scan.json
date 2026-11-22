@@ -1,58 +1,58 @@
 {
-  "scanned_utc": "2026-11-22T00:05:58Z",
+  "scanned_utc": "2026-11-22T06:05:30Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 3.84,
-      "score": 6.833,
-      "why": "+3.84% in 24h on $1,007M Binance volume",
+      "change_pct": 14.32,
+      "score": 18.204,
+      "why": "+14.32% in 24h on $173M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 2.26,
-      "score": 4.921,
-      "why": "+2.26% in 24h on $2,817M Binance volume",
+      "change_pct": 5.98,
+      "score": 12.232,
+      "why": "+5.98% in 24h on $2,028M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "ZEC",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.01,
-      "score": 4.012,
-      "why": "+3.01% in 24h on $231M Binance volume",
+      "change_pct": 6.54,
+      "score": 10.977,
+      "why": "+6.54% in 24h on $751M Binance volume",
       "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 3.84,
-      "score": 6.833,
-      "why": "+3.84% in 24h on $1,007M Binance volume",
+      "change_pct": 14.32,
+      "score": 18.204,
+      "why": "+14.32% in 24h on $173M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 2.26,
-      "score": 4.921,
-      "why": "+2.26% in 24h on $2,817M Binance volume",
+      "change_pct": 5.98,
+      "score": 12.232,
+      "why": "+5.98% in 24h on $2,028M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "ZEC",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.01,
-      "score": 4.012,
-      "why": "+3.01% in 24h on $231M Binance volume",
+      "change_pct": 6.54,
+      "score": 10.977,
+      "why": "+6.54% in 24h on $751M Binance volume",
       "direction": "LONG"
     }
   ]
