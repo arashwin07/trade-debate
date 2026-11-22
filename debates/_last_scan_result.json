@@ -1,5 +1,35 @@
-{"scanned_utc":"2026-11-21T18:07:06Z","debated":[],"skipped":[
-{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The code found no trade plan that passes your rules (NO_PLAN), so a debate would only confirm SKIP."},
-{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The code found no statistical edge for any plan (NO_EDGE), so a debate would only confirm SKIP."},
-{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The code found no trade plan that passes your rules (NO_PLAN), so a debate would only confirm SKIP."}],
-"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
+{
+ "scanned_utc": "2026-11-22T00:07:24Z",
+ "debated": [],
+ "skipped": [
+  {
+   "symbol": "ETH",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "BTC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The code found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "USD/JPY",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "Queued retake waits: forex is closed for the weekend."
+  }
+ ],
+ "markets_open": [
+  "crypto"
+ ],
+ "health": "DEGRADED",
+ "budget_left": 8
+}

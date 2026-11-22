@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-21T18:05:53Z",
+  "scanned_utc": "2026-11-22T00:05:58Z",
   "open_markets": [
     "crypto"
   ],
@@ -8,25 +8,25 @@
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.42,
-      "score": 6.394,
-      "why": "+3.42% in 24h on $1,274M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": 4.51,
-      "score": 6.362,
-      "why": "+4.51% in 24h on $314M Binance volume",
+      "change_pct": 3.84,
+      "score": 6.833,
+      "why": "+3.84% in 24h on $1,007M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 1.9,
-      "score": 4.266,
-      "why": "+1.90% in 24h on $3,356M Binance volume",
+      "change_pct": 2.26,
+      "score": 4.921,
+      "why": "+2.26% in 24h on $2,817M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 3.01,
+      "score": 4.012,
+      "why": "+3.01% in 24h on $231M Binance volume",
       "direction": "LONG"
     }
   ],
@@ -34,25 +34,25 @@
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 3.42,
-      "score": 6.394,
-      "why": "+3.42% in 24h on $1,274M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ZEC",
-      "market": "crypto",
-      "change_pct": 4.51,
-      "score": 6.362,
-      "why": "+4.51% in 24h on $314M Binance volume",
+      "change_pct": 3.84,
+      "score": 6.833,
+      "why": "+3.84% in 24h on $1,007M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 1.9,
-      "score": 4.266,
-      "why": "+1.90% in 24h on $3,356M Binance volume",
+      "change_pct": 2.26,
+      "score": 4.921,
+      "why": "+2.26% in 24h on $2,817M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 3.01,
+      "score": 4.012,
+      "why": "+3.01% in 24h on $231M Binance volume",
       "direction": "LONG"
     }
   ]
