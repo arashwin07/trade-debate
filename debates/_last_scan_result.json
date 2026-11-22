@@ -1,29 +1,6 @@
-{
- "scanned_utc": "2026-11-22T06:06:45Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no plan with a proven edge (NO_EDGE), so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules (NO_PLAN)."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules (NO_PLAN)."
-  }
- ],
- "markets_open": [
-  "crypto"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-22T12:06:39Z","debated":[],"skipped":[
+{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan that passes your rules (NO_PLAN)."},
+{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no edge in replays (NO_EDGE)."},
+{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan that passes your rules (NO_PLAN)."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Queued retake is intraday and forex is closed on Sunday, so it waits."}],
+"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
