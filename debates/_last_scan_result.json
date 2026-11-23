@@ -1,67 +1,11 @@
-{
- "scanned_utc": "2026-11-23T05:10:52Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "TATASTEEL",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
-  },
-  {
-   "symbol": "TCS",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
-  },
-  {
-   "symbol": "TECHM",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "USDCHF",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "USDJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "USDINR",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
-  }
- ],
- "markets_open": [
-  "crypto",
-  "nse",
-  "forex"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-23T08:13:00Z","debated":[],"skipped":[
+{"symbol":"TATASTEEL","market":"nse","direction":"SHORT","reason":"The optimizer found no plan with a real edge that passes your rules."},
+{"symbol":"USDCHF","market":"forex","direction":"SHORT","reason":"Not an India-allowed forex pair, and the optimizer found no edge."},
+{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
+{"symbol":"SOL","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
+{"symbol":"TCS","market":"nse","direction":"LONG","reason":"The optimizer found no edge."},
+{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
+{"symbol":"USDJPY","market":"forex","direction":"SHORT","reason":"The optimizer found no edge."},
+{"symbol":"AXISBANK","market":"nse","direction":"SHORT","reason":"Blocked by the event guard, and no edge found."},
+{"symbol":"USDINR","market":"forex","direction":"SHORT","reason":"Blocked by the event guard, and no plan found."}],
+"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}
