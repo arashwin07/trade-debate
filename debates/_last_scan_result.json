@@ -1,11 +1,73 @@
-{"scanned_utc":"2026-11-23T08:13:00Z","debated":[],"skipped":[
-{"symbol":"TATASTEEL","market":"nse","direction":"SHORT","reason":"The optimizer found no plan with a real edge that passes your rules."},
-{"symbol":"USDCHF","market":"forex","direction":"SHORT","reason":"Not an India-allowed forex pair, and the optimizer found no edge."},
-{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
-{"symbol":"SOL","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
-{"symbol":"TCS","market":"nse","direction":"LONG","reason":"The optimizer found no edge."},
-{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The optimizer found no workable plan."},
-{"symbol":"USDJPY","market":"forex","direction":"SHORT","reason":"The optimizer found no edge."},
-{"symbol":"AXISBANK","market":"nse","direction":"SHORT","reason":"Blocked by the event guard, and no edge found."},
-{"symbol":"USDINR","market":"forex","direction":"SHORT","reason":"Blocked by the event guard, and no plan found."}],
-"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}
+{
+ "scanned_utc": "2026-11-23T15:14:22Z",
+ "debated": [],
+ "skipped": [
+  {
+   "symbol": "USDJPY",
+   "market": "forex",
+   "direction": "LONG",
+   "reason": "Retake condition met, but the optimizer found no workable plan."
+  },
+  {
+   "symbol": "NVDA",
+   "market": "us",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge (extreme volatility)."
+  },
+  {
+   "symbol": "KYMR",
+   "market": "us",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "IREN",
+   "market": "us",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "SOXLB",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "NVDAB",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "Optimizer found no workable plan."
+  },
+  {
+   "symbol": "EURJPY",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Pair not allowed for India forex rules."
+  },
+  {
+   "symbol": "GBPJPY",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Pair not allowed for India forex rules."
+  },
+  {
+   "symbol": "NZDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Pair not allowed for India forex rules."
+  }
+ ],
+ "markets_open": [
+  "crypto",
+  "us",
+  "forex"
+ ],
+ "health": "DEGRADED",
+ "budget_left": 8
+}

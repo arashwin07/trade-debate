@@ -1,150 +1,150 @@
 {
-  "scanned_utc": "2026-11-23T08:11:41Z",
+  "scanned_utc": "2026-11-23T15:12:19Z",
   "open_markets": [
     "crypto",
-    "nse",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "TATASTEEL",
-      "market": "nse",
-      "change_pct": -8.81,
-      "score": 16.09,
-      "why": "-8.81% today, volume 5.7x 20-day average",
-      "direction": "SHORT"
+      "symbol": "NVDA",
+      "market": "us",
+      "change_pct": 32.66,
+      "score": 47.454,
+      "why": "+32.66% today, volume 1.8x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
-      "symbol": "USDCHF",
+      "symbol": "SOXLB",
+      "market": "crypto",
+      "change_pct": 27.34,
+      "score": 32.171,
+      "why": "+27.34% in 24h on $100M Binance volume",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.77,
-      "score": 7.968,
-      "why": "-0.77% today",
+      "change_pct": -0.68,
+      "score": 7.096,
+      "why": "-0.68% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "BTC",
+      "symbol": "KYMR",
+      "market": "us",
+      "change_pct": 25.5,
+      "score": 40.402,
+      "why": "+25.50% today, volume 2.8x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "IREN",
+      "market": "us",
+      "change_pct": 29.86,
+      "score": 38.41,
+      "why": "+29.86% today, volume 0.9x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": 3.6,
-      "score": 6.712,
-      "why": "+3.60% in 24h on $1,269M Binance volume",
+      "change_pct": 25.01,
+      "score": 31.956,
+      "why": "+25.01% in 24h on $179M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "SOL",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 4.11,
-      "score": 5.091,
-      "why": "+4.11% in 24h on $146M Binance volume",
+      "change_pct": 9.22,
+      "score": 11.395,
+      "why": "+9.22% in 24h on $144M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "TCS",
-      "market": "nse",
-      "change_pct": 3.42,
-      "score": 4.783,
-      "why": "+3.42% today, volume 1.5x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": 2.96,
-      "score": 4.436,
-      "why": "+2.96% in 24h on $430M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "USDJPY",
+      "symbol": "GBPJPY",
       "market": "forex",
-      "change_pct": -0.4,
-      "score": 4.12,
-      "why": "-0.40% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "AXISBANK",
-      "market": "nse",
-      "change_pct": -3.04,
-      "score": 4.075,
-      "why": "-3.04% today, volume 1.2x 20-day average",
+      "change_pct": -0.59,
+      "score": 6.128,
+      "why": "-0.59% today",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "TATASTEEL",
-      "market": "nse",
-      "change_pct": -8.81,
-      "score": 16.09,
-      "why": "-8.81% today, volume 5.7x 20-day average",
-      "direction": "SHORT"
+      "symbol": "NVDA",
+      "market": "us",
+      "change_pct": 32.66,
+      "score": 47.454,
+      "why": "+32.66% today, volume 1.8x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
-      "symbol": "USDCHF",
-      "market": "forex",
-      "change_pct": -0.77,
-      "score": 7.968,
-      "why": "-0.77% today",
-      "direction": "SHORT"
+      "symbol": "KYMR",
+      "market": "us",
+      "change_pct": 25.5,
+      "score": 40.402,
+      "why": "+25.50% today, volume 2.8x 3-month average (day gainers)",
+      "direction": "LONG"
     },
     {
-      "symbol": "BTC",
+      "symbol": "IREN",
+      "market": "us",
+      "change_pct": 29.86,
+      "score": 38.41,
+      "why": "+29.86% today, volume 0.9x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "SOXLB",
       "market": "crypto",
-      "change_pct": 3.6,
-      "score": 6.712,
-      "why": "+3.60% in 24h on $1,269M Binance volume",
+      "change_pct": 27.34,
+      "score": 32.171,
+      "why": "+27.34% in 24h on $100M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "SOL",
+      "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": 4.11,
-      "score": 5.091,
-      "why": "+4.11% in 24h on $146M Binance volume",
+      "change_pct": 25.01,
+      "score": 31.956,
+      "why": "+25.01% in 24h on $179M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "TCS",
-      "market": "nse",
-      "change_pct": 3.42,
-      "score": 4.783,
-      "why": "+3.42% today, volume 1.5x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 2.96,
-      "score": 4.436,
-      "why": "+2.96% in 24h on $430M Binance volume",
+      "change_pct": 9.22,
+      "score": 11.395,
+      "why": "+9.22% in 24h on $144M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "USDJPY",
+      "symbol": "EURJPY",
       "market": "forex",
-      "change_pct": -0.4,
-      "score": 4.12,
-      "why": "-0.40% today",
+      "change_pct": -0.68,
+      "score": 7.096,
+      "why": "-0.68% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "AXISBANK",
-      "market": "nse",
-      "change_pct": -3.04,
-      "score": 4.075,
-      "why": "-3.04% today, volume 1.2x 20-day average",
+      "symbol": "GBPJPY",
+      "market": "forex",
+      "change_pct": -0.59,
+      "score": 6.128,
+      "why": "-0.59% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "USDINR",
+      "symbol": "NZDUSD",
       "market": "forex",
-      "change_pct": -0.39,
-      "score": 4.072,
-      "why": "-0.39% today",
+      "change_pct": -0.59,
+      "score": 6.104,
+      "why": "-0.59% today",
       "direction": "SHORT"
     }
   ]
