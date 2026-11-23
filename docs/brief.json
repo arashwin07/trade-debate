@@ -1,7 +1,7 @@
 {
-  "computed_utc": "2026-11-20T14:14:51Z",
-  "title": "Before Wall Street opens",
-  "which": "us",
+  "computed_utc": "2026-11-23T03:16:02Z",
+  "title": "Before NSE opens",
+  "which": "nse",
   "health": {
     "status": "DEGRADED",
     "critical_down": [],
@@ -9,52 +9,43 @@
   },
   "mood": [
     {
-      "market": "us",
+      "market": "nse",
       "indexes": [
         {
-          "symbol": "^GSPC",
-          "name": "S&P 500",
-          "price": 7175.83,
-          "change_today_pct": -2.02,
-          "vs_sma20_pct": -4.77,
-          "vs_sma50_pct": -6.08,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^IXIC",
-          "name": "Nasdaq",
-          "price": 23879.2,
-          "change_today_pct": -2.25,
-          "vs_sma20_pct": -5.5,
-          "vs_sma50_pct": -8.82,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^VIX",
-          "name": "VIX fear gauge",
-          "price": 30.32,
-          "change_today_pct": 6.61,
-          "vs_sma20_pct": 41.55,
-          "vs_sma50_pct": 65.47,
+          "symbol": "^NSEI",
+          "name": "NIFTY 50",
+          "price": 25800.6,
+          "change_today_pct": 1.12,
+          "vs_sma20_pct": 6.28,
+          "vs_sma50_pct": 9.86,
           "trend": "UP"
         },
         {
-          "symbol": "^TNX",
-          "name": "US 10-year yield",
-          "price": 4.98,
-          "change_today_pct": -1.43,
-          "vs_sma20_pct": -0.2,
-          "vs_sma50_pct": -1.93,
-          "trend": "DOWN"
+          "symbol": "^NSEBANK",
+          "name": "Bank NIFTY",
+          "price": 64635.2,
+          "change_today_pct": 2.49,
+          "vs_sma20_pct": 10.82,
+          "vs_sma50_pct": 14.09,
+          "trend": "UP"
         },
         {
-          "symbol": "DX-Y.NYB",
-          "name": "Dollar index",
-          "price": 103.707,
-          "change_today_pct": -0.19,
-          "vs_sma20_pct": 1.12,
-          "vs_sma50_pct": 1.79,
+          "symbol": "^INDIAVIX",
+          "name": "India VIX fear gauge",
+          "price": 17.32,
+          "change_today_pct": 7.51,
+          "vs_sma20_pct": 6.96,
+          "vs_sma50_pct": 19.6,
           "trend": "UP"
+        },
+        {
+          "symbol": "USDINR=X",
+          "name": "USD/INR",
+          "price": 92.66,
+          "change_today_pct": -0.68,
+          "vs_sma20_pct": -1.67,
+          "vs_sma50_pct": -2.6,
+          "trend": "DOWN"
         }
       ],
       "crypto_market": null,
@@ -66,56 +57,93 @@
         {
           "symbol": "BTC-USD",
           "name": "Bitcoin",
-          "price": 61866.98,
-          "change_today_pct": -0.06,
-          "vs_sma20_pct": -13.06,
-          "vs_sma50_pct": -20.36,
+          "price": 60992.0,
+          "change_today_pct": 1.49,
+          "vs_sma20_pct": -12.0,
+          "vs_sma50_pct": -20.44,
           "trend": "DOWN"
         },
         {
           "symbol": "^VIX",
           "name": "VIX fear gauge",
-          "price": 30.32,
-          "change_today_pct": 6.61,
-          "vs_sma20_pct": 41.55,
-          "vs_sma50_pct": 65.47,
+          "price": 35.89,
+          "change_today_pct": 26.2,
+          "vs_sma20_pct": 65.4,
+          "vs_sma50_pct": 94.68,
           "trend": "UP"
         }
       ],
       "crypto_market": {
-        "btc_dominance_pct": 58.15,
-        "total_mcap_change_24h_pct": -5.97
+        "btc_dominance_pct": 58.83,
+        "total_mcap_change_24h_pct": -2.2
       },
       "error": null
     }
   ],
-  "events": [],
+  "events": [
+    {
+      "kind": "macro",
+      "title": "S&P Global Manufacturing PMI Flash",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-23T09:30:00Z",
+      "minutes_from_now": 374,
+      "forecast": 53,
+      "previous": null,
+      "actual": null,
+      "tier": 2
+    },
+    {
+      "kind": "macro",
+      "title": "S&P Global Services PMI Flash",
+      "currency": "GBP",
+      "impact": "High",
+      "time_utc": "2026-11-23T09:30:00Z",
+      "minutes_from_now": 374,
+      "forecast": 53,
+      "previous": null,
+      "actual": null,
+      "tier": 2
+    },
+    {
+      "kind": "macro",
+      "title": "GDP Growth Rate YoY",
+      "currency": "INR",
+      "impact": "High",
+      "time_utc": "2026-11-23T10:30:00Z",
+      "minutes_from_now": 434,
+      "forecast": 7.6,
+      "previous": 7.8,
+      "actual": null,
+      "tier": 1
+    }
+  ],
   "event_notes": [],
   "overnight": [
     {
       "symbol": "BTC/USDT",
-      "price": 61924.12,
-      "change_pct": -3.15
+      "price": 61066.1,
+      "change_pct": 2.87
     },
     {
       "symbol": "ETH/USDT",
-      "price": 1753.38,
-      "change_pct": -3.18
+      "price": 1719.72,
+      "change_pct": 3.35
     },
     {
       "symbol": "EUR/USD",
-      "price": 1.0991,
-      "change_pct": 0.17
+      "price": 1.0987,
+      "change_pct": 0.16
     },
     {
       "symbol": "USD/INR",
       "price": 92.66,
-      "change_pct": -0.86
+      "change_pct": -0.68
     },
     {
       "symbol": "USD/JPY",
-      "price": 158.77,
-      "change_pct": -0.38
+      "price": 158.94,
+      "change_pct": -0.48
     }
   ],
   "watchlist": [],
