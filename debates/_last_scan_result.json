@@ -1,12 +1,24 @@
 {
- "scanned_utc": "2026-11-22T18:05:51Z",
+ "scanned_utc": "2026-11-23T05:10:52Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "ETH",
-   "market": "crypto",
+   "symbol": "TATASTEEL",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
+  },
+  {
+   "symbol": "TCS",
+   "market": "nse",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
+  },
+  {
+   "symbol": "TECHM",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "A major scheduled event (India GDP/PMI data) lands inside the trade window, so the event guard blocks it."
   },
   {
    "symbol": "BTC",
@@ -15,20 +27,40 @@
    "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
   },
   {
-   "symbol": "SOL",
+   "symbol": "ETH",
    "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
+   "direction": "LONG",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
   },
   {
-   "symbol": "USD/JPY",
-   "market": "forex",
+   "symbol": "SOL",
+   "market": "crypto",
    "direction": "LONG",
-   "reason": "Queued retake, but the forex market is closed for the weekend; it stays in the retake queue."
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "USDCHF",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "USDJPY",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "USDINR",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found no workable plan that passes your rules, so a debate would only confirm SKIP."
   }
  ],
  "markets_open": [
-  "crypto"
+  "crypto",
+  "nse",
+  "forex"
  ],
  "health": "DEGRADED",
  "budget_left": 8
