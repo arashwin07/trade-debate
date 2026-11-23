@@ -1,66 +1,66 @@
 {
- "scanned_utc": "2026-11-23T15:14:22Z",
+ "scanned_utc": "2026-11-23T18:15:00Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "USDJPY",
+   "symbol": "USD/JPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake condition met, but the optimizer found no workable plan."
-  },
-  {
-   "symbol": "NVDA",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge (extreme volatility)."
+   "reason": "Retake condition met, but the optimizer found no workable plan (NO_PLAN)."
   },
   {
    "symbol": "KYMR",
    "market": "us",
    "direction": "LONG",
-   "reason": "Optimizer found no edge."
+   "reason": "Optimizer found no edge (NO_EDGE)."
+  },
+  {
+   "symbol": "NVDA",
+   "market": "us",
+   "direction": "LONG",
+   "reason": "Optimizer found no edge (NO_EDGE)."
   },
   {
    "symbol": "IREN",
    "market": "us",
    "direction": "LONG",
-   "reason": "Optimizer found no edge."
-  },
-  {
-   "symbol": "SOXLB",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge."
+   "reason": "Optimizer found no edge (NO_EDGE)."
   },
   {
    "symbol": "NVDAB",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "Optimizer found no edge."
+   "reason": "Optimizer found no edge (NO_EDGE)."
   },
   {
-   "symbol": "ZEC",
+   "symbol": "SOXLB",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "Optimizer found no workable plan."
+   "reason": "Optimizer found no workable plan (NO_PLAN)."
   },
   {
    "symbol": "EURJPY",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Pair not allowed for India forex rules."
+   "reason": "Pair not allowed for India-resident forex rules."
   },
   {
    "symbol": "GBPJPY",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Pair not allowed for India forex rules."
+   "reason": "Pair not allowed for India-resident forex rules."
   },
   {
-   "symbol": "NZDUSD",
+   "symbol": "EURUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Pair not allowed for India forex rules."
+   "reason": "Optimizer found no workable plan (NO_PLAN)."
+  },
+  {
+   "symbol": "SOL",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "Optimizer found no workable plan (NO_PLAN)."
   }
  ],
  "markets_open": [
