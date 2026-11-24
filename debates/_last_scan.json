@@ -1,150 +1,110 @@
 {
-  "scanned_utc": "2026-11-23T18:10:02Z",
+  "scanned_utc": "2026-11-24T05:09:24Z",
   "open_markets": [
     "crypto",
-    "us",
     "forex"
   ],
   "notes": [
+    "us: market closed, skipped",
     "nse: market closed, skipped"
   ],
   "candidates": [
     {
-      "symbol": "KYMR",
-      "market": "us",
-      "change_pct": 35.49,
-      "score": 66.649,
-      "why": "+35.49% today, volume 6.5x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": 23.32,
-      "score": 31.239,
-      "why": "+23.32% in 24h on $237M Binance volume",
+      "change_pct": 21.87,
+      "score": 29.385,
+      "why": "+21.87% in 24h on $241M Binance volume",
       "direction": "LONG"
-    },
-    {
-      "symbol": "EURJPY",
-      "market": "forex",
-      "change_pct": -1.05,
-      "score": 10.96,
-      "why": "-1.05% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "NVDA",
-      "market": "us",
-      "change_pct": 31.18,
-      "score": 50.848,
-      "why": "+31.18% today, volume 3.3x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "IREN",
-      "market": "us",
-      "change_pct": 24.93,
-      "score": 35.385,
-      "why": "+24.93% today, volume 1.6x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "SOXLB",
-      "market": "crypto",
-      "change_pct": 25.09,
-      "score": 29.738,
-      "why": "+25.09% in 24h on $106M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "GBPJPY",
-      "market": "forex",
-      "change_pct": -0.83,
-      "score": 8.648,
-      "why": "-0.83% today",
-      "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.76,
-      "score": 7.928,
-      "why": "-0.76% today",
+      "change_pct": -0.52,
+      "score": 5.4,
+      "why": "-0.52% today",
       "direction": "SHORT"
+    },
+    {
+      "symbol": "EURJPY",
+      "market": "forex",
+      "change_pct": -0.51,
+      "score": 5.352,
+      "why": "-0.51% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -0.49,
+      "score": 5.056,
+      "why": "-0.49% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -2.72,
+      "score": 3.56,
+      "why": "-2.72% in 24h on $207M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "XRP",
+      "market": "crypto",
+      "change_pct": 2.22,
+      "score": 2.831,
+      "why": "+2.22% in 24h on $176M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "KYMR",
-      "market": "us",
-      "change_pct": 35.49,
-      "score": 66.649,
-      "why": "+35.49% today, volume 6.5x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "NVDA",
-      "market": "us",
-      "change_pct": 31.18,
-      "score": 50.848,
-      "why": "+31.18% today, volume 3.3x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "IREN",
-      "market": "us",
-      "change_pct": 24.93,
-      "score": 35.385,
-      "why": "+24.93% today, volume 1.6x 3-month average (day gainers)",
-      "direction": "LONG"
-    },
-    {
       "symbol": "NVDAB",
       "market": "crypto",
-      "change_pct": 23.32,
-      "score": 31.239,
-      "why": "+23.32% in 24h on $237M Binance volume",
+      "change_pct": 21.87,
+      "score": 29.385,
+      "why": "+21.87% in 24h on $241M Binance volume",
       "direction": "LONG"
-    },
-    {
-      "symbol": "SOXLB",
-      "market": "crypto",
-      "change_pct": 25.09,
-      "score": 29.738,
-      "why": "+25.09% in 24h on $106M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "EURJPY",
-      "market": "forex",
-      "change_pct": -1.05,
-      "score": 10.96,
-      "why": "-1.05% today",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "GBPJPY",
-      "market": "forex",
-      "change_pct": -0.83,
-      "score": 8.648,
-      "why": "-0.83% today",
-      "direction": "SHORT"
     },
     {
       "symbol": "EURUSD",
       "market": "forex",
-      "change_pct": -0.76,
-      "score": 7.928,
-      "why": "-0.76% today",
+      "change_pct": -0.52,
+      "score": 5.4,
+      "why": "-0.52% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "SOL",
+      "symbol": "EURJPY",
+      "market": "forex",
+      "change_pct": -0.51,
+      "score": 5.352,
+      "why": "-0.51% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -0.49,
+      "score": 5.056,
+      "why": "-0.49% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 4.59,
-      "score": 6.282,
-      "why": "+4.59% in 24h on $267M Binance volume",
+      "change_pct": -2.72,
+      "score": 3.56,
+      "why": "-2.72% in 24h on $207M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "XRP",
+      "market": "crypto",
+      "change_pct": 2.22,
+      "score": 2.831,
+      "why": "+2.22% in 24h on $176M Binance volume",
       "direction": "LONG"
     }
   ]

@@ -1,71 +1,52 @@
 {
- "scanned_utc": "2026-11-23T18:15:00Z",
+ "scanned_utc": "2026-11-24T05:10:42Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "USD/JPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake condition met, but the optimizer found no workable plan (NO_PLAN)."
-  },
-  {
-   "symbol": "KYMR",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge (NO_EDGE)."
-  },
-  {
-   "symbol": "NVDA",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge (NO_EDGE)."
-  },
-  {
-   "symbol": "IREN",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge (NO_EDGE)."
+   "reason": "Retake condition: optimizer found no workable plan, so a debate would only confirm SKIP."
   },
   {
    "symbol": "NVDAB",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "Optimizer found no edge (NO_EDGE)."
-  },
-  {
-   "symbol": "SOXLB",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "Optimizer found no workable plan (NO_PLAN)."
-  },
-  {
-   "symbol": "EURJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Pair not allowed for India-resident forex rules."
-  },
-  {
-   "symbol": "GBPJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Pair not allowed for India-resident forex rules."
+   "reason": "Optimizer found no workable plan that passes your rules."
   },
   {
    "symbol": "EURUSD",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Optimizer found no workable plan (NO_PLAN)."
+   "reason": "Optimizer found no workable plan."
   },
   {
-   "symbol": "SOL",
+   "symbol": "EURJPY",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Optimizer found no edge in replays."
+  },
+  {
+   "symbol": "NZDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Optimizer found no workable plan."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Crypto shorting is not allowed in your settings."
+  },
+  {
+   "symbol": "XRP",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "Optimizer found no workable plan (NO_PLAN)."
+   "reason": "Optimizer found no edge in replays."
   }
  ],
  "markets_open": [
   "crypto",
-  "us",
   "forex"
  ],
  "health": "DEGRADED",
