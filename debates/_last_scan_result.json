@@ -1,48 +1,42 @@
 {
- "scanned_utc": "2026-11-24T05:10:42Z",
+ "scanned_utc": "2026-11-24T08:11:26Z",
  "debated": [],
  "skipped": [
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake condition: optimizer found no workable plan, so a debate would only confirm SKIP."
-  },
   {
    "symbol": "NVDAB",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "Optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "EURUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no workable plan."
-  },
-  {
-   "symbol": "EURJPY",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no edge in replays."
-  },
-  {
-   "symbol": "NZDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Optimizer found no workable plan."
+   "reason": "The code found no workable trade plan that passes your rules."
   },
   {
    "symbol": "ZEC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Crypto shorting is not allowed in your settings."
+   "reason": "Shorting crypto is switched off in your settings."
   },
   {
-   "symbol": "XRP",
+   "symbol": "NZDUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "NZDUSD is not on your allowed India forex pairs, and no workable plan was found."
+  },
+  {
+   "symbol": "EURUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The code found no workable trade plan that passes your rules."
+  },
+  {
+   "symbol": "GBPUSD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "The code found no workable trade plan that passes your rules."
+  },
+  {
+   "symbol": "BTC",
    "market": "crypto",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge in replays."
+   "direction": "SHORT",
+   "reason": "Shorting crypto is switched off in your settings."
   }
  ],
  "markets_open": [
