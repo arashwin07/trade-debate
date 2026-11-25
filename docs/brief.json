@@ -1,7 +1,7 @@
 {
-  "computed_utc": "2026-11-24T14:14:51Z",
-  "title": "Before Wall Street opens",
-  "which": "us",
+  "computed_utc": "2026-11-25T03:16:13Z",
+  "title": "Before NSE opens",
+  "which": "nse",
   "health": {
     "status": "DEGRADED",
     "critical_down": [],
@@ -9,52 +9,43 @@
   },
   "mood": [
     {
-      "market": "us",
+      "market": "nse",
       "indexes": [
         {
-          "symbol": "^GSPC",
-          "name": "S&P 500",
-          "price": 7237.17,
-          "change_today_pct": 4.73,
-          "vs_sma20_pct": -3.21,
-          "vs_sma50_pct": -4.99,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^IXIC",
-          "name": "Nasdaq",
-          "price": 24089.559,
-          "change_today_pct": 6.51,
-          "vs_sma20_pct": -3.63,
-          "vs_sma50_pct": -7.6,
-          "trend": "DOWN"
-        },
-        {
-          "symbol": "^VIX",
-          "name": "VIX fear gauge",
-          "price": 29.84,
-          "change_today_pct": 12.1,
-          "vs_sma20_pct": 31.3,
-          "vs_sma50_pct": 58.06,
+          "symbol": "^NSEI",
+          "name": "NIFTY 50",
+          "price": 25349.65,
+          "change_today_pct": -1.75,
+          "vs_sma20_pct": 3.83,
+          "vs_sma50_pct": 7.78,
           "trend": "UP"
         },
         {
-          "symbol": "^TNX",
-          "name": "US 10-year yield",
-          "price": 4.884,
-          "change_today_pct": -0.69,
-          "vs_sma20_pct": -1.89,
-          "vs_sma50_pct": -3.74,
-          "trend": "DOWN"
+          "symbol": "^NSEBANK",
+          "name": "Bank NIFTY",
+          "price": 62585.35,
+          "change_today_pct": -3.17,
+          "vs_sma20_pct": 6.55,
+          "vs_sma50_pct": 10.25,
+          "trend": "UP"
         },
         {
-          "symbol": "DX-Y.NYB",
-          "name": "Dollar index",
-          "price": 103.867,
-          "change_today_pct": -0.43,
-          "vs_sma20_pct": 1.07,
-          "vs_sma50_pct": 1.76,
+          "symbol": "^INDIAVIX",
+          "name": "India VIX fear gauge",
+          "price": 17.698,
+          "change_today_pct": 2.18,
+          "vs_sma20_pct": 9.01,
+          "vs_sma50_pct": 21.13,
           "trend": "UP"
+        },
+        {
+          "symbol": "USDINR=X",
+          "name": "USD/INR",
+          "price": 92.9,
+          "change_today_pct": -0.02,
+          "vs_sma20_pct": -1.18,
+          "vs_sma50_pct": -2.22,
+          "trend": "DOWN"
         }
       ],
       "crypto_market": null,
@@ -66,25 +57,25 @@
         {
           "symbol": "BTC-USD",
           "name": "Bitcoin",
-          "price": 60253.6,
-          "change_today_pct": -1.56,
-          "vs_sma20_pct": -10.74,
-          "vs_sma50_pct": -20.35,
+          "price": 59397.45,
+          "change_today_pct": -2.96,
+          "vs_sma20_pct": -11.96,
+          "vs_sma50_pct": -21.46,
           "trend": "DOWN"
         },
         {
           "symbol": "^VIX",
           "name": "VIX fear gauge",
-          "price": 29.84,
-          "change_today_pct": 12.1,
-          "vs_sma20_pct": 31.3,
-          "vs_sma50_pct": 58.06,
+          "price": 26.36,
+          "change_today_pct": -0.98,
+          "vs_sma20_pct": 16.88,
+          "vs_sma50_pct": 40.15,
           "trend": "UP"
         }
       ],
       "crypto_market": {
-        "btc_dominance_pct": 57.91,
-        "total_mcap_change_24h_pct": -7.16
+        "btc_dominance_pct": 57.81,
+        "total_mcap_change_24h_pct": -3.76
       },
       "error": null
     }
@@ -96,7 +87,7 @@
       "currency": "USD",
       "impact": "High",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 0.4,
       "previous": 0.5,
       "actual": null,
@@ -108,7 +99,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": null,
       "previous": 0.4,
       "actual": null,
@@ -120,7 +111,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": null,
       "previous": 0.3,
       "actual": null,
@@ -132,7 +123,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 0.3,
       "previous": 0.5,
       "actual": null,
@@ -144,7 +135,7 @@
       "currency": "USD",
       "impact": "High",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 0.3,
       "previous": 0.3,
       "actual": null,
@@ -156,7 +147,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 3.8,
       "previous": 3.6,
       "actual": null,
@@ -168,7 +159,7 @@
       "currency": "USD",
       "impact": "High",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 0.4,
       "previous": 0.2,
       "actual": null,
@@ -180,7 +171,7 @@
       "currency": "USD",
       "impact": "High",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 3.5,
       "previous": 1.5,
       "actual": null,
@@ -192,7 +183,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": null,
       "previous": 3.4,
       "actual": null,
@@ -204,7 +195,7 @@
       "currency": "USD",
       "impact": "Medium",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": null,
       "previous": 3.7,
       "actual": null,
@@ -216,7 +207,7 @@
       "currency": "USD",
       "impact": "High",
       "time_utc": "2026-11-25T13:30:00Z",
-      "minutes_from_now": 1395,
+      "minutes_from_now": 614,
       "forecast": 0.6,
       "previous": 1.8,
       "actual": null,
@@ -227,28 +218,28 @@
   "overnight": [
     {
       "symbol": "BTC/USDT",
-      "price": 60359.84,
-      "change_pct": -4.87
+      "price": 59470.01,
+      "change_pct": -0.07
     },
     {
       "symbol": "ETH/USDT",
-      "price": 1697.76,
-      "change_pct": -5.84
+      "price": 1663.13,
+      "change_pct": -0.72
     },
     {
       "symbol": "EUR/USD",
-      "price": 1.0971,
-      "change_pct": -0.0
+      "price": 1.0955,
+      "change_pct": 0.43
     },
     {
       "symbol": "USD/INR",
       "price": 92.9,
-      "change_pct": 0.24
+      "change_pct": -0.02
     },
     {
       "symbol": "USD/JPY",
-      "price": 159.17,
-      "change_pct": 0.15
+      "price": 159.19,
+      "change_pct": 0.12
     }
   ],
   "watchlist": [],
