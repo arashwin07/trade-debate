@@ -1,65 +1,71 @@
 {
- "scanned_utc": "2026-11-25T08:12:00Z",
+ "scanned_utc": "2026-11-25T15:13:00Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "AUDUSD",
+   "symbol": "USD/JPY",
    "market": "forex",
+   "direction": "LONG",
+   "reason": "Retake queue: the optimizer found no workable plan right now."
+  },
+  {
+   "symbol": "NTNX",
+   "market": "us",
    "direction": "SHORT",
-   "reason": "Optimizer found no workable plan under your rules."
+   "reason": "Shorting US stocks is not allowed in your settings."
+  },
+  {
+   "symbol": "URBN",
+   "market": "us",
+   "direction": "SHORT",
+   "reason": "Shorting US stocks is not allowed in your settings."
+  },
+  {
+   "symbol": "CLS",
+   "market": "us",
+   "direction": "SHORT",
+   "reason": "Shorting US stocks is not allowed in your settings."
   },
   {
    "symbol": "USDCHF",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Optimizer found no edge; also not an allowed India forex pair."
+   "reason": "Not an allowed forex pair for India residence (and optimizer found no edge)."
+  },
+  {
+   "symbol": "USDCAD",
+   "market": "forex",
+   "direction": "SHORT",
+   "reason": "Not an allowed forex pair for India residence (and optimizer found no edge)."
   },
   {
    "symbol": "USDINR",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "Optimizer found no edge."
-  },
-  {
-   "symbol": "BAJAJFINSV",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge in replays."
-  },
-  {
-   "symbol": "HINDUNILVR",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge in replays."
-  },
-  {
-   "symbol": "HDFCLIFE",
-   "market": "nse",
-   "direction": "LONG",
-   "reason": "Optimizer found no edge in replays."
-  },
-  {
-   "symbol": "SOL",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is off in your settings, and the optimizer found no edge."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is off in your settings."
+   "reason": "Optimizer found no edge for this plan."
   },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "SHORT",
-   "reason": "Crypto shorting is off in your settings."
+   "reason": "Shorting crypto is not allowed in your settings."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed in your settings."
+  },
+  {
+   "symbol": "SOL",
+   "market": "crypto",
+   "direction": "SHORT",
+   "reason": "Shorting crypto is not allowed in your settings."
   }
  ],
  "markets_open": [
   "crypto",
-  "nse",
+  "us",
   "forex"
  ],
  "health": "DEGRADED",
