@@ -1,24 +1,48 @@
 {
- "scanned_utc": "2026-11-25T18:10:33Z",
+ "scanned_utc": "2026-11-26T05:10:59Z",
  "debated": [],
  "skipped": [
   {
    "symbol": "USD/JPY",
    "market": "forex",
    "direction": "LONG",
-   "reason": "Retake candidate, but the plan optimizer found no workable plan."
+   "reason": "Retake condition met, but The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
   },
   {
-   "symbol": "NTNX",
-   "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is turned off in your settings."
+   "symbol": "SOXLB",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The optimizer found no edge in the Time Machine replays, so a debate would only confirm SKIP."
   },
   {
-   "symbol": "URBN",
-   "market": "us",
-   "direction": "SHORT",
-   "reason": "Shorting US stocks is turned off in your settings."
+   "symbol": "BTC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "ZEC",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The optimizer found no plan that passes your rules, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "WIPRO",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "The optimizer found no edge in the Time Machine replays, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "HCLTECH",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "The optimizer found no edge in the Time Machine replays, so a debate would only confirm SKIP."
+  },
+  {
+   "symbol": "INFY",
+   "market": "nse",
+   "direction": "LONG",
+   "reason": "The optimizer found no edge in the Time Machine replays, so a debate would only confirm SKIP."
   },
   {
    "symbol": "USDCHF",
@@ -33,39 +57,15 @@
    "reason": "Not on the India-allowed forex pair list."
   },
   {
-   "symbol": "BZ",
-   "market": "us",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no edge."
-  },
-  {
    "symbol": "USDINR",
    "market": "forex",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no edge."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Shorting crypto is turned off in your settings."
+   "reason": "The optimizer found no edge in the Time Machine replays, so a debate would only confirm SKIP."
   }
  ],
  "markets_open": [
   "crypto",
-  "us",
+  "nse",
   "forex"
  ],
  "health": "DEGRADED",
