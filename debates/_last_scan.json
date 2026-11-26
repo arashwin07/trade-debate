@@ -1,76 +1,60 @@
 {
-  "scanned_utc": "2026-11-26T08:09:31Z",
+  "scanned_utc": "2026-11-26T15:10:10Z",
   "open_markets": [
     "crypto",
-    "nse",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "us: market closed, skipped",
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 3.15,
-      "score": 6.159,
-      "why": "+3.15% in 24h on $1,617M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "HCLTECH",
-      "market": "nse",
-      "change_pct": 4.38,
-      "score": 5.415,
-      "why": "+4.38% today, volume 0.7x 20-day average",
+      "change_pct": 3.66,
+      "score": 6.907,
+      "why": "+3.66% in 24h on $1,350M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": -0.41,
-      "score": 4.224,
-      "why": "-0.41% today",
+      "change_pct": -0.4,
+      "score": 4.168,
+      "why": "-0.40% today",
       "direction": "SHORT"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 4.55,
-      "score": 5.987,
-      "why": "+4.55% in 24h on $214M Binance volume",
+      "change_pct": 4.6,
+      "score": 5.857,
+      "why": "+4.60% in 24h on $176M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "ETH",
+      "symbol": "ZEC",
       "market": "crypto",
-      "change_pct": 3.13,
-      "score": 5.134,
-      "why": "+3.13% in 24h on $676M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "WIPRO",
-      "market": "nse",
-      "change_pct": 3.35,
-      "score": 4.587,
-      "why": "+3.35% today, volume 1.3x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "INFY",
-      "market": "nse",
-      "change_pct": 3.12,
-      "score": 4.044,
-      "why": "+3.12% today, volume 1.0x 20-day average",
-      "direction": "LONG"
+      "change_pct": -2.78,
+      "score": 3.626,
+      "why": "-2.78% in 24h on $205M Binance volume",
+      "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": -0.37,
-      "score": 3.824,
-      "why": "-0.37% today",
+      "change_pct": -0.26,
+      "score": 2.68,
+      "why": "-0.26% today",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "USDCAD",
+      "market": "forex",
+      "change_pct": -0.21,
+      "score": 2.168,
+      "why": "-0.21% today",
       "direction": "SHORT"
     }
   ],
@@ -78,73 +62,49 @@
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 3.15,
-      "score": 6.159,
-      "why": "+3.15% in 24h on $1,617M Binance volume",
+      "change_pct": 3.66,
+      "score": 6.907,
+      "why": "+3.66% in 24h on $1,350M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 4.55,
-      "score": 5.987,
-      "why": "+4.55% in 24h on $214M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "HCLTECH",
-      "market": "nse",
-      "change_pct": 4.38,
-      "score": 5.415,
-      "why": "+4.38% today, volume 0.7x 20-day average",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": 3.13,
-      "score": 5.134,
-      "why": "+3.13% in 24h on $676M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "WIPRO",
-      "market": "nse",
-      "change_pct": 3.35,
-      "score": 4.587,
-      "why": "+3.35% today, volume 1.3x 20-day average",
+      "change_pct": 4.6,
+      "score": 5.857,
+      "why": "+4.60% in 24h on $176M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": -0.41,
-      "score": 4.224,
-      "why": "-0.41% today",
+      "change_pct": -0.4,
+      "score": 4.168,
+      "why": "-0.40% today",
       "direction": "SHORT"
     },
     {
-      "symbol": "INFY",
-      "market": "nse",
-      "change_pct": 3.12,
-      "score": 4.044,
-      "why": "+3.12% today, volume 1.0x 20-day average",
-      "direction": "LONG"
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": -2.78,
+      "score": 3.626,
+      "why": "-2.78% in 24h on $205M Binance volume",
+      "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": -0.37,
-      "score": 3.824,
-      "why": "-0.37% today",
+      "change_pct": -0.26,
+      "score": 2.68,
+      "why": "-0.26% today",
       "direction": "SHORT"
     },
     {
       "symbol": "USDCAD",
       "market": "forex",
-      "change_pct": -0.34,
-      "score": 3.584,
-      "why": "-0.34% today",
+      "change_pct": -0.21,
+      "score": 2.168,
+      "why": "-0.21% today",
       "direction": "SHORT"
     }
   ]

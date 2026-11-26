@@ -1,12 +1,8 @@
-{"scanned_utc":"2026-11-26T08:15:00Z","debated":[],"skipped":[
-{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Retake queue item: the optimizer found no workable plan, so a debate would only confirm SKIP."},
-{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The optimizer found no plan that passes your rules (NO_PLAN)."},
-{"symbol":"SOL","market":"crypto","direction":"LONG","reason":"The optimizer found no plan that passes your rules (NO_PLAN)."},
-{"symbol":"ETH","market":"crypto","direction":"LONG","reason":"The optimizer found no plan that passes your rules (NO_PLAN)."},
-{"symbol":"HCLTECH","market":"nse","direction":"LONG","reason":"The optimizer found no statistical edge (NO_EDGE)."},
-{"symbol":"WIPRO","market":"nse","direction":"LONG","reason":"The optimizer found no statistical edge (NO_EDGE)."},
-{"symbol":"INFY","market":"nse","direction":"LONG","reason":"The optimizer found no statistical edge (NO_EDGE)."},
-{"symbol":"USDINR","market":"forex","direction":"SHORT","reason":"The optimizer found no plan that passes your rules (NO_PLAN)."},
-{"symbol":"USDCHF","market":"forex","direction":"SHORT","reason":"Pair not allowed for India-resident forex rules."},
-{"symbol":"USDCAD","market":"forex","direction":"SHORT","reason":"Pair not allowed for India-resident forex rules."}],
-"markets_open":["crypto","nse","forex"],"health":"DEGRADED","budget_left":8}
+{"scanned_utc":"2026-11-26T15:12:00Z","debated":[],"skipped":[
+{"symbol":"BTC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan that passes your rules (NO_PLAN)."},
+{"symbol":"SOL","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan that passes your rules (NO_PLAN)."},
+{"symbol":"USDINR","market":"forex","direction":"SHORT","reason":"The plan optimizer found no plan that passes your rules (NO_PLAN)."},
+{"symbol":"ZEC","market":"crypto","direction":"SHORT","reason":"Crypto shorting is off in your settings, and the optimizer found no edge."},
+{"symbol":"USDCHF","market":"forex","direction":"SHORT","reason":"Not on your India-allowed forex pair list, and no workable plan."},
+{"symbol":"USDCAD","market":"forex","direction":"SHORT","reason":"Not on your India-allowed forex pair list, and no workable plan."}],
+"markets_open":["crypto","forex"],"health":"DEGRADED","budget_left":8}
