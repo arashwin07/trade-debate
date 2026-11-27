@@ -1,150 +1,150 @@
 {
-  "scanned_utc": "2026-11-27T08:09:31Z",
+  "scanned_utc": "2026-11-27T15:10:34Z",
   "open_markets": [
     "crypto",
-    "nse",
+    "us",
     "forex"
   ],
   "notes": [
-    "us: market closed, skipped"
+    "nse: market closed, skipped"
   ],
   "candidates": [
     {
+      "symbol": "XP",
+      "market": "us",
+      "change_pct": 18.5,
+      "score": 22.909,
+      "why": "+18.50% today, volume 0.7x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 7.94,
+      "score": 10.333,
+      "why": "+7.94% in 24h on $200M Binance volume",
+      "direction": "LONG"
+    },
+    {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.67,
-      "score": 7.024,
-      "why": "+0.67% today",
+      "change_pct": 0.8,
+      "score": 8.376,
+      "why": "+0.80% today",
       "direction": "LONG"
     },
     {
-      "symbol": "SHRIRAMFIN",
-      "market": "nse",
-      "change_pct": -3.64,
-      "score": 5.657,
-      "why": "-3.64% today, volume 2.6x 20-day average",
-      "direction": "SHORT"
-    },
-    {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": 3.37,
-      "score": 4.092,
-      "why": "+3.37% in 24h on $128M Binance volume",
+      "symbol": "ITUB",
+      "market": "us",
+      "change_pct": 13.29,
+      "score": 15.761,
+      "why": "+13.29% today, volume 0.5x 3-month average (day gainers)",
       "direction": "LONG"
     },
     {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": 0.67,
-      "score": 7.0,
-      "why": "+0.67% today",
+      "symbol": "ELPC",
+      "market": "us",
+      "change_pct": 13.48,
+      "score": 15.401,
+      "why": "+13.48% today, volume 0.4x 3-month average (day gainers)",
       "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.47,
-      "score": 4.848,
-      "why": "+0.47% today",
+      "change_pct": 0.56,
+      "score": 5.872,
+      "why": "+0.56% today",
       "direction": "LONG"
+    },
+    {
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -0.31,
+      "score": 3.256,
+      "why": "-0.31% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 2.67,
-      "score": 3.952,
-      "why": "+2.67% in 24h on $401M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "BAJAJ-AUTO",
-      "market": "nse",
-      "change_pct": -3.08,
-      "score": 3.882,
-      "why": "-3.08% today, volume 0.8x 20-day average",
+      "change_pct": -1.81,
+      "score": 2.845,
+      "why": "-1.81% in 24h on $539M Binance volume",
       "direction": "SHORT"
-    },
-    {
-      "symbol": "BTC",
-      "market": "crypto",
-      "change_pct": 1.94,
-      "score": 3.401,
-      "why": "+1.94% in 24h on $938M Binance volume",
-      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
+      "symbol": "XP",
+      "market": "us",
+      "change_pct": 18.5,
+      "score": 22.909,
+      "why": "+18.50% today, volume 0.7x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ITUB",
+      "market": "us",
+      "change_pct": 13.29,
+      "score": 15.761,
+      "why": "+13.29% today, volume 0.5x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ELPC",
+      "market": "us",
+      "change_pct": 13.48,
+      "score": 15.401,
+      "why": "+13.48% today, volume 0.4x 3-month average (day gainers)",
+      "direction": "LONG"
+    },
+    {
+      "symbol": "ZEC",
+      "market": "crypto",
+      "change_pct": 7.94,
+      "score": 10.333,
+      "why": "+7.94% in 24h on $200M Binance volume",
+      "direction": "LONG"
+    },
+    {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.67,
-      "score": 7.024,
-      "why": "+0.67% today",
+      "change_pct": 0.8,
+      "score": 8.376,
+      "why": "+0.80% today",
       "direction": "LONG"
-    },
-    {
-      "symbol": "AUDUSD",
-      "market": "forex",
-      "change_pct": 0.67,
-      "score": 7.0,
-      "why": "+0.67% today",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "SHRIRAMFIN",
-      "market": "nse",
-      "change_pct": -3.64,
-      "score": 5.657,
-      "why": "-3.64% today, volume 2.6x 20-day average",
-      "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.47,
-      "score": 4.848,
-      "why": "+0.47% today",
+      "change_pct": 0.56,
+      "score": 5.872,
+      "why": "+0.56% today",
       "direction": "LONG"
     },
     {
-      "symbol": "SOL",
-      "market": "crypto",
-      "change_pct": 3.37,
-      "score": 4.092,
-      "why": "+3.37% in 24h on $128M Binance volume",
-      "direction": "LONG"
+      "symbol": "NZDUSD",
+      "market": "forex",
+      "change_pct": -0.31,
+      "score": 3.256,
+      "why": "-0.31% today",
+      "direction": "SHORT"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 2.67,
-      "score": 3.952,
-      "why": "+2.67% in 24h on $401M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "BAJAJ-AUTO",
-      "market": "nse",
-      "change_pct": -3.08,
-      "score": 3.882,
-      "why": "-3.08% today, volume 0.8x 20-day average",
+      "change_pct": -1.81,
+      "score": 2.845,
+      "why": "-1.81% in 24h on $539M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 1.94,
-      "score": 3.401,
-      "why": "+1.94% in 24h on $938M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "EICHERMOT",
-      "market": "nse",
-      "change_pct": -2.72,
-      "score": 3.238,
-      "why": "-2.72% today, volume 0.6x 20-day average",
+      "change_pct": -1.51,
+      "score": 2.763,
+      "why": "-1.51% in 24h on $1,159M Binance volume",
       "direction": "SHORT"
     }
   ]
