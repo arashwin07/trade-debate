@@ -1,60 +1,60 @@
 {
- "scanned_utc": "2026-11-27T05:10:03Z",
+ "scanned_utc": "2026-11-27T08:15:00Z",
  "debated": [],
  "skipped": [
   {
-   "symbol": "USDINR",
+   "symbol": "USD/INR",
    "market": "forex",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "The plan optimizer found plans, but none passed the odds test in the replays."
   },
   {
-   "symbol": "AUDUSD",
+   "symbol": "AUD/USD",
    "market": "forex",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "The plan optimizer found no plan that passes the desk's rules (no workable reward-to-risk)."
   },
   {
    "symbol": "SHRIRAMFIN",
    "market": "nse",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no edge in replays for this setup."
+   "reason": "The plan optimizer found plans, but none passed the odds test in the replays."
   },
   {
-   "symbol": "USDCHF",
+   "symbol": "USD/CHF",
    "market": "forex",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "The plan optimizer found no plan that passes the desk's rules (no workable reward-to-risk)."
   },
   {
    "symbol": "SOL",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "The plan optimizer found no plan that passes the desk's rules (no workable reward-to-risk)."
   },
   {
-   "symbol": "HCLTECH",
-   "market": "nse",
-   "direction": "SHORT",
-   "reason": "The plan optimizer found no edge in replays for this setup."
+   "symbol": "ETH",
+   "market": "crypto",
+   "direction": "LONG",
+   "reason": "The plan optimizer found no plan that passes the desk's rules (no workable reward-to-risk)."
   },
   {
-   "symbol": "INFY",
+   "symbol": "BAJAJ-AUTO",
    "market": "nse",
    "direction": "SHORT",
-   "reason": "The plan optimizer found no edge in replays for this setup."
+   "reason": "The plan optimizer found plans, but none passed the odds test in the replays."
   },
   {
    "symbol": "BTC",
    "market": "crypto",
    "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan that passes your rules."
+   "reason": "The plan optimizer found no plan that passes the desk's rules (no workable reward-to-risk)."
+  },
+  {
+   "symbol": "EICHERMOT",
+   "market": "nse",
+   "direction": "SHORT",
+   "reason": "The plan optimizer found plans, but none passed the odds test in the replays."
   }
  ],
  "markets_open": [

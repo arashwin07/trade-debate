@@ -1,5 +1,5 @@
 {
-  "scanned_utc": "2026-11-27T05:09:16Z",
+  "scanned_utc": "2026-11-27T08:09:31Z",
   "open_markets": [
     "crypto",
     "nse",
@@ -12,140 +12,140 @@
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.59,
-      "score": 6.152,
-      "why": "+0.59% today",
+      "change_pct": 0.67,
+      "score": 7.024,
+      "why": "+0.67% today",
       "direction": "LONG"
     },
     {
       "symbol": "SHRIRAMFIN",
       "market": "nse",
-      "change_pct": -3.39,
-      "score": 4.489,
-      "why": "-3.39% today, volume 1.1x 20-day average",
+      "change_pct": -3.64,
+      "score": 5.657,
+      "why": "-3.64% today, volume 2.6x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "ETH",
+      "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 2.38,
-      "score": 3.484,
-      "why": "+2.38% in 24h on $386M Binance volume",
+      "change_pct": 3.37,
+      "score": 4.092,
+      "why": "+3.37% in 24h on $128M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": 0.58,
-      "score": 6.016,
-      "why": "+0.58% today",
+      "change_pct": 0.67,
+      "score": 7.0,
+      "why": "+0.67% today",
       "direction": "LONG"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.37,
-      "score": 3.816,
-      "why": "+0.37% today",
+      "change_pct": 0.47,
+      "score": 4.848,
+      "why": "+0.47% today",
       "direction": "LONG"
     },
     {
-      "symbol": "SOL",
+      "symbol": "ETH",
       "market": "crypto",
-      "change_pct": 2.68,
-      "score": 3.238,
-      "why": "+2.68% in 24h on $122M Binance volume",
+      "change_pct": 2.67,
+      "score": 3.952,
+      "why": "+2.67% in 24h on $401M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "HCLTECH",
+      "symbol": "BAJAJ-AUTO",
       "market": "nse",
-      "change_pct": -2.59,
-      "score": 2.905,
-      "why": "-2.59% today, volume 0.3x 20-day average",
+      "change_pct": -3.08,
+      "score": 3.882,
+      "why": "-3.08% today, volume 0.8x 20-day average",
       "direction": "SHORT"
     },
     {
-      "symbol": "INFY",
-      "market": "nse",
-      "change_pct": -2.57,
-      "score": 2.799,
-      "why": "-2.57% today, volume 0.2x 20-day average",
-      "direction": "SHORT"
+      "symbol": "BTC",
+      "market": "crypto",
+      "change_pct": 1.94,
+      "score": 3.401,
+      "why": "+1.94% in 24h on $938M Binance volume",
+      "direction": "LONG"
     }
   ],
   "all_ranked": [
     {
       "symbol": "USDINR",
       "market": "forex",
-      "change_pct": 0.59,
-      "score": 6.152,
-      "why": "+0.59% today",
+      "change_pct": 0.67,
+      "score": 7.024,
+      "why": "+0.67% today",
       "direction": "LONG"
     },
     {
       "symbol": "AUDUSD",
       "market": "forex",
-      "change_pct": 0.58,
-      "score": 6.016,
-      "why": "+0.58% today",
+      "change_pct": 0.67,
+      "score": 7.0,
+      "why": "+0.67% today",
       "direction": "LONG"
     },
     {
       "symbol": "SHRIRAMFIN",
       "market": "nse",
-      "change_pct": -3.39,
-      "score": 4.489,
-      "why": "-3.39% today, volume 1.1x 20-day average",
+      "change_pct": -3.64,
+      "score": 5.657,
+      "why": "-3.64% today, volume 2.6x 20-day average",
       "direction": "SHORT"
     },
     {
       "symbol": "USDCHF",
       "market": "forex",
-      "change_pct": 0.37,
-      "score": 3.816,
-      "why": "+0.37% today",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": 2.38,
-      "score": 3.484,
-      "why": "+2.38% in 24h on $386M Binance volume",
+      "change_pct": 0.47,
+      "score": 4.848,
+      "why": "+0.47% today",
       "direction": "LONG"
     },
     {
       "symbol": "SOL",
       "market": "crypto",
-      "change_pct": 2.68,
-      "score": 3.238,
-      "why": "+2.68% in 24h on $122M Binance volume",
+      "change_pct": 3.37,
+      "score": 4.092,
+      "why": "+3.37% in 24h on $128M Binance volume",
       "direction": "LONG"
     },
     {
-      "symbol": "HCLTECH",
-      "market": "nse",
-      "change_pct": -2.59,
-      "score": 2.905,
-      "why": "-2.59% today, volume 0.3x 20-day average",
-      "direction": "SHORT"
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": 2.67,
+      "score": 3.952,
+      "why": "+2.67% in 24h on $401M Binance volume",
+      "direction": "LONG"
     },
     {
-      "symbol": "INFY",
+      "symbol": "BAJAJ-AUTO",
       "market": "nse",
-      "change_pct": -2.57,
-      "score": 2.799,
-      "why": "-2.57% today, volume 0.2x 20-day average",
+      "change_pct": -3.08,
+      "score": 3.882,
+      "why": "-3.08% today, volume 0.8x 20-day average",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": 1.18,
-      "score": 2.062,
-      "why": "+1.18% in 24h on $938M Binance volume",
+      "change_pct": 1.94,
+      "score": 3.401,
+      "why": "+1.94% in 24h on $938M Binance volume",
       "direction": "LONG"
+    },
+    {
+      "symbol": "EICHERMOT",
+      "market": "nse",
+      "change_pct": -2.72,
+      "score": 3.238,
+      "why": "-2.72% today, volume 0.6x 20-day average",
+      "direction": "SHORT"
     }
   ]
 }
