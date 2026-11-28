@@ -1,54 +1,5 @@
-{
- "scanned_utc": "2026-11-27T18:10:22Z",
- "debated": [],
- "skipped": [
-  {
-   "symbol": "USD/JPY",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Retake from the queue, but the plan optimizer found no workable plan, so a debate would only confirm SKIP."
-  },
-  {
-   "symbol": "ZEC",
-   "market": "crypto",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no workable plan for this move."
-  },
-  {
-   "symbol": "USDINR",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "The plan optimizer found no edge in the replays."
-  },
-  {
-   "symbol": "USDCHF",
-   "market": "forex",
-   "direction": "LONG",
-   "reason": "Not on your India forex allowed-pairs list (and the optimizer found no edge)."
-  },
-  {
-   "symbol": "NZDUSD",
-   "market": "forex",
-   "direction": "SHORT",
-   "reason": "Not on your India forex allowed-pairs list."
-  },
-  {
-   "symbol": "ETH",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings."
-  },
-  {
-   "symbol": "BTC",
-   "market": "crypto",
-   "direction": "SHORT",
-   "reason": "Crypto shorting is switched off in your settings."
-  }
- ],
- "markets_open": [
-  "crypto",
-  "forex"
- ],
- "health": "DEGRADED",
- "budget_left": 8
-}
+{"scanned_utc":"2026-11-28T00:08:00Z","debated":[],"skipped":[
+{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan paying at least 1.5x the risk after costs, so a debate would only confirm SKIP."},
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your risk settings."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your risk settings."}],
+"markets_open":["crypto"],"health":"DEGRADED","budget_left":8}
