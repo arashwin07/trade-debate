@@ -1,5 +1,6 @@
-{"scanned_utc":"2026-11-28T00:08:00Z","debated":[],"skipped":[
-{"symbol":"ZEC","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan paying at least 1.5x the risk after costs, so a debate would only confirm SKIP."},
-{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your risk settings."},
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your risk settings."}],
+{"scanned_utc":"2026-11-28T06:07:00Z","debated":[],"skipped":[
+{"symbol":"PORTAL","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan with a real edge (NO_EDGE), so a debate would only confirm SKIP."},
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and no plan passed the cost rule)."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and no plan passed the cost rule)."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Queued retake is an intraday forex idea and the forex market is closed for the weekend; it stays in the retake queue."}],
 "markets_open":["crypto"],"health":"DEGRADED","budget_left":8}

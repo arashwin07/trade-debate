@@ -1,58 +1,58 @@
 {
-  "scanned_utc": "2026-11-28T00:05:41Z",
+  "scanned_utc": "2026-11-28T06:05:41Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
-      "symbol": "ZEC",
+      "symbol": "PORTAL",
       "market": "crypto",
-      "change_pct": 6.33,
-      "score": 8.116,
-      "why": "+6.33% in 24h on $183M Binance volume",
+      "change_pct": 33.87,
+      "score": 39.874,
+      "why": "+33.87% in 24h on $101M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -1.63,
-      "score": 2.604,
-      "why": "-1.63% in 24h on $593M Binance volume",
+      "change_pct": -4.99,
+      "score": 7.788,
+      "why": "-4.99% in 24h on $527M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.03,
-      "score": 1.933,
-      "why": "-1.03% in 24h on $1,275M Binance volume",
+      "change_pct": -3.41,
+      "score": 6.184,
+      "why": "-3.41% in 24h on $1,095M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "ZEC",
+      "symbol": "PORTAL",
       "market": "crypto",
-      "change_pct": 6.33,
-      "score": 8.116,
-      "why": "+6.33% in 24h on $183M Binance volume",
+      "change_pct": 33.87,
+      "score": 39.874,
+      "why": "+33.87% in 24h on $101M Binance volume",
       "direction": "LONG"
     },
     {
       "symbol": "ETH",
       "market": "crypto",
-      "change_pct": -1.63,
-      "score": 2.604,
-      "why": "-1.63% in 24h on $593M Binance volume",
+      "change_pct": -4.99,
+      "score": 7.788,
+      "why": "-4.99% in 24h on $527M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -1.03,
-      "score": 1.933,
-      "why": "-1.03% in 24h on $1,275M Binance volume",
+      "change_pct": -3.41,
+      "score": 6.184,
+      "why": "-3.41% in 24h on $1,095M Binance volume",
       "direction": "SHORT"
     }
   ]
