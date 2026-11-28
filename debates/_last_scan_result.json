@@ -1,6 +1,6 @@
-{"scanned_utc":"2026-11-28T06:07:00Z","debated":[],"skipped":[
-{"symbol":"PORTAL","market":"crypto","direction":"LONG","reason":"The plan optimizer found no plan with a real edge (NO_EDGE), so a debate would only confirm SKIP."},
-{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and no plan passed the cost rule)."},
-{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is not allowed by your settings (and no plan passed the cost rule)."},
-{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Queued retake is an intraday forex idea and the forex market is closed for the weekend; it stays in the retake queue."}],
+{"scanned_utc":"2026-11-28T12:07:00Z","debated":[],"skipped":[
+{"symbol":"WLFI","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings, and the optimizer also found no workable plan."},
+{"symbol":"BTC","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings, and the optimizer also found no workable plan."},
+{"symbol":"ETH","market":"crypto","direction":"SHORT","reason":"Shorting crypto is switched off in your settings, and the optimizer also found no workable plan."},
+{"symbol":"USD/JPY","market":"forex","direction":"LONG","reason":"Queued retake, but the forex market is closed for the weekend; it stays in the queue."}],
 "markets_open":["crypto"],"health":"DEGRADED","budget_left":8}

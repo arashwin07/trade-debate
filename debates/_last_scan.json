@@ -1,58 +1,58 @@
 {
-  "scanned_utc": "2026-11-28T06:05:41Z",
+  "scanned_utc": "2026-11-28T12:05:40Z",
   "open_markets": [
     "crypto"
   ],
   "notes": [],
   "candidates": [
     {
-      "symbol": "PORTAL",
+      "symbol": "WLFI",
       "market": "crypto",
-      "change_pct": 33.87,
-      "score": 39.874,
-      "why": "+33.87% in 24h on $101M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": -4.99,
-      "score": 7.788,
-      "why": "-4.99% in 24h on $527M Binance volume",
+      "change_pct": -52.44,
+      "score": 64.67,
+      "why": "-52.44% in 24h on $142M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -3.41,
-      "score": 6.184,
-      "why": "-3.41% in 24h on $1,095M Binance volume",
+      "change_pct": -3.74,
+      "score": 6.63,
+      "why": "-3.74% in 24h on $990M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -4.15,
+      "score": 6.412,
+      "why": "-4.15% in 24h on $502M Binance volume",
       "direction": "SHORT"
     }
   ],
   "all_ranked": [
     {
-      "symbol": "PORTAL",
+      "symbol": "WLFI",
       "market": "crypto",
-      "change_pct": 33.87,
-      "score": 39.874,
-      "why": "+33.87% in 24h on $101M Binance volume",
-      "direction": "LONG"
-    },
-    {
-      "symbol": "ETH",
-      "market": "crypto",
-      "change_pct": -4.99,
-      "score": 7.788,
-      "why": "-4.99% in 24h on $527M Binance volume",
+      "change_pct": -52.44,
+      "score": 64.67,
+      "why": "-52.44% in 24h on $142M Binance volume",
       "direction": "SHORT"
     },
     {
       "symbol": "BTC",
       "market": "crypto",
-      "change_pct": -3.41,
-      "score": 6.184,
-      "why": "-3.41% in 24h on $1,095M Binance volume",
+      "change_pct": -3.74,
+      "score": 6.63,
+      "why": "-3.74% in 24h on $990M Binance volume",
+      "direction": "SHORT"
+    },
+    {
+      "symbol": "ETH",
+      "market": "crypto",
+      "change_pct": -4.15,
+      "score": 6.412,
+      "why": "-4.15% in 24h on $502M Binance volume",
       "direction": "SHORT"
     }
   ]
